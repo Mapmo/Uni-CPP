@@ -1,0 +1,13 @@
+
+Database/Database.vcxproj
+Database/Database.vcxproj.filters
+Database/Database.vcxproj.user
+*.pdb
+*.idb
+*.ilk
+*.exe
+*.tlog
+*.sln
+*.log
+*.obj
+Database/Tables/Mama.txt
