@@ -1,0 +1,1 @@
+This is a project that was given by my OOP lector in FMI. The task was to make an object-oriented database. Everything is carefully commented, Database.h is the file that unites all the others and so it is best to start there in order to see how the project works
