@@ -1,4 +1,4 @@
-##pragma once
+#pragma once
 #include "sharedPtrContainer.h"
 template <class T>
 class sharedPtr
