@@ -10,7 +10,6 @@ public:
 	~sharedPtr();
 
 	const T & operator*() const;
-	const T & operator->()const;
 
 private:
 	sharedPtrContainer<T> * m_Container;
@@ -30,7 +29,7 @@ inline sharedPtr<T>::sharedPtr(const sharedPtr<T> & rhs)
 }
 
 template<class T>
-inline sharedPtr<T> & sharedPtr<T>::operator=(const sharedPtr<T> &)
+inline sharedPtr<T> & sharedPtr<T>::operator=(const sharedPtr<T> & rhs)
 {
 	if (this != &rhs)
 	{
@@ -40,16 +39,15 @@ inline sharedPtr<T> & sharedPtr<T>::operator=(const sharedPtr<T> &)
 			delete this->m_Container;
 		}
 		this->m_Container = rhs.m_Container;
-		this->m_Container.UpdateCount(1);
+		this->m_Container->UpdateCount(1);
 	}
-	return *this
+	return *this;
 }
 
 template<class T>
 inline sharedPtr<T>::~sharedPtr()
 {
 	this->m_Container->UpdateCount(0);
-	std::cout << "Linker Delete\n";
 	if (this->m_Container->GetCount() == 0)
 	{
 		delete this->m_Container;
@@ -59,11 +57,6 @@ inline sharedPtr<T>::~sharedPtr()
 template<class T>
 inline const T & sharedPtr<T>::operator*() const
 {
-	return *(this->m_Container);
+	return *(*(this->m_Container));
 }
 
-template<class T>
-inline const T & sharedPtr<T>::operator->()const
-{
-	return this->m_Container;
-}

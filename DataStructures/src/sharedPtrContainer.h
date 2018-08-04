@@ -7,7 +7,6 @@ public:
 	sharedPtrContainer(const T&);
 	~sharedPtrContainer();
 
-	const T * operator->()const;
 	const T& operator *()const;
 	void UpdateCount(bool);
 
@@ -29,19 +28,12 @@ template<class T>
 inline sharedPtrContainer<T>::~sharedPtrContainer()
 {
 	delete this->m_Data;
-	std::cout << "Data erased\n";
-}
-
-template<class T>
-inline const T * sharedPtrContainer<T>::operator->() const
-{
-	return *(this->m_Data);
 }
 
 template<class T>
 inline const T & sharedPtrContainer<T>::operator*() const
 {
-	return this->m_Data;
+	return *(this->m_Data);
 }
 
 template<class T>
