@@ -1,9 +1,9 @@
 #pragma once
-
 template <class T>
 class sharedPtrContainer
 {
 public:
+	sharedPtrContainer();
 	sharedPtrContainer(const T&);
 	~sharedPtrContainer();
 
@@ -11,29 +11,32 @@ public:
 	void UpdateCount(bool);
 
 	unsigned int GetCount()const;
+	T * GetDataAddress();
 private:
 	sharedPtrContainer(const sharedPtrContainer<T>&);
-	sharedPtrContainer<T>& operator=(const sharedPtrContainer<T>&);
 	unsigned int m_Count;
-	const T * m_Data;
+	T m_Data;
 };
 
 template<class T>
-inline sharedPtrContainer<T>::sharedPtrContainer(const T & rhs) : m_Count(1)
+inline sharedPtrContainer<T>::sharedPtrContainer() : m_Count(1), m_Data()
 {
-	this->m_Data = new T(rhs);
+}
+
+template<class T>
+inline sharedPtrContainer<T>::sharedPtrContainer(const T & rhs) : m_Count(1), m_Data(rhs)
+{
 }
 
 template<class T>
 inline sharedPtrContainer<T>::~sharedPtrContainer()
 {
-	delete this->m_Data;
 }
 
 template<class T>
 inline const T & sharedPtrContainer<T>::operator*() const
 {
-	return *(this->m_Data);
+	return this->m_Data;
 }
 
 template<class T>
@@ -49,7 +52,7 @@ inline unsigned int sharedPtrContainer<T>::GetCount() const
 }
 
 template<class T>
-inline sharedPtrContainer<T> & sharedPtrContainer<T>::operator=(const sharedPtrContainer<T> &)
+inline T * sharedPtrContainer<T>::GetDataAddress()
 {
-	return *this;
+	return &(this->m_Data);
 }
