@@ -1,6 +1,5 @@
 #pragma once
 #include <iostream>
-#include "String2.h"
 unsigned int FindClosestPowerOf2toNumber(unsigned int); //returns the closest bigger power of 2 to the param number 
 unsigned int ownStrlen(const char*);
 int compare(const char*, const char*);

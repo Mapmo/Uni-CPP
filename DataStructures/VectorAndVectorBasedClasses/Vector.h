@@ -1,6 +1,6 @@
 #pragma once
 #include <iostream>
-#include "UsefulFunctions.h"
+#include "..\src\UsefulFunctions.h"
 
 const unsigned int MAXBYTES = 1073741824; //2^30
 
@@ -20,7 +20,7 @@ public:
 
 	Vector();
 	Vector(const int, const T&);
-	Vector(const Vector&);
+	Vector(const Vector<T>&);
 	Vector<T>& operator=(const Vector<T>&);
 	void assign(const unsigned int, const T&);
 	~Vector();

@@ -183,6 +183,11 @@ bool String2::operator==(const char * rhs)
 	return false;
 }
 
+bool String2::operator!=(const char * rhs)
+{
+	return !operator==(rhs);
+}
+
 int String2::compare(const unsigned int pos, const unsigned int len, const char * ptr, const unsigned int n) const
 {
 	if (len != n)//a simple check that can save a lot of time and memory, too simple and short for a separate function
