@@ -1,46 +1,54 @@
 #pragma once
 
 template <class T, class keyType>
-class List
+class LinearList1
 {
 	T& frontOverloadHelper();
 	T& backOverloadHelper();
-	void EraseAllNextPointers();//used in destructor and operator=
 
 	//used for operator= to make sure that the 2 lists are not part of the same list, as it 
 	//is unknown which element may be first, then both elements' m_Next sequences are inspected
-	bool ValidateListsNeverCross(const List<T, keyType> &, const List<T, keyType> &)const;
+	//it is not expected to be triggered if the class is used correctly, but it is still a useful protection from undefined behavior
+	bool ValidateListsNeverCross(const LinearList1<T, keyType> &, const LinearList1<T, keyType> &)const;
 public:
-	List();
-	List(const T&, const keyType&);
-	List(const T&, const keyType&, List&);
-	List(const List&);
-	List<T, keyType> & operator=(const List<T, keyType>&);
-	~List();
+	LinearList1();
+	LinearList1(const T&, const keyType&);
+	LinearList1(const T&, const keyType&, LinearList1&);
+	LinearList1(const LinearList1&);
+	LinearList1<T, keyType> & operator=(const LinearList1<T, keyType>&);
+	~LinearList1();
+
+
+	//Element Access
 
 	T& front();
 	const T& front() const;
 	T& back();
 	const T& back() const;
 
+
+	//Capacity
+
+	bool empty()const;//the list is considered empty if it doesn't point to another list
+	unsigned int size()const;//the amount of lists that are linked to the list
 private:
 	T m_Data;
 	keyType m_Key;
-	List<T, keyType>* m_Next;
+	LinearList1<T, keyType>* m_Next;
 };
 
 template<class T, class keyType>
-inline T& List<T, keyType>::frontOverloadHelper()
+inline T& LinearList1<T, keyType>::frontOverloadHelper()
 {
 	return this->m_Data;
 }
 
 template<class T, class keyType>
-inline T & List<T, keyType>::backOverloadHelper()
+inline T & LinearList1<T, keyType>::backOverloadHelper()
 {
 	if (this->m_Next != nullptr)
 	{
-		List * ptr = this->m_Next;
+		LinearList1 * ptr = this->m_Next;
 
 		while (ptr->m_Next != nullptr)
 		{
@@ -52,25 +60,9 @@ inline T & List<T, keyType>::backOverloadHelper()
 }
 
 template<class T, class keyType>
-inline void List<T, keyType>::EraseAllNextPointers()
+inline bool LinearList1<T, keyType>::ValidateListsNeverCross(const LinearList1<T, keyType>& lhs, const LinearList1<T, keyType>& rhs) const
 {
-	if (this->m_Next != nullptr)
-	{
-		List<T, keyType> * ptrToDeleteNow = this->m_Next;
-		List<T, keyType> * ptrToDeleteNext = ptrToDeleteNow->m_Next;
-		while (ptrToDeleteNext != nullptr)
-		{
-			delete ptrToDeleteNow;
-			ptrToDeleteNow = ptrToDeleteNext;
-			ptrToDeleteNext = ptrToDeleteNow->m_Next;
-		}
-		delete ptrToDeleteNow;
-	}
-}
-template<class T, class keyType>
-inline bool List<T, keyType>::ValidateListsNeverCross(const List<T, keyType>& lhs, const List<T, keyType>& rhs) const
-{
-	List<T, keyType> * tmp = lhs.m_Next;
+	LinearList1<T, keyType> * tmp = lhs.m_Next;
 	while (tmp != nullptr)
 	{
 		if (tmp == &rhs)
@@ -92,41 +84,27 @@ inline bool List<T, keyType>::ValidateListsNeverCross(const List<T, keyType>& lh
 }
 
 template<class T, class keyType>
-inline List<T, keyType>::List() : m_Key(), m_Data(), m_Next(nullptr)
+inline LinearList1<T, keyType>::LinearList1() : m_Key(), m_Data(), m_Next(nullptr)
 {
 }
 
 template<class T, class keyType>
-inline List<T, keyType>::List(const T & data, const keyType & key) : m_Data(data), m_Key(key), m_Next(nullptr)
+inline LinearList1<T, keyType>::LinearList1(const T & data, const keyType & key) : m_Data(data), m_Key(key), m_Next(nullptr)
 {
 }
 
 template<class T, class keyType>
-inline List<T, keyType>::List(const T& data, const keyType & key, List<T, keyType>& next) : m_Data(data), m_Key(key)
+inline LinearList1<T, keyType>::LinearList1(const T& data, const keyType & key, LinearList1<T, keyType>& next) : m_Data(data), m_Key(key)
 {
-	this->m_Next = new List<T, keyType>(next);
+	this->m_Next = new LinearList1<T, keyType>(next);
 }
 
 template<class T, class keyType>
-inline List<T, keyType>::List(const List<T, keyType> & rhs) : m_Data(rhs.m_Data), m_Key(rhs.m_Key)
+inline LinearList1<T, keyType>::LinearList1(const LinearList1<T, keyType> & rhs) : m_Data(rhs.m_Data), m_Key(rhs.m_Key)
 {
 	if (rhs.m_Next != nullptr)
 	{
-		List * tmp = rhs.m_Next;
-		if (tmp->m_Next == nullptr)
-		{
-			this->m_Next = new List(tmp->m_Data, tmp->m_Key);
-		}
-		else
-		{
-			List * tmp2 = new List<T, keyType>(tmp->m_Data, tmp->m_Key, *(tmp->m_Next));
-			tmp = tmp2->m_Next;
-			while (tmp != nullptr)
-			{
-				tmp2 = new List<T, keyType>(tmp->m_Data, tmp->m_Key, *(tmp->m_Next));
-				tmp = tmp2->m_Next;
-			}
-		}
+		this->m_Next = new LinearList1<T, keyType>(*(rhs.m_Next));
 	}
 	else
 	{
@@ -135,18 +113,17 @@ inline List<T, keyType>::List(const List<T, keyType> & rhs) : m_Data(rhs.m_Data)
 }
 
 template<class T, class keyType>
-inline List<T, keyType> & List<T, keyType>::operator=(const List<T, keyType> & rhs)
+inline LinearList1<T, keyType> & LinearList1<T, keyType>::operator=(const LinearList1<T, keyType> & rhs)
 {
 	if (ValidateListsNeverCross(*this, rhs))
 	{
 		if (this != &rhs)
 		{
-			EraseAllNextPointers();
 			this->m_Key = rhs.m_Key;
 			this->m_Data = rhs.m_Data;
 			if (rhs.m_Next != nullptr)
 			{
-				this->m_Next = new List<T, keyType>(*(rhs.m_Next));
+				this->m_Next = new LinearList1<T, keyType>(*(rhs.m_Next));
 			}
 			else
 			{
@@ -162,31 +139,50 @@ inline List<T, keyType> & List<T, keyType>::operator=(const List<T, keyType> & r
 }
 
 template<class T, class keyType>
-inline List<T, keyType>::~List()
+inline LinearList1<T, keyType>::~LinearList1()
 {
-	EraseAllNextPointers();
+	delete this->m_Next;
 }
 
 template<class T, class keyType>
-inline T& List<T, keyType>::front()
+inline T& LinearList1<T, keyType>::front()
 {
 	return frontOverloadHelper();
 }
 
 template<class T, class keyType>
-inline const T & List<T, keyType>::front() const
+inline const T & LinearList1<T, keyType>::front() const
 {
 	return frontOverloadHelper();
 }
 
 template<class T, class keyType>
-inline T & List<T, keyType>::back()
+inline T & LinearList1<T, keyType>::back()
 {
 	return backOverloadHelper();
 }
 
 template<class T, class keyType>
-inline const T & List<T, keyType>::back() const
+inline const T & LinearList1<T, keyType>::back() const
 {
 	return backOverloadHelper();
+}
+
+template<class T, class keyType>
+inline bool LinearList1<T, keyType>::empty() const
+{
+	return this->m_Next==nullptr;
+}
+
+template<class T, class keyType>
+inline unsigned int LinearList1<T, keyType>::size() const
+{
+	LinearList1<T, keyType> * tmp = this->m_Next;
+	unsigned int i = 0;
+	while (tmp != nullptr)
+	{
+		++i;
+		tmp = tmp->m_Next;
+	}
+	return i;
 }

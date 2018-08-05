@@ -12,11 +12,18 @@ public:
 	LinearList2(const LinearList2&);
 	LinearList2<T, keyType> & operator=(const LinearList2<T, keyType>&);
 
+	//ElementAccess
+
 	T& front();
 	const T& front() const;
 	T& back();
 	const T& back() const;
 
+
+	//Capacity
+
+	bool empty()const;//the list is considered empty if it doesn't point to another list
+	unsigned int size()const;//the amount of lists that are linked to the list
 private:
 	T m_Data;
 	keyType m_Key;
@@ -99,4 +106,23 @@ template<class T, class keyType>
 inline const T & LinearList2<T, keyType>::back() const
 {
 	return backOverloadHelper();
+}
+
+template<class T, class keyType>
+inline bool LinearList2<T, keyType>::empty() const
+{
+	return this->m_Next == nullptr;
+}
+
+template<class T, class keyType>
+inline unsigned int LinearList2<T, keyType>::size() const
+{
+	LinearList1<T, keyType> * tmp = this->m_Next;
+	unsigned int i = 0;
+	while (tmp != nullptr)
+	{
+		++i;
+		tmp = tmp->m_Next;
+	}
+	return i;
 }
