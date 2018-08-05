@@ -2,16 +2,21 @@
 
 template <class T, class keyType>
 class LinearList2
-{ 
+{
 	T& frontOverloadHelper();
 	T& backOverloadHelper();
+
+	//used insert() to make sure that the 2 lists are not part of the same list,
+	//as it is unknown which element may be first, then both elements' m_Next sequences are inspected
+	//it is not expected to be triggered if the class is used correctly, but it is still a useful protection from undefined behavior
+	bool ValidateListsNeverCross(const LinearList2<T, keyType> &, const LinearList2<T, keyType> &)const;
 public:
 	LinearList2();
 	LinearList2(const T&, const keyType&);
 	LinearList2(const T&, const keyType&, LinearList2&);
 	LinearList2(const LinearList2&);
 	LinearList2<T, keyType> & operator=(const LinearList2<T, keyType>&);
-
+	~LinearList2();
 	//ElementAccess
 
 	T& front();
@@ -29,10 +34,12 @@ public:
 	//Modifiers
 
 	void clear()noexcept;
+	void insert(const keyType& srPos, LinearList2<T, keyType>&);
+
 private:
 	T m_Data;
 	keyType m_Key;
-	LinearList2<T, keyType>* m_Next;
+	LinearList2<T, keyType> * m_Next;
 };
 
 template<class T, class keyType>
@@ -90,6 +97,11 @@ inline LinearList2<T, keyType> & LinearList2<T, keyType>::operator=(const Linear
 }
 
 template<class T, class keyType>
+inline LinearList2<T, keyType>::~LinearList2()
+{
+}
+
+template<class T, class keyType>
 inline T& LinearList2<T, keyType>::front()
 {
 	return frontOverloadHelper();
@@ -122,7 +134,7 @@ inline bool LinearList2<T, keyType>::empty() const
 template<class T, class keyType>
 inline unsigned int LinearList2<T, keyType>::size() const
 {
-	LinearList1<T, keyType> * tmp = this->m_Next;
+	LinearList2<T, keyType> * tmp = this->m_Next;
 	unsigned int i = 0;
 	while (tmp != nullptr)
 	{
@@ -136,4 +148,50 @@ template<class T, class keyType>
 inline void LinearList2<T, keyType>::clear() noexcept
 {
 	this->m_Next = nullptr;
+}
+
+template<class T, class keyType>
+void LinearList2 <T, keyType>::insert(const keyType & srPos, LinearList2<T, keyType>& val)
+{
+	if (ValidateListsNeverCross(*this, val))
+	{
+		LinearList2<T, keyType> * tmp = this;
+		while (tmp->m_Next != nullptr)
+		{
+			if (tmp->m_Next->m_Key == srPos)
+			{
+				LinearList2<T, keyType> * tmp2 = tmp->m_Next;
+				tmp->m_Next = &val;
+				val.m_Next = tmp2;
+				return;
+			}
+			tmp = tmp->m_Next;
+		}
+		std::cerr << "Insert operation failed, no such key has been found\n";
+	}
+	std::cerr << "Insert operation failed, because the two lists are linked and this will cause an infinite loop\n";
+}
+
+template<class T, class keyType>
+inline bool LinearList2<T, keyType>::ValidateListsNeverCross(const LinearList2<T, keyType>& lhs, const LinearList2<T, keyType>& rhs) const
+{
+	LinearList2<T, keyType> * tmp = lhs.m_Next;
+	while (tmp != nullptr)
+	{
+		if (tmp == &rhs)
+		{
+			return false;
+		}
+		tmp = tmp->m_Next;
+	}
+	tmp = rhs.m_Next;
+	while (tmp != nullptr)
+	{
+		if (tmp == &lhs)
+		{
+			return false;
+		}
+		tmp = tmp->m_Next;
+	}
+	return true;
 }
