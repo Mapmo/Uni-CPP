@@ -24,6 +24,11 @@ public:
 
 	bool empty()const;//the list is considered empty if it doesn't point to another list
 	unsigned int size()const;//the amount of lists that are linked to the list
+
+
+	//Modifiers
+
+	void clear()noexcept;
 private:
 	T m_Data;
 	keyType m_Key;
@@ -125,4 +130,10 @@ inline unsigned int LinearList2<T, keyType>::size() const
 		tmp = tmp->m_Next;
 	}
 	return i;
+}
+
+template<class T, class keyType>
+inline void LinearList2<T, keyType>::clear() noexcept
+{
+	this->m_Next = nullptr;
 }
