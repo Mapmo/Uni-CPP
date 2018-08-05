@@ -1,1 +1,1 @@
-A project for the university during my Object-Oriented Programming Course
+A project for the university during my Object-Oriented Programming Course. Documentation.pdf has a proper description of the project in Bulgarian, if needed I can translate it to English.
