@@ -34,8 +34,7 @@ public:
 	//Modifiers
 
 	void clear()noexcept;
-	void insert(const keyType& srPos, LinearList2<T, keyType>&);
-
+	void insert(const keyType&, LinearList2<T, keyType>&);
 private:
 	T m_Data;
 	keyType m_Key;
@@ -155,6 +154,13 @@ void LinearList2 <T, keyType>::insert(const keyType & srPos, LinearList2<T, keyT
 {
 	if (ValidateListsNeverCross(*this, val))
 	{
+		if (this->m_Key == srPos)
+		{
+			LinearList2<T, keyType> * tmp = this->m_Next;//not using a separate function because saving 3 lines is not worth losing the logic
+			this->m_Next = &val;
+			val.m_Next = tmp;
+			return;
+		}
 		LinearList2<T, keyType> * tmp = this;
 		while (tmp->m_Next != nullptr)
 		{
@@ -169,7 +175,10 @@ void LinearList2 <T, keyType>::insert(const keyType & srPos, LinearList2<T, keyT
 		}
 		std::cerr << "Insert operation failed, no such key has been found\n";
 	}
-	std::cerr << "Insert operation failed, because the two lists are linked and this will cause an infinite loop\n";
+	else
+	{
+		std::cerr << "Insert operation failed, because the two lists are linked and this will cause an infinite loop\n";
+	}
 }
 
 template<class T, class keyType>

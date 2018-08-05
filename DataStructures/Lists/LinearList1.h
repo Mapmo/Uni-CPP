@@ -6,10 +6,12 @@ class LinearList1
 	T& frontOverloadHelper();
 	T& backOverloadHelper();
 
-	//used for operator= to make sure that the 2 lists are not part of the same list, as it 
-	//is unknown which element may be first, then both elements' m_Next sequences are inspected
+	//used for operator= and insert() to make sure that the 2 lists are not part of the same list,
+	//as it is unknown which element may be first, then both elements' m_Next sequences are inspected
 	//it is not expected to be triggered if the class is used correctly, but it is still a useful protection from undefined behavior
 	bool ValidateListsNeverCross(const LinearList1<T, keyType> &, const LinearList1<T, keyType> &)const;
+
+	void InsertCodeReusing(LinearList1<T, keyType>* tmp, LinearList1<T, keyType>&val);
 public:
 	LinearList1();
 	LinearList1(const T&, const keyType&);
@@ -36,6 +38,8 @@ public:
 	//Modifiers
 
 	void clear()noexcept;
+	void insert(const keyType& srPos, LinearList1<T, keyType>& val);
+	void insert(const keyType& srPo, const keyType& trPos, const T& val);
 private:
 	T m_Data;
 	keyType m_Key;
@@ -86,6 +90,19 @@ inline bool LinearList1<T, keyType>::ValidateListsNeverCross(const LinearList1<T
 		tmp = tmp->m_Next;
 	}
 	return true;
+}
+
+template<class T, class keyType>
+inline void LinearList1<T, keyType>::InsertCodeReusing(LinearList1<T, keyType>* tmp, LinearList1<T, keyType>&val)
+{
+	LinearList1<T, keyType> * tmp2 = new LinearList1<T, keyType>(val);
+	LinearList1<T, keyType> * tmp3 = tmp->m_Next;
+	tmp->m_Next = tmp2;
+	while (tmp->m_Next != nullptr)
+	{
+		tmp = tmp->m_Next;
+	}
+	tmp->m_Next = tmp3;
 }
 
 template<class T, class keyType>
@@ -197,4 +214,32 @@ inline void LinearList1<T, keyType>::clear() noexcept
 {
 	delete this->m_Next;
 	this->m_Next = nullptr;
+}
+
+template<class T, class keyType>
+inline void LinearList1<T, keyType>::insert(const keyType & srPos, LinearList1<T, keyType>& val)
+{
+	if (ValidateListsNeverCross(*this, val))
+	{
+		LinearList1<T, keyType> * tmp = this;
+		if (this->m_Key == srPos)
+		{
+			InsertCodeReusing(tmp, val);
+			return;
+		}
+		while (tmp->m_Next != nullptr)
+		{
+			if (tmp->m_Next->m_Key == srPos)
+			{
+				InsertCodeReusing(tmp, val);
+				return;
+			}
+			tmp = tmp->m_Next;
+		}
+		std::cerr << "Insert operation failed, no such key has been found\n";
+	}
+	else
+	{
+	std::cerr << "Insert operation failed, because the two lists are linked and this will cause an infinite loop\n";
+	}
 }
