@@ -41,6 +41,7 @@ public:
 	void insert(const keyType& srPos, LinearList1<T, keyType>& val);
 	void insert(const keyType& srPo, const keyType& trPos, const T& val);
 	void pop_back();
+	void pop_front();
 private:
 	T m_Data;
 	keyType m_Key;
@@ -284,5 +285,23 @@ inline void LinearList1<T, keyType>::pop_back()
 		}
 		delete tmp->m_Next;
 		tmp->m_Next = nullptr;
+	}
+}
+
+template<class T, class keyType>
+inline void LinearList1<T, keyType>::pop_front()
+{
+	if (this->m_Next == nullptr)
+	{
+		std::cerr << "Cannot erase the front element because the list is empty\n";
+	}
+	else
+	{
+		this->m_Data = this->m_Next->m_Data;
+		this->m_Key = this->m_Next->m_Key;
+		LinearList1<T, keyType> *  tmp = this->m_Next;
+		this->m_Next = tmp->m_Next;
+		tmp->m_Next = nullptr;
+		delete tmp;
 	}
 }
