@@ -217,19 +217,19 @@ inline void LinearList1<T, keyType>::clear() noexcept
 }
 
 template<class T, class keyType>
-inline void LinearList1<T, keyType>::insert(const keyType & srPos, LinearList1<T, keyType>& val)
+inline void LinearList1<T, keyType>::insert(const keyType & srKey, LinearList1<T, keyType>& val)
 {
 	if (ValidateListsNeverCross(*this, val))
 	{
 		LinearList1<T, keyType> * tmp = this;
-		if (this->m_Key == srPos)
+		if (this->m_Key == srKey)
 		{
 			InsertCodeReusing(tmp, val);
 			return;
 		}
 		while (tmp->m_Next != nullptr)
 		{
-			if (tmp->m_Next->m_Key == srPos)
+			if (tmp->m_Next->m_Key == srKey)
 			{
 				InsertCodeReusing(tmp, val);
 				return;
@@ -240,6 +240,29 @@ inline void LinearList1<T, keyType>::insert(const keyType & srPos, LinearList1<T
 	}
 	else
 	{
-	std::cerr << "Insert operation failed, because the two lists are linked and this will cause an infinite loop\n";
+		std::cerr << "Insert operation failed, because the two lists are linked and this will cause an infinite loop\n";
 	}
+}
+
+template<class T, class keyType>
+inline void LinearList1<T, keyType>::insert(const keyType & srKey, const keyType & valKey, const T & val)
+{
+	LinearList1<T, keyType> * tmp = this;
+	if (this->m_Key == srKey)
+	{
+		LinearList1<T, keyType> * tmp2 = new LinearList1<T, keyType>(val, valKey);
+		InsertCodeReusing(tmp, *tmp2);
+		return;
+	}
+	while (tmp->m_Next != nullptr)
+	{
+		if (tmp->m_Next->m_Key == srKey)
+		{
+			LinearList1<T, keyType> * tmp2 = new LinearList1<T, keyType>(val, valKey);
+			InsertCodeReusing(tmp, *tmp2);
+			return;
+		}
+		tmp = tmp->m_Next;
+	}
+	std::cerr << "Insert operation failed, no such key has been found\n";
 }
