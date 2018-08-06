@@ -10,6 +10,7 @@ class LinearList2
 	//as it is unknown which element may be first, then both elements' m_Next sequences are inspected
 	//it is not expected to be triggered if the class is used correctly, but it is still a useful protection from undefined behavior
 	bool ValidateListsNeverCross(const LinearList2<T, keyType> &, const LinearList2<T, keyType> &)const;
+	void eraseNextElement(LinearList2<T, keyType>&);
 public:
 	LinearList2();
 	LinearList2(const T&, const keyType&);
@@ -35,13 +36,22 @@ public:
 
 	void clear()noexcept;
 	void insert(const keyType&, LinearList2<T, keyType>&);
+	void erase(const keyType&);
+	void erase(LinearList2<T, keyType>&);
 	void pop_back();
 	void pop_front();
+
+
+	//non-member functions
+
+	template <class T2, class keyType2>
+	friend bool operator==(const LinearList2<T2, keyType2>&, const LinearList2<T2, keyType2>&);
 private:
 	T m_Data;
 	keyType m_Key;
 	LinearList2<T, keyType> * m_Next;
 };
+
 
 template<class T, class keyType>
 inline T& LinearList2<T, keyType>::frontOverloadHelper()
@@ -184,6 +194,74 @@ void LinearList2 <T, keyType>::insert(const keyType & srPos, LinearList2<T, keyT
 }
 
 template<class T, class keyType>
+inline void LinearList2<T, keyType>::erase(const keyType & rhs)
+{
+	if (this->m_Next != nullptr)
+	{
+		if (this->m_Key == rhs)
+		{
+			pop_front();
+			return;
+		}
+		else
+		{
+			LinearList2<T, keyType> * tmp = this;
+			do
+			{
+				if (tmp->m_Key == rhs)
+				{
+					eraseNextElement(*tmp);
+					return;
+				}
+				tmp = tmp->m_Next;
+			} while (tmp->m_Next->m_Next != nullptr);
+			if (tmp->m_Next->m_Key == rhs)
+			{
+				pop_back();
+				return;
+			}
+		}
+	}
+}
+
+template<class T, class keyType>
+inline void LinearList2<T, keyType>::erase(LinearList2<T, keyType>& rhs)
+{
+	if (this->m_Next != nullptr)
+	{
+		if (*this == rhs)
+		{
+			pop_front();
+			return;
+		}
+		else
+		{
+			LinearList2<T, keyType> * tmp = this;
+			do
+			{
+				if (*tmp == rhs)
+				{
+					eraseNextElement(*tmp);
+					return;
+				}
+				tmp = tmp->m_Next;
+			} while (tmp->m_Next->m_Next != nullptr);
+			if (*(tmp->m_Next) == rhs)
+			{
+				pop_back();
+				return;
+			}
+		}
+	}
+	else if (*this == rhs)
+	{
+		std::cerr << "Cannot delete the first elemment, because the list is empty\n";
+		return;
+	}
+	std::cerr << "Element not found\n";
+}
+
+template<class T, class keyType>
 inline void LinearList2<T, keyType>::pop_back()
 {
 	if (this->m_Next == nullptr)
@@ -240,4 +318,18 @@ inline bool LinearList2<T, keyType>::ValidateListsNeverCross(const LinearList2<T
 		tmp = tmp->m_Next;
 	}
 	return true;
+}
+
+template<class T, class keyType>
+inline void LinearList2<T, keyType>::eraseNextElement(LinearList2<T, keyType>& rhs)
+{
+	LinearList2<T, keyType> * tmp2 = rhs.m_Next;
+	rhs.m_Next = tmp2->m_Next;
+	tmp2->m_Next = nullptr;
+}
+
+template<class T2, class keyType2>
+inline bool operator==(const LinearList2<T2, keyType2>& lhs, const LinearList2<T2, keyType2>& rhs)
+{
+	return (lhs.m_Data == rhs.m_Data && lhs.m_Key == rhs.m_Key);
 }
