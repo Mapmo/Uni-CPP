@@ -40,8 +40,8 @@ public:
 	void erase(LinearList2<T, keyType>&);
 	void pop_back();
 	void pop_front();
-
-
+	void push_back(LinearList2<T, keyType>&);
+	void push_front(LinearList2<T, keyType>&);
 	//non-member functions
 
 	template <class T2, class keyType2>
@@ -299,6 +299,39 @@ inline void LinearList2<T, keyType>::pop_front()
 		LinearList2<T, keyType> *  tmp = this->m_Next;
 		this->m_Next = tmp->m_Next;
 		tmp->m_Next = nullptr;
+	}
+}
+
+template<class T, class keyType>
+inline void LinearList2<T, keyType>::push_back(LinearList2<T, keyType>& rhs)
+{
+	if (ValidateListsNeverCross(*this, rhs))
+	{
+	LinearList2 * tmp = this;
+	while (tmp->m_Next != nullptr)
+	{
+		tmp = tmp->m_Next;
+	}
+	tmp->m_Next = &rhs;
+	}
+	else
+	{
+		std::cerr << "push_back operation failed, because the two lists are linked and this will cause an infinite loop\n";
+	}
+}
+
+template<class T, class keyType>
+inline void LinearList2<T, keyType>::push_front(LinearList2<T, keyType>& rhs)
+{
+	if (ValidateListsNeverCross(*this, rhs))
+	{
+		LinearList2 * tmp = this->m_Next;
+		this->m_Next = &rhs;
+		push_back(*tmp);
+	}
+	else
+	{
+		std::cerr << "push_front operation failed, because the two lists are linked and this will cause an infinite loop\n";
 	}
 }
 
