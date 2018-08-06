@@ -42,6 +42,8 @@ public:
 	void pop_front();
 	void push_back(LinearList2<T, keyType>&);
 	void push_front(LinearList2<T, keyType>&);
+
+
 	//non-member functions
 
 	template <class T2, class keyType2>
@@ -307,7 +309,7 @@ inline void LinearList2<T, keyType>::push_back(LinearList2<T, keyType>& rhs)
 {
 	if (ValidateListsNeverCross(*this, rhs))
 	{
-	LinearList2 * tmp = this;
+	LinearList2<T, keyType> * tmp = this;
 	while (tmp->m_Next != nullptr)
 	{
 		tmp = tmp->m_Next;
@@ -325,7 +327,7 @@ inline void LinearList2<T, keyType>::push_front(LinearList2<T, keyType>& rhs)
 {
 	if (ValidateListsNeverCross(*this, rhs))
 	{
-		LinearList2 * tmp = this->m_Next;
+		LinearList2<T, keyType> * tmp = this->m_Next;
 		this->m_Next = &rhs;
 		push_back(*tmp);
 	}

@@ -45,6 +45,8 @@ public:
 	void erase(LinearList1<T, keyType>&);
 	void pop_back();
 	void pop_front();
+	void push_back(LinearList1<T, keyType>&);
+	void push_front(LinearList1<T, keyType>&);
 
 
 	//non-member functions
@@ -396,6 +398,30 @@ inline void LinearList1<T, keyType>::pop_front()
 		tmp->m_Next = nullptr;
 		delete tmp;
 	}
+}
+
+template<class T, class keyType>
+inline void LinearList1<T, keyType>::push_back(LinearList1<T, keyType>& rhs)
+{
+	LinearList1<T, keyType> * tmp = this;
+	while (tmp->m_Next != nullptr)
+	{
+		tmp = tmp->m_Next;
+	}
+	tmp->m_Next = new LinearList1<T, keyType>(rhs);
+}
+
+template<class T, class keyType>
+inline void LinearList1<T, keyType>::push_front(LinearList1<T, keyType>& rhs)
+{
+	LinearList1<T, keyType> * tmp = this->m_Next;
+	this->m_Next = new LinearList1<T, keyType>(rhs);
+	LinearList1<T, keyType> * tmp2 = this->m_Next;
+	while (tmp2->m_Next != nullptr)
+	{
+		tmp2 = tmp2->m_Next;
+	}
+	tmp2->m_Next = tmp;
 }
 
 template<class T2, class keyType2>
