@@ -40,6 +40,7 @@ public:
 	void clear()noexcept;
 	void insert(const keyType& srPos, LinearList1<T, keyType>& val);
 	void insert(const keyType& srPo, const keyType& trPos, const T& val);
+	void pop_back();
 private:
 	T m_Data;
 	keyType m_Key;
@@ -265,4 +266,23 @@ inline void LinearList1<T, keyType>::insert(const keyType & srKey, const keyType
 		tmp = tmp->m_Next;
 	}
 	std::cerr << "Insert operation failed, no such key has been found\n";
+}
+
+template<class T, class keyType>
+inline void LinearList1<T, keyType>::pop_back()
+{
+	if (this->m_Next == nullptr)
+	{
+		std::cerr << "List is already empty\n";
+	}
+	else
+	{
+		LinearList1<T, keyType> * tmp = this;
+		while (tmp->m_Next->m_Next != nullptr)
+		{
+			tmp = tmp->m_Next;
+		}
+		delete tmp->m_Next;
+		tmp->m_Next = nullptr;
+	}
 }

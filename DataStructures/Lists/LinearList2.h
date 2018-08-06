@@ -35,6 +35,7 @@ public:
 
 	void clear()noexcept;
 	void insert(const keyType&, LinearList2<T, keyType>&);
+	void pop_back();
 private:
 	T m_Data;
 	keyType m_Key;
@@ -178,6 +179,24 @@ void LinearList2 <T, keyType>::insert(const keyType & srPos, LinearList2<T, keyT
 	else
 	{
 		std::cerr << "Insert operation failed, because the two lists are linked and this will cause an infinite loop\n";
+	}
+}
+
+template<class T, class keyType>
+inline void LinearList2<T, keyType>::pop_back()
+{
+	if (this->m_Next == nullptr)
+	{
+		std::cerr << "List is already empty\n";
+	}
+	else
+	{
+		LinearList2<T, keyType> * tmp = this;
+		while (tmp->m_Next->m_Next != nullptr)
+		{
+			tmp = tmp->m_Next;
+		}
+		tmp->m_Next = nullptr;
 	}
 }
 
