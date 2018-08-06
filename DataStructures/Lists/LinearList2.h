@@ -222,6 +222,12 @@ inline void LinearList2<T, keyType>::erase(const keyType & rhs)
 			}
 		}
 	}
+	else if (this->m_Key == rhs)
+	{
+		std::cerr << "Cannot delete the first elemment, because the list is empty\n";
+		return;
+	}
+	std::cerr << "Element not found\n";
 }
 
 template<class T, class keyType>
