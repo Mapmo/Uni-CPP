@@ -49,6 +49,11 @@ public:
 	void push_front(LinearList1<T, keyType>&);
 
 
+	//Operations
+
+	void merge(LinearList1&);
+
+
 	//non-member functions
 
 	template <class T2, class keyType2>
@@ -304,16 +309,31 @@ inline void LinearList1<T, keyType>::erase(const keyType & rhs)
 		else
 		{
 			LinearList1<T, keyType> * tmp = this;
-			do
+			if (tmp->m_Key == rhs)
 			{
-				if (tmp->m_Key == rhs)
+				eraseNextElement(*tmp);
+				return;
+			}
+			tmp = tmp->m_Next;
+			if (tmp->m_Next != nullptr)
+			{
+
+				while (tmp->m_Next->m_Next != nullptr)
 				{
-					eraseNextElement(*tmp);
+					if (tmp->m_Key == rhs)
+					{
+						eraseNextElement(*tmp);
+						return;
+					}
+					tmp = tmp->m_Next;
+				}
+				if (tmp->m_Next->m_Key == rhs)
+				{
+					pop_back();
 					return;
 				}
-				tmp = tmp->m_Next;
-			} while (tmp->m_Next->m_Next != nullptr);
-			if (tmp->m_Next->m_Key == rhs)
+			}
+			else if (tmp->m_Key == rhs)//in case this->m_Next is nullptr
 			{
 				pop_back();
 				return;
@@ -333,7 +353,7 @@ inline void LinearList1<T, keyType>::erase(LinearList1<T, keyType>& rhs)
 {
 	if (this->m_Next != nullptr)
 	{
-		if (*this == rhs)
+		if (this->m_Key == rhs.m_Key)
 		{
 			pop_front();
 			return;
@@ -341,23 +361,38 @@ inline void LinearList1<T, keyType>::erase(LinearList1<T, keyType>& rhs)
 		else
 		{
 			LinearList1<T, keyType> * tmp = this;
-			do
+			if (tmp->m_Key == rhs.m_Key)
 			{
-				if (*tmp == rhs)
+				eraseNextElement(*tmp);
+				return;
+			}
+			tmp = tmp->m_Next;
+			if (tmp->m_Next != nullptr)
+			{
+
+				while (tmp->m_Next->m_Next != nullptr)
 				{
-					eraseNextElement(*tmp);
+					if (tmp->m_Key == rhs.m_Key)
+					{
+						eraseNextElement(*tmp);
+						return;
+					}
+					tmp = tmp->m_Next;
+				}
+				if (tmp->m_Next->m_Key == rhs.m_Key)
+				{
+					pop_back();
 					return;
 				}
-				tmp = tmp->m_Next;
-			} while (tmp->m_Next->m_Next != nullptr);
-			if (*(tmp->m_Next) == rhs)
+			}
+			else if (tmp->m_Key == rhs.m_Key)//in case this->m_Next is nullptr
 			{
 				pop_back();
 				return;
 			}
 		}
 	}
-	else if (*this == rhs)
+	else if (this->m_Key == rhs.m_Key)
 	{
 		std::cerr << "Cannot delete the first elemment, because the list is empty\n";
 		return;

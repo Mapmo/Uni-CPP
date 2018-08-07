@@ -44,6 +44,11 @@ public:
 	void push_front(LinearList2<T, keyType>&);
 
 
+	//Operations
+
+	void merge(LinearList2&);
+
+
 	//non-member functions
 
 	template <class T2, class keyType2>
@@ -210,16 +215,31 @@ inline void LinearList2<T, keyType>::erase(const keyType & rhs)
 		else
 		{
 			LinearList2<T, keyType> * tmp = this;
-			do
+			if (tmp->m_Key == rhs)
 			{
-				if (tmp->m_Key == rhs)
+				eraseNextElement(*tmp);
+				return;
+			}
+			tmp = tmp->m_Next;
+			if (tmp->m_Next != nullptr)
+			{
+
+				while (tmp->m_Next->m_Next != nullptr)
 				{
-					eraseNextElement(*tmp);
+					if (tmp->m_Key == rhs)
+					{
+						eraseNextElement(*tmp);
+						return;
+					}
+					tmp = tmp->m_Next;
+				}
+				if (tmp->m_Next->m_Key == rhs)
+				{
+					pop_back();
 					return;
 				}
-				tmp = tmp->m_Next;
-			} while (tmp->m_Next->m_Next != nullptr);
-			if (tmp->m_Next->m_Key == rhs)
+			}
+			else if (tmp->m_Key == rhs)//in case this->m_Next is nullptr
 			{
 				pop_back();
 				return;
@@ -311,12 +331,12 @@ inline void LinearList2<T, keyType>::push_back(LinearList2<T, keyType>& rhs)
 {
 	if (ValidateListsNeverCross(*this, rhs))
 	{
-	LinearList2<T, keyType> * tmp = this;
-	while (tmp->m_Next != nullptr)
-	{
-		tmp = tmp->m_Next;
-	}
-	tmp->m_Next = &rhs;
+		LinearList2<T, keyType> * tmp = this;
+		while (tmp->m_Next != nullptr)
+		{
+			tmp = tmp->m_Next;
+		}
+		tmp->m_Next = &rhs;
 	}
 	else
 	{
@@ -336,6 +356,19 @@ inline void LinearList2<T, keyType>::push_front(LinearList2<T, keyType>& rhs)
 	else
 	{
 		std::cerr << "push_front operation failed, because the two lists are linked and this will cause an infinite loop\n";
+	}
+}
+
+template<class T, class keyType>
+inline void LinearList2<T, keyType>::merge(LinearList2 & rhs)
+{
+	if (ValidateListsNeverCross(*this, rhs))
+	{
+		this->m_Next = &rhs;
+	}
+	else
+	{
+		std::cerr << "Function merge() cannot proceed, because the lists cross somewhere\n";
 	}
 }
 
