@@ -322,23 +322,22 @@ inline Vector<T>& Vector<T>::insert(const unsigned int pos, const unsigned int t
 	}
 	else
 	{
-		if (this->m_Counter += times >= this->m_Size)
+		this->m_Counter += times;
+		while (this->m_Counter >= this->m_Size)
 		{
-			if (Resize(1))
-			{
-				for (unsigned int i = this->m_Counter - 1; i > pos; --i)
-				{
-					this->m_Data[i] = this->m_Data[i - times];
-				}
-				for (int i = 0; i < times; ++i)
-				{
-					this->m_Data[pos + i] = val;
-				}
-			}
-			else
+			if (!Resize(1))
 			{
 				std::cerr << "insert failed due to unavailable space\n";
+				return *this;
 			}
+		}
+		for (unsigned int i = this->m_Counter - 1; i > pos; --i)
+		{
+			this->m_Data[i] = this->m_Data[i - times];
+		}
+		for (int i = 0; i < times; ++i)
+		{
+			this->m_Data[pos + i] = val;
 		}
 	}
 	return *this;
