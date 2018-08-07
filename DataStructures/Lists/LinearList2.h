@@ -47,7 +47,7 @@ public:
 	//Operations
 
 	void merge(LinearList2&);
-
+	void reverse();
 
 	//non-member functions
 
@@ -55,6 +55,8 @@ public:
 	friend bool operator==(const LinearList2<T2, keyType2>&, const LinearList2<T2, keyType2>&);
 	template <class T2, class keyType2>
 	friend bool operator!=(const LinearList2<T2, keyType2>&, const LinearList2<T2, keyType2>&);
+	template <class T2, class keyType2>
+	friend void swap(LinearList2<T2, keyType2>&, LinearList2<T2, keyType2>&);
 private:
 	T m_Data;
 	keyType m_Key;
@@ -352,6 +354,7 @@ inline void LinearList2<T, keyType>::push_front(LinearList2<T, keyType>& rhs)
 		LinearList2<T, keyType> * tmp = this->m_Next;
 		this->m_Next = &rhs;
 		push_back(*tmp);
+		swap(*this, *(this->m_Next));
 	}
 	else
 	{
@@ -370,11 +373,40 @@ inline void LinearList2<T, keyType>::merge(LinearList2 & rhs)
 			tmp = tmp->m_Next;
 		}
 		tmp->m_Next = &rhs;
-
 	}
 	else
 	{
 		std::cerr << "Function merge() cannot proceed, because the lists cross somewhere\n";
+	}
+}
+
+template<class T, class keyType>
+inline void LinearList2<T, keyType>::reverse()
+{
+	LinearList2<T, keyType> * mover = this;
+	LinearList2<T, keyType> * rBorder = this;
+	while (rBorder->m_Next != nullptr)
+	{
+		rBorder = rBorder->m_Next;
+	}
+	LinearList2<T, keyType> * lBorder = mover;
+
+	while (lBorder != rBorder)
+	{
+		while (mover->m_Next != rBorder)
+		{
+			mover = mover->m_Next;
+		}
+		
+		swap(*lBorder, *rBorder);
+		if (lBorder->m_Next == rBorder)
+		{
+			break;
+		}
+
+		rBorder = mover;//one step behind
+		lBorder = lBorder->m_Next;//one step further
+		mover = lBorder;
 	}
 }
 
@@ -420,4 +452,13 @@ template<class T2, class keyType2>
 inline bool operator!=(const LinearList2<T2, keyType2>& lhs, const LinearList2<T2, keyType2>& rhs)
 {
 	return !operator==(lhs, rhs);
+}
+
+template<class T2, class keyType2>
+inline void swap(LinearList2<T2, keyType2>& lhs, LinearList2<T2, keyType2>& rhs)
+{
+	LinearList2<T2, keyType2> tmp = lhs;
+	lhs = rhs;
+	rhs = tmp;
+	//m_Next are still the same
 }
