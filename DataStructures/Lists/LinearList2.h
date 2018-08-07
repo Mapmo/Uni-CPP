@@ -364,7 +364,13 @@ inline void LinearList2<T, keyType>::merge(LinearList2 & rhs)
 {
 	if (ValidateListsNeverCross(*this, rhs))
 	{
-		this->m_Next = &rhs;
+		LinearList2<T, keyType> * tmp = this;
+		while (tmp->m_Next != nullptr)
+		{
+			tmp = tmp->m_Next;
+		}
+		tmp->m_Next = &rhs;
+
 	}
 	else
 	{

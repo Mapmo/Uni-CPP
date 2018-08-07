@@ -445,20 +445,34 @@ inline void LinearList1<T, keyType>::push_back(LinearList1<T, keyType>& rhs)
 	{
 		tmp = tmp->m_Next;
 	}
-	tmp->m_Next = new LinearList1<T, keyType>(rhs);
+	tmp->m_Next = new LinearList1<T, keyType>(rhs.m_Data, rhs.m_Key);
 }
 
 template<class T, class keyType>
 inline void LinearList1<T, keyType>::push_front(LinearList1<T, keyType>& rhs)
 {
 	LinearList1<T, keyType> * tmp = this->m_Next;
-	this->m_Next = new LinearList1<T, keyType>(rhs);
+	this->m_Next = new LinearList1<T, keyType>(rhs.m_Data, rhs.m_Key);
 	LinearList1<T, keyType> * tmp2 = this->m_Next;
-	while (tmp2->m_Next != nullptr)
-	{
-		tmp2 = tmp2->m_Next;
-	}
 	tmp2->m_Next = tmp;
+}
+
+template<class T, class keyType>
+inline void LinearList1<T, keyType>::merge(LinearList1 & rhs)
+{
+	if (ValidateListsNeverCross(*this, rhs))
+	{
+		LinearList1<T, keyType> * tmp = this;
+		while (tmp->m_Next != nullptr)
+		{
+			tmp = tmp->m_Next;
+		}
+		tmp->m_Next = new LinearList1<T, keyType>(rhs);
+	}
+	else
+	{
+		std::cerr << "Function merge() cannot proceed, because the lists cross somewhere\n";
+	}
 }
 
 template<class T2, class keyType2>
