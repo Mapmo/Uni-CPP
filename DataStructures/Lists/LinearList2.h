@@ -48,6 +48,8 @@ public:
 
 	template <class T2, class keyType2>
 	friend bool operator==(const LinearList2<T2, keyType2>&, const LinearList2<T2, keyType2>&);
+	template <class T2, class keyType2>
+	friend bool operator!=(const LinearList2<T2, keyType2>&, const LinearList2<T2, keyType2>&);
 private:
 	T m_Data;
 	keyType m_Key;
@@ -373,4 +375,10 @@ template<class T2, class keyType2>
 inline bool operator==(const LinearList2<T2, keyType2>& lhs, const LinearList2<T2, keyType2>& rhs)
 {
 	return (lhs.m_Data == rhs.m_Data && lhs.m_Key == rhs.m_Key);
+}
+
+template<class T2, class keyType2>
+inline bool operator!=(const LinearList2<T2, keyType2>& lhs, const LinearList2<T2, keyType2>& rhs)
+{
+	return !operator==(lhs, rhs);
 }
