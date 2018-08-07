@@ -52,6 +52,7 @@ public:
 	//Operations
 
 	void merge(LinearList1&);
+	void reverse();
 
 
 	//non-member functions
@@ -60,6 +61,8 @@ public:
 	friend bool operator==(const LinearList1<T2, keyType2>&, const LinearList1<T2, keyType2>&);
 	template <class T2, class keyType2>
 	friend bool operator!=(const LinearList1<T2, keyType2>&, const LinearList1<T2, keyType2>&);
+	template <class T2, class keyType2>
+	friend void swap(LinearList1<T2, keyType2>&, LinearList1<T2, keyType2>&);
 private:
 	T m_Data;
 	keyType m_Key;
@@ -475,6 +478,36 @@ inline void LinearList1<T, keyType>::merge(LinearList1 & rhs)
 	}
 }
 
+template<class T, class keyType>
+inline void LinearList1<T, keyType>::reverse()
+{
+	LinearList1<T, keyType> * mover = this;
+	LinearList1<T, keyType> * rBorder = this;
+	while (rBorder->m_Next != nullptr)
+	{
+		rBorder = rBorder->m_Next;
+	}
+	LinearList1<T, keyType> * lBorder = mover;
+
+	while (lBorder != rBorder)
+	{
+		while (mover->m_Next != rBorder)
+		{
+			mover = mover->m_Next;
+		}
+
+		swap(*lBorder, *rBorder);
+		if (lBorder->m_Next == rBorder)
+		{
+			break;
+		}
+
+		rBorder = mover;//one step behind
+		lBorder = lBorder->m_Next;//one step further
+		mover = lBorder;
+	}
+}
+
 template<class T2, class keyType2>
 inline bool operator==(const LinearList1<T2, keyType2>& lhs, const LinearList1<T2, keyType2>& rhs)
 {
@@ -485,4 +518,14 @@ template<class T2, class keyType2>
 inline bool operator!=(const LinearList1<T2, keyType2>& lhs, const LinearList1<T2, keyType2>& rhs)
 {
 	return !operator==(lhs,rhs);
+}
+
+template<class T2, class keyType2>
+inline void swap(LinearList1<T2, keyType2>& lhs, LinearList1<T2, keyType2>& rhs)
+{
+	LinearList1<T2, keyType2> tmp = lhs;
+	lhs.m_Data = rhs.m_Data;
+	lhs.m_Key = rhs.m_Key;
+	rhs.m_Data = tmp.m_Data;
+	rhs.m_Key = tmp.m_Key;
 }
