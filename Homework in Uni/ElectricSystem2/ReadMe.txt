@@ -1,0 +1,1 @@
+The String class is the same as that in DataStructures
