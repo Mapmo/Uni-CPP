@@ -4,4 +4,4 @@ These are data structures that I was using for my University homeworks(apart fro
 
 -String.h is an implementation of a string, using a char pointer, some cstring functions and having its own functions to be effectively used in my code
 
--Queue.h is an implementation of a queue, very similar to Stack.h, I was just challenged myself to do it in my free time
+-Queue.h is an implementation of a queue, using left and right borders, very similar to Stack.h, apart from the left border
