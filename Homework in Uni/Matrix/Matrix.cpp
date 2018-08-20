@@ -17,12 +17,6 @@ short ** Matrix::MatrixGetter()const
 	return this->matrix;
 }
 
-void Matrix::MatrixSetter(short ** newMatrix)
-{
-    delete[] this->matrix;
-	this->matrix = newMatrix;
-}
-
 void Matrix::Transponirai()
 {
 	short temp = 0;
@@ -68,6 +62,6 @@ short ** Multiply(const Matrix& a, const Matrix& b)
     void Matrix::Multiply(const Matrix& a)
     {
         short ** tmp = this->matrix;
-        this->matrix = Multiply(*this, a);
+        this->matrix = ::Multiply(*this, a);
         delete tmp;
     }

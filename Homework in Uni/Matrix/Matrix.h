@@ -7,7 +7,6 @@ private:
 public:
 	Matrix();
 	short ** MatrixGetter() const;
-	void MatrixSetter(const short ** newMatrix);
 	void Transponirai();
 	void MultiplyScalar(const int);
     void Multiply(const Matrix&);
