@@ -21,7 +21,7 @@ public:
 	//Modifiers
 
 	void clear()noexcept;
-	void pop();
+	T& pop();
 	void push(const T&);
 	void push(LinearList1<T, keyType>&);
 };
@@ -57,9 +57,11 @@ inline void Stack3<T, keyType>::clear() noexcept
 }
 
 template<class T, class keyType>
-inline void Stack3<T, keyType>::pop()
+inline T& Stack3<T, keyType>::pop()
 {
+	T tmp = top();
 	LinearList1<T, keyType>::pop_back();
+	return tmp;
 }
 
 template<class T, class keyType>

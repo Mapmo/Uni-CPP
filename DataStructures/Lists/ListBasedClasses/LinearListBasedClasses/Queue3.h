@@ -23,7 +23,7 @@ public:
 	//Modifiers
 
 	void clear()noexcept;
-	void pop();
+	T& pop();
 	void push(const T&);
 	void push(LinearList1<T, keyType>&);
 };
@@ -71,9 +71,11 @@ inline void Queue3<T, keyType>::clear() noexcept
 }
 
 template<class T, class keyType>
-inline void Queue3<T, keyType>::pop()
+inline T& Queue3<T, keyType>::pop()
 {
+	T tmp = front();
 	LinearList1<T, keyType>::pop_front();
+	return tmp;
 }
 
 template<class T, class keyType>
