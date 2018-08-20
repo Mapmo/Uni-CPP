@@ -1,8 +1,9 @@
 #pragma once
+#pragma once
 #include "..\..\LinearLists\LinearList2.h"
 
 template<class T, class keyType = int>
-class Queue3 : private LinearList1<T, keyType>
+class Deque3 : private LinearList1<T, keyType>
 {
 public:
 
@@ -23,55 +24,66 @@ public:
 	//Modifiers
 
 	void clear()noexcept;
-	T pop();
-	void push(const T&);
-	void push(LinearList1<T, keyType>&);
+	T pop_back();
+	T pop_front();
+	void push_back(const T&);
+	void push_back(LinearList1<T, keyType>&);
+	void push_front(const T&);
+	void push_front(LinearList1<T, keyType>&);
 };
 
 template<class T, class keyType>
-inline T & Queue3<T, keyType>::front()
+inline T & Deque3<T, keyType>::front()
 {
 	return LinearList1<T, keyType>::front();
 }
 
 template<class T, class keyType>
-inline const T & Queue3<T, keyType>::front() const
+inline const T & Deque3<T, keyType>::front() const
 {
 	return LinearList1<T, keyType>::front();
 }
 
 template<class T, class keyType>
-inline T & Queue3<T, keyType>::back()
+inline T & Deque3<T, keyType>::back()
 {
 	return LinearList1<T, keyType>::back();
 }
 
 template<class T, class keyType>
-inline const T & Queue3<T, keyType>::back() const
+inline const T & Deque3<T, keyType>::back() const
 {
 	return LinearList1<T, keyType>::back();
 }
 
 template<class T, class keyType>
-inline bool Queue3<T, keyType>::empty() const
+inline bool Deque3<T, keyType>::empty() const
 {
 	return LinearList1<T, keyType>::empty();
 }
 
 template<class T, class keyType>
-inline unsigned int Queue3<T, keyType>::size() const
+inline unsigned int Deque3<T, keyType>::size() const
 {
 	return LinearList1<T, keyType>::size();
 }
 
 template<class T, class keyType>
-inline void Queue3<T, keyType>::clear() noexcept
+inline void Deque3<T, keyType>::clear() noexcept
 {
 	LinearList1<T, keyType>::clear();
 }
 
 template<class T, class keyType>
-inline T Queue3<T, keyType>::pop()
+inline T Deque3<T, keyType>::pop_back()
+{
+	T tmp = back();
+	LinearList1<T, keyType>::pop_back();
+	return tmp;
+}
+
+template<class T, class keyType>
+inline T Deque3<T, keyType>::pop_front()
 {
 	T tmp = front();
 	LinearList1<T, keyType>::pop_front();
@@ -79,14 +91,27 @@ inline T Queue3<T, keyType>::pop()
 }
 
 template<class T, class keyType>
-inline void Queue3<T, keyType>::push(const T & rhs)
+inline void Deque3<T, keyType>::push_back(const T & rhs)
 {
 	LinearList1<T, keyType> tmp(rhs);
 	LinearList1<T, keyType>::push_back(tmp);
 }
 
 template<class T, class keyType>
-inline void Queue3<T, keyType>::push(LinearList1<T, keyType>& rhs)
+inline void Deque3<T, keyType>::push_back(LinearList1<T, keyType>& rhs)
 {
 	LinearList1<T, keyType>::push_back(rhs);
+}
+
+template<class T, class keyType>
+inline void Deque3<T, keyType>::push_front(const T & rhs)
+{
+	LinearList1<T, keyType> tmp(rhs);
+	LinearList1<T, keyType>::push_front(tmp);
+}
+
+template<class T, class keyType>
+inline void Deque3<T, keyType>::push_front(LinearList1<T, keyType>& rhs)
+{
+	LinearList1<T, keyType>::push_front(rhs);
 }
