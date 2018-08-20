@@ -11,7 +11,8 @@ class LinearList1
 	//as it is unknown which element may be first, then both elements' m_Next sequences are inspected
 	//it is not expected to be triggered if the class is used correctly, but it is still a useful protection from undefined behavior
 	bool ValidateListsNeverCross(const LinearList1<T, keyType> &, const LinearList1<T, keyType> &)const;
-	void eraseNextElement(LinearList1<T, keyType>&);
+	void eraseNextElement(LinearList1<T, keyType>&);//as there is no m_Prev class member, it needs to track and delete elements one step earlier
+	void eraseOverloadHelper(const keyType&);
 public:
 	LinearList1();
 	LinearList1(const T&, const keyType&);
@@ -35,7 +36,7 @@ public:
 	unsigned int size()const;//the amount of lists that are linked to the list
 
 
-	//Modifiers
+							 //Modifiers
 
 	void clear()noexcept;
 	void insert(const keyType& srPos, LinearList1<T, keyType>& val);
@@ -134,6 +135,58 @@ inline void LinearList1<T, keyType>::eraseNextElement(LinearList1<T, keyType>& r
 	rhs.m_Next = tmp2->m_Next;
 	tmp2->m_Next = nullptr;
 	delete tmp2;
+}
+
+template<class T, class keyType>
+inline void LinearList1<T, keyType>::eraseOverloadHelper(const keyType & rhs)
+{
+	if (this->m_Next != nullptr)
+	{
+		if (this->m_Key == rhs)
+		{
+			pop_front();
+			return;
+		}
+		else
+		{
+			LinearList1<T, keyType> * tmp = this;
+			if (tmp->m_Key == rhs)
+			{
+				eraseNextElement(*tmp);
+				return;
+			}
+			tmp = tmp->m_Next;
+			if (tmp->m_Next != nullptr)
+			{
+
+				while (tmp->m_Next->m_Next != nullptr)
+				{
+					if (tmp->m_Key == rhs)
+					{
+						eraseNextElement(*tmp);
+						return;
+					}
+					tmp = tmp->m_Next;
+				}
+				if (tmp->m_Next->m_Key == rhs)
+				{
+					pop_back();
+					return;
+				}
+			}
+			else if (tmp->m_Key == rhs)//in case this->m_Next is nullptr
+			{
+				pop_back();
+				return;
+			}
+		}
+	}
+	else if (this->m_Key == rhs)
+	{
+		std::cerr << "Cannot delete the first element, because the list is empty\n";
+		return;
+	}
+	std::cerr << "Element not found\n";
 }
 
 template<class T, class keyType>
@@ -302,105 +355,13 @@ inline void LinearList1<T, keyType>::insert(const keyType & srKey, const keyType
 template<class T, class keyType>
 inline void LinearList1<T, keyType>::erase(const keyType & rhs)
 {
-	if (this->m_Next != nullptr)
-	{
-		if (this->m_Key == rhs)
-		{
-			pop_front();
-			return;
-		}
-		else
-		{
-			LinearList1<T, keyType> * tmp = this;
-			if (tmp->m_Key == rhs)
-			{
-				eraseNextElement(*tmp);
-				return;
-			}
-			tmp = tmp->m_Next;
-			if (tmp->m_Next != nullptr)
-			{
-
-				while (tmp->m_Next->m_Next != nullptr)
-				{
-					if (tmp->m_Key == rhs)
-					{
-						eraseNextElement(*tmp);
-						return;
-					}
-					tmp = tmp->m_Next;
-				}
-				if (tmp->m_Next->m_Key == rhs)
-				{
-					pop_back();
-					return;
-				}
-			}
-			else if (tmp->m_Key == rhs)//in case this->m_Next is nullptr
-			{
-				pop_back();
-				return;
-			}
-		}
-	}
-	else if (this->m_Key == rhs)
-	{
-		std::cerr << "Cannot delete the first element, because the list is empty\n";
-		return;
-	}
-	std::cerr << "Element not found\n";
+	eraseOverloadHelper(rhs);
 }
 
 template<class T, class keyType>
 inline void LinearList1<T, keyType>::erase(LinearList1<T, keyType>& rhs)
 {
-	if (this->m_Next != nullptr)
-	{
-		if (this->m_Key == rhs.m_Key)
-		{
-			pop_front();
-			return;
-		}
-		else
-		{
-			LinearList1<T, keyType> * tmp = this;
-			if (tmp->m_Key == rhs.m_Key)
-			{
-				eraseNextElement(*tmp);
-				return;
-			}
-			tmp = tmp->m_Next;
-			if (tmp->m_Next != nullptr)
-			{
-
-				while (tmp->m_Next->m_Next != nullptr)
-				{
-					if (tmp->m_Key == rhs.m_Key)
-					{
-						eraseNextElement(*tmp);
-						return;
-					}
-					tmp = tmp->m_Next;
-				}
-				if (tmp->m_Next->m_Key == rhs.m_Key)
-				{
-					pop_back();
-					return;
-				}
-			}
-			else if (tmp->m_Key == rhs.m_Key)//in case this->m_Next is nullptr
-			{
-				pop_back();
-				return;
-			}
-		}
-	}
-	else if (this->m_Key == rhs.m_Key)
-	{
-		std::cerr << "Cannot delete the first elemment, because the list is empty\n";
-		return;
-	}
-	std::cerr << "Element not found\n";
+	eraseOverloadHelper(rhs.m_Key);
 }
 
 template<class T, class keyType>
@@ -456,8 +417,8 @@ inline void LinearList1<T, keyType>::push_front(LinearList1<T, keyType>& rhs)
 {
 	LinearList1<T, keyType> * tmp = this->m_Next;
 	this->m_Next = new LinearList1<T, keyType>(rhs.m_Data, rhs.m_Key);
-	LinearList1<T, keyType> * tmp2 = this->m_Next;
-	tmp2->m_Next = tmp;
+	this->m_Next->m_Next = tmp;
+	swap(*this, *tmp);
 }
 
 template<class T, class keyType>
@@ -519,7 +480,7 @@ inline bool operator==(const LinearList1<T2, keyType2>& lhs, const LinearList1<T
 template<class T2, class keyType2>
 inline bool operator!=(const LinearList1<T2, keyType2>& lhs, const LinearList1<T2, keyType2>& rhs)
 {
-	return !operator==(lhs,rhs);
+	return !operator==(lhs, rhs);
 }
 
 template<class T2, class keyType2>
