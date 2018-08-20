@@ -155,20 +155,19 @@ inline void LinearList1<T, keyType>::eraseOverloadHelper(const keyType & rhs)
 				eraseNextElement(*tmp);
 				return;
 			}
-			tmp = tmp->m_Next;
 			if (tmp->m_Next != nullptr)
 			{
 
-				while (tmp->m_Next->m_Next != nullptr)
+				while (tmp->m_Next != nullptr)
 				{
-					if (tmp->m_Key == rhs)
+					if (tmp->m_Next->m_Key == rhs)
 					{
 						eraseNextElement(*tmp);
 						return;
 					}
 					tmp = tmp->m_Next;
 				}
-				if (tmp->m_Next->m_Key == rhs)
+				if (tmp->m_Key == rhs)
 				{
 					pop_back();
 					return;
