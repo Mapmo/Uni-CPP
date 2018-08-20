@@ -1,18 +1,16 @@
 #pragma once
+#pragma once
 #include "..\..\LinearLists\LinearList2.h"
 
 template<class T, class keyType = int>
-class Queue3 : private LinearList1<T, keyType>
+class Stack3 : private LinearList1<T, keyType>
 {
 public:
 
-	//ElementAccess
+	//Element access
 
-	T& front();
-	const T& front() const;
-	T& back();
-	const T& back() const;
-
+	T & top();
+	const T& top()const;
 
 	//Capacity
 
@@ -29,62 +27,50 @@ public:
 };
 
 template<class T, class keyType>
-inline T & Queue3<T, keyType>::front()
-{
-	return LinearList1<T, keyType>::front();
-}
-
-template<class T, class keyType>
-inline const T & Queue3<T, keyType>::front() const
-{
-	return LinearList1<T, keyType>::front();
-}
-
-template<class T, class keyType>
-inline T & Queue3<T, keyType>::back()
+inline T & Stack3<T, keyType>::top()
 {
 	return LinearList1<T, keyType>::back();
 }
 
 template<class T, class keyType>
-inline const T & Queue3<T, keyType>::back() const
+inline const T & Stack3<T, keyType>::top() const
 {
 	return LinearList1<T, keyType>::back();
 }
 
 template<class T, class keyType>
-inline bool Queue3<T, keyType>::empty() const
+inline bool Stack3<T, keyType>::empty() const
 {
 	return LinearList1<T, keyType>::empty();
 }
 
 template<class T, class keyType>
-inline unsigned int Queue3<T, keyType>::size() const
+inline unsigned int Stack3<T, keyType>::size() const
 {
 	return LinearList1<T, keyType>::size();
 }
 
 template<class T, class keyType>
-inline void Queue3<T, keyType>::clear() noexcept
+inline void Stack3<T, keyType>::clear() noexcept
 {
 	LinearList1<T, keyType>::clear();
 }
 
 template<class T, class keyType>
-inline void Queue3<T, keyType>::pop()
+inline void Stack3<T, keyType>::pop()
 {
-	LinearList1<T, keyType>::pop_front();
+	LinearList1<T, keyType>::pop_back();
 }
 
 template<class T, class keyType>
-inline void Queue3<T, keyType>::push(const T & rhs)
+inline void Stack3<T, keyType>::push(const T & rhs)
 {
 	LinearList1<T, keyType> tmp(rhs);
 	LinearList1<T, keyType>::push_back(tmp);
 }
 
 template<class T, class keyType>
-inline void Queue3<T, keyType>::push(LinearList1<T, keyType>& rhs)
+inline void Stack3<T, keyType>::push(LinearList1<T, keyType>& rhs)
 {
 	LinearList1<T, keyType>::push_back(rhs);
 }
