@@ -16,9 +16,12 @@ public:
 	LinearList2();
 	LinearList2(const T&, const keyType&);
 	LinearList2(const T&, const keyType&, LinearList2&);
+	explicit LinearList2(const T&);
 	LinearList2(const LinearList2&);
 	LinearList2<T, keyType> & operator=(const LinearList2<T, keyType>&);
 	~LinearList2();
+
+
 	//ElementAccess
 
 	T& front();
@@ -101,6 +104,11 @@ template<class T, class keyType>
 inline LinearList2<T, keyType>::LinearList2(const T& data, const keyType & key, LinearList2<T, keyType>& next) : m_Data(data), m_Key(key)
 {
 	this->m_Next = &next;
+}
+
+template<class T, class keyType>
+inline LinearList2<T, keyType>::LinearList2(const T & rhs) : m_Data(rhs), m_Key(), m_Next(nullptr)
+{
 }
 
 template<class T, class keyType>

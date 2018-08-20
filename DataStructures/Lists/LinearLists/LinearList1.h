@@ -17,6 +17,7 @@ public:
 	LinearList1();
 	LinearList1(const T&, const keyType&);
 	LinearList1(const T&, const keyType&, LinearList1&);
+	explicit LinearList1(const T&);
 	LinearList1(const LinearList1&);
 	LinearList1<T, keyType> & operator=(const LinearList1<T, keyType>&);
 	~LinearList1();
@@ -202,6 +203,11 @@ template<class T, class keyType>
 inline LinearList1<T, keyType>::LinearList1(const T& data, const keyType & key, LinearList1<T, keyType>& next) : m_Data(data), m_Key(key)
 {
 	this->m_Next = new LinearList1<T, keyType>(next);
+}
+
+template<class T, class keyType>
+inline LinearList1<T, keyType>::LinearList1(const T & rhs) : m_Data(rhs), m_Key(), m_Next(nullptr)
+{
 }
 
 template<class T, class keyType>
