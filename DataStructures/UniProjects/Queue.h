@@ -15,7 +15,7 @@ public:
 	//Element Access
 
 	int getLength()const;
-	T top()const;
+	const T& top()const;
 	bool empty()const;
 
 
@@ -144,7 +144,7 @@ T Queue<T>::pop()
 
 //returns the top of the array
 template <class T>
-T Queue<T>::top() const
+const T& Queue<T>::top() const
 {
 	return this->m_Data[m_Right-1];
 }
