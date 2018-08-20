@@ -2,7 +2,7 @@
 #include "..\..\LinearLists\LinearList2.h"
 
 template<class T, class keyType = int>
-class Queue3 : protected LinearList1<T, keyType>
+class Queue3 : private LinearList1<T, keyType>
 {
 public:
 
