@@ -19,6 +19,7 @@ short ** Matrix::MatrixGetter()const
 
 void Matrix::MatrixSetter(short ** newMatrix)
 {
+    delete[] this->matrix;
 	this->matrix = newMatrix;
 }
 
@@ -36,13 +37,13 @@ void Matrix::Transponirai()
 	}
 }
 
-void Matrix::MultiplyScalar(int a)
+void Matrix::MultiplyScalar(const int a)
 {
 	for (int i = 0; i < matrixSize; i++)
-		matrix[i][i] *= a;
+		this->matrix[i][i] *= a;
 }
 
-short ** Matrix::Multiply(Matrix a, Matrix b)
+short ** Multiply(const Matrix& a, const Matrix& b)
 {
 	short ** mult = new short*[5];
 	for (int i = 0; i < matrixSize; i++)
@@ -63,3 +64,10 @@ short ** Matrix::Multiply(Matrix a, Matrix b)
 			}
 	return mult;
 }
+
+    void Matrix::Multiply(const Matrix& a)
+    {
+        short ** tmp = this->matrix;
+        this->matrix = Multiply(*this, a);
+        delete tmp;
+    }

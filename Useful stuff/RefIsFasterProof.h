@@ -37,7 +37,6 @@ int main()
 	std::cout << "Time with ref " << time(NULL) - a << '\n';
 
 
-
 	return 0;
 }
 

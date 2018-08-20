@@ -21,7 +21,6 @@ public:
 	void SetYear(const int&);
 	void SetMileage(const int&);
 
-	//it's virtual only because of the task, although I don't see any sense in that
 	void virtual details() const;
 
 private:

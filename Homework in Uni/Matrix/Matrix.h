@@ -7,8 +7,9 @@ private:
 public:
 	Matrix();
 	short ** MatrixGetter() const;
-	void MatrixSetter(short ** newMatrix);
+	void MatrixSetter(const short ** newMatrix);
 	void Transponirai();
-	void MultiplyScalar(int a);
-	short ** Multiply(Matrix a, Matrix b);
+	void MultiplyScalar(const int);
+    void Multiply(const Matrix&);
+	friend short ** Multiply(const Matrix&, const Matrix&);
 };

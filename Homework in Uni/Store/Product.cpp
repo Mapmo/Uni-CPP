@@ -101,8 +101,6 @@ Product::~Product()
 //getters
 int Product::GetSKU() const
 {
-	if (m_Brand[0] == 'w')
-		std::cout << "Purvi simvol W";
 	return this->m_SKU;
 }
 
@@ -187,10 +185,8 @@ void Product::ChangeProduct()
 void Product::PrintProduct()const
 {
 	std::cout << "Product SKU is: " << this->m_SKU << std::endl;
-	std::cout << "Product Brand is: ";
-	PrintCharArr(this->m_Brand);
-	std::cout << "Product Model is: ";
-	PrintCharArr(this->m_Model);
+	std::cout << "Product Brand is: " << this->m_Brand;
+	std::cout << "Product Model is: " << this->m_Model;
 	std::cout << "The amount of remaining items is: " << this->m_Count << std::endl;
 	std::cout << "Product price is: " << this->m_Price << std::endl;
 	std::cout << "Product has: " << this->m_RamMemory << " GB RAM Memory" << std::endl;

@@ -1,7 +1,6 @@
-#include <iostream>
 #include "BrowserHistory.h"
 
-BrowserHistory::BrowserHistory(int length)
+BrowserHistory::BrowserHistory(const int length)
 {
 	this->m_Counter = 0;
 	this->m_Memory = length;
@@ -72,7 +71,7 @@ BrowserHistory& BrowserHistory::operator=(const BrowserHistory&old)
 			}
 		}
 	}
-	
+
 	return *this;
 }
 
@@ -84,28 +83,19 @@ void BrowserHistory::AddSite()
 		std::cout << "Insert Month" << std::endl;
 		std::cin >> s.date;
 		std::cin.ignore();
-		char tempArr[51];	//temp static array used for getline to easily determine the length of the input
-		for (int i = 0; i < 50; i++)
-			tempArr[i] = ' ';
+		char tempArr[1000];	//buffer
 		std::cout << "Insert URL" << std::endl;
-		std::cin.getline(tempArr, 50);
-		tempArr[50] = '\0';
+		std::cin.getline(tempArr, 1000);
 
 		int length = 0;
-		for (length; length < 51; ++length)
-		{
-			if (tempArr[length] == ' ')
-			{
-				break;
-			}
-		}
+		while(tempArr[length++] != '\0');
 
-		s.url = new char[length]; //the string we want to insert in the struct array
-		for (int i = 0; i < length - 1; i++)
+		s.url = new char[length+1]; //the string we want to insert in the struct array
+		for (int i = 0; i < length; i++)
 		{
 			s.url[i] = tempArr[i];
 		}
-		s.url[length - 1] = '\0';
+		s.url[length] = '\0';
 
 		this->m_HistoryEntry[this->m_Counter++] = s;//just inserts the struct in the array and then increments the counter
 	}
@@ -131,19 +121,13 @@ void BrowserHistory::PrintAllSites() const //a simple printing method using 2 ge
 {
 	for (int i = 0; i < m_Counter; i++)
 	{
-		for (int j = 0; j < 50; j++)
-		{
-			if (GetHistoryEntrtyUrl(i, j) == '\0')
-				break;
-			std::cout << GetHistoryEntrtyUrl(i, j);
-		}
-		std::cout << " was visited in ";
+        std::cout << GetHistoryEntrtyUrl(i)<< " was visited in ";
 		PrintMonthName(GetHistoryEntryDate(i));
 		std::cout << std::endl;
 	}
 }
 
-void BrowserHistory::PrintMostVisited(int s[12]) const //uses the method for finding the most visited months and prints it
+void BrowserHistory::PrintMostVisited(const bool * months)const //uses the method for finding the most visited months and prints it
 {
 	std::cout << "The most visited months are";
 	for (int i = 0; i < 12; i++)
@@ -158,7 +142,7 @@ void BrowserHistory::PrintMostVisited(int s[12]) const //uses the method for fin
 	delete[] s;
 }
 
-void BrowserHistory::PrintMonthName(int s) const
+void BrowserHistory::PrintMonthName(const int s) const
 {
 	switch (s)
 	{
@@ -239,12 +223,12 @@ void BrowserHistory::SetMemory(const int a)
 	this->m_Memory = a;
 }
 
-char BrowserHistory::GetHistoryEntrtyUrl(int i, int j) const
+const char * BrowserHistory::GetHistoryEntrtyUrl(const int i) const
 {
-	return this->m_HistoryEntry[i].url[j];
+	return this->m_HistoryEntry[i];
 }
 
-int BrowserHistory::FindMonthCount(int n) const //nothing special here
+int BrowserHistory::FindMonthCount(const int n) const //nothing special here
 {
 	int counter = 0;
 	for (int i = 0; i < this->m_Counter; i++)
@@ -257,9 +241,9 @@ int BrowserHistory::FindMonthCount(int n) const //nothing special here
 	return counter;
 }
 
-int * BrowserHistory::FindMostVisitedMonth() const //pointer because there may be more than 1 months :(
+bool * BrowserHistory::FindMostVisitedMonth() const //pointer because there may be more than 1 months :(
 {
-	int * mostVisitedMonth = new int[12]; //the arr we return, every index+1 == the month in the calendar
+	bool * mostVisitedMonth = new bool[12]; //the arr we return, every index+1 == the month in the calendar
 	int mostVisitedMonthCount = 0;
 
 	for (int i = 0; i < 12; i++)
@@ -288,7 +272,7 @@ int BrowserHistory::GetCounter() const
 	return this->m_Counter;
 }
 
-int BrowserHistory::GetHistoryEntryDate(int i) const
+int BrowserHistory::GetHistoryEntryDate(const int i) const
 {
 	return this->m_HistoryEntry[i].date;
 }
@@ -348,6 +332,5 @@ BrowserHistory BrowserHistory::ConcatHistories(const BrowserHistory & b)
 			}
 		}
 	}
-
 	return c;
 }
