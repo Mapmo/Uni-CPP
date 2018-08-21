@@ -5,7 +5,6 @@ class LinkedList1
 {
 	T& frontOverloadHelper();
 	T& backOverloadHelper();
-	void insertOverloadHelper(LinkedList1<T, keyType>* tmp, LinkedList1<T, keyType>&val);
 
 	void eraseNextElement(LinkedList1<T, keyType>&);//as there is no m_Prev class member, it needs to track and delete elements one step earlier
 	void eraseOverloadHelper(const keyType&);
@@ -36,8 +35,8 @@ public:
 	//Modifiers
 
 	void clear()noexcept;
-	void insert(const keyType& srPos, LinkedList1<T, keyType>& val);
-	void insert(const keyType& srPo, const keyType& trPos, const T& val);
+	void insert(const keyType&, LinkedList1<T, keyType>&);
+	void insert(const keyType&, const keyType&, const T&);
 	void erase(const keyType&);
 	void erase(LinkedList1<T, keyType>&);
 	void pop_back();
@@ -234,5 +233,12 @@ inline void LinkedList1<T, keyType>::insert(const keyType & srPos, LinkedList1<T
 		tmp = tmp->m_Next;
 	}
 	std::cerr << "No position found for insert\n";
+}
+
+template<class T, class keyType>
+inline void LinkedList1<T, keyType>::insert(const keyType & srPos, const keyType & trPos, const T & val)
+{
+	LinkedList1<T, keyType> tmp(val, trPos);
+	insert(srPos, tmp);
 }
 
