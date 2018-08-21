@@ -48,7 +48,6 @@ public:
 
 	//Operations
 
-	void merge(LinkedList1<T, keyType>&);
 	void reverse();
 
 
@@ -339,4 +338,10 @@ inline void LinkedList1<T, keyType>::swap(LinkedList1<T, keyType>& rhs)
 	this->m_Data = rhs.m_Data;
 	rhs.m_Key = tmp.m_Key;
 	rhs.m_Data = tmp.m_Data;
+}
+
+template<class T2, class keyType2>
+inline void swap(LinkedList1<T2, keyType2>& lhs, LinkedList1<T2, keyType2>& rhs)
+{
+	lhs.swap(rhs);
 }
