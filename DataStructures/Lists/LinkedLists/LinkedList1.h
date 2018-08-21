@@ -250,7 +250,7 @@ template<class T, class keyType>
 inline unsigned int LinkedList1<T, keyType>::size() const
 {
 	int i = 0;
-	LinkedList1<T, keyType> * tmp = this;
+	const LinkedList1<T, keyType> * tmp = this;
 	while (tmp->m_Prev != nullptr)
 	{
 		++i;
@@ -338,6 +338,50 @@ inline void LinkedList1<T, keyType>::swap(LinkedList1<T, keyType>& rhs)
 	this->m_Data = rhs.m_Data;
 	rhs.m_Key = tmp.m_Key;
 	rhs.m_Data = tmp.m_Data;
+}
+
+template<class T2, class keyType2>
+inline bool operator==(const LinkedList1<T2, keyType2>& lhs, const LinkedList1<T2, keyType2>& rhs)
+{
+	if (lhs.size() != rhs.size())
+	{
+		return false;
+	}
+	const LinkedList1<T2, keyType2> * tmp = &lhs;
+	const LinkedList1<T2, keyType2> * tmp2 = &rhs;
+	while (tmp != nullptr && tmp2 != nullptr)
+	{
+		if (tmp->m_Data != tmp2->m_Data)
+		{
+			return false;
+		}
+		else
+		{
+			tmp = tmp->m_Prev;
+			tmp2 = tmp2->m_Prev;
+		}
+	}
+	tmp = &lhs;
+	tmp2 = &rhs;
+	while (tmp != nullptr && tmp2 != nullptr)
+	{
+		if (tmp->m_Data != tmp2->m_Data)
+		{
+			return false;
+		}
+		else
+		{
+			tmp = tmp->m_Next;
+			tmp2 = tmp2->m_Next;
+		}
+	}
+	return true;
+}
+
+template<class T2, class keyType2>
+inline bool operator!=(const LinkedList1<T2, keyType2>& lhs, const LinkedList1<T2, keyType2>& rhs)
+{
+	return !operator==(lhs, rhs);
 }
 
 template<class T2, class keyType2>
