@@ -6,7 +6,7 @@ class LinkedList1
 	T& frontOverloadHelper();
 	T& backOverloadHelper();
 
-	void EraseElement(LinkedList1<T, keyType>*);
+	void EraseElement(LinkedList1<T, keyType>*);//after an element is found by eraseOverloadHelper, this will try to delete it
 	LinkedList1<T, keyType> * ChangeCore(LinkedList1<T, keyType>*);//swaps the core with another list if possible and returns if the operation was successful
 	void eraseOverloadHelper(const keyType&);
 public:
@@ -94,7 +94,7 @@ inline void LinkedList1<T, keyType>::EraseElement(LinkedList1<T, keyType>* tmp)
 {
 	if (tmp == this)
 	{
-		tmp = ChangeCore(tmp);
+		tmp = ChangeCore(tmp);//tries to change the core and tmp will point to the new location of the object if the operation was successful
 		if (tmp == this)
 		{
 			std::cerr << "Cannot erase the core\n";
@@ -162,6 +162,7 @@ inline void LinkedList1<T, keyType>::eraseOverloadHelper(const keyType & srPos)
 			tmp = tmp->m_Next;
 		}
 	}
+	std::cerr << "No such element found\n";
 }
 
 template<class T, class keyType>
