@@ -6,7 +6,8 @@ class LinkedList1
 	T& frontOverloadHelper();
 	T& backOverloadHelper();
 
-	void eraseNextElement(LinkedList1<T, keyType>&);//as there is no m_Prev class member, it needs to track and delete elements one step earlier
+	void EraseElement(LinkedList1<T, keyType>*);
+	LinkedList1<T, keyType> * ChangeCore(LinkedList1<T, keyType>*);//swaps the core with another list if possible and returns if the operation was successful
 	void eraseOverloadHelper(const keyType&);
 public:
 	LinkedList1();
@@ -43,7 +44,7 @@ public:
 	void pop_front();
 	void push_back(LinkedList1<T, keyType>&);
 	void push_front(LinkedList1<T, keyType>&);
-
+	void swap(LinkedList1<T, keyType>&);
 
 	//Operations
 
@@ -86,6 +87,81 @@ inline T & LinkedList1<T, keyType>::backOverloadHelper()
 		tmp = tmp->m_Next;
 	}
 	return tmp->m_Data;
+}
+
+template<class T, class keyType>
+inline void LinkedList1<T, keyType>::EraseElement(LinkedList1<T, keyType>* tmp)
+{
+	if (tmp == this)
+	{
+		tmp = ChangeCore(tmp);
+		if (tmp == this)
+		{
+			std::cerr << "Cannot erase the core\n";
+			return;
+		}
+	}
+	if (tmp->m_Prev != nullptr)
+	{
+		tmp->m_Prev->m_Next = tmp->m_Next;
+	}
+	if (tmp->m_Next != nullptr)
+	{
+		tmp->m_Next->m_Prev = tmp->m_Prev;
+	}
+	tmp->m_Next = nullptr;
+	tmp->m_Prev = nullptr;
+	delete tmp;
+}
+
+template<class T, class keyType>
+inline LinkedList1<T, keyType> * LinkedList1<T, keyType>::ChangeCore(LinkedList1<T, keyType>* tmp)
+{
+	if (tmp->m_Next == nullptr)
+	{
+		if (tmp->m_Prev != nullptr)
+		{
+			swap(*(tmp->m_Prev));//swap the values of the objects(except the pointers) so we can delete an element that is not the core
+			tmp = tmp->m_Prev;//now tmp points to an object that is not the core
+		}
+	}
+	else
+	{
+		swap(*(tmp->m_Next));
+		tmp = tmp->m_Next;
+	}
+	return tmp;
+}
+
+template<class T, class keyType>
+inline void LinkedList1<T, keyType>::eraseOverloadHelper(const keyType & srPos)
+{
+	LinkedList1<T, keyType> * tmp = this;
+	while (tmp != nullptr)
+	{
+		if (tmp->m_Key = srPos)
+		{
+			EraseElement(tmp);
+			return;
+		}
+		else
+		{
+			tmp = tmp->m_Prev;
+		}
+	}
+	tmp = this;
+	while (tmp != nullptr)
+	{
+		if (tmp->m_Key = srPos)
+		{
+			EraseElement(tmp);
+			return;
+		}
+		else
+		{
+			tmp = tmp->m_Next;
+		}
+	}
 }
 
 template<class T, class keyType>
@@ -242,3 +318,24 @@ inline void LinkedList1<T, keyType>::insert(const keyType & srPos, const keyType
 	insert(srPos, tmp);
 }
 
+template<class T, class keyType>
+inline void LinkedList1<T, keyType>::erase(const keyType & srPos)
+{
+	eraseOverloadHelper(srPos);
+}
+
+template<class T, class keyType>
+inline void LinkedList1<T, keyType>::erase(LinkedList1<T, keyType>& rhs)
+{
+	eraseOverloadHelper(rhs.m_Key);
+}
+
+template<class T, class keyType>
+inline void LinkedList1<T, keyType>::swap(LinkedList1<T, keyType>& rhs)
+{
+	LinkedList1<T, keyType> tmp = *this;
+	this->m_Key = rhs.m_Key;
+	this->m_Data = rhs.m_Data;
+	rhs.m_Key = tmp.m_Key;
+	rhs.m_Data = tmp.m_Data;
+}
