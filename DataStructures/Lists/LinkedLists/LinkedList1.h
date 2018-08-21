@@ -90,7 +90,7 @@ inline T & LinkedList1<T, keyType>::backOverloadHelper()
 }
 
 template<class T, class keyType>
-inline LinkedList1<T, keyType>::LinkedList1() : m_Data(), m_Key(),m_Next(nullptr), m_Prev(nullptr)
+inline LinkedList1<T, keyType>::LinkedList1() : m_Data(), m_Key(), m_Next(nullptr), m_Prev(nullptr)
 {
 }
 
@@ -129,8 +129,16 @@ inline LinkedList1<T, keyType>& LinkedList1<T, keyType>::operator=(const LinkedL
 template<class T, class keyType>
 inline LinkedList1<T, keyType>::~LinkedList1()
 {
-	delete this->m_Next;
-	delete this->m_Prev;
+	if (this->m_Prev != nullptr)
+	{
+		this->m_Prev->m_Next = nullptr;
+	}
+	if (this->m_Next != nullptr)
+	{
+		this->m_Next->m_Prev = nullptr;
+	}
+	delete m_Next;
+	delete m_Prev;
 }
 
 template<class T, class keyType>
@@ -156,3 +164,75 @@ inline const T & LinkedList1<T, keyType>::back() const
 {
 	return backOverloadHelper();
 }
+
+template<class T, class keyType>
+inline bool LinkedList1<T, keyType>::empty() const
+{
+	return (this->m_Next == nullptr && this->m_Prev == nullptr);
+}
+
+template<class T, class keyType>
+inline unsigned int LinkedList1<T, keyType>::size() const
+{
+	int i = 0;
+	LinkedList1<T, keyType> * tmp = this;
+	while (tmp->m_Prev != nullptr)
+	{
+		++i;
+		tmp = tmp->m_Prev;
+	}
+	tmp = this;
+	while (tmp->m_Next != nullptr)
+	{
+		++i;
+		tmp = tmp->m_Next;
+	}
+	return i;
+}
+
+template<class T, class keyType>
+inline void LinkedList1<T, keyType>::clear() noexcept
+{
+	delete this->m_Next;
+	delete this->m_Prev;
+}
+
+template<class T, class keyType>
+inline void LinkedList1<T, keyType>::insert(const keyType & srPos, LinkedList1<T, keyType>& val)
+{
+	LinkedList1<T, keyType> * tmp = this;
+	while (tmp != nullptr)
+	{
+		if (tmp->m_Key == srPos)
+		{
+			LinkedList1<T, keyType> * tmp2 = new LinkedList1<T, keyType>(val);
+			tmp2->m_Prev = tmp->m_Prev;
+			tmp2->m_Next = tmp;
+			if (tmp->m_Prev != nullptr)
+			{
+				tmp->m_Prev->m_Next = tmp2;
+			}
+			tmp->m_Prev = tmp2;
+			return;
+		}
+		tmp = tmp->m_Prev;
+	}
+	while (tmp != nullptr)
+	{
+		if (tmp->m_Key == srPos)
+		{
+			LinkedList1<T, keyType> * tmp2 = new LinkedList1<T, keyType>(val);
+			tmp2->m_Prev = tmp->m_Prev;
+			tmp2->m_Next = tmp;
+			if (tmp->m_Prev != nullptr)
+			{
+				tmp->m_Prev->m_Next = tmp2;
+			}
+			tmp->m_Prev = tmp2;
+			return;
+		}
+		tmp = tmp->m_Next;
+	}
+	std::cerr << "No position found for insert\n";
+}
+
