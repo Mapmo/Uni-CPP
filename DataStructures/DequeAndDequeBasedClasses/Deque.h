@@ -98,16 +98,17 @@ inline T & Deque<T>::atOverloadHelper(const unsigned int numb) const
 {
 	try
 	{
-		if (numb < m_Left || numb>=m_Right)
+		if (numb < this->m_Left || numb>= this->m_Right)
 		{
 			throw std::out_of_range("in function Vector::at(const unsigned int)");
 		}
+		return this->m_Data[numb];
 	}
 	catch (std::out_of_range& oor)
 	{
 		std::cerr << "Out of range" << oor.what() << std::endl;
 	}
-	return this->m_Data[numb];
+	return this->m_Data[this->m_Left];
 }
 
 template<class T>
@@ -174,6 +175,18 @@ template<class T>
 inline const T & Deque<T>::at(const unsigned int numb) const
 {
 	return atOverloadHelper(numb);
+}
+
+template<class T>
+inline T & Deque<T>::operator[](const int numb)
+{
+	return atOverloadHelper(numb);
+}
+
+template<class T>
+inline const T & Deque<T>::operator[](const int) const
+{
+	return atOverloadHelper();
 }
 
 template<class T>
