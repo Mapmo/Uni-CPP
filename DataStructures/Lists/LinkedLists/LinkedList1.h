@@ -87,11 +87,7 @@ inline T & LinkedList1<T, keyType>::frontOverloadHelper()
 template<class T, class keyType>
 inline T & LinkedList1<T, keyType>::backOverloadHelper()
 {
-	LinkedList1<T, keyType> * tmp = this;
-	while (tmp->m_Next != nullptr)
-	{
-		tmp = tmp->m_Next;
-	}
+	LinkedList1<T, keyType> * tmp = end();
 	return tmp->m_Data;
 }
 
@@ -186,9 +182,9 @@ template<class T, class keyType>
 inline LinkedList1<T, keyType>* LinkedList1<T, keyType>::end()
 {
 	LinkedList1<T, keyType> * rightBorder = this;
-	while (leftBorder->m_Prev != nullptr)
+	while (rightBorder->m_Next != nullptr)
 	{
-		leftBorder = leftBorder->m_Prev;
+		rightBorder = rightBorder->m_Prev;
 	}
 	return rightBorder;
 }
@@ -374,11 +370,7 @@ inline void LinkedList1<T, keyType>::pop_back()
 		}
 		else
 		{
-			LinkedList1<T, keyType> * tmp = this;
-			while (tmp->m_Next != nullptr)
-			{
-				tmp = tmp->m_Next;
-			}
+			LinkedList1<T, keyType> * tmp = end();
 			tmp->m_Prev->m_Next = nullptr;//this is faster than using erase()
 			delete tmp;
 		}
@@ -414,11 +406,7 @@ inline void LinkedList1<T, keyType>::pop_front()
 template<class T, class keyType>
 inline void LinkedList1<T, keyType>::push_back(LinkedList1<T, keyType>& rhs)
 {
-	LinkedList1<T, keyType> * tmp = this;
-	while (tmp->m_Next != nullptr)
-	{
-		tmp = tmp->m_Next;
-	}
+	LinkedList1<T, keyType> * tmp = end();
 	LinkedList1<T, keyType> * tmp2 = new LinkedList1<T, keyType>(rhs);
 	tmp->m_Next = tmp2;
 	tmp2->m_Prev = tmp;
