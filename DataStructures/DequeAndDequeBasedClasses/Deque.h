@@ -129,6 +129,23 @@ inline T & Deque<T>::frontOverloadHelper() const
 }
 
 template<class T>
+inline T & Deque<T>::backOverloadHelper() const
+{
+	try
+	{
+		if (empty())
+		{
+			throw std::out_of_range("the vector is empty");
+		}
+	}
+	catch (std::out_of_range & oor)
+	{
+		std::cerr << "Out of Range exception thrown " << oor.what() << std::endl;
+	}
+	return this->m_Data[this->m_Right - 1];
+}
+
+template<class T>
 inline Deque<T>::Deque() : m_Left(0), m_Right(0), m_MAX_SIZE(CalculateMaxSize())
 {
 	ConstructorAlloc();
@@ -216,6 +233,18 @@ template<class T>
 inline const T & Deque<T>::front() const
 {
 	return frontOverloadHelper();
+}
+
+template<class T>
+inline T & Deque<T>::back()
+{
+	return backOverloadHelper();
+}
+
+template<class T>
+inline const T & Deque<T>::back() const
+{
+	return backOverloadHelper();
 }
 
 template<class T>
