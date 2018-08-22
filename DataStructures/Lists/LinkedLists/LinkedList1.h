@@ -383,6 +383,34 @@ inline void LinkedList1<T, keyType>::pop_front()
 }
 
 template<class T, class keyType>
+inline void LinkedList1<T, keyType>::push_back(LinkedList1<T, keyType>& rhs)
+{
+	LinkedList1<T, keyType> * tmp = this;
+	while (tmp->m_Next != nullptr)
+	{
+		tmp = tmp->m_Next;
+	}
+	LinkedList1<T, keyType> * tmp2 = new LinkedList1<T, keyType>(rhs);
+	tmp->m_Next = tmp2;
+	tmp2->m_Prev = tmp;
+	tmp2->m_Next = nullptr;//just in case
+}
+
+template<class T, class keyType>
+inline void LinkedList1<T, keyType>::push_front(LinkedList1<T, keyType>& rhs)
+{
+	LinkedList1<T, keyType> * tmp = this;
+	while (tmp->m_Prev != nullptr)
+	{
+		tmp = tmp->m_Prev;
+	}
+	LinkedList1<T, keyType> * tmp2 = new LinkedList1<T, keyType>(rhs);
+	tmp->m_Prev = tmp2;
+	tmp2->m_Next = tmp;
+	tmp2->m_Prev = nullptr;//just in case
+}
+
+template<class T, class keyType>
 inline void LinkedList1<T, keyType>::swap(LinkedList1<T, keyType>& rhs)
 {
 	LinkedList1<T, keyType> tmp = *this;
