@@ -331,6 +331,58 @@ inline void LinkedList1<T, keyType>::erase(LinkedList1<T, keyType>& rhs)
 }
 
 template<class T, class keyType>
+inline void LinkedList1<T, keyType>::pop_back()
+{
+	if (empty())
+	{
+		std::cerr << "List is empty\n";
+	}
+	else
+	{
+		if (this->m_Next == nullptr)
+		{
+			erase(this->m_Key);//using erase() to remove it because there isn't an easier way
+		}
+		else
+		{
+			LinkedList1<T, keyType> * tmp = this;
+			while (tmp->m_Next != nullptr)
+			{
+				tmp = tmp->m_Next;
+			}
+			tmp->m_Prev->m_Next = nullptr;//this is faster than using erase()
+			delete tmp;
+		}
+	}
+}
+
+template<class T, class keyType>
+inline void LinkedList1<T, keyType>::pop_front()
+{
+	if (empty())
+	{
+		std::cerr << "List is empty\n";
+	}
+	else
+	{
+		if (this->m_Prev == nullptr)
+		{
+			erase(this->m_Key);//using erase() to remove it because there isn't an easier way
+		}
+		else
+		{
+			LinkedList1<T, keyType> * tmp = this;
+			while (tmp->m_Prev != nullptr)
+			{
+				tmp = tmp->m_Prev;
+			}
+			tmp->m_Next->m_Prev = nullptr;//this is faster than using erase()
+			delete tmp;
+		}
+	}
+}
+
+template<class T, class keyType>
 inline void LinkedList1<T, keyType>::swap(LinkedList1<T, keyType>& rhs)
 {
 	LinkedList1<T, keyType> tmp = *this;
