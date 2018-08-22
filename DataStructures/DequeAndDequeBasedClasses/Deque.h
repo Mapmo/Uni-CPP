@@ -19,7 +19,6 @@ public:
 	Deque(const int, const T&);
 	Deque(const Deque<T>&);
 	Deque<T>& operator=(const Deque<T>&);
-	void assign(const unsigned int, const T&);
 	~Deque();
 
 
@@ -68,7 +67,7 @@ protected:
 
 	void AdaptSize(const unsigned int);
 	unsigned int CalculateMaxSize();
-	void ConstructorAlloc();
+	void ConstructorAlloc();//used to properly allocate memory during construction(only for construction!)
 	bool Resize(const bool);
 
 
@@ -79,7 +78,7 @@ protected:
 	unsigned int m_Size;//size of the current array
 	T * m_Data;
 private:
-	const unsigned int m_MaxSize;
+	const unsigned int m_MAX_SIZE;
 };
 
 template<class T>
@@ -95,13 +94,13 @@ inline void Deque<T>::push_left()
 }
 
 template<class T>
-inline Deque<T>::Deque() : m_Left(0), m_Right(0), m_MaxSize(CalculateMaxSize())
+inline Deque<T>::Deque() : m_Left(0), m_Right(0), m_MAX_SIZE(CalculateMaxSize())
 {
 	ConstructorAlloc();
 }
 
 template<class T>
-inline Deque<T>::Deque(const int repeat, const T & data) : m_Left(0), m_Right(repeat), m_MaxSize(CalculateMaxSize())
+inline Deque<T>::Deque(const int repeat, const T & data) : m_Left(0), m_Right(repeat), m_MAX_SIZE(CalculateMaxSize())
 {
 	ConstructorAlloc();
 
@@ -112,12 +111,34 @@ inline Deque<T>::Deque(const int repeat, const T & data) : m_Left(0), m_Right(re
 }
 
 template<class T>
-inline Deque<T>::Deque(const Deque<T>& rhs) : m_Left(rhs.m_Left), m_Right(rhs.m_Right), m_MaxSize(rhs.m_MaxSize)
+inline Deque<T>::Deque(const Deque<T>& rhs) : m_Left(rhs.m_Left), m_Right(rhs.m_Right), m_MAX_SIZE(rhs.m_MAX_SIZE)
 {
+	ConstructorAlloc();
+
 	for (unsigned int i = this->m_Left; i <= this->m_Right; ++i)
 	{
 		this->m_Data[i] = rhs.m_Data[i];
 	}
+
+}
+
+template<class T>
+inline Deque<T>& Deque<T>::operator=(const Deque<T>& rhs)
+{
+	if (this != &rhs)
+	{
+		delete[] this->m_Data;
+
+		this->m_Left = rhs.m_Left;
+		this->m_Right = rhs.m_Right;
+		ConstructorAlloc();
+
+		for (unsigned int i = this->m_Left; i <= this->m_Right; ++i)
+		{
+			this->m_Data[i] = rhs.m_Data[i];
+		}
+	}
+	return *this;
 }
 
 template<class T>
@@ -133,17 +154,17 @@ inline void Deque<T>::AdaptSize(const unsigned int numb)
 	{
 		this->m_Size = 2;
 	}
-	else if (numb <= this->m_MaxSize / 2)
+	else if (numb <= this->m_MAX_SIZE / 2)
 	{
 		this->m_Size = FindClosestPowerOf2toNumber(numb) * 2;
 	}
-	else if (numb <= this->m_MaxSize)
+	else if (numb <= this->m_MAX_SIZE)
 	{
 		this->m_Size = FindClosestPowerOf2toNumber(numb);
 	}
 	else
 	{
-		this->m_Size = m_MaxSize + 1;//exception will be handled by ConstructorAlloc
+		this->m_Size = m_MAX_SIZE + 1;//exception will be handled by ConstructorAlloc
 	}
 }
 
@@ -159,7 +180,7 @@ inline void Deque<T>::ConstructorAlloc()
 	AdaptSize(this->m_Right);
 	try
 	{
-		if (this->m_Size > this->m_MaxSize)
+		if (this->m_Size > this->m_MAX_SIZE)
 		{
 			std::cout << "Vector cannot handle such a big array\n";
 			throw std::bad_alloc();
@@ -176,7 +197,7 @@ inline void Deque<T>::ConstructorAlloc()
 template<class T>
 inline bool Deque<T>::Resize(const bool rhs)
 {
-	(rhs && this->m_Size < this->m_MaxSize) ? this->m_Size *= 2 : this->m_Size /= 2;
+	(rhs && this->m_Size < this->m_MAX_SIZE) ? this->m_Size *= 2 : this->m_Size /= 2;
 	T* temp;
 	try
 	{
