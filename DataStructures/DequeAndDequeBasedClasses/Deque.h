@@ -40,7 +40,7 @@ public:
 	bool full()const noexcept;
 	unsigned int size()const  noexcept;//actually it's GetCounter()
 	unsigned int max_size() const noexcept;
-	void shrink_to_fit();
+	void shrink_to_fit();//push_left and then delete everything else
 
 
 	//Modifiers
@@ -98,7 +98,7 @@ inline T & Deque<T>::atOverloadHelper(const unsigned int numb) const
 {
 	try
 	{
-		if (numb < this->m_Left || numb>= this->m_Right)
+		if (numb < this->m_Left || numb >= this->m_Right)
 		{
 			throw std::out_of_range("in function Vector::at(const unsigned int)");
 		}
@@ -167,7 +167,7 @@ inline Deque<T>::Deque(const Deque<T>& rhs) : m_Left(rhs.m_Left), m_Right(rhs.m_
 {
 	ConstructorAlloc();
 
-	for (unsigned int i = this->m_Left; i <= this->m_Right; ++i)
+	for (unsigned int i = this->m_Left; i < this->m_Right; ++i)
 	{
 		this->m_Data[i] = rhs.m_Data[i];
 	}
@@ -321,5 +321,36 @@ inline bool Deque<T>::Resize(const bool rhs)
 template<class T>
 inline bool Deque<T>::empty() const noexcept
 {
-	return m_Right==m_Left;
+	return this->m_Right == this->m_Left;
+}
+
+template<class T>
+inline bool Deque<T>::full() const noexcept
+{
+	return (this->m_Left == 0 && this->m_Right == this->m_Size);
+}
+
+template<class T>
+inline unsigned int Deque<T>::size() const noexcept
+{
+	return this->m_Right - this->m_Left;
+}
+
+template<class T>
+inline unsigned int Deque<T>::max_size() const noexcept
+{
+	return this->m_MAX_SIZE;
+}
+
+template<class T>
+inline void Deque<T>::shrink_to_fit()
+{
+	T* tmp = new T[this->m_Size];
+
+	for (unsigned int i = this->m_Left; i < this->m_Right; ++i)
+	{
+		tmp[i - this->m_Left] = this->m_Data[i];
+	}
+	delete[] this->m_Data;
+	this->m_Data = tmp;
 }
