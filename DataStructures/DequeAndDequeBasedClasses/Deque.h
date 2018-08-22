@@ -73,8 +73,8 @@ protected:
 
 	//members
 
-	unsigned int m_Left;//index of the first element
-	unsigned int m_Right;//index of the last element
+	unsigned int m_Left;//index of the first element, will be 0 even if the array is empty, so it needs an empty() check before being used
+	unsigned int m_Right;//1 index after last element
 	unsigned int m_Size;//size of the current array
 	T * m_Data;
 private:
@@ -91,6 +91,23 @@ inline void Deque<T>::push_left()
 	}
 	this->m_Left -= i;
 	this->m_Right -= i;
+}
+
+template<class T>
+inline T & Deque<T>::atOverloadHelper(const unsigned int numb) const
+{
+	try
+	{
+		if (numb < m_Left || numb>=m_Right)
+		{
+			throw std::out_of_range("in function Vector::at(const unsigned int)");
+		}
+	}
+	catch (std::out_of_range& oor)
+	{
+		std::cerr << "Out of range" << oor.what() << std::endl;
+	}
+	return this->m_Data[numb];
 }
 
 template<class T>
@@ -145,6 +162,18 @@ template<class T>
 inline Deque<T>::~Deque()
 {
 	delete[] this->m_Data;
+}
+
+template<class T>
+inline T & Deque<T>::at(const unsigned int numb)
+{
+	return atOverloadHelper(numb);
+}
+
+template<class T>
+inline const T & Deque<T>::at(const unsigned int numb) const
+{
+	return atOverloadHelper(numb);
 }
 
 template<class T>
