@@ -76,11 +76,7 @@ private:
 template<class T, class keyType>
 inline T & LinkedList1<T, keyType>::frontOverloadHelper()
 {
-	LinkedList1<T, keyType> * tmp = this;
-	while (tmp->m_Prev != nullptr)
-	{
-		tmp = tmp->m_Prev;
-	}
+	LinkedList1<T, keyType> * tmp = begin();
 	return tmp->m_Data;
 }
 
@@ -392,11 +388,7 @@ inline void LinkedList1<T, keyType>::pop_front()
 		}
 		else
 		{
-			LinkedList1<T, keyType> * tmp = this;
-			while (tmp->m_Prev != nullptr)
-			{
-				tmp = tmp->m_Prev;
-			}
+			LinkedList1<T, keyType> * tmp = begin();
 			tmp->m_Next->m_Prev = nullptr;//this is faster than using erase()
 			delete tmp;
 		}
@@ -416,11 +408,7 @@ inline void LinkedList1<T, keyType>::push_back(LinkedList1<T, keyType>& rhs)
 template<class T, class keyType>
 inline void LinkedList1<T, keyType>::push_front(LinkedList1<T, keyType>& rhs)
 {
-	LinkedList1<T, keyType> * tmp = this;
-	while (tmp->m_Prev != nullptr)
-	{
-		tmp = tmp->m_Prev;
-	}
+	LinkedList1<T, keyType> * tmp = begin();
 	LinkedList1<T, keyType> * tmp2 = new LinkedList1<T, keyType>(rhs);
 	tmp->m_Prev = tmp2;
 	tmp2->m_Next = tmp;
@@ -442,7 +430,13 @@ inline void LinkedList1<T, keyType>::reverse()
 {
 	LinkedList1<T, keyType> * leftBorder = begin();
 	LinkedList1<T, keyType> * rightBorder = end();
-	LinkedList1<T, keyType> * mover = leftBorder;
+
+	while (leftBorder != rightBorder && leftBorder->m_Prev != rightBorder)//if one of these conditions is met, then the reverse is complete
+	{
+		leftBorder->swap(*rightBorder);
+		leftBorder = leftBorder->m_Next;
+		rightBorder = rightBorder->m_Prev;
+	}
 }
 
 template<class T2, class keyType2>
