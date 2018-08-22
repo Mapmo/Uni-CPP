@@ -95,7 +95,7 @@ inline Vector<T>::Vector() : m_Counter(0)
 }
 
 template<class T>
-inline Vector<T>::Vector(const int repeat, const T& data) :m_Counter(repeat)
+inline Vector<T>::Vector(const int repeat, const T& data) : m_Counter(repeat)
 {
 	CalculateMaxSize();
 	ConstructorAlloc();
@@ -361,15 +361,15 @@ inline Vector<T>& Vector<T>::pop_back()//returning a refference to the object se
 }
 
 template<class T>
-inline T & Vector<T>::operator[](const int rhs)
+inline T & Vector<T>::operator[](const int numb)
 {
-	return this->m_Data[rhs];
+	return atOverloadHelper(numb);
 }
 
 template<class T>
-inline const T & Vector<T>::operator[](const int rhs) const
+inline const T & Vector<T>::operator[](const int numb) const
 {
-	return this->m_Data[rhs];
+	return atOverloadHelper(numb);
 }
 
 template<class T>
@@ -488,12 +488,13 @@ inline T & Vector<T>::atOverloadHelper(const unsigned int pos) const
 		{
 			throw std::out_of_range("in function Vector::at(const unsigned int)");
 		}
+	return this->m_Data[pos];
 	}
 	catch (std::out_of_range& oor)
 	{
 		std::cerr << "Out of range" << oor.what() << std::endl;
 	}
-	return this->m_Data[pos];
+	return this->m_Data[size()-1];
 }
 
 template<class T>
