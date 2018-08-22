@@ -9,6 +9,13 @@ class LinkedList1
 	void EraseElement(LinkedList1<T, keyType>*);//after an element is found by eraseOverloadHelper, this will try to delete it
 	LinkedList1<T, keyType> * ChangeCore(LinkedList1<T, keyType>*);//swaps the core with another list if possible and returns if the operation was successful
 	void eraseOverloadHelper(const keyType&);
+
+
+	//iterator-like functions
+
+	//will always calculate the first or last elements, but I didn't intend to use iterators for this project
+	LinkedList1<T, keyType> * begin();//returns the first element
+	LinkedList1<T, keyType> * end();//returns the last element
 public:
 	LinkedList1();
 	LinkedList1(const T&, const keyType&);
@@ -162,6 +169,28 @@ inline void LinkedList1<T, keyType>::eraseOverloadHelper(const keyType & srPos)
 		}
 	}
 	std::cerr << "No such element found\n";
+}
+
+template<class T, class keyType>
+inline LinkedList1<T, keyType>* LinkedList1<T, keyType>::begin()
+{
+	LinkedList1<T, keyType> * leftBorder = this;
+	while (leftBorder->m_Prev != nullptr)
+	{
+		leftBorder = leftBorder->m_Prev;
+	}
+	return leftBorder;
+}
+
+template<class T, class keyType>
+inline LinkedList1<T, keyType>* LinkedList1<T, keyType>::end()
+{
+	LinkedList1<T, keyType> * rightBorder = this;
+	while (leftBorder->m_Prev != nullptr)
+	{
+		leftBorder = leftBorder->m_Prev;
+	}
+	return rightBorder;
 }
 
 template<class T, class keyType>
@@ -418,6 +447,14 @@ inline void LinkedList1<T, keyType>::swap(LinkedList1<T, keyType>& rhs)
 	this->m_Data = rhs.m_Data;
 	rhs.m_Key = tmp.m_Key;
 	rhs.m_Data = tmp.m_Data;
+}
+
+template<class T, class keyType>
+inline void LinkedList1<T, keyType>::reverse()
+{
+	LinkedList1<T, keyType> * leftBorder = begin();
+	LinkedList1<T, keyType> * rightBorder = end();
+	LinkedList1<T, keyType> * mover = leftBorder;
 }
 
 template<class T2, class keyType2>
