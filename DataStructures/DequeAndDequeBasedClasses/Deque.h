@@ -112,6 +112,23 @@ inline T & Deque<T>::atOverloadHelper(const unsigned int numb) const
 }
 
 template<class T>
+inline T & Deque<T>::frontOverloadHelper() const
+{
+	try
+	{
+		if (empty())
+		{
+			throw std::out_of_range("the vector is empty");
+		}
+	}
+	catch (std::out_of_range & oor)
+	{
+		std::cerr << "Out of Range exception thrown " << oor.what() << std::endl;
+	}
+	return this->m_Data[m_Left];
+}
+
+template<class T>
 inline Deque<T>::Deque() : m_Left(0), m_Right(0), m_MAX_SIZE(CalculateMaxSize())
 {
 	ConstructorAlloc();
@@ -190,6 +207,18 @@ inline const T & Deque<T>::operator[](const int) const
 }
 
 template<class T>
+inline T & Deque<T>::front()
+{
+	return frontOverloadHelper();
+}
+
+template<class T>
+inline const T & Deque<T>::front() const
+{
+	return frontOverloadHelper();
+}
+
+template<class T>
 inline void Deque<T>::AdaptSize(const unsigned int numb)
 {
 	if (numb == 0)
@@ -258,4 +287,10 @@ inline bool Deque<T>::Resize(const bool rhs)
 	delete[] this->m_Data;
 	this->m_Data = temp;
 	return true;
+}
+
+template<class T>
+inline bool Deque<T>::empty() const noexcept
+{
+	return m_Right==m_Left;
 }
