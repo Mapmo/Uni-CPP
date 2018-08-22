@@ -17,7 +17,7 @@ public:
 
 	Deque();
 	Deque(const int, const T&);
-	Deque(const Vector<T>&);
+	Deque(const Deque<T>&);
 	Deque<T>& operator=(const Deque<T>&);
 	void assign(const unsigned int, const T&);
 	~Deque();
@@ -98,6 +98,26 @@ template<class T>
 inline Deque<T>::Deque() : m_Left(0), m_Right(0), m_MaxSize(CalculateMaxSize())
 {
 	ConstructorAlloc();
+}
+
+template<class T>
+inline Deque<T>::Deque(const int repeat, const T & data) : m_Left(0), m_Right(repeat), m_MaxSize(CalculateMaxSize())
+{
+	ConstructorAlloc();
+
+	for (unsigned int i = 0; i < repeat; ++i)
+	{
+		this->m_Data[i] = data;
+	}
+}
+
+template<class T>
+inline Deque<T>::Deque(const Deque<T>& rhs) : m_Left(rhs.m_Left), m_Right(rhs.m_Right), m_MaxSize(rhs.m_MaxSize)
+{
+	for (unsigned int i = this->m_Left; i <= this->m_Right; ++i)
+	{
+		this->m_Data[i] = rhs.m_Data[i];
+	}
 }
 
 template<class T>
