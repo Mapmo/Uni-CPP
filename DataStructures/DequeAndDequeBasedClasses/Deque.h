@@ -505,7 +505,7 @@ inline void Deque<T>::push_back(const T & rhs)
 	{
 		if (this->m_Right == this->m_MAX_SIZE)//means that adding is impossible
 		{
-			throw std::out_of_range("push_back cannot remove from an empty array");
+			throw std::out_of_range("push_back cannot add anymore");
 		}
 		else
 		{
@@ -521,6 +521,38 @@ inline void Deque<T>::push_back(const T & rhs)
 					Resize();
 				}
 			}
+		}
+	}
+	catch (std::out_of_range& oor)
+	{
+		std::cerr << "Out of range exception caught: " << oor.what() << std::endl;
+	}
+}
+
+template<class T>
+inline void Deque<T>::push_front(const T & rhs)
+{
+
+	try
+	{
+		if (this->m_Right == this->m_MAX_SIZE)//means that adding is impossible
+		{
+			throw std::out_of_range("push_front cannot add anymore");
+		}
+		else
+		{
+			if (this->m_Left == 0)
+			{
+				if (this->m_Right < this->m_Size / 2)
+				{
+					push_right();
+				}
+				else
+				{
+					Resize();
+				}
+			}
+			this->m_Data[--this->m_Left] = rhs;//safe 
 		}
 	}
 	catch (std::out_of_range& oor)
