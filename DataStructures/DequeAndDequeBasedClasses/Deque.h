@@ -13,6 +13,10 @@ class Deque
 	T& frontOverloadHelper()const;
 	T& backOverloadHelper()const;
 
+	//altohugh a little confusing to change param order, default param is a must
+	void insertOverloadHelper(const unsigned int, const T&, const unsigned int = 1);
+	void insertFromBegResizeManager();//used before inserting an elemnt from front to resize the array if needed
+	void insertFromEndResizeManager();//used after inserting an elemnt from behind to resize the array if needed
 public:
 	//Essentials
 
@@ -116,7 +120,7 @@ inline T & Deque<T>::atOverloadHelper(const unsigned int numb) const
 {
 	try
 	{
-		if (numb < this->m_Left || numb >= this->m_Right)
+		if (numb >= size())
 		{
 			throw std::out_of_range("in function Vector::at(const unsigned int)");
 		}
@@ -160,6 +164,53 @@ inline T & Deque<T>::backOverloadHelper() const
 		std::cerr << "Out of Range exception thrown " << oor.what() << std::endl;
 	}
 	return this->m_Data[this->m_Right - 1];
+}
+
+template<class T>
+inline void Deque<T>::insertOverloadHelper(const unsigned int pos, const T & val, const unsigned int repeat)
+{
+	try
+	{
+		if (pos >= size())
+		{
+			throw std::out_of_range("cannot insert outside of the deque");
+		}
+		else
+		{
+			if (pos + this->m_Left > this->m_Size / 2)//if true, it means that it's faster to insert the element from the end
+			{
+				if (this->m_Right + repeat >= this->m_Size)
+				{
+
+				}
+			}
+			else//else insert the elemnt from the beginning
+			{
+
+			}
+
+		}
+	}
+	catch (std::out_of_range& oor)
+	{
+		std::cerr << "Out of Range exception thrown " << oor.what() << std::endl;
+	}
+}
+
+template<class T>
+inline void Deque<T>::insertFromBegResizeManager()
+{
+	if (this->m_Left == 0)
+	{
+		if (this->m_Right < this->m_Size / 2)
+		{
+			push_right();
+		}
+		else
+		{
+			Resize();
+		}
+	}
 }
 
 template<class T>
@@ -392,7 +443,7 @@ inline Deque<T>& Deque<T>::erase(const unsigned int numb)
 {
 	try
 	{
-		if (numb < 0 || numb >= size())
+		if (numb >= size())
 		{
 			throw std::out_of_range("Erase index oor");
 		}
@@ -404,7 +455,7 @@ inline Deque<T>& Deque<T>::erase(const unsigned int numb)
 		{
 			pop_back();
 		}
-		else if (numb < size()/2)//this is used to optimize the erase operation and make fewer operations to erase an element
+		else if (numb < size() / 2)//this is used to optimize the erase operation and make fewer operations to erase an element
 		{
 			for (int i = numb + this->m_Left; i > this->m_Left; --i)
 			{
@@ -415,7 +466,7 @@ inline Deque<T>& Deque<T>::erase(const unsigned int numb)
 		}
 		else
 		{
-			for (int i = numb+ this->m_Left; i < this->m_Right - 1; ++i)
+			for (int i = numb + this->m_Left; i < this->m_Right - 1; ++i)
 			{
 				std::swap(this->m_Data[i], this->m_Data[i + 1]);
 			}
@@ -541,17 +592,7 @@ inline void Deque<T>::push_front(const T & rhs)
 		}
 		else
 		{
-			if (this->m_Left == 0)
-			{
-				if (this->m_Right < this->m_Size / 2)
-				{
-					push_right();
-				}
-				else
-				{
-					Resize();
-				}
-			}
+			insertFromBegResizeManager();
 			this->m_Data[--this->m_Left] = rhs;//safe 
 		}
 	}
@@ -585,7 +626,7 @@ inline bool operator==(const Deque<T2>& lhs, const Deque<T2>&rhs)
 	else
 	{
 		int i = 0;
-		while (i++ < lhs.size()-1)
+		while (i++ < lhs.size() - 1)
 		{
 			if (lhs.m_Data[i] != rhs.m_Data[i])
 			{
