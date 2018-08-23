@@ -569,6 +569,12 @@ inline void Deque<T>::swap(Deque<T>& rhs)
 	rhs = tmp;
 }
 
+template<class T1>
+inline void swap(Deque<T1>& lhs, Deque<T1>& rhs)
+{
+	lhs.swap(rhs);
+}
+
 template<class T2>
 inline bool operator==(const Deque<T2>& lhs, const Deque<T2>&rhs)
 {
