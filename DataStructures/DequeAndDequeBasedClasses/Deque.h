@@ -56,8 +56,8 @@ public:
 
 	//The rule for adding is that there is always place to add, 
 	//and after every adding a check is done to ensure that it will be save to add next time
-	Deque<T>& insert(const unsigned int, const T&);
-	Deque<T>& insert(const unsigned int, const unsigned int, const T&);
+	void insert(const unsigned int, const T&);
+	void insert(const unsigned int, const unsigned int, const T&);
 	void pop_back();
 	void pop_front();
 	void push_back(const T&);
@@ -182,26 +182,18 @@ inline void Deque<T>::insertOverloadHelper(const unsigned int pos, const T & val
 		}
 		else
 		{
-			if (pos > size() / 2)//if true, it means that it's faster to insert the element from the end
+			this->m_Right += repeat;
+			insertFromEndResizeManager();
+			unsigned int i = m_Right;
+			while (--i >= this->m_Left + pos)
 			{
-				this->m_Right += repeat;
-				insertFromEndResizeManager();
-				unsigned int i = m_Right;
-				while (--i >= pos)
-				{
-					this->m_Data[i] = this->m_Data[i - repeat];
-				}
-				i = 0;
-				while (i++ < repeat)
-				{
-					this->m_Data[i + pos] = val;
-				}
+				this->m_Data[i] = this->m_Data[i - repeat];
 			}
-			else//else insert the element from the beginning
+			i = 0;
+			while (i < repeat)
 			{
-				insertFromBegResizeManager(repeat);
+				this->m_Data[i++ + pos + this->m_Left] = val;
 			}
-
 		}
 	}
 	catch (std::out_of_range& oor)
@@ -508,6 +500,18 @@ inline Deque<T>& Deque<T>::erase(const unsigned int numb)
 		std::cerr << "Out of range exception caught: " << oor.what() << std::endl;
 	}
 	return *this;
+}
+
+template<class T>
+inline void Deque<T>::insert(const unsigned int pos , const T & val)
+{
+	insertOverloadHelper(pos, val);
+}
+
+template<class T>
+inline void Deque<T>::insert(const unsigned int pos, const unsigned int repeat, const T & val)
+{
+	insertOverloadHelper(pos, val, repeat);
 }
 
 template<class T>
