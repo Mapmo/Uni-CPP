@@ -16,8 +16,7 @@ class Deque
 	//altohugh a little confusing to change param order, default param is a must
 	void insertOverloadHelper(const unsigned int, const T&, const unsigned int = 1);
 
-	//used before inserting an elemnt from front to resize the array if needed, needs param, because unsigned int cannot be below 0
-	void insertFromBegResizeManager(unsigned int);
+	void insertFromBegResizeManager(); //used for push_front to resize the array if needed0
 	void insertFromEndResizeManager();//used before insert() or after push_back() to resize the array if needed
 public:
 	//Essentials
@@ -200,7 +199,7 @@ inline void Deque<T>::insertOverloadHelper(const unsigned int pos, const T & val
 			}
 			else//else insert the element from the beginning
 			{
-
+				insertFromBegResizeManager(repeat);
 			}
 
 		}
@@ -212,16 +211,15 @@ inline void Deque<T>::insertOverloadHelper(const unsigned int pos, const T & val
 }
 
 template<class T>
-inline void Deque<T>::insertFromBegResizeManager(unsigned int repeat)
+inline void Deque<T>::insertFromBegResizeManager()
 {
-	if (this->m_Left - repeat <= 0)
+	if (this->m_Left == 0)
 	{
 		if (this->m_Right < this->m_Size / 2)
 		{
 			push_right();
 		}
-		//if push_right was not enough
-		if (this->m_Left - repeat <= 0)
+		else
 		{
 			Resize();
 		}
@@ -604,7 +602,6 @@ inline void Deque<T>::push_back(const T & rhs)
 template<class T>
 inline void Deque<T>::push_front(const T & rhs)
 {
-
 	try
 	{
 		if (this->m_Right == this->m_MAX_SIZE)//means that adding is impossible
