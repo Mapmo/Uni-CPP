@@ -387,7 +387,7 @@ inline Deque<T>& Deque<T>::erase(const unsigned int numb)
 		{
 			for (int i = numb; i > this->m_Left; --i)
 			{
-				swap(this->m_Data[i], this->m_Data[i - 1]);
+				std::swap(this->m_Data[i], this->m_Data[i - 1]);
 			}
 			//after the loop, the element to delete becomes first in the array
 			pop_front();
@@ -396,7 +396,7 @@ inline Deque<T>& Deque<T>::erase(const unsigned int numb)
 		{
 			for (int i = numb; i < this->m_Right - 1; ++i)
 			{
-				swap(this->m_Data[i], this->m_Data[i + 1]);
+				std::swap(this->m_Data[i], this->m_Data[i + 1]);
 			}
 			//after the loop, the element to delete becomes last in the array
 			pop_back();
