@@ -560,3 +560,38 @@ inline void Deque<T>::push_front(const T & rhs)
 		std::cerr << "Out of range exception caught: " << oor.what() << std::endl;
 	}
 }
+
+template<class T>
+inline void Deque<T>::swap(Deque<T>& rhs)
+{
+	Deque<T> tmp = *this;
+	operator=(rhs);
+	rhs = tmp;
+}
+
+template<class T2>
+inline bool operator==(const Deque<T2>& lhs, const Deque<T2>&rhs)
+{
+	if (lhs.size() != rhs.size())
+	{
+		return false;
+	}
+	else
+	{
+		int i = 0;
+		while (i++ < lhs.size()-1)
+		{
+			if (lhs.m_Data[i] != rhs.m_Data[i])
+			{
+				return false;
+			}
+		}
+	}
+	return true;
+}
+
+template<class J>
+inline bool operator!=(const Deque<J>& lhs, const Deque<J>&rhs)
+{
+	return !operator==(lhs, rhs);
+}
