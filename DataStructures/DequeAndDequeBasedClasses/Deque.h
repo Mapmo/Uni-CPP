@@ -67,7 +67,7 @@ protected:
 
 	void AdaptSize(const unsigned int);
 	unsigned int CalculateMaxSize();
-	void ConstructorAlloc();//used to properly allocate memory during construction(only for construction!)
+	void ConstructorAlloc();//used to properly allocate memory during construction(does not release previously allocated memory!)
 	bool Resize(const bool);
 
 
@@ -353,4 +353,13 @@ inline void Deque<T>::shrink_to_fit()
 	}
 	delete[] this->m_Data;
 	this->m_Data = tmp;
+}
+
+template<class T>
+inline void Deque<T>::clear() noexcept
+{
+	delete[] this->m_Data;
+	this->m_Left = 0;
+	this->m_Right = 0;
+	ConstructorAlloc();
 }
