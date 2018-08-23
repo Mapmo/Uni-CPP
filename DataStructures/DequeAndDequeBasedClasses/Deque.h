@@ -15,8 +15,10 @@ class Deque
 
 	//altohugh a little confusing to change param order, default param is a must
 	void insertOverloadHelper(const unsigned int, const T&, const unsigned int = 1);
-	void insertFromBegResizeManager();//used before inserting an elemnt from front to resize the array if needed
-	void insertFromEndResizeManager();//used after inserting an elemnt from behind to resize the array if needed
+
+	//used before inserting an elemnt from front to resize the array if needed, needs param, because unsigned int cannot be below 0
+	void insertFromBegResizeManager(unsigned int);
+	void insertFromEndResizeManager();//used before insert() or after push_back() to resize the array if needed
 public:
 	//Essentials
 
@@ -175,16 +177,28 @@ inline void Deque<T>::insertOverloadHelper(const unsigned int pos, const T & val
 		{
 			throw std::out_of_range("cannot insert outside of the deque");
 		}
+		else if (size() + repeat > this->m_MAX_SIZE)//checks if there will be enough space after insert
+		{
+			throw std::out_of_range("cannot insert that many elements in the deque");
+		}
 		else
 		{
-			if (pos + this->m_Left > this->m_Size / 2)//if true, it means that it's faster to insert the element from the end
+			if (pos > size() / 2)//if true, it means that it's faster to insert the element from the end
 			{
-				if (this->m_Right + repeat >= this->m_Size)
+				this->m_Right += repeat;
+				insertFromEndResizeManager();
+				unsigned int i = m_Right;
+				while (--i >= pos)
 				{
-
+					this->m_Data[i] = this->m_Data[i - repeat];
+				}
+				i = 0;
+				while (i++ < repeat)
+				{
+					this->m_Data[i + pos] = val;
 				}
 			}
-			else//else insert the elemnt from the beginning
+			else//else insert the element from the beginning
 			{
 
 			}
@@ -198,15 +212,16 @@ inline void Deque<T>::insertOverloadHelper(const unsigned int pos, const T & val
 }
 
 template<class T>
-inline void Deque<T>::insertFromBegResizeManager()
+inline void Deque<T>::insertFromBegResizeManager(unsigned int repeat)
 {
-	if (this->m_Left == 0)
+	if (this->m_Left - repeat <= 0)
 	{
 		if (this->m_Right < this->m_Size / 2)
 		{
 			push_right();
 		}
-		else
+		//if push_right was not enough
+		if (this->m_Left - repeat <= 0)
 		{
 			Resize();
 		}
@@ -216,7 +231,7 @@ inline void Deque<T>::insertFromBegResizeManager()
 template<class T>
 inline void Deque<T>::insertFromEndResizeManager()
 {
-	if (this->m_Right == this->m_Size)
+	if (this->m_Right >= this->m_Size)
 	{
 		if (this->m_Left > this->m_Size / 2)
 		{
