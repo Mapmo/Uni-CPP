@@ -49,8 +49,10 @@ public:
 	Deque<T>& erase(const unsigned int);
 	Deque<T>& insert(const unsigned int, const T&);
 	Deque<T>& insert(const unsigned int, const unsigned int, const T&);
-	Deque<T>& pop_back();
-	Deque<T>& push_back(const T&);
+	void pop_back();
+	void pop_front();
+	void push_back(const T&);
+	void push_front(const T&);
 	void swap(Deque<T>&);
 
 
@@ -302,6 +304,13 @@ inline bool Deque<T>::Resize(const bool rhs)
 	try
 	{
 		temp = new T[this->m_Size];
+		for (unsigned int i = 0; i < this->m_Right; ++i)
+		{
+			temp[i] = this->m_Data[i];
+		}
+		delete[] this->m_Data;
+		this->m_Data = temp;
+		return true;
 	}
 	catch (std::bad_alloc& ba)
 	{
@@ -309,13 +318,6 @@ inline bool Deque<T>::Resize(const bool rhs)
 		(!rhs) ? this->m_Size *= 2 : this->m_Size /= 2;//reverse of the first m_Size alteration
 		return false;
 	}
-	for (unsigned int i = 0; i < this->m_Counter; ++i)
-	{
-		temp[i] = this->m_Data[i];
-	}
-	delete[] this->m_Data;
-	this->m_Data = temp;
-	return true;
 }
 
 template<class T>
@@ -377,11 +379,11 @@ inline Deque<T>& Deque<T>::erase(const unsigned int numb)
 		{
 			pop_front();
 		}
-		else if( numb==m_Right-1)
+		else if (numb == m_Right - 1)
 		{
 			pop_back();
 		}
-		else if (numb - this->m_Left < this->m_Right-numb)//this is used to optimize the erase operation and make fewer operations to erase an element
+		else if (numb - this->m_Left < this->m_Right - numb)//this is used to optimize the erase operation and make fewer operations to erase an element
 		{
 			for (int i = numb; i > this->m_Left; --i)
 			{
@@ -400,9 +402,57 @@ inline Deque<T>& Deque<T>::erase(const unsigned int numb)
 			pop_back();
 		}
 	}
-	catch(std::out_of_range& oor)
+	catch (std::out_of_range& oor)
 	{
 		std::cerr << "Out of range exception caught: " << oor.what() << std::endl;
 	}
 	return *this;
+}
+
+template<class T>
+inline void Deque<T>::pop_back()
+{
+	try
+	{
+		if (empty())
+		{
+			throw std::out_of_range("pop_back cannot remove from an empty array");
+		}
+		else
+		{
+			--this->m_Right;
+			if (size() == this->m_Size / 4)
+			{
+				Resize(0);
+			}
+		}
+	}
+	catch (std::out_of_range& oor)
+	{
+		std::cerr << "Out of range exception caught: " << oor.what() << std::endl;
+	}
+}
+
+template<class T>
+inline void Deque<T>::pop_front()
+{
+	try
+	{
+		if (empty())
+		{
+			throw std::out_of_range("pop_front cannot remove from an empty array");
+		}
+		else
+		{
+			++this->m_Left;
+			if (size() == this->m_Size / 4)
+			{
+				Resize(0);
+			}
+		}
+	}
+	catch (std::out_of_range& oor)
+	{
+		std::cerr << "Out of range exception caught: " << oor.what() << std::endl;
+	}
 }
