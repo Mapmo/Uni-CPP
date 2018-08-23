@@ -363,3 +363,46 @@ inline void Deque<T>::clear() noexcept
 	this->m_Right = 0;
 	ConstructorAlloc();
 }
+
+template<class T>
+inline Deque<T>& Deque<T>::erase(const unsigned int numb)
+{
+	try
+	{
+		if (numb < this->m_Left || numb >= this->m_Right)
+		{
+			throw std::out_of_range("Erase index oor");
+		}
+		else if (numb == m_Left)
+		{
+			pop_front();
+		}
+		else if( numb==m_Right-1)
+		{
+			pop_back();
+		}
+		else if (numb - this->m_Left < this->m_Right-numb)//this is used to optimize the erase operation and make fewer operations to erase an element
+		{
+			for (int i = numb; i > this->m_Left; --i)
+			{
+				swap(this->m_Data[i], this->m_Data[i - 1]);
+			}
+			//after the loop, the element to delete becomes first in the array
+			pop_front();
+		}
+		else
+		{
+			for (int i = numb; i < this->m_Right - 1; ++i)
+			{
+				swap(this->m_Data[i], this->m_Data[i + 1]);
+			}
+			//after the loop, the element to delete becomes last in the array
+			pop_back();
+		}
+	}
+	catch(std::out_of_range& oor)
+	{
+		std::cerr << "Out of range exception caught: " << oor.what() << std::endl;
+	}
+	return *this;
+}
