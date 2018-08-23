@@ -214,6 +214,22 @@ inline void Deque<T>::insertFromBegResizeManager()
 }
 
 template<class T>
+inline void Deque<T>::insertFromEndResizeManager()
+{
+	if (this->m_Right == this->m_Size)
+	{
+		if (this->m_Left > this->m_Size / 2)
+		{
+			push_left();
+		}
+		else
+		{
+			Resize();
+		}
+	}
+}
+
+template<class T>
 inline Deque<T>::Deque() : m_Left(2), m_Right(2), m_MAX_SIZE(CalculateMaxSize())
 {
 	ConstructorAlloc();
@@ -561,17 +577,7 @@ inline void Deque<T>::push_back(const T & rhs)
 		else
 		{
 			this->m_Data[this->m_Right++] = rhs;//it's always safe to insert elements
-			if (this->m_Right == this->m_Size)
-			{
-				if (this->m_Left > this->m_Size / 2)
-				{
-					push_left();
-				}
-				else
-				{
-					Resize();
-				}
-			}
+			insertFromEndResizeManager();
 		}
 	}
 	catch (std::out_of_range& oor)
