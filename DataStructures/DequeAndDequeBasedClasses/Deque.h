@@ -15,8 +15,12 @@ class Deque
 
 	//altohugh a little confusing to change param order, default param is a must
 	void insertOverloadHelper(const unsigned int, const T&, const unsigned int = 1);
+	void insertFromBeg(const unsigned int, const unsigned int, const T&);//helps the insert() function to push elements from the beginning
 
-	void insertFromBegResizeManager(); //used for push_front to resize the array if needed0
+	//ensures that there will be enough space before this->m_Left in order to push from the beginning
+	void insertFromBegEnsureEnoughSpace(const unsigned int, const unsigned int, const T&);
+	void insertFromBegResizeManager(); //used for push_front to resize the array if needed
+	void insertFromEnd(const unsigned int, const unsigned int, const T&);//helps the insert() function to push elements from the end
 	void insertFromEndResizeManager();//used before insert() or after push_back() to resize the array if needed
 public:
 	//Essentials
@@ -182,23 +186,54 @@ inline void Deque<T>::insertOverloadHelper(const unsigned int pos, const T & val
 		}
 		else
 		{
-			this->m_Right += repeat;
-			insertFromEndResizeManager();
-			unsigned int i = m_Right;
-			while (--i >= this->m_Left + pos)
+			if (pos > size() / 2)
 			{
-				this->m_Data[i] = this->m_Data[i - repeat];
+				insertFromEnd(pos, repeat, val);
 			}
-			i = 0;
-			while (i < repeat)
+			else
 			{
-				this->m_Data[i++ + pos + this->m_Left] = val;
+				insertFromBeg(pos, repeat, val);
 			}
 		}
 	}
 	catch (std::out_of_range& oor)
 	{
 		std::cerr << "Out of Range exception thrown " << oor.what() << std::endl;
+	}
+}
+
+template<class T>
+inline void Deque<T>::insertFromBeg(const unsigned int pos, const unsigned int repeat, const T & val)
+{
+	insertFromBegEnsureEnoughSpace(pos, repeat, val);//after this point it is certain that there is enough space for 
+	for (unsigned int i = 0; i < pos; ++i)
+	{
+		this->m_Data[this->m_Left + i - repeat] = this->m_Data[this->m_Left + i];
+	}
+	this->m_Left -= repeat;
+	for (unsigned int i = 0; i < repeat; ++i)
+	{
+		this->m_Data[i + this->m_Left + pos] = val;
+	}
+}
+
+template<class T>
+inline void Deque<T>::insertFromBegEnsureEnoughSpace(unsigned int pos, const unsigned int repeat, const T& val)
+{
+	if (repeat > this->m_Left)
+	{
+		while (this->m_Left + this->m_Size < repeat)
+		{
+			this->m_Size *= 2;
+		}
+		this->m_Size *= 2;
+		T* tmp = new T[m_Size];
+		for (unsigned int i = 0; i < size(); ++i)
+		{
+			tmp[this->m_Left + this->m_Size / 2 + i] = this->m_Data[this->m_Left + i];
+		}
+		delete[] this->m_Data;
+		this->m_Data = tmp;
 	}
 }
 
@@ -215,6 +250,23 @@ inline void Deque<T>::insertFromBegResizeManager()
 		{
 			Resize();
 		}
+	}
+}
+
+template<class T>
+inline void Deque<T>::insertFromEnd(unsigned int pos, const unsigned int repeat, const T& val)
+{
+	this->m_Right += repeat;
+	insertFromEndResizeManager();
+	unsigned int i = m_Right;
+	while (--i >= this->m_Left + pos)
+	{
+		this->m_Data[i] = this->m_Data[i - repeat];
+	}
+	i = 0;
+	while (i < repeat)
+	{
+		this->m_Data[i++ + pos + this->m_Left] = val;
 	}
 }
 
@@ -503,7 +555,7 @@ inline Deque<T>& Deque<T>::erase(const unsigned int numb)
 }
 
 template<class T>
-inline void Deque<T>::insert(const unsigned int pos , const T & val)
+inline void Deque<T>::insert(const unsigned int pos, const T & val)
 {
 	insertOverloadHelper(pos, val);
 }
