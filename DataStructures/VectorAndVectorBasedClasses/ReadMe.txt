@@ -4,7 +4,7 @@ These are implementations of STL classes that use std::vector<T> as their core
 
 -String2 - an implementation of std::string, it inherits Vector and has all std::string functions, it's fully functional
 
--Stack2 - a stack that has a vector in it, and uses some of its functions
+-Stack2 - although it is a template class that has a container within itself, it uses Vector as its default container, but can also have Deque as its core
 
 -Queue2 - same as Stack2
 
