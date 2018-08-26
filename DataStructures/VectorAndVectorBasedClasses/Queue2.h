@@ -6,7 +6,9 @@ class Queue2
 public:
 	//Element access
 
+	T & front();
 	const T& front()const;
+	T& back();
 	const T& back()const;
 
 
@@ -34,9 +36,21 @@ private:
 };
 
 template<class T>
+inline T & Queue2<T>::front()
+{
+	return this->m_Data.front();
+}
+
+template<class T>
 inline const T & Queue2<T>::front() const
 {
 	return this->m_Data.front();
+}
+
+template<class T>
+inline T & Queue2<T>::back()
+{
+	return this->m_Data.back();
 }
 
 template<class T>
