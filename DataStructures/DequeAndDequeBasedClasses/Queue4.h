@@ -33,6 +33,10 @@ public:
 	void pop();
 
 
+	//Operators
+	bool operator==(const Queue4<T>&)const;
+
+
 	//Non - member functions
 
 	template <class T1>
@@ -101,4 +105,34 @@ template<class T>
 inline unsigned int Queue4<T>::size() const
 {
 	return Deque<T>::size();
+}
+
+template<class T>
+inline void Queue4<T>::push(const T & val)
+{
+	Deque<T>::push_back(val);
+}
+
+template<class T>
+inline void Queue4<T>::pop()
+{
+	Deque<T>::pop_front();
+}
+
+template<class T>
+inline bool Queue4<T>::operator==(const Queue4<T>& rhs) const
+{
+	return Deque<T>::operator==(rhs);
+}
+
+template<class T1>
+inline bool operator==(const Queue4<T1>&lhs, const Queue4<T1>&rhs)
+{
+	return lhs.operator==(rhs);
+}
+
+template<class T1>
+inline bool operator!=(const Queue4<T1>&lhs, const Queue4<T1>&rhs)
+{
+	return !operator==(lhs, rhs);
 }
