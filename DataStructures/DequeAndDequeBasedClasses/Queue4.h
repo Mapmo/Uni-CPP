@@ -31,6 +31,7 @@ public:
 
 	void push(const T&);
 	void pop();
+	void swap(Queue4<T>&);
 
 
 	//Operators
@@ -120,6 +121,12 @@ inline void Queue4<T>::pop()
 }
 
 template<class T>
+inline void Queue4<T>::swap(Queue4<T>&rhs)
+{
+	Deque<T>::swap(rhs);
+}
+
+template<class T>
 inline bool Queue4<T>::operator==(const Queue4<T>& rhs) const
 {
 	return Deque<T>::operator==(rhs);
@@ -135,4 +142,10 @@ template<class T1>
 inline bool operator!=(const Queue4<T1>&lhs, const Queue4<T1>&rhs)
 {
 	return !operator==(lhs, rhs);
+}
+
+template<class T1>
+inline void swap(Queue4<T1>& lhs, Queue4<T1>& rhs)
+{
+	lhs.swap(rhs);
 }
