@@ -293,7 +293,7 @@ inline Deque<T>::Deque() : m_Left(2), m_Right(2), m_MAX_SIZE(CalculateMaxSize())
 }
 
 template<class T>
-inline Deque<T>::Deque(const int repeat, const T & data) : m_Left(1), m_Right(repeat), m_MAX_SIZE(CalculateMaxSize())
+inline Deque<T>::Deque(const int repeat, const T & data) : m_Left(1), m_Right(repeat+1), m_MAX_SIZE(CalculateMaxSize())
 {
 	ConstructorAlloc();
 

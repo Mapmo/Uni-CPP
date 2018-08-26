@@ -96,3 +96,9 @@ inline bool Queue4<T>::empty() const
 {
 	return Deque<T>::empty();
 }
+
+template<class T>
+inline unsigned int Queue4<T>::size() const
+{
+	return Deque<T>::size();
+}
