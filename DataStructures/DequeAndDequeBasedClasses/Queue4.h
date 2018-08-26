@@ -90,3 +90,9 @@ inline const T & Queue4<T>::back() const
 {
 	return backOverloadHelper();
 }
+
+template<class T>
+inline bool Queue4<T>::empty() const
+{
+	return Deque<T>::empty();
+}
