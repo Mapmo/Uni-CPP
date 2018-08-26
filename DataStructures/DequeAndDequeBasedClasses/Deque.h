@@ -69,6 +69,10 @@ public:
 	void swap(Deque<T>&);
 
 
+	//Operators
+	bool operator==(const Deque<T>&)const;
+
+
 	//non-member functions
 
 	template<class T1>
@@ -684,6 +688,31 @@ inline void Deque<T>::swap(Deque<T>& rhs)
 	rhs = tmp;
 }
 
+template<class T>
+inline bool Deque<T>::operator==(const Deque<T>&rhs) const
+{
+	if (this == &rhs)
+	{
+		return true;
+	}
+	else if (this->size() != rhs.size())
+	{
+		return false;
+	}
+	else
+	{
+		int i = 0;
+		while (i++ < rhs.size() - 1)
+		{
+			if (this->m_Data[i] != rhs.m_Data[i])
+			{
+				return false;
+			}
+		}
+	}
+	return true;
+}
+
 template<class T1>
 inline void swap(Deque<T1>& lhs, Deque<T1>& rhs)
 {
@@ -693,22 +722,7 @@ inline void swap(Deque<T1>& lhs, Deque<T1>& rhs)
 template<class T2>
 inline bool operator==(const Deque<T2>& lhs, const Deque<T2>&rhs)
 {
-	if (lhs.size() != rhs.size())
-	{
-		return false;
-	}
-	else
-	{
-		int i = 0;
-		while (i++ < lhs.size() - 1)
-		{
-			if (lhs.m_Data[i] != rhs.m_Data[i])
-			{
-				return false;
-			}
-		}
-	}
-	return true;
+	return lhs.operator==(rhs);
 }
 
 template<class J>
