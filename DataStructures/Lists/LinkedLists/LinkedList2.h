@@ -156,6 +156,28 @@ inline void LinkedList2<T>::RotateCentreLeft()
 template<class T>
 inline void LinkedList2<T>::RotateCenterRight()
 {
+	try
+	{
+		if (this->m_Left == nullptr)
+		{
+			throw std::invalid_argument("cannot rotate left");
+		}
+		else
+		{
+			//first swaps the values of the root and its right child, and then changes their childs so that rotation is complete
+			swap(*(this->m_Left));
+			LinkedList2<T> * tmp = this->m_Left;
+			LinkedList2<T> * tmp2 = this->m_Right;
+			this->m_Left = this->m_Left->m_Left;
+			this->m_Right = tmp;
+			this->m_Right->m_Left = this->m_Right->m_Right;
+			this->m_Right->m_Right = tmp2;
+		}
+	}
+	catch (std::invalid_argument& ia)
+	{
+		std::cerr << "trying to rotate left, but the right element is nullptr!!! this messege is not expected to appear ever!!!'n";
+	}
 }
 
 template<class T>
