@@ -1,0 +1,1 @@
+This is an implementation of a simple Binary Search Tree, to make it simpler and more clear, the key type is int and there is no guarantee that the tree will be even close to balanced and there are no copy costructor and operator =. 
