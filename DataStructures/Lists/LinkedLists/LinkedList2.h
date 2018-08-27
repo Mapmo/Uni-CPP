@@ -32,7 +32,6 @@ public:
 	//left and it was destroyed and after that the tree is empty
 	bool Erase(const int);
 	void Insert(const int, const T&);
-	void Insert(const LinkedList2<T>&);
 private:
 	int m_Key;
 	T m_Data;
@@ -58,42 +57,35 @@ inline T & LinkedList2<T>::GetByKeyOverloadHelper(const int numb)
 		}
 		else
 		{
-			throw(std::out_of_range("sad"));
+			throw(std::invalid_argument("element not found"));
 		}
 	}
-	catch (std::out_of_range& oor)
+	catch (std::invalid_argument& ia)
 	{
+		std::cerr << "GetByKey invalid_argument exception thrown: " << ia.what();
 	}
 }
 
 template<class T>
 inline LinkedList2<T> * LinkedList2<T>::FindElement(const int numb)
 {
-	try
+	LinkedList2<T> * tmp = this;
+	do
 	{
-		LinkedList2<T> * tmp = this;
-		do
+		if (tmp->m_Key == numb)
 		{
-			if (tmp->m_Key == numb)
-			{
-				return tmp;
-			}
-			else if (tmp->m_Key > numb)
-			{
-				tmp = tmp->m_Left;
-			}
-			else
-			{
-				tmp = tmp->m_Right;
-			}
-		} while (tmp != nullptr);
-		throw(std::out_of_range("not found"));
-	}
-	catch (std::out_of_range& oor)
-	{
-		std::cerr << "Elelment not found\n";
-		return nullptr;
-	}
+			return tmp;
+		}
+		else if (tmp->m_Key > numb)
+		{
+			tmp = tmp->m_Left;
+		}
+		else
+		{
+			tmp = tmp->m_Right;
+		}
+	} while (tmp != nullptr);
+	return nullptr;
 }
 
 template<class T>
@@ -176,7 +168,7 @@ inline void LinkedList2<T>::RotateCenterRight()
 	}
 	catch (std::invalid_argument& ia)
 	{
-		std::cerr << "trying to rotate left, but the right element is nullptr!!! this messege is not expected to appear ever!!!'n";
+		std::cerr << "trying to rotate right, but the left element is nullptr!!! this messege is not expected to appear ever!!!'n";
 	}
 }
 
@@ -251,5 +243,51 @@ inline bool LinkedList2<T>::Erase(const int numb)
 			DeleteElement(tmp);
 			return true;
 		}
+	}
+	else
+	{
+		std::cerr << "No element found for delete\n";
+	}
+}
+
+template<class T>
+inline void LinkedList2<T>::Insert(const int numb, const T & val)
+{
+	try
+	{
+		LinkedList2<T> * tmp = FindElement(numb);//checks if there is an element with such a key
+		if (tmp == nullptr)
+		{
+			tmp = this;
+			do
+			{
+				if (numb > tmp->m_Key)
+				{
+					if (tmp->m_Right == nullptr)
+					{
+						tmp->m_Right = new LinkedList2(numb, val);
+						return;
+					}
+					tmp = tmp->m_Right;
+				}
+				else
+				{
+					if (tmp->m_Left == nullptr)
+					{
+						tmp->m_Left = new LinkedList2(numb, val);
+						return;
+					}
+					tmp = tmp->m_Left;
+				}
+			} while (tmp != nullptr);
+		}
+		else
+		{
+			throw std::invalid_argument("element already there");
+		}
+	}
+	catch (std::invalid_argument& ia)
+	{
+		std::cerr << "Insert invalid argument thrown: " << ia.what();
 	}
 }
