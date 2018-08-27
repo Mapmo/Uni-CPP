@@ -9,6 +9,9 @@ class LinkedList2
 
 	//overload helpers
 	T& GetByKeyOverloadHelper(const int);
+
+	//others
+	LinkedList2<T>* FindElement(const int);//used to find elements in the tree, in order to escape code repetition
 public:
 	//Essentials
 	LinkedList2(const int = 0, const T& = T());
@@ -17,6 +20,13 @@ public:
 	//ElementAccess
 	T& GetByKey(const int);
 	const T& GetByKey(const int) const;
+
+
+	//Modifiers
+
+	void Erase(const int);
+	void Insert(const int, const T&);
+	void Insert(const LinkedList2<T>&);
 private:
 	int m_Key;
 	T m_Data;
@@ -35,12 +45,32 @@ inline T & LinkedList2<T>::GetByKeyOverloadHelper(const int numb)
 {
 	try
 	{
+		LinkedList2<T> * tmp = FindElement(numb);
+		if (tmp != nullptr)
+		{
+			return tmp->m_Data;
+		}
+		else
+		{
+			throw(std::out_of_range("sad"));
+		}
+	}
+	catch (std::out_of_range& oor)
+	{
+	}
+}
+
+template<class T>
+inline LinkedList2<T> * LinkedList2<T>::FindElement(const int numb)
+{
+	try
+	{
 		LinkedList2<T> * tmp = this;
 		do
 		{
 			if (tmp->m_Key == numb)
 			{
-				return tmp->m_Data;
+				return tmp;
 			}
 			else if (tmp->m_Key > numb)
 			{
@@ -56,6 +86,7 @@ inline T & LinkedList2<T>::GetByKeyOverloadHelper(const int numb)
 	catch (std::out_of_range& oor)
 	{
 		std::cerr << "Elelment not found\n";
+		return nullptr;
 	}
 }
 
@@ -90,4 +121,9 @@ template<class T>
 inline const T & LinkedList2<T>::GetByKey(const int) const
 {
 	return GetByKeyOverloadHelper(numb);
+}
+
+template<class T>
+inline void LinkedList2<T>::Erase(const int)
+{
 }
