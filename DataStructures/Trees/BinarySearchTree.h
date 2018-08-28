@@ -41,7 +41,7 @@ inline T & BinarySearchTree<T>::GetByKeyOverloadHelper(const int numb)
 	{
 		if (!this->m_Empty)
 		{
-			return GetByKey(numb);
+			return this->m_Branches.GetByKey(numb);
 		}
 		else
 		{
