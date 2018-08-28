@@ -12,7 +12,10 @@ class LinkedList2
 
 	//others
 	LinkedList2<T>* FindElement(const int);//used to find elements in the tree, in order to escape code repetition
+	//used to find elements' parents in the tree, in order to escape code repetition, only used after FindElement returned a pointer different from nullptr
+	LinkedList2<T>* FindElementParent(const int);
 	void DeleteElement(LinkedList2<T>*);
+	bool isChildLeft(LinkedList2<T>*, LinkedList2<T>*)const;//takes 2 params that are supposed to be child and parent and returns true if the child is left
 	void RotateCentreLeft();
 	void RotateCenterRight();
 	void swap(LinkedList2<T>&);
@@ -32,6 +35,7 @@ public:
 	//left and it was destroyed and after that the tree is empty
 	bool Erase(const int);
 	void Insert(const int, const T&);
+	void SetRoot(const int, const T&);
 private:
 	int m_Key;
 	T m_Data;
@@ -89,6 +93,34 @@ inline LinkedList2<T> * LinkedList2<T>::FindElement(const int numb)
 }
 
 template<class T>
+inline LinkedList2<T>* LinkedList2<T>::FindElementParent(const int numb)
+{
+	LinkedList2<T> * tmp = this;//this pointer iterates through the tree
+	LinkedList2<T> * tmp2 = nullptr;//this pointer preserves the last value of the pointer above
+	while (tmp != nullptr)
+	{
+		if (tmp->m_Key == numb)
+		{
+			return tmp2;
+		}
+		else
+		{
+			tmp2 = tmp;
+		}
+
+		if (tmp->m_Key > numb)
+		{
+			tmp = tmp->m_Left;
+		}
+		else
+		{
+			tmp = tmp->m_Right;
+		}
+	}
+	return nullptr;
+}
+
+template<class T>
 inline void LinkedList2<T>::DeleteElement(LinkedList2<T>* tmp)
 {
 	try
@@ -99,22 +131,57 @@ inline void LinkedList2<T>::DeleteElement(LinkedList2<T>* tmp)
 		}
 		else
 		{
+			LinkedList2<T>* tmp2 = FindElementParent(tmp->m_Key);
+			bool isLeft = isChildLeft(tmp2, tmp);
 			if (tmp->m_Left != nullptr)
 			{
 				tmp->m_Left->m_Right = tmp->m_Right;
+				if (isLeft)
+				{
+					tmp2->m_Left = tmp->m_Left;
+				}
+				else
+				{
+					tmp2->m_Right = tmp->m_Left;
+				}
+				tmp->m_Left = nullptr;
+				if (tmp->m_Right != nullptr)
+				{
+					tmp->m_Right = nullptr;
+				}
 			}
-			if (tmp->m_Right != nullptr)
+			else if (tmp->m_Right != nullptr)
 			{
 				tmp->m_Right->m_Left = tmp->m_Left;
+				if (isLeft)
+				{
+					tmp2->m_Left = tmp->m_Right;
+				}
+				else
+				{
+					tmp2->m_Right = tmp->m_Right;
+				}
+				tmp->m_Right = nullptr;
 			}
-			tmp->m_Left = nullptr;
-			tmp->m_Right = nullptr;
 			delete tmp;
 		}
 	}
 	catch (std::invalid_argument& ia)
 	{
 		std::cerr << "trying to delete this!!! this messege is not expected to appear ever!!!'n";
+	}
+}
+
+template<class T>
+inline bool LinkedList2<T>::isChildLeft(LinkedList2<T>*parent, LinkedList2<T>*child) const
+{
+	if (parent->m_Key > child->m_Key)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
 	}
 }
 
@@ -229,12 +296,12 @@ inline bool LinkedList2<T>::Erase(const int numb)
 				if (this->m_Left != nullptr)
 				{
 					RotateCenterRight();
-					DeleteElement(this->m_Left);
+					DeleteElement(this->m_Right);
 				}
 				else
 				{
 					RotateCentreLeft();
-					DeleteElement(this->m_Right);
+					DeleteElement(this->m_Left);
 				}
 			}
 		}
@@ -290,4 +357,11 @@ inline void LinkedList2<T>::Insert(const int numb, const T & val)
 	{
 		std::cerr << "Insert invalid argument thrown: " << ia.what();
 	}
+}
+
+template<class T>
+inline void LinkedList2<T>::SetRoot(const int numb, const T & val)
+{
+	this->m_Key = numb;
+	this->m_Data = val;
 }
