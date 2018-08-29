@@ -10,12 +10,7 @@ class LinkedList1
 	LinkedList1<T, keyType> * ChangeCore(LinkedList1<T, keyType>*);//swaps the core with another list if possible and returns if the operation was successful
 	void eraseOverloadHelper(const keyType&);
 
-
-	//iterator-like functions
-
-	//will always calculate the first or last elements, but I didn't intend to use iterators for this project
-	LinkedList1<T, keyType> * begin();//returns the first element
-	LinkedList1<T, keyType> * end();//returns the last element
+	
 public:
 	LinkedList1();
 	LinkedList1(const T&, const keyType&);
@@ -32,6 +27,13 @@ public:
 	const T& front() const;
 	T& back();
 	const T& back() const;
+
+
+	//iterator-like functions
+
+	//will always calculate the first or last elements, but I didn't intend to use iterators for this project
+	LinkedList1<T, keyType> * begin();//returns the first element
+	LinkedList1<T, keyType> * end();//returns the last element
 
 
 	//Capacity
