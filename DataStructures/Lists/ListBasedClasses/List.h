@@ -28,6 +28,11 @@ public:
 	const T& front() const;
 	T& back();
 	const T& back() const;
+
+
+	//Capacity
+	bool empty()const;
+
 private:
 	LinkedList1<T, keyType> * m_Beg;
 	LinkedList1<T, keyType> * m_End;
@@ -152,4 +157,10 @@ template<class T, class keyType>
 inline const T & List<T, keyType>::back() const
 {
 	return backOverloadHelper();
+}
+
+template<class T, class keyType>
+inline bool List<T, keyType>::empty() const
+{
+	return this->m_List == nullptr;
 }
