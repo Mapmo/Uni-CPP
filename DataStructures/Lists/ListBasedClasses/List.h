@@ -12,6 +12,7 @@ class List
 	//overload helpers
 	T& frontOverloadHelper();
 	T& backOverloadHelper();
+	void insertOverloadHelper(const keyType&, LinkedList1 < T, keyType>&);
 public:
 	//big 4
 
@@ -37,6 +38,8 @@ public:
 
 	//Modifiers
 	void clear();
+	void insert(const keyType&, LinkedList1 < T, keyType>&);
+	void insert(const keyType&, const T&, const keyType&);
 private:
 	LinkedList1<T, keyType> * m_Beg;
 	LinkedList1<T, keyType> * m_End;
@@ -103,6 +106,21 @@ template<class T, class keyType>
 inline T & List<T, keyType>::backOverloadHelper()
 {
 	return this->m_End->Data();
+}
+
+template<class T, class keyType>
+inline void List<T, keyType>::insertOverloadHelper(const keyType& srKey, LinkedList1<T, keyType>&rhs)
+{
+	this->m_List->insert(srKey, rhs);
+	//the easiest way to check if there is a new ending or beginning
+	if (this->m_Beg->Prev() != nullptr)
+	{
+		this->m_Beg = this->m_Beg->Prev();
+	}
+	else if (this->m_End->Next() != nullptr)
+	{
+		this->m_End = this->m_End->Next();
+	}
 }
 
 template<class T, class keyType>
@@ -189,4 +207,17 @@ inline void List<T, keyType>::clear()
 	this->m_List = nullptr;
 	this->m_Beg = nullptr;
 	this->m_End = nullptr;
+}
+
+template<class T, class keyType>
+inline void List<T, keyType>::insert(const keyType& srKey,LinkedList1<T, keyType>&rhs)
+{
+	insertOverloadHelper(srKey, rhs);
+}
+
+template<class T, class keyType>
+inline void List<T, keyType>::insert(const keyType& srKey, const T & val, const keyType & putKey)
+{
+	LinkedList1<T, keyType> tmp(val, putKey);
+	insert(srKey, tmp);
 }
