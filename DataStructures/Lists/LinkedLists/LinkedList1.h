@@ -9,7 +9,6 @@ class LinkedList1
 	void EraseElement(LinkedList1<T, keyType>*);//after an element is found by eraseOverloadHelper, this will try to delete it
 	LinkedList1<T, keyType> * ChangeCore(LinkedList1<T, keyType>*);//swaps the core with another list if possible and returns if the operation was successful
 	void eraseOverloadHelper(const keyType&);
-
 	
 public:
 	LinkedList1();
@@ -27,6 +26,8 @@ public:
 	const T& front() const;
 	T& back();
 	const T& back() const;
+	LinkedList1<T, keyType> * Next()const;//returns m_Next that can be updated
+	LinkedList1<T, keyType> * Prev()const;//returns m_Prev that can be updated
 
 
 	//iterator-like functions
@@ -58,7 +59,6 @@ public:
 	//Operations
 
 	void reverse();
-
 
 	//non-member functions
 
@@ -261,6 +261,18 @@ template<class T, class keyType>
 inline const T & LinkedList1<T, keyType>::back() const
 {
 	return backOverloadHelper();
+}
+
+template<class T, class keyType>
+inline LinkedList1<T, keyType>* LinkedList1<T, keyType>::Next() const
+{
+	return this->m_Next;
+}
+
+template<class T, class keyType>
+inline LinkedList1<T, keyType>* LinkedList1<T, keyType>::Prev() const
+{
+	return this->m_Prev;
 }
 
 template<class T, class keyType>
