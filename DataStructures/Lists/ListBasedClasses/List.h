@@ -4,13 +4,30 @@
 template <class T, class keyType>
 class List
 {
+	//copy all the memebers of a LinkedList1, into a new LinkedList1
+
 	void CopyListData(const LinkedList1<T, keyType>*);//the function is 20 lines code, but there are a lot of comments
 	void CopyListData(const List<T, keyType>&);
+
+	//overload helpers
+	T& frontOverloadHelper();
+	T& backOverloadHelper();
 public:
+	//big 4
+
 	List();
 	explicit List(const LinkedList1<T, keyType>&);
 	List(const List<T, keyType>&);
+	List<T, keyType> & operator=(const List<T, keyType>&);
 	~List();
+
+
+	//Element Access
+
+	T& front();
+	const T& front() const;
+	T& back();
+	const T& back() const;
 private:
 	LinkedList1<T, keyType> * m_Beg;
 	LinkedList1<T, keyType> * m_End;
@@ -27,14 +44,14 @@ inline void List<T, keyType>::CopyListData(const LinkedList1<T, keyType> * rhs)
 
 	const LinkedList1<T, keyType> * tmp = rhs;//iterates through rhs
 	LinkedList1<T, keyType> * tmp2 = this->m_List;//links the new elements in this
-	LinkedList1<T, keyType> * tmp3 = nullptr;//used for updates, because I cannot directly update the return of the function
+	LinkedList1<T, keyType> * tmp3 = this->m_List;//used for updates, because I cannot directly update the return of the function
 	while (tmp->Prev() != nullptr)
 	{
 		tmp = tmp->Prev();
 
 		//e.g tmp2->m_Prev = new...
 		tmp3 = tmp2->Prev();
-		tmp3= new LinkedList1<T, keyType>(*tmp);
+		tmp3 = new LinkedList1<T, keyType>(*tmp);
 
 		//e.g tmp2->m_Prev->m_Next = tmp2
 		tmp3 = tmp2->Prev()->Next();
@@ -68,6 +85,18 @@ inline void List<T, keyType>::CopyListData(const List<T, keyType>& rhs)
 }
 
 template<class T, class keyType>
+inline T & List<T, keyType>::frontOverloadHelper()
+{
+	return this->m_Beg->Data();
+}
+
+template<class T, class keyType>
+inline T & List<T, keyType>::backOverloadHelper()
+{
+	return this->m_End->Data();
+}
+
+template<class T, class keyType>
 inline List<T, keyType>::List() : m_List(nullptr), m_Beg(nullptr), m_End(nullptr)
 {
 }
@@ -85,7 +114,42 @@ inline List<T, keyType>::List(const List<T, keyType>& rhs)
 }
 
 template<class T, class keyType>
+inline List<T, keyType>& List<T, keyType>::operator=(const List<T, keyType>& rhs)
+{
+	if (this != &rhs)
+	{
+		delete this->m_List;
+		CopyListData(rhs);
+	}
+	return *this;
+}
+
+template<class T, class keyType>
 inline List<T, keyType>::~List()
 {
 	delete this->m_List;
+}
+
+template<class T, class keyType>
+inline T & List<T, keyType>::front()
+{
+	return frontOverloadHelper();
+}
+
+template<class T, class keyType>
+inline const T & List<T, keyType>::front() const
+{
+	return frontOverloadHelper();
+}
+
+template<class T, class keyType>
+inline T & List<T, keyType>::back()
+{
+	return backOverloadHelper();
+}
+
+template<class T, class keyType>
+inline const T & List<T, keyType>::back() const
+{
+	return backOverloadHelper();
 }
