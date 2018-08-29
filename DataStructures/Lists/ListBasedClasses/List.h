@@ -33,6 +33,10 @@ public:
 	//Capacity
 	bool empty()const;
 	unsigned int size() const;
+
+
+	//Modifiers
+	void clear();
 private:
 	LinkedList1<T, keyType> * m_Beg;
 	LinkedList1<T, keyType> * m_End;
@@ -176,4 +180,13 @@ inline unsigned int List<T, keyType>::size() const
 		tmp = tmp->Next();
 	}
 	return i;
+}
+
+template<class T, class keyType>
+inline void List<T, keyType>::clear()
+{
+	delete this->m_List;
+	this->m_List = nullptr;
+	this->m_Beg = nullptr;
+	this->m_End = nullptr;
 }
