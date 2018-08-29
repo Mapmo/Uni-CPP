@@ -26,9 +26,12 @@ public:
 	const T& front() const;
 	T& back();
 	const T& back() const;
-	LinkedList1<T, keyType> * Next()const;//returns m_Next that can be updated
-	LinkedList1<T, keyType> * Prev()const;//returns m_Prev that can be updated
-
+	LinkedList1<T, keyType> * Next();//returns m_Next that can be updated
+	LinkedList1<T, keyType> * Prev();//returns m_Prev that can be updated
+	const LinkedList1<T, keyType> * Next()const;//returns m_Next that cant be updated
+	const LinkedList1<T, keyType> * Prev()const;//returns m_Prev that cant be updated
+	T& Data();
+	const T& Data()const;
 
 	//iterator-like functions
 
@@ -264,15 +267,39 @@ inline const T & LinkedList1<T, keyType>::back() const
 }
 
 template<class T, class keyType>
-inline LinkedList1<T, keyType>* LinkedList1<T, keyType>::Next() const
+inline LinkedList1<T, keyType>* LinkedList1<T, keyType>::Next()
 {
 	return this->m_Next;
 }
 
 template<class T, class keyType>
-inline LinkedList1<T, keyType>* LinkedList1<T, keyType>::Prev() const
+inline LinkedList1<T, keyType>* LinkedList1<T, keyType>::Prev()
 {
 	return this->m_Prev;
+}
+
+template<class T, class keyType>
+inline const LinkedList1<T, keyType>* LinkedList1<T, keyType>::Next() const
+{
+	return this->m_Next;
+}
+
+template<class T, class keyType>
+inline const LinkedList1<T, keyType>* LinkedList1<T, keyType>::Prev() const
+{
+	return this->m_Prev;
+}
+
+template<class T, class keyType>
+inline T & LinkedList1<T, keyType>::Data()
+{
+	return this->m_Data;
+}
+
+template<class T, class keyType>
+inline const T & LinkedList1<T, keyType>::Data() const
+{
+	return this->m_Data;
 }
 
 template<class T, class keyType>
