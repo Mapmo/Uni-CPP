@@ -32,7 +32,7 @@ public:
 
 	//Capacity
 	bool empty()const;
-
+	unsigned int size() const;
 private:
 	LinkedList1<T, keyType> * m_Beg;
 	LinkedList1<T, keyType> * m_End;
@@ -163,4 +163,17 @@ template<class T, class keyType>
 inline bool List<T, keyType>::empty() const
 {
 	return this->m_List == nullptr;
+}
+
+template<class T, class keyType>
+inline unsigned int List<T, keyType>::size() const
+{
+	unsigned int i = 1;
+	LinkedList1<T, keyType> * tmp = this->m_Beg;
+	while (tmp != m_End)
+	{
+		++i;
+		tmp = tmp->Next();
+	}
+	return i;
 }
