@@ -22,6 +22,7 @@ class BinarySearchTree2
 
 	//OverloadHelpers
 	T& GetByKeyOverloadHelper(const int);
+	Branch<T>* FindBranchOverloadHelper(const int);
 public:
 	//Essentials
 
@@ -32,6 +33,10 @@ public:
 	//Element Access
 	T& GetByKey(const int);
 	const T& GetByKey(const int)const;
+	Branch<T> * FindBranch(const int);//returns nullptr if element was not found
+	const Branch<T> * FindBranch(const int)const;
+
+
 private:
 	Branch<T> * m_Root;
 };
@@ -53,28 +58,42 @@ inline T & BinarySearchTree2<T>::GetByKeyOverloadHelper(const int numb)
 {
 	try
 	{
-		Branch<T> * tmp = this->m_Root;
-		while (tmp != nullptr)
+		Branch<T> * tmp = FindBranch(numb);
+		if (tmp == nullptr)
 		{
-			if (tmp->key == numb)
-			{
-				return tmp->val;
-			}
-			else if (tmp->key > numb)
-			{
-				tmp = tmp->left;
-			}
-			else
-			{
-				tmp = tmp->right;
-			}
-		}
 		throw std::invalid_argument("no element with such a key found\n");
+		}
+		else
+		{
+			return tmp->val;
+		}
 	}
 	catch (std::invalid_argument& ia)
 	{
 		std::cerr << "GetByKey() threw an exception: " << ia.what();
 	}
+}
+
+template<class T>
+inline Branch<T>* BinarySearchTree2<T>::FindBranchOverloadHelper(const int numb)
+{
+	Branch<T> * tmp = this->m_Root;
+	while (tmp != nullptr)
+	{
+		if (tmp->key == numb)
+		{
+			return tmp;
+		}
+		else if (tmp->key > numb)
+		{
+			tmp = tmp->left;
+		}
+		else
+		{
+			tmp = tmp->right;
+		}
+	}
+	return tmp;
 }
 
 template<class T>
@@ -99,3 +118,16 @@ inline const T & BinarySearchTree2<T>::GetByKey(const int numb) const
 {
 	return GetByKeyOverloadHelper(numb);
 }
+
+template<class T>
+inline Branch<T>* BinarySearchTree2<T>::FindBranch(const int numb)
+{
+	return FindBranchOverloadHelper(numb);
+}
+
+template<class T>
+inline const Branch<T>* BinarySearchTree2<T>::FindBranch(const int numb) const
+{
+	return FindBranchOverloadHelper(numb);
+}
+
