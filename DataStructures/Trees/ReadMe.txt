@@ -1,1 +1,3 @@
-This is an implementation of a simple Binary Search Tree, to make it simpler and more clear, the key type is int and there is no guarantee that the tree will be even close to balanced and there are no copy costructor and operator =. 
+BinarySearchTree - a simple implementation of a binary search tree, to make it simpler and more clear, the key type is int and there is no guarantee that the tree will be even close to balanced and there are no copy costructor and operator =, LinkedList2 was specially created for this class
+
+BinarySearchTree2 - a more coplicated version of a binary search tree, that contains a structure - Branch (i chose a structure, because its only role will be to contain data), what really makes BinarySearchTree2 from BinarySearchTree is that Branch contains a pointer to its parent. The purpose of BinarySearchTree is to be a stable parent for my implementation of a red-black tree.
