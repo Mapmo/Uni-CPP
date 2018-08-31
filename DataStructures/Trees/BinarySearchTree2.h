@@ -23,6 +23,7 @@ class BinarySearchTree2
 	//OverloadHelpers
 	T& GetByKeyOverloadHelper(const int);
 	Branch<T>* FindBranchOverloadHelper(const int);
+	Branch<T>* FindBranchParentOverloadHelper(const int);
 public:
 	//Essentials
 
@@ -35,7 +36,8 @@ public:
 	const T& GetByKey(const int)const;
 	Branch<T> * FindBranch(const int);//returns nullptr if element was not found
 	const Branch<T> * FindBranch(const int)const;
-
+	Branch<T> * FindBranchParent(const int);//if it returns nullptr, then the tree is empty or the searched elements is the root
+	const Branch<T> * FindBranchParent(const int)const;
 
 private:
 	Branch<T> * m_Root;
@@ -61,7 +63,7 @@ inline T & BinarySearchTree2<T>::GetByKeyOverloadHelper(const int numb)
 		Branch<T> * tmp = FindBranch(numb);
 		if (tmp == nullptr)
 		{
-		throw std::invalid_argument("no element with such a key found\n");
+			throw std::invalid_argument("no element with such a key found\n");
 		}
 		else
 		{
@@ -77,23 +79,39 @@ inline T & BinarySearchTree2<T>::GetByKeyOverloadHelper(const int numb)
 template<class T>
 inline Branch<T>* BinarySearchTree2<T>::FindBranchOverloadHelper(const int numb)
 {
+	Branch<T> * tmp = FindBranchParentOverloadHelper(numb);//the parent of the searched element
+	if (tmp == nullptr)
+	{
+		return (this->m_Root == nullptr) ? nullptr : this->m_Root;
+	}
+	return (tmp->key > numb) ?tmp->left : tmp->right;
+}
+
+template<class T>
+inline Branch<T>* BinarySearchTree2<T>::FindBranchParentOverloadHelper(const int numb)
+{
 	Branch<T> * tmp = this->m_Root;
+	Branch<T> * tmp2 = nullptr;
 	while (tmp != nullptr)
 	{
 		if (tmp->key == numb)
 		{
-			return tmp;
-		}
-		else if (tmp->key > numb)
-		{
-			tmp = tmp->left;
+			return tmp2;
 		}
 		else
 		{
-			tmp = tmp->right;
+			tmp2 = tmp;
+			if (tmp->key > numb)
+			{
+				tmp = tmp->left;
+			}
+			else
+			{
+				tmp = tmp->right;
+			}
 		}
 	}
-	return tmp;
+	return tmp2;
 }
 
 template<class T>
@@ -129,5 +147,17 @@ template<class T>
 inline const Branch<T>* BinarySearchTree2<T>::FindBranch(const int numb) const
 {
 	return FindBranchOverloadHelper(numb);
+}
+
+template<class T>
+inline Branch<T>* BinarySearchTree2<T>::FindBranchParent(const int numb)
+{
+	return FindBranchParentOverloadHelper(numb);
+}
+
+template<class T>
+inline const Branch<T>* BinarySearchTree2<T>::FindBranchParent(const int) const
+{
+	return FindBranchParentOverloadHelper(numb);
 }
 
