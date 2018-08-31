@@ -21,9 +21,16 @@ class BinarySearchTree2
 	const BinarySearchTree2<T>& operator=(const BinarySearchTree2&) = delete;
 
 	//OverloadHelpers
+
 	T& GetByKeyOverloadHelper(const int);
 	Branch<T>* FindBranchOverloadHelper(const int);
 	Branch<T>* FindBranchParentOverloadHelper(const int);
+	Branch<T>*GetChildOverloadHelper(const bool, const Branch<T>*);
+
+
+	//others
+	Branch<T>*GetChild(const bool, const Branch<T>*);//if true returns right child
+	const Branch<T>*GetChild(const bool, const Branch<T>*)const;
 public:
 	//Essentials
 
@@ -39,6 +46,9 @@ public:
 	Branch<T> * FindBranchParent(const int);//if it returns nullptr, then the tree is empty or the searched elements is the root
 	const Branch<T> * FindBranchParent(const int)const;
 
+	//Modifiers
+	virtual void insert(const int, const T&);
+	virtual void insert(const Branch<T>&);
 private:
 	Branch<T> * m_Root;
 };
@@ -115,6 +125,24 @@ inline Branch<T>* BinarySearchTree2<T>::FindBranchParentOverloadHelper(const int
 }
 
 template<class T>
+inline Branch<T>* BinarySearchTree2<T>::GetChildOverloadHelper(const bool r, const Branch<T>* rhs)
+{
+	return r?rhs->right:rhs->left;
+}
+
+template<class T>
+inline Branch<T>* BinarySearchTree2<T>::GetChild(const bool r, const Branch<T>* rhs)
+{
+	return GetChildOverloadHelper(r, rhs);
+}
+
+template<class T>
+inline const Branch<T>* BinarySearchTree2<T>::GetChild(const bool r, const Branch<T>* rhs) const
+{
+	return GetChildOverloadHelper(r, rhs);
+}
+
+template<class T>
 inline BinarySearchTree2<T>::BinarySearchTree2(const int k, const T & v) : m_Root(new Branch<T>(k, v))
 {
 }
@@ -161,3 +189,37 @@ inline const Branch<T>* BinarySearchTree2<T>::FindBranchParent(const int) const
 	return FindBranchParentOverloadHelper(numb);
 }
 
+template<class T>
+inline void BinarySearchTree2<T>::insert(const int numb, const T & val)
+{
+	if (this->m_Root == nullptr)
+	{
+		this->m_Root = new Branch<T>(numb, val);
+	}
+	else
+	{
+		Branch<T> * tmp = FindBranchParent(numb);
+		bool isRight = tmp->key < numb;
+		if (GetChild(isRight, tmp) != nullptr)
+		{
+			std::cerr << "Operation insert failed, because there is already an element with such a key\n";
+		}
+		else
+		{
+			if (numb > tmp->key)
+			{
+				tmp->right = new Branch<T>(numb, val, tmp);
+			}
+			else
+			{
+				tmp->left = new Branch<T>(numb, val, tmp);
+			}
+		}
+	}
+}
+
+template<class T>
+inline void BinarySearchTree2<T>::insert(const Branch<T>&rhs)
+{
+	insert(rhs.key, rhs.val);
+}
