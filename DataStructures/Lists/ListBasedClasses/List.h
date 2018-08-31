@@ -40,6 +40,7 @@ public:
 	void clear();
 	void insert(const keyType&, LinkedList1 < T, keyType>&);
 	void insert(const keyType&, const T&, const keyType&);
+	void erase(const keyType&);
 private:
 	LinkedList1<T, keyType> * m_Beg;
 	LinkedList1<T, keyType> * m_End;
@@ -210,7 +211,7 @@ inline void List<T, keyType>::clear()
 }
 
 template<class T, class keyType>
-inline void List<T, keyType>::insert(const keyType& srKey,LinkedList1<T, keyType>&rhs)
+inline void List<T, keyType>::insert(const keyType& srKey, LinkedList1<T, keyType>&rhs)
 {
 	insertOverloadHelper(srKey, rhs);
 }
@@ -220,4 +221,47 @@ inline void List<T, keyType>::insert(const keyType& srKey, const T & val, const 
 {
 	LinkedList1<T, keyType> tmp(val, putKey);
 	insert(srKey, tmp);
+}
+
+template<class T, class keyType>
+inline void List<T, keyType>::erase(const keyType &numb)
+{
+	if (!empty())
+	{
+		if (size() == 1 && this->m_List->Key() == numb)
+		{
+			delete this->m_List;
+		}
+		else
+		{
+			//these checks are required to change m_Beg or m_End if needed, without having to call LinkedList1::begin() and end(), because they are very slow operations
+			if (numb == this->m_Beg->Key())
+			{
+				if (this->m_Beg != this->m_List)
+				{
+					this->m_Beg = this->m_Beg->Next();
+				}
+				else if (this->m_End->Prev() == this->m_List)//if this is true, then m_End will get erased instead of m_List
+				{
+					this->m_End = this->m_List;
+				}
+			}
+			else if (numb == this->m_End->Key())
+			{
+				if (this->m_End != this->m_List)
+				{
+					this->m_End = this->m_End->Prev();
+				}
+				else if (this->m_Beg->Next() == this->m_List)//if this is true, then m_Beg will get erased instead of m_List
+				{
+					this->m_Beg = this->m_List;
+				}
+			}
+			this->m_List->erase(numb);
+		}
+	}
+	else
+	{
+		std::cerr << "Element not found\n";
+	}
 }
