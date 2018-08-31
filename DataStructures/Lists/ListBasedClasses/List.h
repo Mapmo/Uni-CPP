@@ -304,3 +304,18 @@ inline void List<T, keyType>::push_back(const T & val, const keyType & numb)
 	LinkedList1<T, keyType> tmp(val, numb);
 	push_back(tmp);
 }
+
+template<class T, class keyType>
+inline void List<T, keyType>::push_front(LinkedList1<T, keyType>& rhs)
+{
+	this->m_Beg->push_front(rhs);
+	LinkedList1<T, keyType> * tmp = this->m_Beg->Prev();
+	this->m_Beg = tmp;
+}
+
+template<class T, class keyType>
+inline void List<T, keyType>::push_front(const T & val, const keyType & numb)
+{
+	LinkedList1<T, keyType> tmp(val, numb);
+	push_front(tmp);
+}
