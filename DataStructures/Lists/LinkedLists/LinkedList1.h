@@ -32,6 +32,7 @@ public:
 	const LinkedList1<T, keyType> * Prev()const;//returns m_Prev that cant be updated
 	T& Data();
 	const T& Data()const;
+	const keyType& Key()const;
 
 	//iterator-like functions
 
@@ -300,6 +301,12 @@ template<class T, class keyType>
 inline const T & LinkedList1<T, keyType>::Data() const
 {
 	return this->m_Data;
+}
+
+template<class T, class keyType>
+inline const keyType & LinkedList1<T, keyType>::Key() const
+{
+	return this->m_Key;
 }
 
 template<class T, class keyType>
