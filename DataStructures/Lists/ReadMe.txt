@@ -2,6 +2,6 @@ These are implementations of a Linked List, I wanted to experiment with as many 
 
 -Linear Lists(Linked List that can only go one way - forward):
 -LinkedLists
--List Based Classes(data structures based on lists)
+-List Based Classes(data structures based on lists, including some std::list implementations)
 
 For more secific info visit the directories.

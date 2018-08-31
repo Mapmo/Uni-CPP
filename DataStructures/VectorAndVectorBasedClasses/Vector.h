@@ -75,7 +75,7 @@ protected:
 	//functions
 
 	void AdaptSize(const unsigned int);
-	void CalculateMaxSize();
+	unsigned int CalculateMaxSize()const;
 	void ConstructorAlloc();
 	bool Resize(const bool);
 
@@ -84,20 +84,18 @@ protected:
 	unsigned int m_Size;
 	T * m_Data;
 private:
-	unsigned int m_MaxSize;
+	unsigned int m_MAX_SIZE;
 };
 
 template<class T>
-inline Vector<T>::Vector() : m_Counter(0)
+inline Vector<T>::Vector() : m_Counter(0), m_MAX_SIZE(CalculateMaxSize())
 {
-	CalculateMaxSize();
 	ConstructorAlloc();
 }
 
 template<class T>
-inline Vector<T>::Vector(const int repeat, const T& data) : m_Counter(repeat)
+inline Vector<T>::Vector(const int repeat, const T& data) : m_Counter(repeat), m_MAX_SIZE(CalculateMaxSize())
 {
-	CalculateMaxSize();
 	ConstructorAlloc();
 
 	for (unsigned int i = 0; i < repeat; ++i)
@@ -107,9 +105,8 @@ inline Vector<T>::Vector(const int repeat, const T& data) : m_Counter(repeat)
 }
 
 template<class T>
-inline Vector<T>::Vector(const Vector<T> & rhs) : m_Counter(rhs.m_Counter)
+inline Vector<T>::Vector(const Vector<T> & rhs) : m_Counter(rhs.m_Counter), m_MAX_SIZE(rhs.m_MAX_SIZE)
 {
-	CalculateMaxSize();
 	ConstructorAlloc();
 	for (unsigned int i = 0; i < rhs.m_Counter; ++i)
 	{
@@ -172,7 +169,7 @@ inline bool Vector<T>::empty() const noexcept
 template<class T>
 inline bool Vector<T>::full() const noexcept
 {
-	return this->m_Counter == this->m_MaxSize;
+	return this->m_Counter == this->m_MAX_SIZE;
 }
 
 template<class T>
@@ -184,7 +181,7 @@ inline unsigned int Vector<T>::size() const noexcept
 template<class T>
 inline unsigned int Vector<T>::max_size() const noexcept
 {
-	return this->m_MaxSize;
+	return this->m_MAX_SIZE;
 }
 
 template<class T>
@@ -415,30 +412,30 @@ inline void Vector<T>::AdaptSize(const unsigned int numb)
 	{
 		this->m_Size = 2;
 	}
-	else if (numb <= this->m_MaxSize / 2)
+	else if (numb <= this->m_MAX_SIZE / 2)
 	{
 		this->m_Size = FindClosestPowerOf2toNumber(numb) * 2;
 	}
-	else if (numb <= this->m_MaxSize)
+	else if (numb <= this->m_MAX_SIZE)
 	{
 		this->m_Size = FindClosestPowerOf2toNumber(numb);
 	}
 	else
 	{
-		this->m_Size = m_MaxSize + 1;//exception will be handled by ConstructorAlloc
+		this->m_Size = m_MAX_SIZE + 1;//exception will be handled by ConstructorAlloc
 	}
 }
 
 template<class T>
-inline void Vector<T>::CalculateMaxSize()
+inline unsigned int Vector<T>::CalculateMaxSize()const
 {
-	this->m_MaxSize = FindClosestPowerOf2toNumber(MAXBYTES / sizeof(T));
+	return FindClosestPowerOf2toNumber(MAXBYTES / sizeof(T));
 }
 
 template<class T>
 inline bool Vector<T>::Resize(const bool rhs)
 {
-	(rhs && this->m_Size < this->m_MaxSize) ? this->m_Size *= 2 : this->m_Size /= 2;
+	(rhs && this->m_Size < this->m_MAX_SIZE) ? this->m_Size *= 2 : this->m_Size /= 2;
 	T* temp;
 	try
 	{
@@ -465,7 +462,7 @@ inline void Vector<T>::ConstructorAlloc()
 	AdaptSize(this->m_Counter);
 	try
 	{
-		if (this->m_Size > this->m_MaxSize)
+		if (this->m_Size > this->m_MAX_SIZE)
 		{
 			std::cout << "Vector cannot handle such a big array\n";
 			throw std::bad_alloc();
