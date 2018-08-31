@@ -186,7 +186,7 @@ inline LinkedList1<T, keyType>* LinkedList1<T, keyType>::end()
 	LinkedList1<T, keyType> * rightBorder = this;
 	while (rightBorder->m_Next != nullptr)
 	{
-		rightBorder = rightBorder->m_Prev;
+		rightBorder = rightBorder->m_Next;
 	}
 	return rightBorder;
 }

@@ -37,6 +37,7 @@ public:
 
 
 	//Modifiers
+
 	void clear();
 	void insert(const keyType&, LinkedList1 < T, keyType>&);
 	void insert(const keyType&, const T&, const keyType&);
@@ -47,6 +48,11 @@ public:
 	void push_back(const T&, const keyType&);
 	void push_front(LinkedList1<T, keyType>&);
 	void push_front(const T&, const keyType&);
+
+
+	//Operations
+
+	void reverse();
 private:
 	LinkedList1<T, keyType> * m_Beg;
 	LinkedList1<T, keyType> * m_End;
@@ -318,4 +324,10 @@ inline void List<T, keyType>::push_front(const T & val, const keyType & numb)
 {
 	LinkedList1<T, keyType> tmp(val, numb);
 	push_front(tmp);
+}
+
+template<class T, class keyType>
+inline void List<T, keyType>::reverse()
+{
+	this->m_List->reverse();
 }
