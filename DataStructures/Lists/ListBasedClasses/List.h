@@ -288,3 +288,19 @@ inline void List<T, keyType>::pop_front()
 	}
 	this->m_List->pop_front();
 }
+
+template<class T, class keyType>
+inline void List<T, keyType>::push_back(LinkedList1<T, keyType>& rhs)
+{
+	//i use the in-built push_back() functions for LinkedList1 on m_End, in order to save time from end()
+	this->m_End->push_back(rhs);
+	LinkedList1<T, keyType> * tmp = this->m_End->Next();
+	this->m_End = tmp;
+}
+
+template<class T, class keyType>
+inline void List<T, keyType>::push_back(const T & val, const keyType & numb)
+{
+	LinkedList1<T, keyType> tmp(val, numb);
+	push_back(tmp);
+}
