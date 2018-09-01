@@ -30,17 +30,23 @@ class BinarySearchTree
 
 
 	//functions related to erase
+
 	void SimpleErase(Branch<T>*);//simple erase means that at least one of the children of the branch is nullptr
 	void SimpleEraseRoot();
 	void SimpleEraseLeftSlip(const bool, Branch<T>*);//means that the left child is not nullptr
 	void SimpleEraseRightSlip(const bool, Branch<T>*);//means that the left child is not nullptr
-
 	void ComplicatedErase(Branch<T>*);//complicated erase means that both children of the branch are not nullptr
-									  
+
+
 	//others
+
 	Branch<T>*GetChild(const bool, const Branch<T>*);//if true returns right child
 	const Branch<T>*GetChild(const bool, const Branch<T>*)const;
 	Branch<T> * FindBiggestLeftChild(Branch<T>*);//returns the biggest child of the ->left branch of the param
+
+protected:
+	void RotateRight(Branch<T>*);//the param is the first element that is going to be rotated
+	void RotateLeft(Branch<T>*);//the param is the first element that is going to be rotated
 public:
 	//Essentials
 
@@ -158,7 +164,7 @@ inline void BinarySearchTree<T>::SimpleErase(Branch<T>*rhs)
 	else
 	{
 		bool isRightChild = rhs == rhs->parent->right;
-		 if (rhs->left != nullptr)
+		if (rhs->left != nullptr)
 		{
 			SimpleEraseLeftSlip(isRightChild, rhs);
 		}
@@ -247,6 +253,60 @@ inline Branch<T>* BinarySearchTree<T>::FindBiggestLeftChild(Branch<T> * rhs)
 		tmp = tmp->right;
 	}
 	return tmp;
+}
+
+template<class T>
+inline void BinarySearchTree<T>::RotateRight(Branch<T>* rhs)
+{
+	Branch<T>*eldest = rhs->parent;//the original parent of rhs has a very important role, using this to reduce code complexity
+	rhs->parent = rhs->left;
+	rhs->parent->parent = eldest;
+	if (eldest != nullptr)
+	{
+		if (eldest->right == rhs)
+		{
+			eldest->right = rhs->parent;
+		}
+		else
+		{
+			eldest->left = rhs->parent;
+		}
+	}
+	else
+	{
+		this->m_Root = rhs->parent;
+	}
+	Branch<T>* tmp = rhs->parent->right;
+	rhs->parent->right = rhs;
+	rhs->left = tmp;
+	tmp->parent = rhs;
+}
+
+template<class T>
+inline void BinarySearchTree<T>::RotateLeft(Branch<T>*)
+{
+	Branch<T>*eldest = rhs->parent;//the original parent of rhs has a very important role, using this to reduce code complexity
+	rhs->parent = rhs->right;
+	rhs->parent->parent = eldest;
+	if (eldest != nullptr)
+	{
+		if (eldest->right == rhs)
+		{
+			eldest->right = rhs->parent;
+		}
+		else
+		{
+			eldest->left = rhs->parent;
+		}
+	}
+	else
+	{
+		this->m_Root = rhs->parent;
+	}
+	Branch<T>* tmp = rhs->parent->left;
+	rhs->parent->left = rhs;
+	rhs->right = tmp;
+	tmp->parent = rhs;
 }
 
 template<class T>
