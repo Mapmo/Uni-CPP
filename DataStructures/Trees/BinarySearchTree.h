@@ -32,12 +32,15 @@ class BinarySearchTree
 	//functions related to erase
 	void SimpleErase(Branch<T>*);//simple erase means that at least one of the children of the branch is nullptr
 	void SimpleEraseRoot();
-	void SimpleEraseLeftSlip(const bool, Branch<T>* rhs);//means that the left child is not nullptr
-	void SimpleEraseRightSlip(const bool, Branch<T>* rhs);//means that the left child is not nullptr
+	void SimpleEraseLeftSlip(const bool, Branch<T>*);//means that the left child is not nullptr
+	void SimpleEraseRightSlip(const bool, Branch<T>*);//means that the left child is not nullptr
 
+	void ComplicatedErase(Branch<T>*);//complicated erase means that both children of the branch are not nullptr
+									  
 	//others
 	Branch<T>*GetChild(const bool, const Branch<T>*);//if true returns right child
 	const Branch<T>*GetChild(const bool, const Branch<T>*)const;
+	Branch<T> * FindBiggestLeftChild(Branch<T>*);//returns the biggest child of the ->left branch of the param
 public:
 	//Essentials
 
@@ -154,7 +157,7 @@ inline void BinarySearchTree<T>::SimpleErase(Branch<T>*rhs)
 	}
 	else
 	{
-		bool isRightChild = rhs->key > rhs->parent->key;
+		bool isRightChild = rhs == rhs->parent->right;
 		 if (rhs->left != nullptr)
 		{
 			SimpleEraseLeftSlip(isRightChild, rhs);
@@ -216,6 +219,14 @@ inline void BinarySearchTree<T>::SimpleEraseRightSlip(const bool isRightChild, B
 }
 
 template<class T>
+inline void BinarySearchTree<T>::ComplicatedErase(Branch<T>* rhs)
+{
+	Branch<T>* biggestLeftChild = FindBiggestLeftChild(rhs);
+	rhs->swap(biggestLeftChild);
+	SimpleErase(biggestLeftChild);
+}
+
+template<class T>
 inline Branch<T>* BinarySearchTree<T>::GetChild(const bool r, const Branch<T>* rhs)
 {
 	return GetChildOverloadHelper(r, rhs);
@@ -225,6 +236,17 @@ template<class T>
 inline const Branch<T>* BinarySearchTree<T>::GetChild(const bool r, const Branch<T>* rhs) const
 {
 	return GetChildOverloadHelper(r, rhs);
+}
+
+template<class T>
+inline Branch<T>* BinarySearchTree<T>::FindBiggestLeftChild(Branch<T> * rhs)
+{
+	Branch<T> * tmp = rhs->left;
+	while (tmp->right != nullptr)
+	{
+		tmp = tmp->right;
+	}
+	return tmp;
 }
 
 template<class T>
@@ -321,7 +343,7 @@ inline void BinarySearchTree<T>::erase(const int numb)
 		}
 		else
 		{
-			//ComplicatedErase(tmp);
+			ComplicatedErase(tmp);
 		}
 	}
 }
