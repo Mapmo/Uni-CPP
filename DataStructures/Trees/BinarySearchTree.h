@@ -8,7 +8,7 @@ struct Branch
 	void swap(Branch<T>*);
 	bool isRightChild()const;
 	int key;
-	bool isRed;//not used in BinarySearchTree
+	bool isRed = false;//not used in BinarySearchTree
 	T val;
 
 	Branch<T> * left;
@@ -19,6 +19,7 @@ struct Branch
 template <class T>
 class BinarySearchTree
 {
+protected:
 	BinarySearchTree(const BinarySearchTree&) = delete;
 	const BinarySearchTree<T>& operator=(const BinarySearchTree&) = delete;
 
@@ -46,7 +47,6 @@ class BinarySearchTree
 	const Branch<T>*GetChild(const bool, const Branch<T>*)const;
 	Branch<T> * FindBiggestLeftChild(Branch<T>*);//returns the biggest child of the ->left branch of the param
 
-protected:
 	void RotateRight(Branch<T>*);//the param is the first element that is going to be rotated
 	void RotateLeft(Branch<T>*);//the param is the first element that is going to be rotated
 public:
@@ -68,7 +68,7 @@ public:
 	virtual void insert(const int, const T&);
 	virtual void insert(const Branch<T>&);
 	virtual void erase(const int);
-private:
+protected:
 	Branch<T> * m_Root;
 };
 
