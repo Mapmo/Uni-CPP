@@ -5,11 +5,9 @@ template <class T>
 class RedBlackTree : public BinarySearchTree<T>
 {
 
-	//void erase(const int)override;
 	void InsertBalance(Branch<T>*);//used after insert, therefore it presumes that its param has red color
 	void InsertBalanceBlackUncle(Branch<T>*);
 	void InsertBalanceRedUncle(Branch<T>*, Branch<T>*, Branch<T>*);
-
 public:
 	RedBlackTree(const int = 0, const T & = T());
 
@@ -44,7 +42,7 @@ inline void RedBlackTree<T>::InsertBalance(Branch<T>* x)
 template<class T>
 inline void RedBlackTree<T>::InsertBalanceBlackUncle(Branch<T>*x)
 {
-	if ( x->parent->isRightChild() && x->isRightChild())//rr case
+	if (x->parent->isRightChild() && x->isRightChild())//rr case
 	{
 		x->parent->parent->color = red;
 		x->parent->color = black;
@@ -57,7 +55,7 @@ inline void RedBlackTree<T>::InsertBalanceBlackUncle(Branch<T>*x)
 		BinarySearchTree<T>::RotateRight(x->parent);
 		BinarySearchTree<T>::RotateLeft(x->parent);//x's parent now is his prev grandparent
 	}
-	else if(x->isRightChild())//lr case
+	else if (x->isRightChild())//lr case
 	{
 		x->parent->parent->color = red;
 		x->color = black;
@@ -79,8 +77,8 @@ inline void RedBlackTree<T>::InsertBalanceRedUncle(Branch<T>*x, Branch<T>*grandp
 	uncle->color = black;
 	if (grandparent != this->m_Root)
 	{
-	grandparent->color = red;
-	InsertBalance(grandparent);
+		grandparent->color = red;
+		InsertBalance(grandparent);
 	}
 }
 
@@ -127,3 +125,4 @@ inline void RedBlackTree<T>::insert(const Branch<T>& rhs)
 {
 	insert(rhs.key, rhs.val);
 }
+

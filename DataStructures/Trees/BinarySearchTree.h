@@ -44,7 +44,7 @@ protected:
 	void ComplicatedErase(Branch<T>*);//complicated erase means that both children of the branch are not nullptr
 
 
-	//others
+   //others
 
 	Branch<T>*GetChild(const bool, const Branch<T>*);//if true returns right child
 	const Branch<T>*GetChild(const bool, const Branch<T>*)const;
@@ -70,7 +70,7 @@ public:
 	//Modifiers
 	virtual void insert(const int, const T&);
 	virtual void insert(const Branch<T>&);
-	virtual void erase(const int);
+	void erase(const int);
 protected:
 	Branch<T> * m_Root;
 };
@@ -184,18 +184,17 @@ inline void BinarySearchTree<T>::SimpleErase(Branch<T>*rhs)
 	}
 	else
 	{
-		bool isRightChild = rhs == rhs->parent->right;
 		if (rhs->left != nullptr)
 		{
-			SimpleEraseLeftSlip(isRightChild, rhs);
+			SimpleEraseLeftSlip(rhs->isRightChild(), rhs);
 		}
 		else if (rhs->right != nullptr)
 		{
-			SimpleEraseRightSlip(isRightChild, rhs);
+			SimpleEraseRightSlip(rhs->isRightChild(), rhs);
 		}
 		else
 		{
-			isRightChild ? rhs->parent->right = nullptr : rhs->parent->left = nullptr;
+			rhs->isRightChild() ? rhs->parent->right = nullptr : rhs->parent->left = nullptr;
 			delete rhs;
 		}
 	}
@@ -284,7 +283,7 @@ inline void BinarySearchTree<T>::RotateRight(Branch<T>* rhs)
 	rhs->parent->parent = eldest;
 	if (eldest != nullptr)
 	{
-		eldest->right == rhs  ? eldest->right = rhs->parent : eldest->left = rhs->parent;
+		eldest->right == rhs ? eldest->right = rhs->parent : eldest->left = rhs->parent;
 	}
 	else
 	{
