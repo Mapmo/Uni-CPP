@@ -8,6 +8,7 @@ struct Branch
 	void swap(Branch<T>*);
 	bool isRightChild()const;
 	int key;
+	bool isRed;//not used in BinarySearchTree
 	T val;
 
 	Branch<T> * left;
