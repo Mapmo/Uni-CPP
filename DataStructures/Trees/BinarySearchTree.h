@@ -1,11 +1,12 @@
 #pragma once
-
+#include <functional>//used for throw bad_function_call()
 template <class T>
 struct Branch
 {
 	Branch(const int = 0, const T& = T(), Branch<T>* = nullptr);
 	~Branch();
 	void swap(Branch<T>*);
+	bool isRightChild()const;
 	int key;
 	T val;
 
@@ -87,6 +88,22 @@ inline void Branch<T>::swap(Branch<T>*rhs)
 {
 	std::swap(key, rhs->key);
 	std::swap(val, rhs->val);
+}
+
+template<class T>
+inline bool Branch<T>::isRightChild()const
+{
+	try
+	{
+		if (parent != nullptr)
+			return this == this->parent->right;
+		else
+			throw std::bad_function_call("trying to find the parent of the root\n");
+	}
+	catch (std::bad_function_call &bfc)
+	{
+		std::cerr << "bad_function_call exception thrown: " << bfc.what();
+	}
 }
 
 template<class T>
@@ -263,14 +280,7 @@ inline void BinarySearchTree<T>::RotateRight(Branch<T>* rhs)
 	rhs->parent->parent = eldest;
 	if (eldest != nullptr)
 	{
-		if (eldest->right == rhs)
-		{
-			eldest->right = rhs->parent;
-		}
-		else
-		{
-			eldest->left = rhs->parent;
-		}
+		rhs->isRightChild() ? eldest->right = rhs->parent : eldest->left = rhs->parent;
 	}
 	else
 	{
@@ -283,21 +293,14 @@ inline void BinarySearchTree<T>::RotateRight(Branch<T>* rhs)
 }
 
 template<class T>
-inline void BinarySearchTree<T>::RotateLeft(Branch<T>*)
+inline void BinarySearchTree<T>::RotateLeft(Branch<T>*rhs)
 {
 	Branch<T>*eldest = rhs->parent;//the original parent of rhs has a very important role, using this to reduce code complexity
 	rhs->parent = rhs->right;
 	rhs->parent->parent = eldest;
 	if (eldest != nullptr)
 	{
-		if (eldest->right == rhs)
-		{
-			eldest->right = rhs->parent;
-		}
-		else
-		{
-			eldest->left = rhs->parent;
-		}
+		rhs->isRightChild() ? eldest->right = rhs->parent : eldest->left = rhs->parent;
 	}
 	else
 	{
