@@ -1,5 +1,8 @@
 #pragma once
 #include <functional>//used for throw bad_function_call()
+
+enum Color{doubleBlack = -1, black=0, red=1};
+
 template <class T>
 struct Branch
 {
@@ -8,7 +11,7 @@ struct Branch
 	void swap(Branch<T>*);
 	bool isRightChild()const;
 	int key;
-	bool isRed = false;//not used in BinarySearchTree
+	Color color = red;//not used in BinarySearchTree
 	T val;
 
 	Branch<T> * left;

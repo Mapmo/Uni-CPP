@@ -17,6 +17,7 @@ public:
 template<class T>
 inline RedBlackTree<T>::RedBlackTree(const int numb, const T &val) : BinarySearchTree<T>(numb, val)
 {
+	this->m_Root->color = black;
 }
 
 template<class T>
@@ -25,6 +26,7 @@ inline void RedBlackTree<T>::insert(const int numb, const T & val)
 	if (this->m_Root == nullptr)
 	{
 		this->m_Root = new Branch<T>(numb, val);
+		this->m_Root->color = black;//rule number 1 root is always black
 	}
 	else
 	{
@@ -39,13 +41,11 @@ inline void RedBlackTree<T>::insert(const int numb, const T & val)
 			if (isRight)
 			{
 				tmp->right = new Branch<T>(numb, val, tmp);
-				tmp->right->isRed = true;
 				//Balance(tmp->right);
 			}
 			else
 			{
 				tmp->left = new Branch<T>(numb, val, tmp);
-				tmp->left->isRed = true;
 				//Balance(tmp->left);
 			}
 		}
