@@ -1,7 +1,7 @@
 #pragma once
 #include <functional>//used for throw bad_function_call()
 
-enum Color{doubleBlack = -1, black=0, red=1};
+enum Color { doubleBlack = -1, black = 0, red = 1 };
 
 template <class T>
 struct Branch
@@ -102,11 +102,11 @@ inline bool Branch<T>::isRightChild()const
 		if (parent != nullptr)
 			return this == this->parent->right;
 		else
-			throw std::bad_function_call("trying to find the parent of the root\n");
+			throw std::bad_function_call();
 	}
 	catch (std::bad_function_call &bfc)
 	{
-		std::cerr << "bad_function_call exception thrown: " << bfc.what();
+		std::cerr << "bad_function_call exception thrown: (trying to find the parent of the root\n";
 	}
 }
 
@@ -284,7 +284,7 @@ inline void BinarySearchTree<T>::RotateRight(Branch<T>* rhs)
 	rhs->parent->parent = eldest;
 	if (eldest != nullptr)
 	{
-		rhs->isRightChild() ? eldest->right = rhs->parent : eldest->left = rhs->parent;
+		eldest->right == rhs  ? eldest->right = rhs->parent : eldest->left = rhs->parent;
 	}
 	else
 	{
@@ -293,9 +293,11 @@ inline void BinarySearchTree<T>::RotateRight(Branch<T>* rhs)
 	Branch<T>* tmp = rhs->parent->right;
 	rhs->parent->right = rhs;
 	rhs->left = tmp;
-	tmp->parent = rhs;
+	if (tmp != nullptr)
+	{
+		tmp->parent = rhs;
+	}
 }
-
 template<class T>
 inline void BinarySearchTree<T>::RotateLeft(Branch<T>*rhs)
 {
@@ -304,7 +306,7 @@ inline void BinarySearchTree<T>::RotateLeft(Branch<T>*rhs)
 	rhs->parent->parent = eldest;
 	if (eldest != nullptr)
 	{
-		rhs->isRightChild() ? eldest->right = rhs->parent : eldest->left = rhs->parent;
+		eldest->right == rhs ? eldest->right = rhs->parent : eldest->left = rhs->parent;
 	}
 	else
 	{
@@ -313,7 +315,10 @@ inline void BinarySearchTree<T>::RotateLeft(Branch<T>*rhs)
 	Branch<T>* tmp = rhs->parent->left;
 	rhs->parent->left = rhs;
 	rhs->right = tmp;
-	tmp->parent = rhs;
+	if (tmp != nullptr)
+	{
+		tmp->parent = rhs;
+	}
 }
 
 template<class T>
