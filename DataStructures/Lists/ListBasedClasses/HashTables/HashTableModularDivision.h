@@ -18,8 +18,9 @@ public:
 	explicit HashTableModularDivision(const unsigned int);
 	~HashTableModularDivision();
 
-	void insert(T, keyType);
-	const T& get(keyType);
+	void insert(const T&,const keyType&);
+	const T& get(const keyType&);
+	void erase(const keyType&);
 private:
 	const unsigned int m_Modul;
 	LinkedList1<T, keyType> * m_Collisions;
@@ -37,16 +38,28 @@ inline HashTableModularDivision<T, keyType>::~HashTableModularDivision()
 }
 
 template<class T, class keyType>
-inline void HashTableModularDivision<T, keyType>::insert(T val, keyType key)
+inline void HashTableModularDivision<T, keyType>::insert(const T& val, const keyType& key)
 {
 	LinkedList1<T, keyType> tmp(val, key);
 	this->m_Collisions[FindIndex(key)].push_back(tmp);
 }
 
 template<class T, class keyType>
-inline const T & HashTableModularDivision<T, keyType>::get(keyType key)
+inline const T & HashTableModularDivision<T, keyType>::get(const keyType& key)
 {
 	return this->m_Collisions[FindIndex(key)].at(key);
+}
+
+template<class T, class keyType>
+inline void HashTableModularDivision<T, keyType>::erase(const keyType & key)
+{
+	unsigned int i = FindIndex(key);
+	if (this->m_Collisions[i].empty() && this->m_Collisions[i].Key() == key)
+	{
+		this->m_Collisions[i].Key() = keyType();
+		return;
+	}
+	this->m_Collisions[i].erase(key);
 }
 
 template<class T, class keyType>

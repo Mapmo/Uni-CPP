@@ -35,6 +35,7 @@ public:
 	const LinkedList1<T, keyType> * Prev()const;//returns m_Prev that cant be updated
 	T& Data();
 	const T& Data()const;
+	keyType& Key();
 	const keyType& Key()const;
 
 	//iterator-like functions
@@ -243,7 +244,7 @@ inline LinkedList1<T, keyType>::LinkedList1(const LinkedList1<T, keyType> & rhs)
 }
 
 template<class T, class keyType>
-inline LinkedList1<T, keyType>& LinkedList1<T, keyType>::operator=(const LinkedList1<T, keyType>&)
+inline LinkedList1<T, keyType>& LinkedList1<T, keyType>::operator=(const LinkedList1<T, keyType>& rhs)
 {
 	if (this != &rhs)
 	{
@@ -338,6 +339,12 @@ template<class T, class keyType>
 inline const T & LinkedList1<T, keyType>::Data() const
 {
 	return this->m_Data;
+}
+
+template<class T, class keyType>
+inline keyType & LinkedList1<T, keyType>::Key()
+{
+	return this->m_Key;
 }
 
 template<class T, class keyType>
@@ -483,11 +490,18 @@ inline void LinkedList1<T, keyType>::pop_front()
 template<class T, class keyType>
 inline void LinkedList1<T, keyType>::push_back(LinkedList1<T, keyType>& rhs)
 {
+	if (this->m_Key == keyType())
+	{
+		operator=(rhs);
+	}
+	else
+	{
 	LinkedList1<T, keyType> * tmp = end();
-	LinkedList1<T, keyType> * tmp2 = new LinkedList1<T, keyType>(rhs);
+	LinkedList1<T, keyType> * tmp2 = new LinkedList1<T, keyType>(rhs);	
 	tmp->m_Next = tmp2;
 	tmp2->m_Prev = tmp;
 	tmp2->m_Next = nullptr;//just in case
+	}
 }
 
 template<class T, class keyType>
