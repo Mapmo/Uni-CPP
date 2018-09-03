@@ -9,18 +9,22 @@ class HashTableModularDivision
 	//not needed
 	HashTableModularDivision(const HashTableModularDivision&) = delete;
 	HashTableModularDivision& operator==(const HashTableModularDivision&) = delete;
+
 public:
 	//Essentials
 
 	explicit HashTableModularDivision(const unsigned int);
 	~HashTableModularDivision();
+
+	//Split function
+	unsigned int FindIndex(const keyType&)const;
 private:
 	const unsigned int m_Modul;
 	LinkedList1<T, keyType> * m_Collisions;
 };
 
 template<class T, class keyType>
-inline HashTableModularDivision<T, keyType>::HashTableModularDivision(const unsigned int numb) : m_Modul(numb), m_Collisions(new LinkedList1<T, keyType> [numb])
+inline HashTableModularDivision<T, keyType>::HashTableModularDivision(const unsigned int numb) : m_Modul(numb), m_Collisions(new LinkedList1<T, keyType>[numb])
 {
 }
 
@@ -28,4 +32,15 @@ template<class T, class keyType>
 inline HashTableModularDivision<T, keyType>::~HashTableModularDivision()
 {
 	delete[] this->m_Collisions;
+}
+
+template<class T, class keyType>
+inline unsigned int HashTableModularDivision<T, keyType>::FindIndex(const keyType & key) const
+{
+	std::string x;//templates are evil, this is the only way to make the code run without compile time errors caused by the difference between the classes
+	x += key;
+	unsigned int counter = 0;
+	for (unsigned int i = 0; i < x.size(); ++i)
+		counter += x[i];
+	return counter%this->m_Modul;
 }
