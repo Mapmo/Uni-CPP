@@ -5,6 +5,7 @@ class LinkedList1
 {
 	T& frontOverloadHelper();
 	T& backOverloadHelper();
+	T& atOverloadHelper(const keyType&);
 
 	void EraseElement(LinkedList1<T, keyType>*);//after an element is found by eraseOverloadHelper, this will try to delete it
 	LinkedList1<T, keyType> * ChangeCore(LinkedList1<T, keyType>*);//swaps the core with another list if possible and returns if the operation was successful
@@ -22,6 +23,8 @@ public:
 
 	//Element Access
 
+	T& at(const keyType&);
+	const T& at(const keyType&) const;
 	T& front();
 	const T& front() const;
 	T& back();
@@ -91,6 +94,28 @@ inline T & LinkedList1<T, keyType>::backOverloadHelper()
 {
 	LinkedList1<T, keyType> * tmp = end();
 	return tmp->m_Data;
+}
+
+template<class T, class keyType>
+inline T & LinkedList1<T, keyType>::atOverloadHelper(const keyType& key)
+{
+	try
+	{
+		LinkedList1<T, keyType> * tmp = begin();
+		while (tmp != nullptr)
+		{
+			if (tmp->m_Key == key)
+			{
+				return tmp->m_Data;
+			}
+			tmp = tmp->m_Next;
+		}
+		throw std::out_of_range("Element not found\n");
+	}
+	catch (std::out_of_range & oor)
+	{
+		std::cerr << "LinkedList1::atOverloadHelper() threw oor exception: " << oor.what();
+	}
 }
 
 template<class T, class keyType>
@@ -241,6 +266,18 @@ inline LinkedList1<T, keyType>::~LinkedList1()
 	}
 	delete m_Next;
 	delete m_Prev;
+}
+
+template<class T, class keyType>
+inline T & LinkedList1<T, keyType>::at(const keyType& key)
+{
+	return atOverloadHelper(key);
+}
+
+template<class T, class keyType>
+inline const T & LinkedList1<T, keyType>::at(const keyType & key) const
+{
+	return atOverloadHelper(key);
 }
 
 template<class T, class keyType>

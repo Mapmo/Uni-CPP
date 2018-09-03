@@ -19,6 +19,7 @@ public:
 	~HashTableModularDivision();
 
 	void insert(T, keyType);
+	const T& get(keyType);
 private:
 	const unsigned int m_Modul;
 	LinkedList1<T, keyType> * m_Collisions;
@@ -40,6 +41,12 @@ inline void HashTableModularDivision<T, keyType>::insert(T val, keyType key)
 {
 	LinkedList1<T, keyType> tmp(val, key);
 	this->m_Collisions[FindIndex(key)].push_back(tmp);
+}
+
+template<class T, class keyType>
+inline const T & HashTableModularDivision<T, keyType>::get(keyType key)
+{
+	return this->m_Collisions[FindIndex(key)].at(key);
 }
 
 template<class T, class keyType>
