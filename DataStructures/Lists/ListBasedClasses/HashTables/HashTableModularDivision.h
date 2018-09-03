@@ -10,14 +10,15 @@ class HashTableModularDivision
 	HashTableModularDivision(const HashTableModularDivision&) = delete;
 	HashTableModularDivision& operator==(const HashTableModularDivision&) = delete;
 
+	//Split function
+	unsigned int FindIndex(const keyType&)const;
 public:
 	//Essentials
 
 	explicit HashTableModularDivision(const unsigned int);
 	~HashTableModularDivision();
 
-	//Split function
-	unsigned int FindIndex(const keyType&)const;
+	void insert(T, keyType);
 private:
 	const unsigned int m_Modul;
 	LinkedList1<T, keyType> * m_Collisions;
@@ -32,6 +33,13 @@ template<class T, class keyType>
 inline HashTableModularDivision<T, keyType>::~HashTableModularDivision()
 {
 	delete[] this->m_Collisions;
+}
+
+template<class T, class keyType>
+inline void HashTableModularDivision<T, keyType>::insert(T val, keyType key)
+{
+	LinkedList1<T, keyType> tmp(val, key);
+	this->m_Collisions[FindIndex(key)].push_back(tmp);
 }
 
 template<class T, class keyType>
