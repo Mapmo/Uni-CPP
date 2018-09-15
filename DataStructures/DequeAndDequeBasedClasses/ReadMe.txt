@@ -1,6 +1,0 @@
-This implementation of Deque has a lot in common with the vector implementation, although the real deque is based on lists, I still believe that such an implentation is very useful and faster. The Deque2 implementation(based on Vector) is not that effective, because pop_front is extremely slow, but the problem is that Vector is not intended to be Deque. This implementation has a lot in common with the Queue implementation, because it uses a counter for the beginning, but now it has some additional functions and acts like a combination between Vector and Queue.
-However, as it is possible to add and erase from both sides, the array active elements are positioned in the center, in an attempt to slow the Resize() function as much as possible, therefore when m_Right or m_Left reaches the border of the array, the program tries to push them toward the center, and if it's not possible, it calls Resize()
-
--Stack2 is capable of having Deque as its container and therefore I haven't implemented a stack based on Deque
-
--Queue4 is probably the ultimate way to implement a Queue with an array, because Deque is vey capable of managing both front and end operations, I chose to implement it as a class inheriting Deque protectedly, because I think that this is better than composition, because Queue is a Deque with limited functions, rather than a class containing a Deque

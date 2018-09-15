@@ -1,4 +1,0 @@
-1Linear Lists(Linked List that can only go one way - forward):
-
--LinearList1 - it uses dynamicly allocated memory, therefore it needs Big 4 in order to work properly and every time when copy-constructor or opeator= is used, it creates a new copy of this List, using recursive of callings. It is very expensive when it comes to memory, but it does not need any validation that lists do not cross, beause it creates entirely new lists when using operator= and copy-constructor
--LinearList2 - it uses no dynamicly allocated memory and therefore it does't need Big 4 and it is cheap when it comes to memory. However, it has restrictions when it comes to crossing lists and thus it's not that flexible
