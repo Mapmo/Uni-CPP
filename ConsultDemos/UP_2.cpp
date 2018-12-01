@@ -148,7 +148,10 @@ void Demo7()//creates an empty 2 dimensional array
 {
 	int a[9][10];
 	Demo7Helper(a, sizeof(a) / sizeof(a[0]), sizeof(a[0]) / sizeof(a[0][0]));
-	//std::cout << sizeof(a) / sizeof(a[0])<<' '<<sizeof(a[0]) / sizeof(a[0][0]);
+	
+	//sizeof(a) / sizeof(a[0]) the size of the main array
+	
+	//sizeof(a[0]) / sizeof(a[0][0]) the size of the subarray
 }
 int main()
 {
