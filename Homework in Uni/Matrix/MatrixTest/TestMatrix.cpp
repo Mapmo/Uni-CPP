@@ -39,7 +39,7 @@ namespace MatrixTest
 			Assert::IsTrue(flag);
 		}
 
-		TEST_METHOD(SetData)//actually tests operator *, but i was unable to put its name here
+		TEST_METHOD(Multiplication)
 		{
 			const unsigned ROWS = 2;
 			const unsigned COLUMNS = 2;
@@ -77,6 +77,148 @@ namespace MatrixTest
 				for (unsigned j = 0; j < COLUMNS2; ++j)
 				{
 					if (tmp3.GetCell(i, j) != b[i][j])
+					{
+						flag = false;
+						break;
+					}
+				}
+			}
+			Assert::IsTrue(flag);
+
+			//this code tests whether the code throws correct exceptions
+			//time to remined tmp is 2x2 and tmp2 is 2x3
+			flag = false;
+			try
+			{
+				tmp2*tmp;
+			}
+			catch (const std::length_error& le)
+			{
+				Assert::AreEqual(le.what(), "Matrices that cannot be multiplied given\n");
+				flag = true;
+			}
+			Assert::IsTrue(flag);
+
+			flag = false;
+			try
+			{
+				tmp*=tmp2;
+			}
+			catch (const std::length_error& le)
+			{
+				Assert::AreEqual(le.what(), "This Matrix implementation does not support *= that canges the size of the original matrix\n");
+				flag = true;
+			}
+			Assert::IsTrue(flag);
+
+			//this code will test whether *= works correctly
+			
+			//reminding that tmp is 
+			//11	3
+			//7		11
+
+			Matrix <int> tmp4(ROWS, COLUMNS);
+			a[0][0] = 2; a[0][1] = 3;
+			a[1][0] = 5; a[1][1] = 9;
+			tmp4.SetData(a);
+
+			//expected return
+			a[0][0] = 37; a[0][1] = 60;
+			a[1][0] = 69; a[1][1] = 120;
+
+			flag = true;
+			tmp *= tmp4;
+			for (unsigned i = 0; i < COLUMNS && flag; ++i)
+			{
+				for (unsigned j = 0; j < ROWS; ++j)
+				{
+					if (tmp.GetCell(i, j) != a[i][j])
+					{
+						flag = false;
+						break;
+					}
+				}
+			}
+			Assert::IsTrue(flag);
+		}
+		TEST_METHOD(Power)
+		{
+			const unsigned ROWS = 2;
+			const unsigned COLUMNS = 2;
+			Matrix<int> tmp(ROWS, COLUMNS);
+			int * * a = new int *[ROWS];
+			for (unsigned i = 0; i < ROWS; ++i)
+			{
+				a[i] = new int[COLUMNS];
+			}
+			a[0][0] = 11; a[0][1] = 3;
+			a[1][0] = 7; a[1][1] = 11;
+			tmp.SetData(a);
+			tmp.Pow(2);
+
+			//expected return
+			a[0][0] = 142; a[0][1] = 66;
+			a[1][0] = 154; a[1][1] = 142;
+
+			bool flag = true;
+			for (unsigned i = 0; i < COLUMNS && flag; ++i)
+			{
+				for (unsigned j = 0; j < ROWS; ++j)
+				{
+					if (tmp.GetCell(i, j) != a[i][j])
+					{
+						flag = false;
+						break;
+					}
+				}
+			}
+			Assert::IsTrue(flag);
+
+			tmp.Pow(1);
+			flag = true;
+			for (unsigned i = 0; i < COLUMNS && flag; ++i)
+			{
+				for (unsigned j = 0; j < ROWS; ++j)
+				{
+					if (tmp.GetCell(i, j) != a[i][j])
+					{
+						flag = false;
+						break;
+					}
+				}
+			}
+			Assert::IsTrue(flag);
+
+			tmp.Pow(3);
+			//expected return
+			a[0][0] = 7193152; a[0][1] = 4663296;
+			a[1][0] = 10881024; a[1][1] = 7193152;
+			flag = true;
+			for (unsigned i = 0; i < COLUMNS && flag; ++i)
+			{
+				for (unsigned j = 0; j < ROWS; ++j)
+				{
+					if (tmp.GetCell(i, j) != a[i][j])
+					{
+						flag = false;
+						break;
+					}
+				}
+			}
+			Assert::IsTrue(flag);
+
+
+			tmp.Pow(0);
+			//expected return
+			a[0][0] = 1; a[0][1] = 0;
+			a[1][0] = 0; a[1][1] = 1;
+
+			flag = true;
+			for (unsigned i = 0; i < COLUMNS && flag; ++i)
+			{
+				for (unsigned j = 0; j < ROWS; ++j)
+				{
+					if (tmp.GetCell(i, j) != a[i][j])
 					{
 						flag = false;
 						break;
