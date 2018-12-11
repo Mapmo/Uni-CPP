@@ -21,6 +21,8 @@ public:
 	void Print();
 
 	//Matrix Operations
+	Matrix<T> Transpose();
+
 	template <class T2>
 	friend Matrix<T2> operator *(const Matrix<T2>&, const Matrix<T2>&);
 private:
@@ -147,6 +149,19 @@ inline Matrix<T2> operator*(const Matrix<T2>&m1, const Matrix<T2>&m2)
 			{
 				tmp.matrix[i][j] += m1.matrix[i][k] * m2.matrix[k][j];
 			}
+		}
+	}
+	return tmp;
+}
+template<class T>
+inline Matrix<T> Matrix<T>::Transpose()
+{
+	Matrix<T> tmp(COLUMNS, ROWS);
+	for (unsigned i = 0; i < ROWS; ++i)
+	{
+		for (unsigned j = 0; j < COLUMNS; ++j)
+		{
+			tmp.matrix[j][i] = this->matrix[i][j];
 		}
 	}
 	return tmp;
