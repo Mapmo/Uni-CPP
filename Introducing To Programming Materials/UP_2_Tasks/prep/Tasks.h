@@ -243,7 +243,7 @@ void Task19(char arr[])
 {
 	for (unsigned i = 0; i < Task16(arr); ++i)
 	{
-		if (arr[i] >= 65 && arr[i] <= 90)
+		if (arr[i] >= 65 && arr[i] <= 90) //You can simply use 'A' and 'Z' as constraints
 		{
 			arr[i] += 32;
 		}
