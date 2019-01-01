@@ -96,3 +96,15 @@ void Task20(char arr[])
 {
 	//swap cases
 }
+void Task21(const unsigned numb)
+{
+	//receives seconds and turns them into HH:MM
+}
+
+double Task22(unsigned numb)
+{
+	return 0;
+	//return the average of the digits of the param number
+	//hint division of integers is an integer even if the function returns a double
+	//hint2 use log10 carefully
+}
