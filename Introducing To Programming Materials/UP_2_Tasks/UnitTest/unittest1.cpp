@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "CppUnitTest.h"
 #include "..\prep\Tasks.h"
+#include <iostream>
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -539,6 +540,107 @@ namespace UnitTest
 			{
 				Assert::AreEqual(str3[i], _str3[i]);
 			}
+		}
+	};
+
+	TEST_CLASS(task21)
+	{
+		TEST_METHOD(test1)
+		{
+			std::ostringstream oss;
+			std::streambuf* p_cout_streambuf = std::cout.rdbuf();
+			std::cout.rdbuf(oss.rdbuf());
+
+			Task21(10);
+
+			std::cout.rdbuf(p_cout_streambuf); // restore
+
+			// test your oss content...
+			Assert::IsTrue(oss && oss.str() == "00:00");
+		}
+		TEST_METHOD(test2)
+		{
+			std::ostringstream oss;
+			std::streambuf* p_cout_streambuf = std::cout.rdbuf();
+			std::cout.rdbuf(oss.rdbuf());
+
+			Task21(119);
+
+			std::cout.rdbuf(p_cout_streambuf); // restore
+
+			// test your oss content...
+			Assert::IsTrue(oss && oss.str() == "00:01");
+		}
+		TEST_METHOD(test3)
+		{
+			std::ostringstream oss;
+			std::streambuf* p_cout_streambuf = std::cout.rdbuf();
+			std::cout.rdbuf(oss.rdbuf());
+
+			Task21(5656);
+
+			std::cout.rdbuf(p_cout_streambuf); // restore
+
+			// test your oss content...
+			Assert::IsTrue(oss && oss.str() == "01:34");
+		}
+		TEST_METHOD(test4)
+		{
+			std::ostringstream oss;
+			std::streambuf* p_cout_streambuf = std::cout.rdbuf();
+			std::cout.rdbuf(oss.rdbuf());
+
+			Task21(75656);
+
+			std::cout.rdbuf(p_cout_streambuf); // restore
+
+			// test your oss content...
+			Assert::IsTrue(oss && oss.str() == "21:00");
+		}
+		TEST_METHOD(test5)
+		{
+			std::ostringstream oss;
+			std::streambuf* p_cout_streambuf = std::cout.rdbuf();
+			std::cout.rdbuf(oss.rdbuf());
+
+			Task21(59);
+
+			std::cout.rdbuf(p_cout_streambuf); // restore
+
+			// test your oss content...
+			Assert::IsTrue(oss && oss.str() == "00:00");
+		}
+		TEST_METHOD(test6)
+		{
+			std::ostringstream oss;
+			std::streambuf* p_cout_streambuf = std::cout.rdbuf();
+			std::cout.rdbuf(oss.rdbuf());
+
+			Task21(76296);
+
+			std::cout.rdbuf(p_cout_streambuf); // restore
+
+			// test your oss content...
+			Assert::IsTrue(oss && oss.str() == "21:11");
+		}
+	};
+	TEST_CLASS(task22)
+	{
+		TEST_METHOD(test1)
+		{
+			Assert::AreEqual(Task22(22), 2.0);
+		}
+		TEST_METHOD(test2)
+		{
+			Assert::AreEqual(Task22(23), 2.5);
+		}
+		TEST_METHOD(test3)
+		{
+			Assert::AreEqual(Task22(0), 0.0);
+		}
+		TEST_METHOD(test4)
+		{
+			Assert::AreEqual(Task22(123), 2.0);
 		}
 	};
 }

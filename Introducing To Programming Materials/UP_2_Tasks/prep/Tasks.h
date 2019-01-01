@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 int Task1(const int arr[], const unsigned size)
 {
 	int sum = 0;
@@ -166,7 +167,7 @@ bool Task12(const int arr[], const unsigned size)
 }
 bool Task13(int arr[], const unsigned size)
 {
-	for (unsigned i = 0; i < size-1; ++i)
+	for (unsigned i = 0; i < size - 1; ++i)
 	{
 		if (arr[i] > arr[i + 1])
 		{
@@ -243,7 +244,7 @@ void Task19(char arr[])
 {
 	for (unsigned i = 0; i < Task16(arr); ++i)
 	{
-		if (arr[i] >= 65 && arr[i] <= 90)
+		if (arr[i] >= 65 && arr[i] <= 90) //You can simply use 'A' and 'Z' as constraints
 		{
 			arr[i] += 32;
 		}
@@ -264,4 +265,36 @@ void Task20(char arr[])
 		}
 	}
 	//swap cases
+}
+void Task21(const unsigned numb)
+{
+	const int HH = numb / 3600;
+	const int MM = (numb % 3600) / 60;
+	if (HH < 10)
+	{
+		std::cout << '0';
+	}
+	std::cout << HH<<':';
+	if (MM < 10)
+	{
+		std::cout << '0';
+	}
+	std::cout << MM;
+	//receives seconds and turns them into HH:MM
+}
+
+double Task22(unsigned numb)
+{
+
+	int size = (numb != 0 )?log10(numb) + 1 : 1;
+	double sum = 0;
+	for (unsigned i = 0; i < size; ++i)
+	{
+		sum += numb % 10;
+		numb /= 10;
+	}
+	return sum / size;
+	//return the average of the digits of the param number
+	//hint division of integers is an integer even if the function returns a double
+	//hint2 use log10 carefully
 }
