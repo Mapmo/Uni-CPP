@@ -97,16 +97,16 @@ void Demo5()//shows you how to pass an array as parameter
 	Demo5Helper(arr, sizeof(arr) / sizeof(arr[0]));//the practice of sizeof(arr[0]) is sometimes better because you may forget what type arr is
 }
 
-void Demo6()//this is dangerous as there is no guarantee that the second arrays will be neighbours in the memory!
+void Demo6()//this is dangerous when not using static memory as there is no guarantee that the second arrays will be neighbours in the memory!
 {
-	int a[2][2];
+	int a[2][2];//the 2 arrays are initialized next to each other
 	a[0][0] = 1;
 	a[0][1] = 2;
 	a[1][0] = 3;
 	a[1][1] = 4;
 
 	for (unsigned i = 0; i < 4; ++i)
-		std::cout << a[0][i] << ' ';
+		std::cout << a[0][i] << ' ';//this is a bad practice!, the idea of the demo is to show you how memory works
 }
 
 void Demo7Helper(int tmpArray[][10], const unsigned rowSize, const unsigned colSize)//takes a 2 dimensional array 10x10 and fills it with the multiplication table
