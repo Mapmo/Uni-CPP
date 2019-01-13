@@ -18,12 +18,12 @@ int Task3(const int arr[], const unsigned size)
 int Task4(const int arr[], const unsigned size)
 {
 	return 0;
-	//Return the biggest uneven member of the array, return 0 if there are any
+	//Return the biggest uneven member of the array, return 0 if there aren't any
 }
 int Task5(const int arr[], const unsigned size)
 {
 	return 0;
-	//Return the smallest even member of the array, return 1 if there are any
+	//Return the smallest even member of the array, return 1 if there aren't any
 }
 int Task6(const int arr[], const unsigned size)
 {
