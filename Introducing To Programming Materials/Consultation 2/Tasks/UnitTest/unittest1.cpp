@@ -130,6 +130,13 @@ namespace UnitTest
 			int a = Task5(arr3, size3);
 			Assert::AreEqual(a, -4);
 		}
+
+		TEST_METHOD(test4)
+		{
+			int arrr[]{ -5,-3,1,3,5 };
+			int a = Task5(arrr, 5);
+			Assert::AreEqual(a, 1);
+		}
 	};
 	TEST_CLASS(task06)
 	{
