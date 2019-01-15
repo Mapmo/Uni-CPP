@@ -162,7 +162,7 @@ bool Task12(const int arr[], const unsigned size)
 			++uneven;
 		}
 	}
-	return (even > uneven) ? 1 : 0;
+	return even > uneven;
 	//return true if there are more even numbers in the array, else return false
 }
 bool Task13(int arr[], const unsigned size)
