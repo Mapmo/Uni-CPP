@@ -39,7 +39,7 @@ void Task1()
 	{
 		int n, tmp;
 		std::cin >> n;
-		int * arr = new int[n];
+		int * const arr = new int[n];
 		for (unsigned i = 0; i < n; ++i)
 		{
 			std::cin >> tmp;
@@ -52,7 +52,7 @@ void Task1()
 			++negativeEnd;
 		}
 		unsigned positiveBegin = negativeEnd;
-		while (arr[positiveBegin] == 0)
+		while (arr[positiveBegin] == 0 && positiveBegin<n)
 		{
 			++positiveBegin;
 		}
@@ -86,5 +86,6 @@ void Task1()
 			sum += arr[i] * arr[i + 1];
 		}
 		std::cout << sum << '\n';
+		delete[] arr;
 	}
 }
