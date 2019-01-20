@@ -1,10 +1,5 @@
 #pragma once
 #include <iostream>
-#include <cstdlib>
-#include <vector>
-#include <ctime>
-#include <algorithm>
-#include <string>
 
 void ownSwap(int & a, int & b)
 {
@@ -56,12 +51,12 @@ void Task1()
 		{
 			++positiveBegin;
 		}
-		bool zero = positiveBegin - negativeEnd; //if positiveBegin == negativeEnd, then there are 0 zeros, else there is at least 1
+		int zerosCount = positiveBegin - negativeEnd; //if positiveBegin == negativeEnd, then there are 0 zeros, else there is at least 1
 
 		int sum = 0;
 		if (negativeEnd % 2 == 1 && negativeEnd != 0)
 		{
-			if (!zero)
+			if (!zerosCount)
 			{
 				sum += arr[negativeEnd - 1];
 			}
