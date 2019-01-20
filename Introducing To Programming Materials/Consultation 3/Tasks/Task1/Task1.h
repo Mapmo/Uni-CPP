@@ -47,7 +47,7 @@ void Task1()
 			++negativeEnd;
 		}
 		unsigned positiveBegin = negativeEnd;
-		while (arr[positiveBegin] == 0 && positiveBegin<n)
+		while (arr[positiveBegin] == 0 && positiveBegin < n)
 		{
 			++positiveBegin;
 		}
