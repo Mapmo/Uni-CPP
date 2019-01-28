@@ -14,7 +14,10 @@ struct line
 
 double line::length()const
 {
-	return sqrt(pow(beg.x - end.x, 2) + pow(beg.y - end.y, 2));//may armyanov not kill me
+	double xDistance = (beg.x - end.x) * (beg.x - end.x);
+	double yDistance = (beg.y - end.y) * (beg.y - end.y);
+
+	return sqrt(xDistance + yDistance);//may armyanov not kill me
 }
 
 void swap_if_Y(line& a)
@@ -26,6 +29,7 @@ void swap_if_Y(line& a)
 		a.end.y = c;
 	}
 }
+
 void swap_if_X(line& a)
 {
 	if (a.beg.x > a.end.x)
@@ -35,8 +39,10 @@ void swap_if_X(line& a)
 		a.end.x = c;
 	}
 }
+
 double foo(line line1, line line2)
 {
+	const double NONE = -1.0;
 	if (line1.beg.x == line1.end.x && line2.beg.x == line2.end.x && line1.beg.x == line2.beg.x)//if true then they are -|- 
 	{
 		//now will invert the lines so line.beg is the higher point
@@ -48,7 +54,7 @@ double foo(line line1, line line2)
 		{
 			if (line1.end.y > line2.beg.y)
 			{
-				return -1;
+				return NONE;
 			}
 			if (line1.end.y <= line2.end.y)
 			{
@@ -61,7 +67,7 @@ double foo(line line1, line line2)
 		{
 			if (line2.end.y > line1.beg.y)
 			{
-				return -1;
+				return NONE;
 			}
 			if (line2.end.y <= line1.end.y)
 			{
@@ -82,7 +88,7 @@ double foo(line line1, line line2)
 		{
 			if (line1.end.x < line2.beg.x)
 			{
-				return -1;
+				return NONE;
 			}
 			if (line1.end.x >= line2.end.x)
 			{
@@ -95,7 +101,7 @@ double foo(line line1, line line2)
 		{
 			if (line2.end.x < line1.beg.x)
 			{
-				return -1;
+				return NONE;
 			}
 			if (line2.end.x >= line1.end.x)
 			{
@@ -105,5 +111,5 @@ double foo(line line1, line line2)
 			return tmp.length();
 		}
 	}
-	return -1;
+	return NONE;
 }
