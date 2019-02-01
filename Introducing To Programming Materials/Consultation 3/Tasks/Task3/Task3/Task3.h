@@ -4,6 +4,7 @@ struct point
 {
 	double x;
 	double y;
+	bool operator==(const point&);
 };
 struct line
 {
