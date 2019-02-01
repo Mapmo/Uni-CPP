@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "CppUnitTest.h"
-#include "../Task3/Task3.h"
+#include "..\Task3\Task3.h"
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace UnitTest1
@@ -17,7 +17,7 @@ namespace UnitTest1
 			point x2 = { 1,6 };
 			point y2 = { 1,5 };
 			line line2 = { x2,y2 };
-			Assert::AreEqual(-1.0, foo(line1, line2));
+			Assert::AreEqual(0.0, foo(line1, line2));
 		}
 		TEST_METHOD(TestMethod2)
 		{
@@ -159,6 +159,16 @@ namespace UnitTest1
 			point y2 = { 5,10 };
 			line line2 = { x2,y2 };
 			Assert::AreEqual(2.0, foo(line1, line2));
+		}
+		TEST_METHOD(TestMethod16)
+		{
+			point x1 = { 6.5,10 };
+			point y1 = { 8,10 };
+			line line1 = { x1,y1 };
+			point x2 = { 10,10 };
+			point y2 = { 5,10 };
+			line line2 = { x2,y2 };
+			Assert::AreEqual(1.50, foo(line1, line2));
 		}
 	};
 }
