@@ -17,7 +17,8 @@ namespace UnitTest1
 			point x2 = { 1,6 };
 			point y2 = { 1,5 };
 
-			point tmpX1 = x1, tmpX2 = x2, tmpY1 = y1, tmpY2 = y2;
+			double tmpX1X = x1.x, tmpX2X = x2.x, tmpY1X = y1.x, tmpY2X = y2.x;
+			double tmpX1Y = x1.y, tmpX2Y = x2.y, tmpY1Y = y1.y, tmpY2Y = y2.y;
 
 			line line1 = { x1,y1 };
 			line line2 = { x2,y2 };
@@ -25,10 +26,14 @@ namespace UnitTest1
 			Assert::AreEqual(0.0, foo(line1, line2));
 			Assert::AreEqual(0.0, foo(line2, line1));
 
-			Assert::AreEqual(x1, tmpX1);
-			Assert::AreEqual(x1, tmpX2);
-			Assert::AreEqual(y1, tmpY1);
-			Assert::AreEqual(y2, tmpY2);
+			Assert::AreEqual(x1.x, tmpX1X);
+			Assert::AreEqual(x2.x, tmpX2X);
+			Assert::AreEqual(y1.x, tmpY1X);
+			Assert::AreEqual(y2.x, tmpY2X);
+			Assert::AreEqual(x1.y, tmpX1Y);
+			Assert::AreEqual(x2.y, tmpX2Y);
+			Assert::AreEqual(y1.y, tmpY1Y);
+			Assert::AreEqual(y2.y, tmpY2Y);
 		}
 		TEST_METHOD(TestMethod2)
 		{
@@ -38,7 +43,8 @@ namespace UnitTest1
 			point x2 = { 1,6 };
 			point y2 = { 1,5 };
 
-			point tmpX1 = x1, tmpX2 = x2, tmpY1 = y1, tmpY2 = y2;
+			double tmpX1X = x1.x, tmpX2X = x2.x, tmpY1X = y1.x, tmpY2X = y2.x;
+			double tmpX1Y = x1.y, tmpX2Y = x2.y, tmpY1Y = y1.y, tmpY2Y = y2.y;
 
 			line line1 = { x1,y1 };
 			line line2 = { x2,y2 };
@@ -46,10 +52,14 @@ namespace UnitTest1
 			Assert::AreEqual(1.0, foo(line1, line2));
 			Assert::AreEqual(1.0, foo(line2, line1));
 
-			Assert::AreEqual(x1, tmpX1);
-			Assert::AreEqual(x1, tmpX2);
-			Assert::AreEqual(y1, tmpY1);
-			Assert::AreEqual(y2, tmpY2);
+			Assert::AreEqual(x1.x, tmpX1X);
+			Assert::AreEqual(x2.x, tmpX2X);
+			Assert::AreEqual(y1.x, tmpY1X);
+			Assert::AreEqual(y2.x, tmpY2X);
+			Assert::AreEqual(x1.y, tmpX1Y);
+			Assert::AreEqual(x2.y, tmpX2Y);
+			Assert::AreEqual(y1.y, tmpY1Y);
+			Assert::AreEqual(y2.y, tmpY2Y);
 		}
 		TEST_METHOD(TestMethod3)
 		{
@@ -58,19 +68,24 @@ namespace UnitTest1
 
 			point x2 = { 1,16 };
 			point y2 = { 1,5 };
-			
-			point tmpX1 = x1, tmpX2 = x2, tmpY1 = y1, tmpY2 = y2;
-			
+
+			double tmpX1X = x1.x, tmpX2X = x2.x, tmpY1X = y1.x, tmpY2X = y2.x;
+			double tmpX1Y = x1.y, tmpX2Y = x2.y, tmpY1Y = y1.y, tmpY2Y = y2.y;
+
 			line line1 = { x1,y1 };
 			line line2 = { x2,y2 };
-			
-			Assert::AreEqual(2.0, foo(line1, line2));			
+
+			Assert::AreEqual(2.0, foo(line1, line2));
 			Assert::AreEqual(2.0, foo(line2, line1));
 
-			Assert::AreEqual(x1, tmpX1);
-			Assert::AreEqual(x1, tmpX2);
-			Assert::AreEqual(y1, tmpY1);
-			Assert::AreEqual(y2, tmpY2);
+			Assert::AreEqual(x1.x, tmpX1X);
+			Assert::AreEqual(x2.x, tmpX2X);
+			Assert::AreEqual(y1.x, tmpY1X);
+			Assert::AreEqual(y2.x, tmpY2X);
+			Assert::AreEqual(x1.y, tmpX1Y);
+			Assert::AreEqual(x2.y, tmpX2Y);
+			Assert::AreEqual(y1.y, tmpY1Y);
+			Assert::AreEqual(y2.y, tmpY2Y);
 		}
 
 		TEST_METHOD(TestMethod4)
@@ -80,19 +95,24 @@ namespace UnitTest1
 
 			point x2 = { -7,7 };
 			point y2 = { -7,7 };
-			
-			point tmpX1 = x1, tmpX2 = x2, tmpY1 = y1, tmpY2 = y2;
-			
+
+			double tmpX1X = x1.x, tmpX2X = x2.x, tmpY1X = y1.x, tmpY2X = y2.x;
+			double tmpX1Y = x1.y, tmpX2Y = x2.y, tmpY1Y = y1.y, tmpY2Y = y2.y;
+
 			line line1 = { x1,y1 };
 			line line2 = { x2,y2 };
-			
+
 			Assert::AreEqual(-1.0, foo(line1, line2));
 			Assert::AreEqual(-1.0, foo(line2, line1));
 
-			Assert::AreEqual(x1, tmpX1);
-			Assert::AreEqual(x1, tmpX2);
-			Assert::AreEqual(y1, tmpY1);
-			Assert::AreEqual(y2, tmpY2);
+			Assert::AreEqual(x1.x, tmpX1X);
+			Assert::AreEqual(x2.x, tmpX2X);
+			Assert::AreEqual(y1.x, tmpY1X);
+			Assert::AreEqual(y2.x, tmpY2X);
+			Assert::AreEqual(x1.y, tmpX1Y);
+			Assert::AreEqual(x2.y, tmpX2Y);
+			Assert::AreEqual(y1.y, tmpY1Y);
+			Assert::AreEqual(y2.y, tmpY2Y);
 		}
 		TEST_METHOD(TestMethod5)
 		{
@@ -101,18 +121,23 @@ namespace UnitTest1
 
 			point x2 = { 1,16 };
 			point y2 = { 1,-15 };
-			
-			point tmpX1 = x1, tmpX2 = x2, tmpY1 = y1, tmpY2 = y2;
+
+			double tmpX1X = x1.x, tmpX2X = x2.x, tmpY1X = y1.x, tmpY2X = y2.x;
+			double tmpX1Y = x1.y, tmpX2Y = x2.y, tmpY1Y = y1.y, tmpY2Y = y2.y;
 
 			line line1 = { x1,y1 };
 			line line2 = { x2,y2 };
 			Assert::AreEqual(2.0, foo(line1, line2));
 			Assert::AreEqual(2.0, foo(line2, line1));
 
-			Assert::AreEqual(x1, tmpX1);
-			Assert::AreEqual(x1, tmpX2);
-			Assert::AreEqual(y1, tmpY1);
-			Assert::AreEqual(y2, tmpY2);
+			Assert::AreEqual(x1.x, tmpX1X);
+			Assert::AreEqual(x2.x, tmpX2X);
+			Assert::AreEqual(y1.x, tmpY1X);
+			Assert::AreEqual(y2.x, tmpY2X);
+			Assert::AreEqual(x1.y, tmpX1Y);
+			Assert::AreEqual(x2.y, tmpX2Y);
+			Assert::AreEqual(y1.y, tmpY1Y);
+			Assert::AreEqual(y2.y, tmpY2Y);
 		}
 		TEST_METHOD(TestMethod6)
 		{
@@ -121,13 +146,23 @@ namespace UnitTest1
 			point x2 = { 1,16 };
 			point y2 = { 1,-15 };
 
-			point tmpX1 = x1, tmpX2 = x2, tmpY1 = y1, tmpY2 = y2;
+			double tmpX1X = x1.x, tmpX2X = x2.x, tmpY1X = y1.x, tmpY2X = y2.x;
+			double tmpX1Y = x1.y, tmpX2Y = x2.y, tmpY1Y = y1.y, tmpY2Y = y2.y;
 
 			line line1 = { x1,y1 };
 			line line2 = { x2,y2 };
-			
+
 			Assert::AreEqual(22.0, foo(line1, line2));
 			Assert::AreEqual(22.0, foo(line2, line1));
+
+			Assert::AreEqual(x1.x, tmpX1X);
+			Assert::AreEqual(x2.x, tmpX2X);
+			Assert::AreEqual(y1.x, tmpY1X);
+			Assert::AreEqual(y2.x, tmpY2X);
+			Assert::AreEqual(x1.y, tmpX1Y);
+			Assert::AreEqual(x2.y, tmpX2Y);
+			Assert::AreEqual(y1.y, tmpY1Y);
+			Assert::AreEqual(y2.y, tmpY2Y);
 		}
 		TEST_METHOD(TestMethod7)
 		{
@@ -136,7 +171,8 @@ namespace UnitTest1
 			point x2 = { 1,6 };
 			point y2 = { 1,-15 };
 
-			point tmpX1 = x1, tmpX2 = x2, tmpY1 = y1, tmpY2 = y2;
+			double tmpX1X = x1.x, tmpX2X = x2.x, tmpY1X = y1.x, tmpY2X = y2.x;
+			double tmpX1Y = x1.y, tmpX2Y = x2.y, tmpY1Y = y1.y, tmpY2Y = y2.y;
 
 			line line1 = { x1,y1 };
 			line line2 = { x2,y2 };
@@ -144,10 +180,14 @@ namespace UnitTest1
 			Assert::AreEqual(21.0, foo(line1, line2));
 			Assert::AreEqual(21.0, foo(line2, line1));
 
-			Assert::AreEqual(x1, tmpX1);
-			Assert::AreEqual(x1, tmpX2);
-			Assert::AreEqual(y1, tmpY1);
-			Assert::AreEqual(y2, tmpY2);
+			Assert::AreEqual(x1.x, tmpX1X);
+			Assert::AreEqual(x2.x, tmpX2X);
+			Assert::AreEqual(y1.x, tmpY1X);
+			Assert::AreEqual(y2.x, tmpY2X);
+			Assert::AreEqual(x1.y, tmpX1Y);
+			Assert::AreEqual(x2.y, tmpX2Y);
+			Assert::AreEqual(y1.y, tmpY1Y);
+			Assert::AreEqual(y2.y, tmpY2Y);
 		}
 		TEST_METHOD(TestMethod8)
 		{
@@ -157,7 +197,8 @@ namespace UnitTest1
 			point x2 = { 10,0 };
 			point y2 = { 1,0 };
 
-			point tmpX1 = x1, tmpX2 = x2, tmpY1 = y1, tmpY2 = y2;
+			double tmpX1X = x1.x, tmpX2X = x2.x, tmpY1X = y1.x, tmpY2X = y2.x;
+			double tmpX1Y = x1.y, tmpX2Y = x2.y, tmpY1Y = y1.y, tmpY2Y = y2.y;
 
 			line line1 = { x1,y1 };
 			line line2 = { x2,y2 };
@@ -165,10 +206,14 @@ namespace UnitTest1
 			Assert::AreEqual(0.0, foo(line1, line2));
 			Assert::AreEqual(0.0, foo(line2, line1));
 
-			Assert::AreEqual(x1, tmpX1);
-			Assert::AreEqual(x1, tmpX2);
-			Assert::AreEqual(y1, tmpY1);
-			Assert::AreEqual(y2, tmpY2);
+			Assert::AreEqual(x1.x, tmpX1X);
+			Assert::AreEqual(x2.x, tmpX2X);
+			Assert::AreEqual(y1.x, tmpY1X);
+			Assert::AreEqual(y2.x, tmpY2X);
+			Assert::AreEqual(x1.y, tmpX1Y);
+			Assert::AreEqual(x2.y, tmpX2Y);
+			Assert::AreEqual(y1.y, tmpY1Y);
+			Assert::AreEqual(y2.y, tmpY2Y);
 		}
 		TEST_METHOD(TestMethod9)
 		{
@@ -178,7 +223,8 @@ namespace UnitTest1
 			point x2 = { 10,0 };
 			point y2 = { 1,0 };
 
-			point tmpX1 = x1, tmpX2 = x2, tmpY1 = y1, tmpY2 = y2;
+			double tmpX1X = x1.x, tmpX2X = x2.x, tmpY1X = y1.x, tmpY2X = y2.x;
+			double tmpX1Y = x1.y, tmpX2Y = x2.y, tmpY1Y = y1.y, tmpY2Y = y2.y;
 
 			line line1 = { x1,y1 };
 			line line2 = { x2,y2 };
@@ -186,10 +232,14 @@ namespace UnitTest1
 			Assert::AreEqual(9.0, foo(line1, line2));
 			Assert::AreEqual(9.0, foo(line2, line1));
 
-			Assert::AreEqual(x1, tmpX1);
-			Assert::AreEqual(x1, tmpX2);
-			Assert::AreEqual(y1, tmpY1);
-			Assert::AreEqual(y2, tmpY2);
+			Assert::AreEqual(x1.x, tmpX1X);
+			Assert::AreEqual(x2.x, tmpX2X);
+			Assert::AreEqual(y1.x, tmpY1X);
+			Assert::AreEqual(y2.x, tmpY2X);
+			Assert::AreEqual(x1.y, tmpX1Y);
+			Assert::AreEqual(x2.y, tmpX2Y);
+			Assert::AreEqual(y1.y, tmpY1Y);
+			Assert::AreEqual(y2.y, tmpY2Y);
 		}
 		TEST_METHOD(TestMethod10)
 		{
@@ -199,7 +249,8 @@ namespace UnitTest1
 			point x2 = { 10,0 };
 			point y2 = { 1,0 };
 
-			point tmpX1 = x1, tmpX2 = x2, tmpY1 = y1, tmpY2 = y2;
+			double tmpX1X = x1.x, tmpX2X = x2.x, tmpY1X = y1.x, tmpY2X = y2.x;
+			double tmpX1Y = x1.y, tmpX2Y = x2.y, tmpY1Y = y1.y, tmpY2Y = y2.y;
 
 			line line1 = { x1,y1 };
 			line line2 = { x2,y2 };
@@ -207,10 +258,14 @@ namespace UnitTest1
 			Assert::AreEqual(-1.0, foo(line1, line2));
 			Assert::AreEqual(-1.0, foo(line2, line1));
 
-			Assert::AreEqual(x1, tmpX1);
-			Assert::AreEqual(x1, tmpX2);
-			Assert::AreEqual(y1, tmpY1);
-			Assert::AreEqual(y2, tmpY2);
+			Assert::AreEqual(x1.x, tmpX1X);
+			Assert::AreEqual(x2.x, tmpX2X);
+			Assert::AreEqual(y1.x, tmpY1X);
+			Assert::AreEqual(y2.x, tmpY2X);
+			Assert::AreEqual(x1.y, tmpX1Y);
+			Assert::AreEqual(x2.y, tmpX2Y);
+			Assert::AreEqual(y1.y, tmpY1Y);
+			Assert::AreEqual(y2.y, tmpY2Y);
 		}
 		TEST_METHOD(TestMethod11)
 		{
@@ -220,7 +275,8 @@ namespace UnitTest1
 			point x2 = { 10,0 };
 			point y2 = { 1,0 };
 
-			point tmpX1 = x1, tmpX2 = x2, tmpY1 = y1, tmpY2 = y2;
+			double tmpX1X = x1.x, tmpX2X = x2.x, tmpY1X = y1.x, tmpY2X = y2.x;
+			double tmpX1Y = x1.y, tmpX2Y = x2.y, tmpY1Y = y1.y, tmpY2Y = y2.y;
 
 			line line1 = { x1,y1 };
 			line line2 = { x2,y2 };
@@ -228,10 +284,14 @@ namespace UnitTest1
 			Assert::AreEqual(-1.0, foo(line1, line2));
 			Assert::AreEqual(-1.0, foo(line2, line1));
 
-			Assert::AreEqual(x1, tmpX1);
-			Assert::AreEqual(x1, tmpX2);
-			Assert::AreEqual(y1, tmpY1);
-			Assert::AreEqual(y2, tmpY2);
+			Assert::AreEqual(x1.x, tmpX1X);
+			Assert::AreEqual(x2.x, tmpX2X);
+			Assert::AreEqual(y1.x, tmpY1X);
+			Assert::AreEqual(y2.x, tmpY2X);
+			Assert::AreEqual(x1.y, tmpX1Y);
+			Assert::AreEqual(x2.y, tmpX2Y);
+			Assert::AreEqual(y1.y, tmpY1Y);
+			Assert::AreEqual(y2.y, tmpY2Y);
 		}
 		TEST_METHOD(TestMethod12)
 		{
@@ -241,7 +301,8 @@ namespace UnitTest1
 			point x2 = { 10,10 };
 			point y2 = { 1,0 };
 
-			point tmpX1 = x1, tmpX2 = x2, tmpY1 = y1, tmpY2 = y2;
+			double tmpX1X = x1.x, tmpX2X = x2.x, tmpY1X = y1.x, tmpY2X = y2.x;
+			double tmpX1Y = x1.y, tmpX2Y = x2.y, tmpY1Y = y1.y, tmpY2Y = y2.y;
 
 			line line1 = { x1,y1 };
 			line line2 = { x2,y2 };
@@ -249,10 +310,14 @@ namespace UnitTest1
 			Assert::AreEqual(-1.0, foo(line1, line2));
 			Assert::AreEqual(-1.0, foo(line2, line1));
 
-			Assert::AreEqual(x1, tmpX1);
-			Assert::AreEqual(x1, tmpX2);
-			Assert::AreEqual(y1, tmpY1);
-			Assert::AreEqual(y2, tmpY2);
+			Assert::AreEqual(x1.x, tmpX1X);
+			Assert::AreEqual(x2.x, tmpX2X);
+			Assert::AreEqual(y1.x, tmpY1X);
+			Assert::AreEqual(y2.x, tmpY2X);
+			Assert::AreEqual(x1.y, tmpX1Y);
+			Assert::AreEqual(x2.y, tmpX2Y);
+			Assert::AreEqual(y1.y, tmpY1Y);
+			Assert::AreEqual(y2.y, tmpY2Y);
 		}
 		TEST_METHOD(TestMethod13)
 		{
@@ -262,7 +327,8 @@ namespace UnitTest1
 			point x2 = { 10,10 };
 			point y2 = { 11,10 };
 
-			point tmpX1 = x1, tmpX2 = x2, tmpY1 = y1, tmpY2 = y2;
+			double tmpX1X = x1.x, tmpX2X = x2.x, tmpY1X = y1.x, tmpY2X = y2.x;
+			double tmpX1Y = x1.y, tmpX2Y = x2.y, tmpY1Y = y1.y, tmpY2Y = y2.y;
 
 			line line1 = { x1,y1 };
 			line line2 = { x2,y2 };
@@ -270,10 +336,14 @@ namespace UnitTest1
 			Assert::AreEqual(1.0, foo(line1, line2));
 			Assert::AreEqual(1.0, foo(line2, line1));
 
-			Assert::AreEqual(x1, tmpX1);
-			Assert::AreEqual(x1, tmpX2);
-			Assert::AreEqual(y1, tmpY1);
-			Assert::AreEqual(y2, tmpY2);
+			Assert::AreEqual(x1.x, tmpX1X);
+			Assert::AreEqual(x2.x, tmpX2X);
+			Assert::AreEqual(y1.x, tmpY1X);
+			Assert::AreEqual(y2.x, tmpY2X);
+			Assert::AreEqual(x1.y, tmpX1Y);
+			Assert::AreEqual(x2.y, tmpX2Y);
+			Assert::AreEqual(y1.y, tmpY1Y);
+			Assert::AreEqual(y2.y, tmpY2Y);
 		}
 		TEST_METHOD(TestMethod14)
 		{
@@ -283,16 +353,21 @@ namespace UnitTest1
 			point x2 = { 10,10 };
 			point y2 = { 5,10 };
 
-			point tmpX1 = x1, tmpX2 = x2, tmpY1 = y1, tmpY2 = y2;
+			double tmpX1X = x1.x, tmpX2X = x2.x, tmpY1X = y1.x, tmpY2X = y2.x;
+			double tmpX1Y = x1.y, tmpX2Y = x2.y, tmpY1Y = y1.y, tmpY2Y = y2.y;
 
 			line line2 = { x2,y2 };
 			line line1 = { x1,y1 };
 			Assert::AreEqual(5.0, foo(line2, line1));
 
-			Assert::AreEqual(x1, tmpX1);
-			Assert::AreEqual(x1, tmpX2);
-			Assert::AreEqual(y1, tmpY1);
-			Assert::AreEqual(y2, tmpY2);
+			Assert::AreEqual(x1.x, tmpX1X);
+			Assert::AreEqual(x2.x, tmpX2X);
+			Assert::AreEqual(y1.x, tmpY1X);
+			Assert::AreEqual(y2.x, tmpY2X);
+			Assert::AreEqual(x1.y, tmpX1Y);
+			Assert::AreEqual(x2.y, tmpX2Y);
+			Assert::AreEqual(y1.y, tmpY1Y);
+			Assert::AreEqual(y2.y, tmpY2Y);
 		}
 		TEST_METHOD(TestMethod15)
 		{
@@ -302,7 +377,8 @@ namespace UnitTest1
 			point x2 = { 10,10 };
 			point y2 = { 5,10 };
 
-			point tmpX1 = x1, tmpX2 = x2, tmpY1 = y1, tmpY2 = y2;
+			double tmpX1X = x1.x, tmpX2X = x2.x, tmpY1X = y1.x, tmpY2X = y2.x;
+			double tmpX1Y = x1.y, tmpX2Y = x2.y, tmpY1Y = y1.y, tmpY2Y = y2.y;
 
 			line line1 = { x1,y1 };
 			line line2 = { x2,y2 };
@@ -310,10 +386,14 @@ namespace UnitTest1
 			Assert::AreEqual(2.0, foo(line1, line2));
 			Assert::AreEqual(2.0, foo(line2, line1));
 
-			Assert::AreEqual(x1, tmpX1);
-			Assert::AreEqual(x1, tmpX2);
-			Assert::AreEqual(y1, tmpY1);
-			Assert::AreEqual(y2, tmpY2);
+			Assert::AreEqual(x1.x, tmpX1X);
+			Assert::AreEqual(x2.x, tmpX2X);
+			Assert::AreEqual(y1.x, tmpY1X);
+			Assert::AreEqual(y2.x, tmpY2X);
+			Assert::AreEqual(x1.y, tmpX1Y);
+			Assert::AreEqual(x2.y, tmpX2Y);
+			Assert::AreEqual(y1.y, tmpY1Y);
+			Assert::AreEqual(y2.y, tmpY2Y);
 		}
 		TEST_METHOD(TestMethod16)
 		{
@@ -323,7 +403,8 @@ namespace UnitTest1
 			point x2 = { 10,10 };
 			point y2 = { 5,10 };
 
-			point tmpX1 = x1, tmpX2 = x2, tmpY1 = y1, tmpY2 = y2;
+			double tmpX1X = x1.x, tmpX2X = x2.x, tmpY1X = y1.x, tmpY2X = y2.x;
+			double tmpX1Y = x1.y, tmpX2Y = x2.y, tmpY1Y = y1.y, tmpY2Y = y2.y;
 
 			line line1 = { x1,y1 };
 			line line2 = { x2,y2 };
@@ -331,10 +412,14 @@ namespace UnitTest1
 			Assert::AreEqual(1.50, foo(line1, line2));
 			Assert::AreEqual(1.50, foo(line2, line1));
 
-			Assert::AreEqual(x1, tmpX1);
-			Assert::AreEqual(x1, tmpX2);
-			Assert::AreEqual(y1, tmpY1);
-			Assert::AreEqual(y2, tmpY2);
+			Assert::AreEqual(x1.x, tmpX1X);
+			Assert::AreEqual(x2.x, tmpX2X);
+			Assert::AreEqual(y1.x, tmpY1X);
+			Assert::AreEqual(y2.x, tmpY2X);
+			Assert::AreEqual(x1.y, tmpX1Y);
+			Assert::AreEqual(x2.y, tmpX2Y);
+			Assert::AreEqual(y1.y, tmpY1Y);
+			Assert::AreEqual(y2.y, tmpY2Y);
 		}
 		TEST_METHOD(TestMethod17)
 		{
@@ -342,20 +427,28 @@ namespace UnitTest1
 			point y1 = { 8,10 };
 
 			point x2 = { 10,10 };
-			point y2 = { 6.51,10 };
+			point y2 = { 6.52,10 };
 
-			point tmpX1 = x1, tmpX2 = x2, tmpY1 = y1, tmpY2 = y2;
+			double tmpX1X = x1.x, tmpX2X = x2.x, tmpY1X = y1.x, tmpY2X = y2.x;
+			double tmpX1Y = x1.y, tmpX2Y = x2.y, tmpY1Y = y1.y, tmpY2Y = y2.y;
 
 			line line1 = { x1,y1 };
 			line line2 = { x2,y2 };
 
-			Assert::AreEqual(0.0, foo(line1, line2));
-			Assert::AreEqual(0.0, foo(line2, line1));
+			std::string a = "1.480000";
+			std::string b = std::to_string(foo(line1, line2));
+			std::string c = std::to_string(foo(line2, line1));
+			Assert::AreEqual(a, b);
+			Assert::AreEqual(a, c);
 
-			Assert::AreEqual(x1, tmpX1);
-			Assert::AreEqual(x1, tmpX2);
-			Assert::AreEqual(y1, tmpY1);
-			Assert::AreEqual(y2, tmpY2);
+			Assert::AreEqual(x1.x, tmpX1X);
+			Assert::AreEqual(x2.x, tmpX2X);
+			Assert::AreEqual(y1.x, tmpY1X);
+			Assert::AreEqual(y2.x, tmpY2X);
+			Assert::AreEqual(x1.y, tmpX1Y);
+			Assert::AreEqual(x2.y, tmpX2Y);
+			Assert::AreEqual(y1.y, tmpY1Y);
+			Assert::AreEqual(y2.y, tmpY2Y);
 		}
 		TEST_METHOD(TestMethod18)
 		{
@@ -365,7 +458,8 @@ namespace UnitTest1
 			point x2 = { 10,10 };
 			point y2 = { 10,10 };
 
-			point tmpX1 = x1, tmpX2 = x2, tmpY1 = y1, tmpY2 = y2;
+			double tmpX1X = x1.x, tmpX2X = x2.x, tmpY1X = y1.x, tmpY2X = y2.x;
+			double tmpX1Y = x1.y, tmpX2Y = x2.y, tmpY1Y = y1.y, tmpY2Y = y2.y;
 
 			line line1 = { x1,y1 };
 			line line2 = { x2,y2 };
@@ -375,10 +469,14 @@ namespace UnitTest1
 			Assert::AreEqual(0.0, foo(line1, line1));
 			Assert::AreEqual(0.0, foo(line2, line2));
 
-			Assert::AreEqual(x1, tmpX1);
-			Assert::AreEqual(x1, tmpX2);
-			Assert::AreEqual(y1, tmpY1);
-			Assert::AreEqual(y2, tmpY2);
+			Assert::AreEqual(x1.x, tmpX1X);
+			Assert::AreEqual(x2.x, tmpX2X);
+			Assert::AreEqual(y1.x, tmpY1X);
+			Assert::AreEqual(y2.x, tmpY2X);
+			Assert::AreEqual(x1.y, tmpX1Y);
+			Assert::AreEqual(x2.y, tmpX2Y);
+			Assert::AreEqual(y1.y, tmpY1Y);
+			Assert::AreEqual(y2.y, tmpY2Y);
 		}
 	};
 }
