@@ -26,20 +26,9 @@ void selectionSort(int * const arr, const int beg, const int size)
 		ownSwap(arr[minInd], arr[i]);
 	}
 }
-void Task1()
+
+int Task1(int * const arr, const int n)
 {
-	int e;
-	std::cin >> e;
-	while (e--)
-	{
-		int n, tmp;
-		std::cin >> n;
-		int * const arr = new int[n];
-		for (unsigned i = 0; i < n; ++i)
-		{
-			std::cin >> tmp;
-			arr[i] = tmp;
-		}
 		selectionSort(arr, 0, n);
 		unsigned negativeEnd = 0;
 		while (arr[negativeEnd] < 0 && negativeEnd < n)
@@ -80,7 +69,5 @@ void Task1()
 		{
 			sum += arr[i] * arr[i + 1];
 		}
-		std::cout << sum << '\n';
-		delete[] arr;
-	}
+		return sum;
 }
