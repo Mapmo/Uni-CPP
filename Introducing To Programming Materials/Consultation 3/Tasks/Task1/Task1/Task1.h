@@ -29,45 +29,45 @@ void selectionSort(int * const arr, const int beg, const int size)
 
 int Task1(int * const arr, const int n)
 {
-		selectionSort(arr, 0, n);
-		unsigned negativeEnd = 0;
-		while (arr[negativeEnd] < 0 && negativeEnd < n)
-		{
-			++negativeEnd;
-		}
-		unsigned positiveBegin = negativeEnd;
-		while (arr[positiveBegin] == 0 && positiveBegin < n)
-		{
-			++positiveBegin;
-		}
-		int zerosCount = positiveBegin - negativeEnd; //if positiveBegin == negativeEnd, then there are 0 zeros, else there is at least 1
+	selectionSort(arr, 0, n);
+	unsigned negativeEnd = 0;
+	while (arr[negativeEnd] < 0 && negativeEnd < n)
+	{
+		++negativeEnd;
+	}
+	unsigned positiveBegin = negativeEnd;
+	while (arr[positiveBegin] == 0 && positiveBegin < n)
+	{
+		++positiveBegin;
+	}
+	int zerosCount = positiveBegin - negativeEnd; //if positiveBegin == negativeEnd, then there are 0 zeros, else there is at least 1
 
-		int sum = 0;
-		if (negativeEnd % 2 == 1 && negativeEnd != 0)
+	int sum = 0;
+	if (negativeEnd % 2 == 1 && negativeEnd != 0)
+	{
+		if (!zerosCount)
 		{
-			if (!zerosCount)
-			{
-				sum += arr[negativeEnd - 1];
-			}
-			--negativeEnd;
+			sum += arr[negativeEnd - 1];
 		}
-		for (unsigned i = 0; i < negativeEnd; i += 2)
-		{
-			sum += arr[i] * arr[i + 1];
-		}
-		while (arr[positiveBegin] == 1)
-		{
-			++sum;
-			++positiveBegin;
-		}
-		if ((n - positiveBegin) % 2 == 1 && positiveBegin < n)
-		{
-			sum += arr[positiveBegin];
-			++positiveBegin;
-		}
-		for (unsigned i = positiveBegin; i < n; i += 2)
-		{
-			sum += arr[i] * arr[i + 1];
-		}
-		return sum;
+		--negativeEnd;
+	}
+	for (unsigned i = 0; i < negativeEnd; i += 2)
+	{
+		sum += arr[i] * arr[i + 1];
+	}
+	while (arr[positiveBegin] == 1)
+	{
+		++sum;
+		++positiveBegin;
+	}
+	if ((n - positiveBegin) % 2 == 1 && positiveBegin < n)
+	{
+		sum += arr[positiveBegin];
+		++positiveBegin;
+	}
+	for (unsigned i = positiveBegin; i < n; i += 2)
+	{
+		sum += arr[i] * arr[i + 1];
+	}
+	return sum;
 }
