@@ -1,4 +1,4 @@
-Project simulating a test - created for the Computer Architecture course
+Project simulating tests - created for the Computer Architecture course and co.
 
 How to use it it.
 1. Run the code 
