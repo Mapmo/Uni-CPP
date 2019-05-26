@@ -79,7 +79,7 @@ int Question::AnswerQuestion()
 }
 int main()
 {
-	std::cout << "Test 2 po ISI\nIzgotven ot Mapmo\n";
+	std::cout << "Test 2 po ISI\nIzgotven ot Mapmo, redaktiran ot Alexa\n";
 	std::cout << "Za da otgovorite na nqkoi vupros vavedete bukvata(bukvite) i kogato ste gotovi vavedete 's'\n";
 	std::cout << "Suobrazete se kak raboti std::cin\nAko jelaete simuaciq bez povtorni opiti natisnete r\nAko jelaete vuprosite, koito oburkate da se zapazvat natisnete proizvolen buton\n";
 	char useless;
@@ -120,9 +120,9 @@ int main()
 
 	Question q5("Kakvi merni edinici za razmer na proekt izpolzva modelyt na ranniq dizajn na COCOMO II");
 	q5.AddOption("Use-case points", -1);
-	q5.AddOption("Korigirani funkcionalni tochki (adjusted function points)", 1);
+	q5.AddOption("Korigirani funkcionalni tochki (adjusted function points)", -1);
 	q5.AddOption("Obektni tochki (object points)", -1);
-	q5.AddOption("Nekorigirani funkcionalni tochki (unadjusted function points)", -1);
+	q5.AddOption("Nekorigirani funkcionalni tochki (unadjusted function points)", 1);
 	exam.push_back(q5);
 
 	Question q6("Kolko sa faktorite za razhod v post-arhitekturniq model na COCOMO II");
@@ -136,7 +136,7 @@ int main()
 	q7.AddOption("Nedejdnost na softuera (RELY)", -1);
 	q7.AddOption("Stepen na dokumentaciq (DOCU)", -1);
 	q7.AddOption("Razmer na dannite (DATA)", -1);
-	q7.AddOption("Stepen na zrqlost (MATD)", -1);
+	q7.AddOption("Stepen na zrqlost (MATD)", 1);
 	exam.push_back(q7);
 
 	Question q8("Po kakvo se razlichavat modela na ranniq design i post-arhitekturniq model na COCOMO II");
@@ -226,7 +226,7 @@ int main()
 	Question q20("Ot kakvo se opredelq slojnostta na funkciite za vynshen vhod (EI) pri analiza s funkcionalni tochki");
 	q20.AddOption("Ot broq na RET i DET", -1);
 	q20.AddOption("Ot broq na FTR", -1);
-	q20.AddOption("Ot broq na DET i FTR", -1);
+	q20.AddOption("Ot broq na DET i FTR", 1);
 	q20.AddOption("Ot broq na DET", -1);
 	exam.push_back(q20);
 
@@ -374,7 +374,7 @@ int main()
 	e1.AddOption("Tablica v BD", -1);
 	e1.AddOption("Stored procedure v BD", -1);
 	e1.AddOption("Triger v BD", -1);
-	e1.AddOption("View (izgled) v BD", -1);
+	e1.AddOption("View (izgled) v BD", 1);
 	exam.push_back(e1);
 
 	Question e14("Tablica ot baza danni, w koqto prilojenieto pravi Insert/Update/Delete/Select se broi za");
