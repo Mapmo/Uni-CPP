@@ -89,7 +89,7 @@ int main()
 	std::vector<Question> exam;
 	std::srand(unsigned(std::time(0)));
 
-	
+	//q is for 2017, w for 2013, e for 2016
 	Question q1("Koy model e izpolzvan pri COCOMO II metod za ocenka?");
 	q1.AddOption("Biznes model", -1);
 	q1.AddOption("Post-arhitekturen model", 1);
@@ -111,7 +111,7 @@ int main()
 	q3.AddOption("Sled izgotvqne na detajlen tehnicheski dizajn", -1);
 	exam.push_back(q3);
 
-	Question q4("Kakvo otrazqva fakktora B v osnovnoto uravnenie na COCOMO II PM .... A * S");
+	Question q4("Kakvo otrazqva faktora B v osnovnoto uravnenie na COCOMO II PM .... A * S");
 	q4.AddOption("Razmera na proekta", -1);
 	q4.AddOption("Usiliq za proekta izmereni v choveko-meseci", -1);
 	q4.AddOption("Stepenta na ikonomiq ili razshirenie na usiliq v proekti s razlichen razmeri", 1);
@@ -183,7 +183,7 @@ int main()
 
 	Question q14("Koi elementarni procesi sa elementi na analiza s funkcionalni tochki");
 	q14.AddOption("Slojni tranzakcii TR i vytreshni logicheski fajlove", -1);
-	q14.AddOption("Vytreshni vhodove EI i vynshni izhodi EO", 1);
+	q14.AddOption("Vynshni vhodove EI i vynshni izhodi EO", 1);
 	q14.AddOption("Vynshni izhodi EO i vytreshni fizicheski fajlove IPF", -1);
 	q14.AddOption("Tranzakcii po izvlichane na danni EQ i vytreshni fizicheski fajlove IPF", -1);
 	exam.push_back(q14);
@@ -328,7 +328,7 @@ int main()
 	w18.AddOption("Ne se ocenqva s funckionalni tochki", -1);
 	exam.push_back(w18);
 
-	Question w19("Pri edna i syshta slojnost na funkciite za danni (ILF, EIF) ??? funkcionalnite tochki");
+	Question w19("Pri edna i syshta slojnost na funkciite za danni (ILF, EIF) v modela na funkcionalnite tochki");
 	w19.AddOption("EIF se ocenqva s povech funckionalni tochki ot ILF", -1);
 	w19.AddOption("Broqt na funkcionalni tochki e ednakyv", -1);
 	w19.AddOption("ILF se ocenqva s povech funckionalni tochki ot EIF", 1);
@@ -344,7 +344,7 @@ int main()
 
 	Question w22("Koy ot izbroenite elementarni procesi ne e element na analiza s funkcionalni tochki");
 	w22.AddOption("Vynshni izhodi (EO)", -1);
-	w22.AddOption("Vytreshni interface files (IF)", 1);
+	w22.AddOption("Vytreshni interface files (IIF)", 1);
 	w22.AddOption("Izvlichane na danni (EQ)", -1);
 	w22.AddOption("Vynshni vhodove (EI)", -1);
 	exam.push_back(w22);
@@ -364,20 +364,47 @@ int main()
 	exam.push_back(w24);
 
 	Question w25("V kakva posledovatelnost sledva da se izvyrshva analiza s funkcionalni tochki?");
-	w25.AddOption("opredelqne na faktori na slojnost, identifikaciq na funkcii, opredelqne na niva na slojnost, iz??? nekorigiran funkcionalen obem, opredelqne na faktori za korekciq na funkcionalen obem, opredelqne na funkcionalen obem", -1);
-	w25.AddOption("opredelqne na niva na slojnost, identifikaciq na funkcii, opredelqne na faktori na slojnost, iz??? nekorigiran funkcionalen obem, opredelqne na faktori za korekciq na funkcionalen obem, opredelqne na funkcionalen obem", -1);
-	w25.AddOption("identifikaciq na strukturi ot danni, opredelqne na faktori na slojnost, opredelqne na niva na slojnost, iz??? nekorigiran funkcionalen obem, opredelqne na faktori za korekciq na funkcionalen obem, opredelqne na funkcionalen obem", -1);
-	w25.AddOption("identifikaciq na funkcii, opredelqne na faktori na slojnost, opredelqne na niva na slojnost, iz??? nekorigiran funkcionalen obem, opredelqne na faktori za korekciq na funkcionalen obem, opredelqne na funkcionalen obem", 1);
+	w25.AddOption("opredelqne na faktori na slojnost, identifikaciq na funkcii, opredelqne na niva na slojnost, izchislqvane na nekorigiran funkcionalen obem, opredelqne na faktori za korekciq na funkcionalen obem, opredelqne na funkcionalen obem", -1);
+	w25.AddOption("opredelqne na niva na slojnost, identifikaciq na funkcii, opredelqne na faktori na slojnost, izchislqvane na nekorigiran funkcionalen obem, opredelqne na faktori za korekciq na funkcionalen obem, opredelqne na funkcionalen obem", -1);
+	w25.AddOption("identifikaciq na strukturi ot danni, opredelqne na faktori na slojnost, opredelqne na niva na slojnost, izchislqvane na nekorigiran funkcionalen obem, opredelqne na faktori za korekciq na funkcionalen obem, opredelqne na funkcionalen obem", -1);
+	w25.AddOption("identifikaciq na funkcii, opredelqne na faktori na slojnost, opredelqne na niva na slojnost, izchislqvane na nekorigiran funkcionalen obem, opredelqne na faktori za korekciq na funkcionalen obem, opredelqne na funkcionalen obem", 1);
 	exam.push_back(w25);
 
-	//opredelqne na funkcionalen obem
+	Question e1("Pri analiz s funkcionalni tochki na prilojenie s baza danni, RET syotvetstva na:");
+	e1.AddOption("Tablica v BD", -1);
+	e1.AddOption("Stored procedure v BD", -1);
+	e1.AddOption("Triger v BD", -1);
+	e1.AddOption("View (izgled) v BD", -1);
+	exam.push_back(e1);
+
+	Question e14("Tablica ot baza danni, w koqto prilojenieto pravi Insert/Update/Delete/Select se broi za");
+	e14.AddOption("Data Element Type (DET)", -1);
+	e14.AddOption("Vytreshen vhod (EI)", -1);
+	e14.AddOption("Vytreshen logicheski file (ILF)", 1);
+	e14.AddOption("Record Element Type (RET)", -1);
+	exam.push_back(e14);
+
+	Question e16("Pri analiz s funkcionalni tochki na prilojenie s BD, Login forma sytvetstva na:");
+	e16.AddOption("Izvlichane na danni (EQ)", 1);
+	e16.AddOption("Vynshen vhod (EI)", -1);
+	e16.AddOption("Vytreshen logicheski file (ILF)", -1);
+	e16.AddOption("Vynshen interface file (EIF)", -1);
+	exam.push_back(e16);
+
+	Question e19("Kakvo otrazqva parametara S v osnovnoto uravnenie na COCOMO II PM .... = A*S''");
+	e19.AddOption("Stepenta na ikonomiq ili razhishtenie na usiliq v proekti s razlichen razmer", -1);
+	e19.AddOption("Stepenta na namalqvane na usiliqta", -1);
+	e19.AddOption("Razmera na proekta", 1);
+	e19.AddOption("Usiliq za proekta izmereni v choveko-meseci", -1);
+	exam.push_back(e19);
+
 	/*
-	Question w2("");
-	w2.AddOption("", -1);
-	w2.AddOption("", -1);
-	w2.AddOption("", -1);
-	w2.AddOption("", -1);
-	exam.push_back(w2);
+	Question e1("");
+	e1.AddOption("", -1);
+	e1.AddOption("", -1);
+	e1.AddOption("", -1);
+	e1.AddOption("", -1);
+	exam.push_back(e1);
 	*/
 
 	unsigned questionsCount = exam.size();
