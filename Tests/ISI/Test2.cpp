@@ -170,11 +170,11 @@ int main()
 	Question q12("Koq ot izbroenite definicii ne se otnasq za tranzakciqta za izvlichane na danni EQ");
 	q12.AddOption("Elementaren proces, koyto izprashta danni ili upravlenska informaciq izvyn prilojenieto", -1);
 	q12.AddOption("Elementaren proces, koyto predostavq informaciq na potrebiteli", -1);
-	q12.AddOption("Elementaren proces, kojto izvyrshva dopylnitelna obrabotka vyrhu predostavenata informaciq", 1);
+	q12.AddOption("Elementaren proces, koyto izvyrshva dopylnitelna obrabotka vyrhu predostavenata informaciq", 1);
 	q12.AddOption("Opredelqneto na granicata na prilojenieto e zadyljitelna pri ocenkata s funkcionalni tochki", -1);
 	exam.push_back(q12);
 
-	Question q13("Koq ot izbroenite definicii ne se otnasq za vytrshni logicheski fajlove (ILF)");
+	Question q13("Koq ot izbroenite definicii ne se otnasq za vytreshni logicheski fajlove (ILF)");
 	q13.AddOption("Grupa ot logicheski svyrzani danni, koito sa identificirani ot potrebitelite i se upravlqvat izvyn granicite na prilojenieto", 1);
 	q13.AddOption("Grupa ot logicheski svyrzani danni, koito se identificirat ot potrebitelite", -1);
 	q13.AddOption("Osnovna cel na ILF e da syhranqva dannite na prolojenieto", -1);
@@ -269,7 +269,7 @@ int main()
 	w1.AddOption("Vytreshen vhod (EI)", -1);
 	w1.AddOption("Data Element Type", -1);
 	w1.AddOption("Record Element Type", -1);
-	w1.AddOption("vytreshen logicheski file (ILF)", 1);
+	w1.AddOption("Vytreshen logicheski file (ILF)", 1);
 	exam.push_back(w1);
 
 	Question w2("Koe ot izbroenite pravila za identifikaciq ne se otnasq za external interface files (EIF)");
@@ -329,9 +329,9 @@ int main()
 	exam.push_back(w18);
 
 	Question w19("Pri edna i syshta slojnost na funkciite za danni (ILF, EIF) v modela na funkcionalnite tochki");
-	w19.AddOption("EIF se ocenqva s povech funckionalni tochki ot ILF", -1);
+	w19.AddOption("EIF se ocenqva s poveche funckionalni tochki ot ILF", -1);
 	w19.AddOption("Broqt na funkcionalni tochki e ednakyv", -1);
-	w19.AddOption("ILF se ocenqva s povech funckionalni tochki ot EIF", 1);
+	w19.AddOption("ILF se ocenqva s poveche funckionalni tochki ot EIF", 1);
 	w19.AddOption("Ne se ocenqvat s funkcionalni tochki", -1);
 	exam.push_back(w19);
 
@@ -364,10 +364,10 @@ int main()
 	exam.push_back(w24);
 
 	Question w25("V kakva posledovatelnost sledva da se izvyrshva analiza s funkcionalni tochki?");
-	w25.AddOption("opredelqne na faktori na slojnost, identifikaciq na funkcii, opredelqne na niva na slojnost, izchislqvane na nekorigiran funkcionalen obem, opredelqne na faktori za korekciq na funkcionalen obem, opredelqne na funkcionalen obem", -1);
-	w25.AddOption("opredelqne na niva na slojnost, identifikaciq na funkcii, opredelqne na faktori na slojnost, izchislqvane na nekorigiran funkcionalen obem, opredelqne na faktori za korekciq na funkcionalen obem, opredelqne na funkcionalen obem", -1);
-	w25.AddOption("identifikaciq na strukturi ot danni, opredelqne na faktori na slojnost, opredelqne na niva na slojnost, izchislqvane na nekorigiran funkcionalen obem, opredelqne na faktori za korekciq na funkcionalen obem, opredelqne na funkcionalen obem", -1);
-	w25.AddOption("identifikaciq na funkcii, opredelqne na faktori na slojnost, opredelqne na niva na slojnost, izchislqvane na nekorigiran funkcionalen obem, opredelqne na faktori za korekciq na funkcionalen obem, opredelqne na funkcionalen obem", 1);
+	w25.AddOption("opredelqne na faktori na slojnost, identifikaciq na funkcii, opredelqne na niva na slojnost, izchislqvane na nekorigiran funkcionalen obem, opredelqne na faktori za korekciq na funkcionalen obem, opredelqne na funkcionalen obem\n", -1);
+	w25.AddOption("opredelqne na niva na slojnost, identifikaciq na funkcii, opredelqne na faktori na slojnost, izchislqvane na nekorigiran funkcionalen obem, opredelqne na faktori za korekciq na funkcionalen obem, opredelqne na funkcionalen obem\n", -1);
+	w25.AddOption("identifikaciq na strukturi ot danni, opredelqne na faktori na slojnost, opredelqne na niva na slojnost, izchislqvane na nekorigiran funkcionalen obem, opredelqne na faktori za korekciq na funkcionalen obem, opredelqne na funkcionalen obem\n", -1);
+	w25.AddOption("identifikaciq na funkcii, opredelqne na faktori na slojnost, opredelqne na niva na slojnost, izchislqvane na nekorigiran funkcionalen obem, opredelqne na faktori za korekciq na funkcionalen obem, opredelqne na funkcionalen obem\n", 1);
 	exam.push_back(w25);
 
 	Question e1("Pri analiz s funkcionalni tochki na prilojenie s baza danni, RET syotvetstva na:");
