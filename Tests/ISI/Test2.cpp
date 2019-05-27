@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <cstdlib>
 #include <vector>
 #include <ctime>
@@ -81,7 +81,7 @@ int main()
 {
 	std::cout << "Test 2 po ISI\nIzgotven ot Mapmo, redaktiran ot Alexa\n";
 	std::cout << "Za da otgovorite na nqkoi vupros vavedete bukvata(bukvite) i kogato ste gotovi vavedete 's'\n";
-	std::cout << "Suobrazete se kak raboti std::cin\nAko jelaete simuaciq bez povtorni opiti natisnete r\nAko jelaete vuprosite, koito oburkate da se zapazvat natisnete proizvolen buton\n";
+	std::cout << "Suobrazete se kak raboti std::cin\nAko jelaete simuaciq bez povtorni opiti natisnete r3\nAko jelaete vuprosite, koito oburkate da se zapazvat natisnete proizvolen buton\n";
 	char useless;
 	std::cin >> useless;
 	bool flag = (useless == 'r' ? 1 : 0);
@@ -89,7 +89,7 @@ int main()
 	std::vector<Question> exam;
 	std::srand(unsigned(std::time(0)));
 
-	//q is for 2017, w for 2013, e for 2016
+	//q is for 2017, w for 2013, e for 2016, r for Mapmo's own questions
 	Question q1("Koy model e izpolzvan pri COCOMO II metod za ocenka?");
 	q1.AddOption("Biznes model", -1);
 	q1.AddOption("Post-arhitekturen model", 1);
@@ -111,7 +111,7 @@ int main()
 	q3.AddOption("Sled izgotvqne na detajlen tehnicheski dizajn", -1);
 	exam.push_back(q3);
 
-	Question q4("Kakvo otrazqva faktora B v osnovnoto uravnenie na COCOMO II PM .... A * S");
+	Question q4("Kakvo otrazqva faktora B v osnovnoto uravnenie na COCOMO II PM nominalno = A * S^B");
 	q4.AddOption("Razmera na proekta", -1);
 	q4.AddOption("Usiliq za proekta izmereni v choveko-meseci", -1);
 	q4.AddOption("Stepenta na ikonomiq ili razshirenie na usiliq v proekti s razlichen razmeri", 1);
@@ -259,7 +259,7 @@ int main()
 	exam.push_back(q24);
 
 	Question q25("Koy element na analiza po metodologiqta SEER-SEM nqma analog pri analiza s funkcionalni tochki");
-	q25.AddOption("SEER-FBS vytreshni logicheski files (ILF)", -1);
+	q25.AddOption("SEER-FBS Vytreshni logicheski files (ILF)", -1);
 	q25.AddOption("SEER-FBS Vynshni interface files (EIF)", -1);
 	q25.AddOption("SEER-FBS Vytreshni funkcii (IF)", 1);
 	q25.AddOption("SEER-FBS Izvlichane na danni (EQ)", -1);
@@ -324,7 +324,7 @@ int main()
 	Question w18("Koe tvyrdenie e vqrno za funkcionalnite tochki?");
 	w18.AddOption("Mqrka za razmer na funkcionalnost na softuer osnovavashta se na OOP pogled", -1);
 	w18.AddOption("Funckionalnite tochki se osnovavat na metodologiite na strukturnoto programirane", -1);
-	w18.AddOption("Merna edinica za funkcionalnost, kato tezultata e predstaven v terminite na krajniq potrebitel", 1);
+	w18.AddOption("Merna edinica za funkcionalnost, kato rezultata e predstaven v terminite na krayniq potrebitel", 1);
 	w18.AddOption("Ne se ocenqva s funckionalni tochki", -1);
 	exam.push_back(w18);
 
@@ -377,7 +377,7 @@ int main()
 	e1.AddOption("View (izgled) v BD", 1);
 	exam.push_back(e1);
 
-	Question e14("Tablica ot baza danni, w koqto prilojenieto pravi Insert/Update/Delete/Select se broi za");
+	Question e14("Tablica ot baza danni, v koqto prilojenieto pravi Insert/Update/Delete/Select se broi za");
 	e14.AddOption("Data Element Type (DET)", -1);
 	e14.AddOption("Vytreshen vhod (EI)", -1);
 	e14.AddOption("Vytreshen logicheski file (ILF)", 1);
@@ -391,20 +391,40 @@ int main()
 	e16.AddOption("Vynshen interface file (EIF)", -1);
 	exam.push_back(e16);
 
-	Question e19("Kakvo otrazqva parametara S v osnovnoto uravnenie na COCOMO II PM .... = A*S''");
+	Question e19("Kakvo otrazqva parametara S v osnovnoto uravnenie na COCOMO II PM nominalno = A * S^B");
 	e19.AddOption("Stepenta na ikonomiq ili razhishtenie na usiliq v proekti s razlichen razmer", -1);
 	e19.AddOption("Stepenta na namalqvane na usiliqta", -1);
 	e19.AddOption("Razmera na proekta", 1);
 	e19.AddOption("Usiliq za proekta izmereni v choveko-meseci", -1);
 	exam.push_back(e19);
 
+	Question r1("Kakvo otrazqva parametara PM v osnovnoto uravnenie na COCOMO II PM nominalno = A * S^B");
+	r1.AddOption("Stepenta na ikonomiq ili razhishtenie na usiliq v proekti s razlichen razmer", -1);
+	r1.AddOption("Stepenta na namalqvane na usiliqta", -1);
+	r1.AddOption("Razmera na proekta", 1);
+	r1.AddOption("Usiliq za proekta izmereni v choveko-meseci", 1);
+	exam.push_back(r1);
+
+	Question r2("Kakvo otrazqva parametara A v osnovnoto uravnenie na COCOMO II PM nominalno = A * S^B");
+	r2.AddOption("Stepenta na ikonomiq ili razhishtenie na usiliq v proekti s razlichen razmer", -1);
+	r2.AddOption("Stepenta na namalqvane na usiliqta", -1);
+	r2.AddOption("Konstanta, otrazqvashta efekta ot uvelichavane na neobhodimite usiliq v proekta s negovoto narastvane", 1);
+	r2.AddOption("Usiliq za proekta izmereni v choveko-meseci", -1);
+	exam.push_back(r2);
+
+	Question r3("Kakvo oznachava stojnostta na parameta B za produktivnostta v  osnovnoto uravnenie na COCOMO II PM nominalno = A * S^B");
+	r3.AddOption("Ne znachi nishto", -1);
+	r3.AddOption("Zavisi ot proekta", -1);
+	r3.AddOption("Kolkoto po-malko e tolkova poveche raste produktivnostta s razmera na proekta", 1);
+	r3.AddOption("Kolkoto po-golqmo e tolkova poveche raste produktivnostta s razmera na proekta", -1);
+
 	/*
-	Question e1("");
-	e1.AddOption("", -1);
-	e1.AddOption("", -1);
-	e1.AddOption("", -1);
-	e1.AddOption("", -1);
-	exam.push_back(e1);
+	Question r("");
+	r.AddOption("", -1);
+	r.AddOption("", -1);
+	r.AddOption("", -1);
+	r.AddOption("", -1);
+	exam.push_back(r);
 	*/
 
 	unsigned questionsCount = exam.size();
