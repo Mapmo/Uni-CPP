@@ -303,7 +303,7 @@ int main()
 	Question w14("Koe tvyrdenie za Data Element Types (DET) e vqrno");
 	w14.AddOption("Poleta ot vytreshen logicheski file (ILF), vidimi i znachimi za potrebitelq", 1);
 	w14.AddOption("Poleta ot vynshen interface file (EIF) nevidimi i neznachimi za potrebitelq", -1);
-	w14.AddOption("Poleta ot vytreshen logicheski file (ILF), nividimi i neznachimi za potrebitelq", -1);
+	w14.AddOption("Poleta ot vytreshen logicheski file (ILF), nevidimi i neznachimi za potrebitelq", -1);
 	w14.AddOption("DET syotvetstva na syhranena procedura(stored procedure)", -1);
 	exam.push_back(w14);
 
