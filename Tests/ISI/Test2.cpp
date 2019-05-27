@@ -81,7 +81,7 @@ int main()
 {
 	std::cout << "Test 2 po ISI\nIzgotven ot Mapmo, redaktiran ot Alexa\n";
 	std::cout << "Za da otgovorite na nqkoi vupros vavedete bukvata(bukvite) i kogato ste gotovi vavedete 's'\n";
-	std::cout << "Suobrazete se kak raboti std::cin\nAko jelaete simuaciq bez povtorni opiti natisnete r3\nAko jelaete vuprosite, koito oburkate da se zapazvat natisnete proizvolen buton\n";
+	std::cout << "Suobrazete se kak raboti std::cin\nAko jelaete simuaciq bez povtorni opiti natisnete r\nAko jelaete vuprosite, koito oburkate da se zapazvat natisnete proizvolen buton\n";
 	char useless;
 	std::cin >> useless;
 	bool flag = (useless == 'r' ? 1 : 0);
