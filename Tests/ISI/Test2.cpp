@@ -104,7 +104,7 @@ int main()
 	q2.AddOption("Faktorite izpolzvani pri ocenkata sa 33", -1);
 	exam.push_back(q2);
 
-	Question q3("Koga e umestno da se izpolzva modela na ranniq dizajn pri COMOCOMO II");
+	Question q3("Koga e umestno da se izpolzva modela na ranniq dizajn pri COCOMO II");
 	q3.AddOption("Predi da se opredeli arhitekturata na softuernoto prilojenie", 1);
 	q3.AddOption("Sled kato se opredeli arhitekturata na softuernoto prilojenie", -1);
 	q3.AddOption("Predi da se opredelqt iziskvaniqta na klienta", -1);
@@ -401,7 +401,7 @@ int main()
 	Question r1("Kakvo otrazqva parametara PM v osnovnoto uravnenie na COCOMO II PM nominalno = A * S^B");
 	r1.AddOption("Stepenta na ikonomiq ili razhishtenie na usiliq v proekti s razlichen razmer", -1);
 	r1.AddOption("Stepenta na namalqvane na usiliqta", -1);
-	r1.AddOption("Razmera na proekta", 1);
+	r1.AddOption("Razmera na proekta", -1);
 	r1.AddOption("Usiliq za proekta izmereni v choveko-meseci", 1);
 	exam.push_back(r1);
 
