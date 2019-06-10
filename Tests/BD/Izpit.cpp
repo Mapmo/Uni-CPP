@@ -219,8 +219,8 @@ int main()
 	r18.AddOption("Shemata na relaciqta se systoi ot imeto na relaciqta i imenata na atributite", -1);
 	r18.AddOption("Tipyt na atributite e chast ot shemata na relaciqta", -1);
 	r18.AddOption("Shemata na bazata danni e nabora ot relacionni shemi na relaciite i", -1);
-	r18.AddOption("Konkretnite danni za dadena relaciq se naricha ekzemplqr na relaciqta", 1);
-	r18.AddOption("Konkretnite danni na mnojestvoto relacii ot bazata danni se naricha ekzemplqr na bazata ot danni", -1);
+	r18.AddOption("Konkretnite danni za dadena relaciq se naricha ekzemplqr na relaciqta", -1);
+	r18.AddOption("Konkretnite danni na mnojestvoto relacii ot bazata danni se naricha ekzemplqr na bazata ot danni", 1);
 	exam.push_back(r18);
 
 	Question r19("Koe ot slednite tvyrdeniq pri preobrazuvaneto na diagramite syshnost vryzki v relacionnata shema e vqrno");
