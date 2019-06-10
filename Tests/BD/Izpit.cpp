@@ -156,7 +156,7 @@ int main()
 
 	Question r10("Chlenovete na mnojestvo syshnosti mogat da sa");
 	r10.AddOption("Atributi na mnojestvata syshnosti", -1);
-	r10.AddOption("Enty", 1);
+	r10.AddOption("Enti", 1);
 	r10.AddOption("Drugi mnojestva syshnosti", -1);
 	r10.AddOption("Vsichki izbroeni", -1);
 	r10.AddOption("Nito edno ot izbroenite", -1);
@@ -177,9 +177,9 @@ int main()
 	r12.AddOption("Vryzka s ogranichenie tip referentna cqlost", -1);
 	exam.push_back(r12);
 
-	Question r13("Koe ot slednite tvyrdeniq ne e vqrno za klyuchovete pri modela na syshnost-vryzki");
-	r13.AddOption("Klyuchat e mnojestvo ot atributi, koeto unikalno identificira syshnostite v mnojestvata syshnosti", -1);
-	r13.AddOption("Klyuchat e minimalen", 1);
+	Question r13("Koe ot slednite tvyrdeniq ne e vqrno za key pri modela na syshnost-vryzki");
+	r13.AddOption("Key e mnojestvo ot atributi, koeto unikalno identificira syshnostite v mnojestvata syshnosti", -1);
+	r13.AddOption("Key e minimalen", 1);
 	r13.AddOption("Moje da ima poveche ot edin key v dadeno mnojestvo", -1);
 	r13.AddOption("Vsichki tvyrdeniq sa verni", -1);
 	exam.push_back(r13);
@@ -223,13 +223,13 @@ int main()
 	exam.push_back(r18);
 
 	Question r19("Koe ot slednite tvyrdeniq pri preobrazuvaneto na diagramite syshnost vryzki v relacionnata shema e vqrno");
-	r19.AddOption("Relaciqta na mnojestvoto syshnosti ima po edin atribut za vseki atribut na slaboto mnojestsvo syshnosti, a syshto i atributi za key atributi ot drugi mnojestva syshnosti, koito spomagat za identifikaciq na syshnostite ot slaboto mnojestvo syshnosti", -1);
-	r19.AddOption("Relaciqta za slaboto mnojestvo syshnosti ima po edin atribut za vseki atribut na slaboto mnojestvo syshnosti, a syshto i atributi za key atributi ot drugi mnojestva syshnosti, koito spomagat za identifikaciq na syshnostite ot slaboto mnojestvo syshnosti", -1);
-	r19.AddOption("Relaciqta za vryzka ima za atributi atributite syotvetstvashti na key atributi za vsqko mnojestvo syshnosti uchastvashti vyv vryzkata", -1);
-	r19.AddOption("Relaciqta na poddyrjashtata vryzka za slaboto mnojestvo syshnosti se systoi samo ot atributi syotvetstvashti na key atributi na mnojestvoto syshnosti, v koeto sochi strelkata na vryzkata", -1);
+	r19.AddOption("Relaciqta na mnojestvoto syshnosti ima po edin atribut za vseki atribut na slaboto mnojestsvo syshnosti, a syshto i atributi za key atributi ot drugi mnojestva syshnosti, koito spomagat za identifikaciq na syshnostite ot slaboto mnojestvo syshnosti\n", -1);
+	r19.AddOption("Relaciqta za slaboto mnojestvo syshnosti ima po edin atribut za vseki atribut na slaboto mnojestvo syshnosti, a syshto i atributi za key atributi ot drugi mnojestva syshnosti, koito spomagat za identifikaciq na syshnostite ot slaboto mnojestvo syshnosti\n", -1);
+	r19.AddOption("Relaciqta za vryzka ima za atributi atributite syotvetstvashti na key atributi za vsqko mnojestvo syshnosti uchastvashti vyv vryzkata\n", -1);
+	r19.AddOption("Relaciqta na poddyrjashtata vryzka za slaboto mnojestvo syshnosti se systoi samo ot atributi syotvetstvashti na key atributi na mnojestvoto syshnosti, v koeto sochi strelkata na vryzkata\n", 1);
 	exam.push_back(r19);
 
-	Question r20("Koy podhod pri preobrazuvaneto na isa yerarhiq ot izbroenite e OOP");
+	Question r20("Koy podhod pri preobrazuvaneto na ISA yerarhiq ot izbroenite e OOP");
 	r20.AddOption("Da se razpredelqt syshnostite po razlichnite mnojestva syshnosti v yerarhiqta i da se syzdade relaciq za vsqko takova mnojestvo syshnosti", -1);
 	r20.AddOption("Da se syzdade relaciq za vsqko vyzmojno podmnojestvo ot mnojestvata syshnosti v yerarhiqta kato za vsqka syshnost se syzdade kortej, koyto popada v relaciqta, syotvetstvashta na tochniq nabor mnojestva", 1);
 	r20.AddOption("Da se syzdade samo edna relaciq i da se izpolzvat nulevi stojnosti na tezi atributi, koito ne sa prilojimi za syshnostta predstavlqvashta daden kortej", -1);
@@ -287,7 +287,7 @@ int main()
 	r27.AddOption("V modela na polustrukturiranite danni, dannite sa predstaveni chrez graf", -1);
 	r27.AddOption("XML e realizaciq na polustrukturiranite danni v dokumenti, kydeto vyzlite sa chasti ot teksta otgradeni s otvarqsht i zatvarqsht marker", -1);
 	r27.AddOption("Predstavqneto na vryzkite v XML stava chrez vgnezdqvane i chrez spisyci atributi", -1);
-	r27.AddOption("Vsichki tvyrdeniq sa verni", -1);
+	r27.AddOption("Vsichki tvyrdeniq sa verni", 1);
 	r27.AddOption("Nito edno ot tvyrdeniqta ne e vqrno", -1);
 	exam.push_back(r27);
 
@@ -347,7 +347,7 @@ int main()
 
 	Question r37("V SQL: (vqrnoto tvyrdenie)");
 	r37.AddOption("rekursiqta se predstavq chrez FOR", -1);
-	r37.AddOption("rekursiqta se predstavq chrez WITH", -1);
+	r37.AddOption("rekursiqta se predstavq chrez WITH", 1);
 	r37.AddOption("rekursiqta se predstavq chrez psevdonimi", -1);
 	r37.AddOption("rekursiqta se predstavq chrez bazoviq ezik", -1);
 	r37.AddOption("nqma rekursiq", -1);
