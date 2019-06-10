@@ -18,4 +18,6 @@ To create a new question
 6. Test the question by using Question::AskQuestion() function
 7. Add the question to the exam vector
 
-Good luck
+If you have any new materials feel free to make a pull request or send them to me in order to update the tests :)
+
+Good luck! 
