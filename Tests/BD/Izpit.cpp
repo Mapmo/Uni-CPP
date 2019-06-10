@@ -172,9 +172,9 @@ int main()
 	Question r12("Pri koy vid vryzka ima svyrzvane na syshnost ot ednoto mnojestvo syshnosti s tochno edna syshnost ot drugoto mnojestvo syshnosti");
 	r12.AddOption("Mnogo kym mnogo", -1);
 	r12.AddOption("Mnogo kym edin", -1);
-	r12.AddOption("Nito edno ot izbroenite", 1);
+	r12.AddOption("Nito edno ot izbroenite", -1);
 	r12.AddOption("Edin kym mnogo", -1);
-	r12.AddOption("Vryzka s ogranichenie tip referentna cqlost", -1);
+	r12.AddOption("Vryzka s ogranichenie tip referentna cqlost", 1);
 	exam.push_back(r12);
 
 	Question r13("Koe ot slednite tvyrdeniq ne e vqrno za key pri modela na syshnost-vryzki");
@@ -368,13 +368,20 @@ int main()
 	r39.AddOption("nqkolko razsloeni resheniq", -1);
 	exam.push_back(r39);
 
+	Question r40("Koe ne e vqrno");
+	r40.AddOption("Rekursivna Datalog programa s otrecheni podceli e razsloena", -1);
+	r40.AddOption("Rekursivna Datalog programa bez otrecheni podceli e razsloena", -1);
+	r40.AddOption("Nerekursivna Datalog programa e razsloena", 1); //not confirmed
+	r40.AddOption("Nito edno ot izbroenite", -1);
+	exam.push_back(r40);
+
 	/*
-	Question r3("");
-	r3.AddOption("", -1);
-	r3.AddOption("", -1);
-	r3.AddOption("", -1);
-	r3.AddOption("", -1);
-	exam.push_back(r3);
+	Question r4("");
+	r4.AddOption("", -1);
+	r4.AddOption("", -1);
+	r4.AddOption("", -1);
+	r4.AddOption("", -1);
+	exam.push_back(r4);
 	*/
 
 	unsigned questionsCount = exam.size();
