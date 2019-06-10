@@ -219,7 +219,8 @@ int main()
 	r18.AddOption("Shemata na relaciqta se systoi ot imeto na relaciqta i imenata na atributite", -1);
 	r18.AddOption("Tipyt na atributite e chast ot shemata na relaciqta", -1);
 	r18.AddOption("Shemata na bazata danni e nabora ot relacionni shemi na relaciite i", -1);
-	r18.AddOption("Konkretnite danni na mnojestvoto relacii ot bazata danni se naricha ekzemplqr na bazata ot danni", 1);
+	r18.AddOption("Konkretnite danni za dadena relaciq se naricha ekzemplqr na relaciqta", 1);
+	r18.AddOption("Konkretnite danni na mnojestvoto relacii ot bazata danni se naricha ekzemplqr na bazata ot danni", -1);
 	exam.push_back(r18);
 
 	Question r19("Koe ot slednite tvyrdeniq pri preobrazuvaneto na diagramite syshnost vryzki v relacionnata shema e vqrno");
@@ -255,7 +256,7 @@ int main()
 	Question r23("Koe ot slednite tvyrdeniq ne e vqrno");
 	r23.AddOption("Edna relaciq se namira v normalna forma na Boyce-Codd ako netrivialite i funkcionalni zavisimosti sa sys super key ot lqvata strana", -1);
 	r23.AddOption("Edna relaciq se namira v treta normalna forma ako netrivialnite i funkcionalni zavisimosti sa sys super key ot lqvata strana ili dqsnata im strana e pyrvichen atribut", -1);
-	r23.AddOption("Normalna forma na Boyce-Codd premahba izlishestvata predizvikani ot funkcionalnite zavisimosti", -1);
+	r23.AddOption("Normalna forma na Boyce-Codd premahva izlishestvata predizvikani ot funkcionalnite zavisimosti", -1);
 	r23.AddOption("Pri dekompoziciq v normalna forma na Boyce-Codd se zapazvat funckonalnite zavisimosti i ne se gubi informaciq", 1);
 	r23.AddOption("Edna relaciq se namira v chetvyrta normalna forma ako v neq nqma netrivialni mnogoznachni zavisimosti", -1);
 	r23.AddOption("Pri dekompoziciqta v chetvyrta normalna forma ne se gubi informaciq", -1);
@@ -276,7 +277,7 @@ int main()
 	exam.push_back(r25);
 
 	Question r26("Koe ne e ponqtie v OOP relacionniq model");
-	r26.AddOption("razshireniqta", 1);
+	r26.AddOption("Razshireniqta", 1);
 	r26.AddOption("Vgnezdenite relacii", -1);
 	r26.AddOption("Referentnite tipove", -1);
 	r26.AddOption("Relaciite", -1);
@@ -356,7 +357,7 @@ int main()
 	Question r38("V SQL za razsloeniq trqbva da se izsledvat");
 	r38.AddOption("rekursiq, v koqto ima razlika na relacii", -1);
 	r38.AddOption("rekursiq, v koqto ima avoagregaciq", -1);
-	r38.AddOption("rekursiq, w koqto ima NOT IN", 1);
+	r38.AddOption("rekursiq, v koqto ima NOT IN", 1);
 	r38.AddOption("rekursiq s s otrecheni podceli", -1);
 	exam.push_back(r38);
 
