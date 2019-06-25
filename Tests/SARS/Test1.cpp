@@ -187,8 +187,8 @@ int main()
 
 	Question r19("V arhitekturniq stil shared-data:\nIzberete edno");
 	r19.AddOption("Nito edin ot posochenite otgovori ne e veren", -1);
-	r19.AddOption("Lesno se realizira paraleno izlyplenie na procesite, koito obrabotvat dannite", 1);
-	r19.AddOption("Vsichki uchastvashti komponenti imat vyzmojnost za dostyp do spodeleni danni", -1);
+	r19.AddOption("Lesno se realizira paraleno izlyplenie na procesite, koito obrabotvat dannite", -1);
+	r19.AddOption("Vsichki uchastvashti komponenti imat vyzmojnost za dostyp do spodeleni danni", 1);
 	r19.AddOption("Dannite se izprashtat ednovremenno do vsichki uchastvashti komponenti", -1);
 	exam.push_back(r19);
 
