@@ -136,15 +136,15 @@ int main()
 	exam.push_back(r28);
 
 	Question r27("Broqt na strukturite, koito shte bydat vklucheni v dokumentaciqta na softuernata arhitektura\nzavisi ot\nIzberete edno ili poveche");
-	r27.AddOption("Vidyt na zainteresovanite lica", 1);
+	r27.AddOption("Vidyt na zainteresovanite lica", 0.5);
 	r27.AddOption("Softuertnata sistema", -1);
-	r27.AddOption("Prilojnata oblast, kydeto shte se vnedrqva softuernata sistema", 1);
+	r27.AddOption("Prilojnata oblast, kydeto shte se vnedrqva softuernata sistema", 0.5);
 	r27.AddOption("Kodyt na sistemata", -1);
 	exam.push_back(r27);
 
 	Question r26("Koi ot slednite moje da harakterizirat nadejdnost na sistemata\nIzberete edno ili poveche");
-	r26.AddOption("Procent uspeshni izvikvaniq", 1);
-	r26.AddOption("Veroqtnost za otkaz", 1);
+	r26.AddOption("Procent uspeshni izvikvaniq", 0.5);
+	r26.AddOption("Veroqtnost za otkaz", 0.5);
 	r26.AddOption("Latentnost", -1);
 	r26.AddOption("Vreme za izpylnenie", -1);
 	exam.push_back(r26);
@@ -206,15 +206,15 @@ int main()
 	Question r16("Dokumentaciqta na softuernata arhitektura:\nIzberete edno ili poveche");
 	r16.AddOption("Vkluchva kolkoto e vyzmojno poveche strukturi", -1);
 	r16.AddOption("Vkluchva kolkoto e vyzmojno po-malko strukturi", -1);
-	r16.AddOption("Vkluchva opredeleni strukturi, v zavisimost ot samata sistema i tova koy shte chete dokumentaciqta", 1);
-	r16.AddOption("Vkluchva opisanie na strukturite na arhitekturata plus pridrujavashti dokumenti", 1);
+	r16.AddOption("Vkluchva opredeleni strukturi, v zavisimost ot samata sistema i tova koy shte chete dokumentaciqta", 0.5);
+	r16.AddOption("Vkluchva opisanie na strukturite na arhitekturata plus pridrujavashti dokumenti", 0.5);
 	exam.push_back(r16);
 
 	Question q1("Koi ot slednite sa primer sa dobre formuliran scenarii za kachestvo?\nIzberete edno 1 ili poveche");
-	q1.AddOption("Dopustimo e sistemata da e v rejim na poddrujka za ne poveche ot 3 chasa sedmichno", 1);
+	q1.AddOption("Dopustimo e sistemata da e v rejim na poddrujka za ne poveche ot 3 chasa sedmichno", 0.5);
 	q1.AddOption("Potrebitelqt vliza v sistemata, izbira opciqta za tursene I vuvejda operedelen simvolen niz", -1);
 	q1.AddOption("Promeni v sistemata da se pravqt vyzmovno nai-byrzo", -1);
-	q1.AddOption("Otgovoryt na potrebitelskite zaqvki trqbva da stane do 30 sec", 1);
+	q1.AddOption("Otgovoryt na potrebitelskite zaqvki trqbva da stane do 30 sec", 0.5);
 	exam.push_back(q1);
 
 	Question q2("Smisulut na nefukcionalnite iziskvaniq kum sistemata e\nIzberete edno");
@@ -295,12 +295,12 @@ int main()
 	q13.AddOption("False", 1);
 	exam.push_back(q13);
 
-	Question q14("V koi ot slednite deynosti e redno da vzimat uchastie softuernite arhitekti?\nIzberete edno ili poweche");
+	Question q14("V koi ot slednite deynosti e redno da vzimat uchastie softuernite arhitekti?\nIzberete edno ili poveche");
 	q14.AddOption("Opredelqne na algoritmite za razabotka na sistemata", -1);
-	q14.AddOption("Razrabotka na sistemata", 1);
-	q14.AddOption("Utochnqvane na iziskvaniqta kym softuernata sistema", 1);
-	q14.AddOption("Proektirane na arhitekturata", 1);
-	q14.AddOption("Izgotvqne na biznes plan na proekta", 1);
+	q14.AddOption("Razrabotka na sistemata", 0.25);
+	q14.AddOption("Utochnqvane na iziskvaniqta kym softuernata sistema", 0.25);
+	q14.AddOption("Proektirane na arhitekturata", 0.25);
+	q14.AddOption("Izgotvqne na biznes plan na proekta", 0.25);
 	exam.push_back(q14);
 
 	/*
