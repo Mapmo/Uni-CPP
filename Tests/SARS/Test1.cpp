@@ -198,7 +198,7 @@ int main()
 	r18.AddOption("Zavisi", 1);
 	exam.push_back(r18);
 
-	Question r17("Spored definiciqta softuernata arhitektura predstavlqva nabor ot strukturi. V tazi vryzka moje li da se kave, che dekompoziciqta na moduli e arhitektura na sistemata\nIzberete edno");
+	Question r17("Spored definiciqta softuernata arhitektura predstavlqva nabor ot strukturi. V tazi vryzka moje li da se kaje, che dekompoziciqta na moduli e arhitektura na sistemata\nIzberete edno");
 	r17.AddOption("True", -1);
 	r17.AddOption("False", 1);
 	exam.push_back(r17);
@@ -295,7 +295,7 @@ int main()
 	q13.AddOption("False", 1);
 	exam.push_back(q13);
 
-	Question q14("V koi ot slednite deinosti e redno da vzimat uchastie softuernite arhitekti?\nIzberete edno ili poweche");
+	Question q14("V koi ot slednite deynosti e redno da vzimat uchastie softuernite arhitekti?\nIzberete edno ili poweche");
 	q14.AddOption("Opredelqne na algoritmite za razabotka na sistemata", -1);
 	q14.AddOption("Razrabotka na sistemata", 1);
 	q14.AddOption("Utochnqvane na iziskvaniqta kym softuernata sistema", 1);
