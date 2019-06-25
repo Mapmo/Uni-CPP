@@ -89,7 +89,7 @@ int main()
 	std::vector<Question> exam;
 	std::srand(unsigned(std::time(0)));
 
-	Question r34("Koe ot slednite ne e primer za arhitekturen pohvat za postigane na nadejdnost v softuernite sistemi?\nIzberete edno");
+	Question r34("Koe ot slednite ne e primer za arhitekturen pohvat za postigane na nadejdnost v softuernite\nsistemi?\nIzberete edno");
 	r34.AddOption("Shared Bus", 1);
 	r34.AddOption("Izlishyk (redundancy)", -1);
 	r34.AddOption("N-Version programming", -1);
@@ -135,7 +135,7 @@ int main()
 	r28.AddOption("Nay-vajnite tehnologii, koito shte bydat izpolzvani", -1);
 	exam.push_back(r28);
 
-	Question r27("Broqt na strukturite, koito shte bydat vklucheni v dokumentaciqta na softuernata arhitektura zavisi ot\nIzberete edno ili poveche");
+	Question r27("Broqt na strukturite, koito shte bydat vklucheni v dokumentaciqta na softuernata arhitektura\nzavisi ot\nIzberete edno ili poveche");
 	r27.AddOption("Vidyt na zainteresovanite lica", 1);
 	r27.AddOption("Softuertnata sistema", -1);
 	r27.AddOption("Prilojnata oblast, kydeto shte se vnedrqva softuernata sistema", 1);
@@ -156,12 +156,12 @@ int main()
 	r25.AddOption("NFI ne sa opredelqshti za dekompoziciqta na modulite na sistemata", 1);
 	exam.push_back(r25);
 
-	Question r24("Spored vas primer za dobre napravena dekompoziciq na modulite li e pokazanata diagrama (3 modula computation, communication, processing)\nIzberete edno");
+	Question r24("Spored vas primer za dobre napravena dekompoziciq na modulite li e pokazanata diagrama\n(3 modula computation, communication, processing)\nIzberete edno");
 	r24.AddOption("True", -1);
 	r24.AddOption("False", 1);
 	exam.push_back(r24);
 
-	Question r23("Sigurnost i otkazoustoichivost (fault tolerance) sa dve nefunkcionalni harakteristiki, koito chesto si protivorechat\nIzberete edno");
+	Question r23("Sigurnost i otkazoustoichivost (fault tolerance) sa dve nefunkcionalni harakteristiki,\nkoito chesto si protivorechat\nIzberete edno");
 	r23.AddOption("True", 1);
 	r23.AddOption("False", -1);
 	exam.push_back(r23);
@@ -173,7 +173,7 @@ int main()
 	r22.AddOption("Syvkupnost ot predstavqne na sistemata ot razlichni gledni tochki", -1);
 	exam.push_back(r22);
 
-	Question r21("V stila client-server komponentite vzaimodeystvat pomejdu si chrez izprashtane na syobshteniq(ili izvikvane na metod) pri koeto izprashtashtiq komponent ne znae nishto za poluchatelq?\nIzberete edno");
+	Question r21("V stila client-server komponentite vzaimodeystvat pomejdu si chrez izprashtane na\nsyobshteniq(ili izvikvane na metod) pri koeto izprashtashtiq komponent ne znae nishto za poluchatelq?\nIzberete edno");
 	r21.AddOption("True", 1);
 	r21.AddOption("False", -1);
 	exam.push_back(r21);
@@ -182,7 +182,7 @@ int main()
 	r20.AddOption("Pri mnogosloyniq arhitekturen stil interface opredelqt protokol za vzaimodeystvie mejdu nivata", -1);
 	r20.AddOption("Za da se priloji mnogosloyniq arhitekturen stil se iziskva specializiran hardware", 1);
 	r20.AddOption("Mrejoviqt model na OSI e proektiran spored principite na mnogosloyniq arhitekturen stil", -1);
-	r20.AddOption("Pri mnogosloyniq arhitekturen stil, vsqko nivo predostavq interface na nivoto pod nego i izpolzva interface na nivoto tochno nad nego", -1);
+	r20.AddOption("Pri mnogosloyniq arhitekturen stil, vsqko nivo predostavq interface na nivoto pod nego\ni izpolzva interface na nivoto tochno nad nego", -1);
 	exam.push_back(r20);
 
 	Question r19("V arhitekturniq stil shared-data:\nIzberete edno");
@@ -192,13 +192,13 @@ int main()
 	r19.AddOption("Dannite se izprashtat ednovremenno do vsichki uchastvashti komponenti", -1);
 	exam.push_back(r19);
 
-	Question r18("Moje li da se tvyrdi sys sigurnost, che izpolzvaneto na replikaciq na sistemata ili chasti ot neq, s cel usigurqvane na nadejdnost, vliqe otricatelno na sigurnostta\nIzberete edno");
+	Question r18("Moje li da se tvyrdi sys sigurnost, che izpolzvaneto na replikaciq na sistemata\nili chasti ot neq, s cel usigurqvane na nadejdnost, vliqe otricatelno na sigurnostta\nIzberete edno");
 	r18.AddOption("Da", -1);
 	r18.AddOption("Ne", -1);
 	r18.AddOption("Zavisi", 1);
 	exam.push_back(r18);
 
-	Question r17("Spored definiciqta softuernata arhitektura predstavlqva nabor ot strukturi. V tazi vryzka moje li da se kaje, che dekompoziciqta na moduli e arhitektura na sistemata\nIzberete edno");
+	Question r17("Spored definiciqta softuernata arhitektura predstavlqva nabor ot strukturi.\nV tazi vryzka moje li da se kaje, che dekompoziciqta na moduli e arhitektura na sistemata\nIzberete edno");
 	r17.AddOption("True", -1);
 	r17.AddOption("False", 1);
 	exam.push_back(r17);
@@ -224,7 +224,7 @@ int main()
 	q2.AddOption("Da se ytochni po kakuv nachin I pri kakvi ysloviq shte raboti sistemata", 1);
 	exam.push_back(q2);
 
-	Question q3("V 4+1 modela na softuerna arhitektyra izgledut na procesi pokazva kak sistemata se dokompozira na sustavni softuerni elementi(modyli)");
+	Question q3("V 4+1 modela na softuerna arhitektyra izgledut na procesi pokazva kak\nsistemata se dokompozira na sustavni softuerni elementi(modyli)");
 	q3.AddOption("Istina", -1);
 	q3.AddOption("Luja", 1);
 	exam.push_back(q3);
@@ -244,8 +244,8 @@ int main()
 	exam.push_back(q5);
 
 	Question q6("Proektiraneto na softuerna arhitektura e iterativen proces");
-	q6.AddOption("Istina", 1);
-	q6.AddOption("Luja", -1);
+	q6.AddOption("True", 1);
+	q6.AddOption("False", -1);
 	exam.push_back(q6);
 
 	Question q7("Cost Benefit Analysis Method(CBAM) e proces pri koito:\nIzberete edno");
@@ -269,7 +269,7 @@ int main()
 	q9.AddOption("Model za prehod ot softuerna arhitektyra kym kod", -1);
 	exam.push_back(q9);
 
-	Question q10("Pri proektiraneto na arhitektyrata moje da se ogranichi borq na modyli, s koito daden komponent komunikira, za da se:\nIzberete edno");
+	Question q10("Pri proektiraneto na arhitektyrata moje da se ogranichi borq na modyli,\ns koito daden komponent komunikira, za da se:\nIzberete edno");
 	q10.AddOption("ogranichi neobhodimostta ot promeni s drugi moduli, s koito dadeniqt komunikira", 1);
 	q10.AddOption("namali slovnostta na sistemata I da se yskori procesa na razrabotka", -1);
 	q10.AddOption("napravi arhitekturata po-qsna i da se razbira ot vsichki zainteresovani lica", -1);
@@ -279,7 +279,7 @@ int main()
 	Question q11("Stuktura na procesite:");
 	q11.AddOption("Posochva zadyljeniqta na otdelnite zainteresovani lica", -1);
 	q11.AddOption("Pokazwa posledovatelnostta na izpulnenie na otdelnite komponenti v sistemata", 1);
-	q11.AddOption("E izgotven ot manager-a na proekta dokument, koito naznachava zadachite na ostanlite uchastnici v razrabotkata na proekta", -1);
+	q11.AddOption("E izgotven ot manager-a na proekta dokument, koito naznachava zadachite\nna ostanlite uchastnici v razrabotkata na proekta", -1);
 	q11.AddOption("Pokazva abstraktni grupi ot hora, koito realizirat modulite na sistemata", -1);
 	exam.push_back(q11);
 
@@ -290,7 +290,7 @@ int main()
 	q12.AddOption("Strukturata mu e identichna sys strukturata na powecheto standartni biznes procesi w organizaciite", -1);
 	exam.push_back(q12);
 
-	Question q13("V softuernata arhitektura e redno da se opiswat swoistwa I metodi na klasowete, koito izgrajdat obektite w sistemata");
+	Question q13("V softuernata arhitektura e redno da se opiswat swoistwa I metodi na klasowete,\nkoito izgrajdat obektite w sistemata");
 	q13.AddOption("True", -1);
 	q13.AddOption("False", 1);
 	exam.push_back(q13);
