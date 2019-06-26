@@ -109,9 +109,9 @@ int main()
 	exam.push_back(r32);
 
 	Question r31("Koe ot izbroenite ne vliqe vurhu izbora na arhitekturni taktiki\nIzberete edno");
-	r31.AddOption("Bydeshti planove za razvitie na organizaciqta", -1);
+	r31.AddOption("Bydeshti planove za razvitie na organizaciqta", 1);
 	r31.AddOption("Broqt i kvalifikaciqta na nalichnite razrabotchici", -1);
-	r31.AddOption("Kvalifikaciqta na manager-a na proekta", 1);
+	r31.AddOption("Kvalifikaciqta na manager-a na proekta", -1);
 	r31.AddOption("Nalichie na legacy software", -1);
 	exam.push_back(r31);
 
@@ -258,8 +258,8 @@ int main()
 	Question q8("Pri kakuv tip sistemi e nai-podhodqshto da se izpolzva stryktyrata na vnedrqvaneto\nIzberete edno");
 	q8.AddOption("Koito se izpylnqvat na edna mashina", -1);
 	q8.AddOption("Sistemi s mnogo potrebiteli", -1);
-	q8.AddOption("Nito edin ot posochenite", 1);
-	q8.AddOption("Koito se izpulnqvat v cloud", -1);
+	q8.AddOption("Nito edin ot posochenite", -1);
+	q8.AddOption("Koito se izpulnqvat v cloud", 1);
 	exam.push_back(q8);
 
 	Question q9("Architektyrniq stil predstavlqva\nIzberete edno");
