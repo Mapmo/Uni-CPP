@@ -192,7 +192,7 @@ int main()
 	r19.AddOption("Dannite se izprashtat ednovremenno do vsichki uchastvashti komponenti", -1);
 	exam.push_back(r19);
 
-	Question r18("Moje li da se tvyrdi sys sigurnost, che izpolzvaneto na replikaciq na sistemata\nili chasti ot neq, s cel usigurqvane na nadejdnost, vliqe otricatelno na sigurnostta\nIzberete edno");
+	Question r18("Moje li da se tvyrdi sys sigurnost, che izpolzvaneto na replikaciq na sistemata\nili chasti ot neq, s cel osigurqvane na nadejdnost, vliqe otricatelno na sigurnostta\nIzberete edno");
 	r18.AddOption("Da", -1);
 	r18.AddOption("Ne", -1);
 	r18.AddOption("Zavisi", 1);
@@ -210,10 +210,10 @@ int main()
 	r16.AddOption("Vkluchva opisanie na strukturite na arhitekturata plus pridrujavashti dokumenti", 0.5);
 	exam.push_back(r16);
 
-	Question q1("Koi ot slednite sa primer sa dobre formuliran scenarii za kachestvo?\nIzberete edno 1 ili poveche");
+	Question q1("Koi ot slednite sa primer za dobre formuliran scenarii za kachestvo?\nIzberete edno 1 ili poveche");
 	q1.AddOption("Dopustimo e sistemata da e v rejim na poddrujka za ne poveche ot 3 chasa sedmichno", 0.5);
 	q1.AddOption("Potrebitelqt vliza v sistemata, izbira opciqta za tursene I vuvejda operedelen simvolen niz", -1);
-	q1.AddOption("Promeni v sistemata da se pravqt vyzmovno nai-byrzo", -1);
+	q1.AddOption("Promeni v sistemata da se pravqt vyzmojno nai-byrzo", -1);
 	q1.AddOption("Otgovoryt na potrebitelskite zaqvki trqbva da stane do 30 sec", 0.5);
 	exam.push_back(q1);
 
@@ -224,12 +224,12 @@ int main()
 	q2.AddOption("Da se ytochni po kakuv nachin I pri kakvi ysloviq shte raboti sistemata", 1);
 	exam.push_back(q2);
 
-	Question q3("V 4+1 modela na softuerna arhitektyra izgledut na procesi pokazva kak\nsistemata se dokompozira na sustavni softuerni elementi(modyli)");
+	Question q3("V 4+1 modela na softuerna arhitektura izgledut na procesi pokazva kak sistemata se dokompozira na\nsustavni softuerni elementi(modyli)");
 	q3.AddOption("Istina", -1);
 	q3.AddOption("Luja", 1);
 	exam.push_back(q3);
 
-	Question q4("Pod proizvoditelnost v softuernite sistemi se rabira\nIzberete edno");
+	Question q4("Pod proizvoditelnost v softuernite sistemi se razbira\nIzberete edno");
 	q4.AddOption("Vuzmojnost na sistemata da osiguri rabota bez otkaz", -1);
 	q4.AddOption("Vremeto, za koeto sistemata reagira na vuznikvashti subitiq", 1);
 	q4.AddOption("Mqrka za sebestoinostta na promenite v sistemata", -1);
@@ -266,10 +266,10 @@ int main()
 	q9.AddOption("Obektno oprientiran model na softuernata sistema", -1);
 	q9.AddOption("Opisanie na softuernata arhitektura", -1);
 	q9.AddOption("Tipovo arhitekturno reshenie, koeto se dokazalo pri upotreba v konkretni sityacii", 1);
-	q9.AddOption("Model za prehod ot softuerna arhitektyra kym kod", -1);
+	q9.AddOption("Model za prehod ot softuerna arhitektura kym kod", -1);
 	exam.push_back(q9);
 
-	Question q10("Pri proektiraneto na arhitektyrata moje da se ogranichi borq na modyli,\ns koito daden komponent komunikira, za da se:\nIzberete edno");
+	Question q10("Pri proektiraneto na arhitekturata moje da se ogranichi broq na modyli, s koito daden komponent\nkomunikira, za da se:\nIzberete edno");
 	q10.AddOption("ogranichi neobhodimostta ot promeni s drugi moduli, s koito dadeniqt komunikira", 1);
 	q10.AddOption("namali slovnostta na sistemata I da se yskori procesa na razrabotka", -1);
 	q10.AddOption("napravi arhitekturata po-qsna i da se razbira ot vsichki zainteresovani lica", -1);
@@ -285,12 +285,12 @@ int main()
 
 	Question q12("Koe ot slednite ne e vqrno za arhitektyren stil Pipe-Filter:\nIzberete edno");
 	q12.AddOption("Ima trudnosti pri realizaciqta na interaktivni prilojeniq", -1);
-	q12.AddOption("Wodi do prosti za proektirane I realizaciq arhitekturi", -1);
+	q12.AddOption("Vodi do prosti za proektirane I realizaciq arhitekturi", -1);
 	q12.AddOption("Nqma vyzmojnost za paralelna obrabotka na informaciqta", 1);
-	q12.AddOption("Strukturata mu e identichna sys strukturata na powecheto standartni biznes procesi w organizaciite", -1);
+	q12.AddOption("Strukturata mu e identichna sys strukturata na povecheto standartni biznes procesi w organizaciite", -1);
 	exam.push_back(q12);
 
-	Question q13("V softuernata arhitektura e redno da se opiswat swoistwa I metodi na klasowete,\nkoito izgrajdat obektite w sistemata");
+	Question q13("V softuernata arhitektura e redno da se opisvat swoistva I metodi na klasovete,\nkoito izgrajdat obektite v sistemata");
 	q13.AddOption("True", -1);
 	q13.AddOption("False", 1);
 	exam.push_back(q13);
