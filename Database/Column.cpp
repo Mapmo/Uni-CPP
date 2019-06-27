@@ -19,8 +19,8 @@ char Column::ConvertTypeToChar() const
 	}
 }
 
-Column::Column(const int numb, const std::string& name, const Type type, const int cells)
-	: m_Number(numb), m_Name(name), m_Type(type), m_Cells(cells)
+Column::Column(const int number, const std::string& name, const Type type, const int cells)
+	: m_Number(number), m_Name(name), m_Type(type), m_Cells(cells)
 {
 }
 
@@ -39,7 +39,7 @@ Type Column::GetType() const
 	return this->m_Type;
 }
 
-void Column::CoutType() const
+void Column::CoutTypeName() const
 {
 	switch (this->m_Type)
 	{
@@ -55,58 +55,58 @@ void Column::CoutType() const
 	}
 }
 
-void Column::AddCell(const std::string & val)
+void Column::AddCell(const std::string & value)
 {
-	this->m_Cells.push_back(Cell(val));
+	this->m_Cells.push_back(Cell(value));
 }
 
-std::string Column::GetCellValue(const unsigned int numb) const
+std::string Column::GetCellValue(const unsigned position) const
 {
 	std::string temp;
-	if (numb >= m_Cells.size())
+	if (position >= m_Cells.size())
 	{
 		std::cerr << "Out of range\n";
 		return temp;
 	}
 	else
 	{
-		temp = this->m_Cells[numb].GetValue();
+		temp = this->m_Cells[position].GetValue();
 		return temp;
 	}
 }
 
-void Column::SetCellValue(const unsigned int numb, const std::string & val)
+void Column::SetCellValue(const unsigned position, const std::string & value)
 {
-	if (numb >= m_Cells.size())
+	if (position >= m_Cells.size())
 	{
 		std::cerr << "Out of range\n";
 	}
 	else
 	{
-		this->m_Cells[numb].SetValue(val);
+		this->m_Cells[position].SetValue(value);
 	}
 }
 
-void Column::DeleteCell(const unsigned int id)
+void Column::DeleteCell(const unsigned position)
 {
-	if (id >= m_Cells.size())
+	if (position >= m_Cells.size())
 	{
 		std::cerr << "Out of range\n";
 	}
 	else
 	{
-		this->m_Cells.erase(m_Cells.begin() + id);
+		this->m_Cells.erase(m_Cells.begin() + position);
 	}
 }
 
-void Column::ParseToString(std::string & stringRef) const
+void Column::ParseToString(std::string & stringReference) const
 {
 	char type = ConvertTypeToChar();
-	stringRef.push_back(type);
-	stringRef += " " + this->m_Name+"\n";
-	for (unsigned int i = 0; i < this->m_Cells.size(); ++i)
+	stringReference.push_back(type);
+	stringReference += " " + this->m_Name+"\n";
+	for (unsigned i = 0; i < this->m_Cells.size(); ++i)
 	{
-		stringRef += this->m_Cells[i].GetValue() + "\n";
+		stringReference += this->m_Cells[i].GetValue() + "\n";
 	}
-	stringRef += "-----";
+	stringReference += "-----";
 }

@@ -6,10 +6,10 @@
 class PageToPrint
 {
 public:
-	PageToPrint(const unsigned int, const unsigned int);
-	const unsigned int GetBegin()const;
-	const unsigned int GetEnd()const;
+	PageToPrint(const unsigned, const unsigned);
+	const unsigned GetBegin()const;
+	const unsigned GetEnd()const;
 private:
-	const unsigned int m_Begin;
-	const unsigned int m_End;
+	const unsigned m_Begin;
+	const unsigned m_End;
 };

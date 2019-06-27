@@ -6,21 +6,21 @@ Database::Database() : m_Tables()
 
 Database & Database::operator=(const Database &)
 {
-	return *this;//fake
+	return *this;
 }
 
-void Database::AddTable(const Table & rhs)
+void Database::AddTable(const Table & tableName)
 {
 	bool isSafe = false;
-	unsigned int i = GetTableIndexByName(isSafe, rhs.GetName());
+	unsigned i = GetTableIndexByName(isSafe, tableName.GetName());
 	if (isSafe)
 	{
-		std::cerr << "Operation AddTable Failed Due To Table With Such A Name Already In The Database:" << rhs.GetName() << std::endl;
+		std::cerr << "Operation AddTable Failed Due To Table With Such A Name Already In The Database:" << tableName.GetName() << std::endl;
 	}
 	else
 	{
-		this->m_Tables.push_back(rhs);
-		std::cout << rhs.GetName() << " successfully loaded in the database\n";
+		this->m_Tables.push_back(tableName);
+		std::cout << tableName.GetName() << " successfully loaded in the database\n";
 	}
 }
 
@@ -70,28 +70,28 @@ void Database::ParseFileToTableColumns(std::ifstream& tableFile, Table & tmp, st
 	}
 }
 
-std::string Database::ParseTableColumnsToString(const std::string &rhs) const
+std::string Database::ParseTableColumnsToString(const std::string &tableName) const
 {
 	bool isSafe = false;
-	unsigned int i = GetTableIndexByName(isSafe, rhs);
+	unsigned i = GetTableIndexByName(isSafe, tableName);
 	if (isSafe)
 	{
 		return this->m_Tables[i].ParseColumnsToString();
 	}
 	else
 	{
-		std::cerr << "Operation ParseTableColumnsToString Failed Due To Failure To Find a Table With Such Name: " << rhs << std::endl;
+		std::cerr << "Operation ParseTableColumnsToString Failed Due To Failure To Find a Table With Such Name: " << tableName << std::endl;
 		return "NULL";
 	}
 }
 
-unsigned int Database::GetTableIndexByName(bool& isSafe, const std::string & rhs) const
+unsigned Database::GetTableIndexByName(bool& isSafe, const std::string & tableName) const
 {
 	isSafe = false;
-	unsigned int i = 0;
+	unsigned i = 0;
 	while (i < this->m_Tables.size())
 	{
-		if (this->m_Tables[i].GetName() == rhs)
+		if (this->m_Tables[i].GetName() == tableName)
 		{
 			isSafe = true;
 			break;
@@ -101,7 +101,7 @@ unsigned int Database::GetTableIndexByName(bool& isSafe, const std::string & rhs
 	return i;
 }
 
-bool Database::InnerJoinProcessTwoBooleans(const bool isSafe1, const std::string& rhs1, const bool isSafe2, const std::string& rhs2) const
+bool Database::InnerJoinProcessTwoBooleans(const bool isSafe1, const std::string& tableName1, const bool isSafe2, const std::string& tableName2) const
 {
 	if (isSafe1 && isSafe2)
 	{
@@ -109,60 +109,60 @@ bool Database::InnerJoinProcessTwoBooleans(const bool isSafe1, const std::string
 	}
 	else if (isSafe2)
 	{
-		std::cerr << "Operation InnerJoin Failed Due To Failure To Find a Table With Such Name: " << rhs1 << std::endl;
+		std::cerr << "Operation InnerJoin Failed Due To Failure To Find a Table With Such Name: " << tableName1 << std::endl;
 	}
 	else if (isSafe1)
 	{
-		std::cerr << "Operation InnerJoin Failed Due To Failure To Find a Table With Such Name: " << rhs2 << std::endl;
+		std::cerr << "Operation InnerJoin Failed Due To Failure To Find a Table With Such Name: " << tableName2 << std::endl;
 	}
 	else
 	{
-		std::cerr << "Operation InnerJoin Failed Due To Failure To Find a Table With Such Name: " << rhs1 << std::endl;
-		std::cerr << "Operation InnerJoin Failed Due To Failure To Find a Table With Such Name: " << rhs2 << std::endl;
+		std::cerr << "Operation InnerJoin Failed Due To Failure To Find a Table With Such Name: " << tableName1 << std::endl;
+		std::cerr << "Operation InnerJoin Failed Due To Failure To Find a Table With Such Name: " << tableName2 << std::endl;
 	}
 	return false;
 }
 
-bool Database::InnerJoinValidateColumns(const Table & rhs1, const unsigned int numb1, const Table & rhs2, const unsigned int numb2) const
+bool Database::InnerJoinValidateColumns(const Table & tableName1, const unsigned numb1, const Table & tableName2, const unsigned numb2) const
 {
-	if (numb1 >= rhs1.GetColumnsSize())
+	if (numb1 >= tableName1.GetColumnsSize())
 	{
-		std::cerr << "Operation InnerJoin Failed Due To Out of Range Problem With Table " << rhs1.GetName() << "\n";
+		std::cerr << "Operation InnerJoin Failed Due To Out of Range Problem With Table " << tableName1.GetName() << "\n";
 	}
-	else if (numb2 >= rhs2.GetColumnsSize())
+	else if (numb2 >= tableName2.GetColumnsSize())
 	{
-		std::cerr << "Operation InnerJoin Failed Due To Out of Range Problem With Table " << rhs1.GetName() << "\n";
+		std::cerr << "Operation InnerJoin Failed Due To Out of Range Problem With Table " << tableName1.GetName() << "\n";
 	}
 	else
 	{
-		if (rhs1.GetColumnName(numb1) == rhs2.GetColumnName(numb2))
+		if (tableName1.GetColumnName(numb1) == tableName2.GetColumnName(numb2))
 		{
-			if (rhs1.GetColumnType(numb1) == rhs2.GetColumnType(numb2))
+			if (tableName1.GetColumnType(numb1) == tableName2.GetColumnType(numb2))
 			{
 				return true;
 			}
 			else
 			{
 				std::cerr << "Operation InnerJoin Failed Due Unmatching Column Types "
-					<< rhs1.GetColumnType(numb1) << " and " << rhs2.GetColumnType(numb2) << "\n";
+					<< tableName1.GetColumnType(numb1) << " and " << tableName2.GetColumnType(numb2) << "\n";
 			}
 		}
 		else
 		{
 			std::cerr << "Operation InnerJoin Failed Due Unmatching Column Names "
-				<< rhs1.GetColumnName(numb1) << " and " << rhs2.GetColumnName(numb2) << "\n";
+				<< tableName1.GetColumnName(numb1) << " and " << tableName2.GetColumnName(numb2) << "\n";
 		}
 	}
 	return false;
 }
 
-void Database::InnerJoinAddJoinedColumns(Table & tmp, const Table & table1, const Table & table2, const unsigned int numb2) const
+void Database::InnerJoinAddJoinedColumns(Table & tmp, const Table & table1, const Table & table2, const unsigned numb2) const
 {
-	for (unsigned int i = 0; i < table1.GetColumnsSize(); ++i)
+	for (unsigned i = 0; i < table1.GetColumnsSize(); ++i)
 	{
 		tmp.AddColumn(table1.GetColumnName(i), table1.GetColumnType(i));
 	}
-	for (unsigned int i = 0; i < table2.GetColumnsSize(); ++i)
+	for (unsigned i = 0; i < table2.GetColumnsSize(); ++i)
 	{
 		if (i != numb2)
 		{
@@ -171,25 +171,25 @@ void Database::InnerJoinAddJoinedColumns(Table & tmp, const Table & table1, cons
 	}
 }
 
-void Database::RealInnerJoin(Table & tmp, const Table & table1, const unsigned int table1Col, const Table & table2, const unsigned int table2Col) const
+void Database::RealInnerJoin(Table & tmp, const Table & table1, const unsigned table1Col, const Table & table2, const unsigned table2Col) const
 {
 	//iterates through the column of table 1
-	for (unsigned int colNumber1Row = 0; colNumber1Row < table1.GetRows(); ++colNumber1Row)
+	for (unsigned colNumber1Row = 0; colNumber1Row < table1.GetRows(); ++colNumber1Row)
 	{
 		//iterates through the column of table 2
-		for (unsigned int colNumber2Row = 0; colNumber2Row < table2.GetRows(); ++colNumber2Row)
+		for (unsigned colNumber2Row = 0; colNumber2Row < table2.GetRows(); ++colNumber2Row)
 		{
 			//if the values of two coulmns match
 			if (table1.GetColumnCellValue(table1Col, colNumber1Row) == table2.GetColumnCellValue(table2Col, colNumber2Row))
 			{
 				//will insert the row of table1 that contains the matching cells into tmp
-				for (unsigned int i = 0; i < table1.GetColumnsSize(); ++i)
+				for (unsigned i = 0; i < table1.GetColumnsSize(); ++i)
 				{
 					tmp.AddColumnCell(i, table1.GetColumnCellValue(i, colNumber1Row));
 				}
 				//will insert the row of table2 that contains the matching cells into tmp, escaping the repeating column 
-				unsigned int counter = 0;//used to escape the repeating columns
-				for (unsigned int i = 0; i < table2.GetColumnsSize(); ++i)
+				unsigned counter = 0;//used to escape the repeating columns
+				for (unsigned i = 0; i < table2.GetColumnsSize(); ++i)
 				{
 					if (i != table2Col)
 					{
@@ -204,9 +204,9 @@ void Database::RealInnerJoin(Table & tmp, const Table & table1, const unsigned i
 	}
 }
 
-Type Database::GetTypeByChar(const char rhs) const
+Type Database::GetTypeByChar(const char tableName) const
 {
-	switch (rhs)
+	switch (tableName)
 	{
 	case 'I':
 	case 'i':
@@ -221,12 +221,12 @@ Type Database::GetTypeByChar(const char rhs) const
 		return String;
 		break;
 	default:
-		std::cerr << "Unknown Type Passed By The Database " << rhs;
+		std::cerr << "Unknown Type Passed By The Database " << tableName;
 		return Error;
 	}
 }
 
-void Database::Load(const std::string & fileName)
+void Database::LoadTable(const std::string & fileName)
 {
 	std::ifstream tableFile;
 	tableFile.open(fileName);
@@ -245,46 +245,46 @@ void Database::Load(const std::string & fileName)
 	}
 }
 
-void Database::ShowTables() const
+void Database::PrintLoadedTables() const
 {
-	for (unsigned int i = 0; i < this->m_Tables.size(); ++i)
+	for (unsigned i = 0; i < this->m_Tables.size(); ++i)
 	{
 		std::cout << this->m_Tables[i].GetName() << std::endl;
 	}
 }
 
-void Database::Describe(const std::string & rhs) const
+void Database::PrintTableColumnsTypes(const std::string & tableName) const
 {
 	bool isSafe = false;
-	unsigned int i = GetTableIndexByName(isSafe, rhs);
+	unsigned i = GetTableIndexByName(isSafe, tableName);
 	if (isSafe)
 	{
 		this->m_Tables[i].PrintColumnsTypes();
 	}
 	else
 	{
-		std::cerr << "Operation Describe Failed Due To Failure To Find a Table With Such Name: " << rhs << std::endl;
+		std::cerr << "Operation PrintTableColumnsTypes Failed Due To Failure To Find a Table With Such Name: " << tableName << std::endl;
 	}
 }
 
-void Database::Print(const std::string & rhs) const
+void Database::PrintTable(const std::string & tableName) const
 {
 	bool isSafe = false;
-	unsigned int i = GetTableIndexByName(isSafe, rhs);
+	unsigned i = GetTableIndexByName(isSafe, tableName);
 	if (isSafe)
 	{
 		this->m_Tables[i].Print();
 	}
 	else
 	{
-		std::cerr << "Operation Print Failed Due To Failure To Find a Table With Such Name: " << rhs << std::endl;
+		std::cerr << "Operation PrintTable Failed Due To Failure To Find a Table With Such Name: " << tableName << std::endl;
 	}
 }
 
-void Database::Save(const std::string &tableName, const std::string & FileName) const
+void Database::SaveTable(const std::string &tableName, const std::string & FileName) const
 {
 	bool isSafe = false;
-	unsigned int i = GetTableIndexByName(isSafe, tableName);
+	unsigned i = GetTableIndexByName(isSafe, tableName);
 	if (isSafe)
 	{
 		std::ofstream tableFile(FileName);
@@ -303,71 +303,71 @@ void Database::Save(const std::string &tableName, const std::string & FileName) 
 	}
 	else
 	{
-		std::cerr << "Operation Save Failed Due To Failure To Find a Table With Such Name: " << tableName << std::endl;
+		std::cerr << "Operation SaveTable Failed Due To Failure To Find a Table With Such Name: " << tableName << std::endl;
 	}
 }
 
-void Database::AddColumn(const std::string & rhs, const std::string & name, const Type type)
+void Database::AddColumnToTable(const std::string & tableName, const std::string & name, const Type type)
 {
 	bool isSafe = false;
-	unsigned int i = GetTableIndexByName(isSafe, rhs);
+	unsigned i = GetTableIndexByName(isSafe, tableName);
 	if (isSafe)
 	{
 		this->m_Tables[i].AddColumn(name, type);
 	}
 	else
 	{
-		std::cerr << "Operation AddColumn Failed Due To Failure To Find a Table With Such Name: " << rhs << std::endl;
+		std::cerr << "Operation AddColumnToTable Failed Due To Failure To Find a Table With Such Name: " << tableName << std::endl;
 	}
 }
 
-void Database::Update(const std::string & rhs, const unsigned int numb1, const std::string & val1, const unsigned int numb2, const std::string & val2)
+void Database::UpdateTable(const std::string & tableName, const unsigned numb1, const std::string & val1, const unsigned numb2, const std::string & val2)
 {
 	bool isSafe = false;
-	unsigned int i = GetTableIndexByName(isSafe, rhs);
+	unsigned i = GetTableIndexByName(isSafe, tableName);
 	if (isSafe)
 	{
 		this->m_Tables[i].Update(numb1, val1, numb2, val2);
 	}
 	else
 	{
-		std::cerr << "Operation Update Failed Due To Failure To Find a Table With Such Name: " << rhs << std::endl;
+		std::cerr << "Operation UpdateTable Failed Due To Failure To Find a Table With Such Name: " << tableName << std::endl;
 	}
 }
 
-void Database::Delete(const std::string & rhs, const unsigned int numb, const std::string & val)
+void Database::DeleteTable(const std::string & tableName, const unsigned numb, const std::string & val)
 {
 	bool isSafe = false;
-	unsigned int i = GetTableIndexByName(isSafe, rhs);
+	unsigned i = GetTableIndexByName(isSafe, tableName);
 	if (isSafe)
 	{
 		this->m_Tables[i].Delete(numb, val);
 	}
 	else
 	{
-		std::cerr << "Operation Delete Failed Due To Failure To Find a Table With Such Name: " << rhs << std::endl;
+		std::cerr << "Operation DeleteTable Failed Due To Failure To Find a Table With Such Name: " << tableName << std::endl;
 	}
 }
 
-void Database::Insert(const std::string& name, const char* rhs, ...)
+void Database::InsertIntoTable(const std::string& name, const char* tableName, ...)
 {
 	bool isSafe = false;
-	unsigned int tableNumb = GetTableIndexByName(isSafe, name);
+	unsigned tableNumb = GetTableIndexByName(isSafe, name);
 	if (isSafe)
 	{
 		va_list args;
-		va_start(args, rhs);
-		std::string tmp = rhs;
+		va_start(args, tableName);
+		std::string tmp = tableName;
 
 		//the code below validates that all data's type matches the column type 
-		for (unsigned int i = 0; i < this->m_Tables[tableNumb].GetColumnsSize(); ++i)
+		for (unsigned i = 0; i < this->m_Tables[tableNumb].GetColumnsSize(); ++i)
 		{
 			if (!this->m_Tables[tableNumb].ValidateDataType(tmp, this->m_Tables[tableNumb].GetColumnType(i)))
 			{
 				std::cout << tmp << "\n";
 				std::cout << this->m_Tables[tableNumb].GetColumnType(i) << "\n";
 				std::cout << "\n";
-				std::cerr << "Insert Operation Impossible Due To Bad Input\n";
+				std::cerr << "InsertIntoTable Operation Impossible Due To Bad Input\n";
 				va_end(args);
 				return;
 			}
@@ -382,9 +382,9 @@ void Database::Insert(const std::string& name, const char* rhs, ...)
 		//now inserting the row
 		this->m_Tables[tableNumb].IncrementRows();
 		va_list args2;
-		va_start(args2, rhs);
-		std::string tmp2 = rhs;
-		for (unsigned int i = 0; i < this->m_Tables[tableNumb].GetColumnsSize(); ++i)
+		va_start(args2, tableName);
+		std::string tmp2 = tableName;
+		for (unsigned i = 0; i < this->m_Tables[tableNumb].GetColumnsSize(); ++i)
 		{
 			this->m_Tables[tableNumb].AddColumnCell(i, tmp2);
 			if (i != this->m_Tables[tableNumb].GetColumnsSize() - 1)
@@ -395,20 +395,20 @@ void Database::Insert(const std::string& name, const char* rhs, ...)
 	}
 	else
 	{
-		std::cerr << "Operation Insert Failed Due To Failure To Find a Table With Such Name: " << name << std::endl;
+		std::cerr << "Operation InsertIntoTable Failed Due To Failure To Find a Table With Such Name: " << name << std::endl;
 	}
 }
 
-void Database::InnerJoin(const std::string & rhs1, const unsigned int numb1, const std::string & rhs2, const unsigned int numb2)
+void Database::InnerJoin(const std::string & tableName1, const unsigned numb1, const std::string & tableName2, const unsigned numb2)
 {
-	std::string newTableName = "InnerJoin" + rhs1 + '+' + rhs2;
+	std::string newTableName = "InnerJoin" + tableName1 + '+' + tableName2;
 	Table tmp(newTableName);
 	bool isSafe1 = false;
 	bool isSafe2 = false;
-	unsigned int table1 = GetTableIndexByName(isSafe1, rhs1);
-	unsigned int table2 = GetTableIndexByName(isSafe2, rhs2);
+	unsigned table1 = GetTableIndexByName(isSafe1, tableName1);
+	unsigned table2 = GetTableIndexByName(isSafe2, tableName2);
 
-	if (InnerJoinProcessTwoBooleans(isSafe1, rhs1, isSafe2, rhs2))//validates that InnerJoin() is possible
+	if (InnerJoinProcessTwoBooleans(isSafe1, tableName1, isSafe2, tableName2))//validates that InnerJoin() is possible
 	{
 		InnerJoinAddJoinedColumns(tmp, this->m_Tables[table1], this->m_Tables[table2], numb2);//combines the columns of the 2 tables into 1 table
 		RealInnerJoin(tmp, this->m_Tables[table1], numb1, this->m_Tables[table2], numb2);//copies the info of the two columns into the new one
@@ -416,16 +416,16 @@ void Database::InnerJoin(const std::string & rhs1, const unsigned int numb1, con
 	}
 }
 
-void Database::Rename(const std::string & rhs, const std::string & val)
+void Database::RenameTable(const std::string & tableName, const std::string & val)
 {
 	bool isSafe = false;
-	unsigned int i = GetTableIndexByName(isSafe, rhs);
+	unsigned i = GetTableIndexByName(isSafe, tableName);
 	if (isSafe)
 	{
-		unsigned int j = GetTableIndexByName(isSafe, val);
+		unsigned j = GetTableIndexByName(isSafe, val);
 		if (isSafe)
 		{
-			std::cerr << "Operation Rename Failed Because Name " << val << " is already taken\n";
+			std::cerr << "Operation RenameTable Failed Because Name " << val << " is already taken\n";
 		}
 		else
 		{
@@ -434,36 +434,36 @@ void Database::Rename(const std::string & rhs, const std::string & val)
 	}
 	else
 	{
-		std::cerr << "Operation Rename Failed Due To Failure To Find a Table With Such Name: " << rhs << std::endl;
+		std::cerr << "Operation RenameTable Failed Due To Failure To Find a Table With Such Name: " << tableName << std::endl;
 	}
 }
 
-void Database::Count(const std::string & rhs, const unsigned int numb, const std::string & val) const
+void Database::CountTable(const std::string & tableName, const unsigned numb, const std::string & val) const
 {
 	bool isSafe = false;
-	unsigned int i = GetTableIndexByName(isSafe, rhs);
+	unsigned i = GetTableIndexByName(isSafe, tableName);
 	if (isSafe)
 	{
-		std::cout << "In Table " << rhs << "In Cell No: " << numb << " The Amount Of Cells With Value " << val
+		std::cout << "In Table " << tableName << "In Cell No: " << numb << " The Amount Of Cells With Value " << val
 			<< " is: " << this->m_Tables[i].Count(numb, val) << "\n";
 	}
 	else
 	{
-		std::cerr << "Operation Count Failed Due To Failure To Find a Table With Such Name: " << rhs << std::endl;
+		std::cerr << "Operation CountTable Failed Due To Failure To Find a Table With Such Name: " << tableName << std::endl;
 	}
 
 }
 
-void Database::Aggregate(const std::string & rhs, const unsigned int srNumb, const std::string & srVal, const unsigned int trNumb, const Operation opera)
+void Database::AggregateTable(const std::string & tableName, const unsigned searchColumn, const std::string & searchValue, const unsigned targetNumber, const Operation operation)
 {
 	bool isSafe = false;
-	unsigned int i = GetTableIndexByName(isSafe, rhs);
+	unsigned i = GetTableIndexByName(isSafe, tableName);
 	if (isSafe)
 	{
-		this->m_Tables[i].Aggregate(srNumb, srVal, trNumb, opera);
+		this->m_Tables[i].Aggregate(searchColumn, searchValue, targetNumber, operation);
 	}
 	else
 	{
-		std::cerr << "Operation Aggregate Failed Due To Failure To Find a Table With Such Name: " << rhs << std::endl;
+		std::cerr << "Operation AggregateTable Failed Due To Failure To Find a Table With Such Name: " << tableName << std::endl;
 	}
 }

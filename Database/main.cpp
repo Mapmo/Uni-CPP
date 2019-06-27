@@ -1,19 +1,21 @@
 #include "Database.h"
+
 int main()
 {
 	Database * harry = Database::instance();
-	harry->Load("Tables/test.txt");
-	harry->Load("Tables/tester.txt");
-	harry->Load("Tables/InnerJointest+tester.txt");
+	/*harry->LoadTable("Tables/test.txt");
+	harry->LoadTable("Tables/tester.txt");
+	harry->LoadTable("Tables/InnerJointest+tester.txt");
 	/*
-	harry->ShowTables();
-	harry->Save("test", "Tables/test.txt");
-	harry->Update("test", 1, "SpiderMan", 1, "Toni");
-	harry->Print("InnerJointest+tester");
+	harry->PrintLoadedTables();
+	harry->SaveTable("test", "Tables/test.txt");
+	harry->UpdateTable("test", 1, "SpiderMan", 1, "Toni");
+	harry->PrintTable("InnerJointest+tester");
 	harry->InnerJoin("test", 1, "tester", 0);
-	harry->Delete("test", 1, "SpideMan");
-	harry->Aggregate("test", 2, "11", 0, PRODUCT);
+	harry->DeleteTable("test", 1, "SpideMan");
+	harry->AggregateTable("test", 2, "11", 0, PRODUCT);
+	
+	harry->PrintTableColumnsTypes("test");
 	*/
-	harry->Describe("test");
 	return 0;
 }

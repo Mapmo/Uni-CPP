@@ -7,16 +7,16 @@ class Column
 public:
 	explicit Column(const int, const std::string&, const Type, const int);
 
-	std::string GetCellValue(const unsigned int)const;//returns the value of the cell at the given position
+	std::string GetCellValue(const unsigned)const;
 	int GetNumber()const;
 	const std::string& GetName()const;
 	Type GetType()const;
 
-	void SetCellValue(const unsigned int, const std::string&);
+	void SetCellValue(const unsigned, const std::string&);
 
-	void AddCell(const std::string& val= "NULL");
-	void CoutType()const;//couts the name of the type
-	void DeleteCell(const unsigned int);
+	void AddCell(const std::string& val = "NULL");
+	void CoutTypeName()const;
+	void DeleteCell(const unsigned);
 	void ParseToString(std::string&)const;//transforms the given parameter to a string that represents the column, used in Table::ParseColumnsToString()
 private:
 	std::vector<Cell> m_Cells;//row number matches cell index
