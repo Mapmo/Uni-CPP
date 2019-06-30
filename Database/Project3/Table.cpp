@@ -74,7 +74,7 @@ void Table::DeleteRow(const int numb)
 unsigned Table::GetRowLength(const unsigned position) const
 {
 	unsigned length = 0;
-	//for every column get the size of the column name + the length of the cell value for that row in every column + 4  for the decorations | : ' ' | 
+	//for every columnNumber get the size of the columnNumber name + the length of the cell value for that rowNumber in every columnNumber + 4  for the decorations | : ' ' | 
 	for (unsigned i = 0; i < this->m_Columns.size(); ++i)
 	{
 		length += this->m_Columns[i].GetName().size() + this->m_Columns[i].GetCellValue(position).size() + 4;
@@ -98,7 +98,7 @@ unsigned Table::RoundTo80(const unsigned length) const
 void Table::CreatePages(std::vector<PageToPrint>& temporalContainer) const
 {
 	unsigned next = 0;
-	while (next < this->m_Rows)//next indicates the index of the row that will be first on the next page
+	while (next < this->m_Rows)//next indicates the index of the rowNumber that will be first on the next page
 	{
 		temporalContainer.push_back(CreatePage(next));
 		next = temporalContainer[temporalContainer.size() - 1].GetEnd();
@@ -107,7 +107,7 @@ void Table::CreatePages(std::vector<PageToPrint>& temporalContainer) const
 
 PageToPrint Table::CreatePage(const unsigned beginning) const
 {
-	//function that calls GetRowLength as many times as it needs to fill up the console(26 is the max, cuz the last line of every row is used to separate it from the line below)
+	//function that calls GetRowLength as many times as it needs to fill up the console(26 is the max, cuz the last line of every rowNumber is used to separate it from the line below)
 	//end is actually the beginning of the next page and it is not part of this page, it is easy for loops later e.g while( iterator< a.GetEnd() )
 	unsigned iterator = 0;
 	unsigned end = beginning;
@@ -118,9 +118,9 @@ PageToPrint Table::CreatePage(const unsigned beginning) const
 	return PageToPrint(beginning, end);
 }
 
-void Table::PrintPage(const unsigned beg, const unsigned end) const
+void Table::PrintPage(const unsigned beginning, const unsigned end) const
 {
-	for (unsigned i = beg; i < end; ++i)
+	for (unsigned i = beginning; i < end; ++i)
 	{
 		PrintRow(i);
 	}
@@ -198,9 +198,9 @@ void Table::AddColumn(const std::string & name, Type type)
 	}
 }
 
-void Table::Select(const int numb, const std::string & val) const
+void Table::Select(const int number, const std::string & value) const
 {
-	std::vector<int> selected = GetCellPositions(numb, val);
+	std::vector<int> selected = GetCellPositions(number, value);
 	if (selected.size() != 0)
 	{
 		if (selected[0] == -1)
@@ -209,7 +209,7 @@ void Table::Select(const int numb, const std::string & val) const
 		}
 	}
 
-	std::cout << "The rows whose column " << numb << " contains " << val << " are:\n";
+	std::cout << "The rows whose columnNumber " << number << " contains " << value << " are:\n";
 
 	for (unsigned i = 0; i < selected.size(); ++i)
 	{
@@ -236,9 +236,9 @@ void Table::Update(const int searchColumn, const std::string &searchValue, const
 	}
 }
 
-void Table::Delete(const int numb, const std::string & val)
+void Table::Delete(const int number, const std::string & value)
 {
-	std::vector<int> rowsToDelete = GetCellPositions(numb, val);
+	std::vector<int> rowsToDelete = GetCellPositions(number, value);
 	if (rowsToDelete.size() != 0)
 	{
 		if (rowsToDelete[0] == -1)
@@ -253,21 +253,21 @@ void Table::Delete(const int numb, const std::string & val)
 	}
 }
 
-void Table::Insert(const char* rhs, ...)
+void Table::Insert(const char* values, ...)
 {
 	//c++ is completely helpless to guarantee that enough parameters have been passed, so I cannot prevent access violation due to 
 	//bad argument input, if the arguments are not enough, then the program will explode!!!
 	//iterator wanted to have a separate function to validate the data for insert, but iterator was unable to find a way to pass variable arguments
 	va_list args;
-	va_start(args, rhs);//this means that nameToCheck is the last known argument
+	va_start(args, values);//this means that nameToCheck is the last known argument
 
 
-	std::string tmp = rhs;//will be used to contain the value of va_arg
+	std::string tmp = values;//will be used to contain the value of va_arg
 
 	//temporalContainer starts with nameToCheck and va_arg() starts with the argument after nameToCheck, so this means that va_arg will always be 1 parameter ahead 
 	//and needs to stop 1 step earlier in the for loop
 
-	//the code below validates that all data's type matches the column type 
+	//the code below validates that all data's type matches the columnNumber type 
 	for (unsigned i = 0; i < this->m_Columns.size(); ++i)
 	{
 		if (ValidateDataType(tmp, this->m_Columns[i].GetType()) == false)
@@ -286,10 +286,10 @@ void Table::Insert(const char* rhs, ...)
 	//validation complete
 
 
-	//now inserting the row in the table
+	//now inserting the rowNumber in the table
 	++this->m_Rows;
 	va_list args2;
-	va_start(args2, rhs);
+	va_start(args2, values);
 	for (unsigned i = 0; i < this->m_Columns.size(); ++i)
 	{
 		this->m_Columns[i].AddCell(tmp);
@@ -319,11 +319,11 @@ int Table::Count(const int searchColumn, const std::string & searchValue) const
 	return selected.size();
 }
 
-void Table::Aggregate(const int srNumb, const std::string & srVal, const int trNumb, const Operation opera)
+void Table::Aggregate(const int searchNumber, const std::string & searchValue, const int targetNumber, const Operation operation)
 {
-	if (this->m_Columns[trNumb].GetType() != String && this->m_Columns[srNumb].GetType() != String)
+	if (this->m_Columns[targetNumber].GetType() != String && this->m_Columns[searchNumber].GetType() != String)
 	{
-		std::vector<int> selected = GetCellPositions(srNumb, srVal);
+		std::vector<int> selected = GetCellPositions(searchNumber, searchValue);
 		if (selected.size() != 0)
 		{
 			if (selected[0] == -1)
@@ -332,21 +332,21 @@ void Table::Aggregate(const int srNumb, const std::string & srVal, const int trN
 		std::string UpdatedValue;
 		for (unsigned i = 0; i < selected.size(); ++i)
 		{
-			if (this->m_Columns[trNumb].GetType() == Int)
+			if (this->m_Columns[targetNumber].GetType() == Int)
 			{
-				int tmp1 = stoi(srVal);
-				int tmp2 = stoi(this->m_Columns[trNumb].GetCellValue(selected[i]));
-				int valueAfterOpera = PerformOperation(tmp1, tmp2, opera);
+				int tmp1 = stoi(searchValue);
+				int tmp2 = stoi(this->m_Columns[targetNumber].GetCellValue(selected[i]));
+				int valueAfterOpera = PerformOperation(tmp1, tmp2, operation);
 				UpdatedValue = std::to_string(valueAfterOpera);
 			}
 			else
 			{
-				double tmp1 = stod(srVal);
-				double tmp2 = stod(this->m_Columns[trNumb].GetCellValue(selected[i]));
-				double newTrVal = PerformOperation(tmp2, tmp2, opera);
+				double tmp1 = stod(searchValue);
+				double tmp2 = stod(this->m_Columns[targetNumber].GetCellValue(selected[i]));
+				double newTrVal = PerformOperation(tmp2, tmp2, operation);
 				UpdatedValue = std::to_string(newTrVal);
 			}
-			this->m_Columns[trNumb].SetCellValue(selected[i], UpdatedValue);
+			this->m_Columns[targetNumber].SetCellValue(selected[i], UpdatedValue);
 		}
 	}
 	else
@@ -385,9 +385,9 @@ void Table::PrintColumnsTypes() const
 	}
 }
 
-Type Table::GetColumnType(const unsigned numb) const
+Type Table::GetColumnType(const unsigned number) const
 {
-	return this->m_Columns[numb].GetType();
+	return this->m_Columns[number].GetType();
 }
 
 unsigned Table::GetColumnsSize() const
@@ -395,24 +395,24 @@ unsigned Table::GetColumnsSize() const
 	return this->m_Columns.size();
 }
 
-const std::string & Table::GetColumnName(const unsigned numb) const
+const std::string & Table::GetColumnName(const unsigned number) const
 {
-	return this->m_Columns[numb].GetName();
+	return this->m_Columns[number].GetName();
 }
 
-std::string Table::GetColumnCellValue(const unsigned numb, const unsigned numb2) const
+std::string Table::GetColumnCellValue(const unsigned columnNumber, const unsigned rowNumber) const
 {
-	return this->m_Columns[numb].GetCellValue(numb2);
+	return this->m_Columns[columnNumber].GetCellValue(rowNumber);
 }
 
-void Table::SetColumnCellValue(const unsigned colNumb, const unsigned cellNumb, const std::string & val)
+void Table::SetColumnCellValue(const unsigned columnNumber, const unsigned rowNumb, const std::string & value)
 {
-	this->m_Columns[colNumb].SetCellValue(cellNumb, val);
+	this->m_Columns[columnNumber].SetCellValue(rowNumb, value);
 }
 
-void Table::AddColumnCell(const unsigned numb, const std::string & rhs)
+void Table::AddColumnCell(const unsigned position, const std::string & name)
 {
-	this->m_Columns[numb].AddCell(rhs);
+	this->m_Columns[position].AddCell(name);
 }
 
 unsigned Table::GetRows() const
