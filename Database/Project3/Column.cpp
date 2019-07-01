@@ -99,14 +99,14 @@ void Column::DeleteCell(const unsigned position)
 	}
 }
 
-void Column::ParseToString(std::string & stringReference) const
+void Column::ConvertToString(std::string & targetReference) const
 {
 	char type = ConvertTypeToChar();
-	stringReference.push_back(type);
-	stringReference += " " + this->m_Name+"\n";
+	targetReference.push_back(type);
+	targetReference += " " + this->m_Name+"\n";
 	for (unsigned i = 0; i < this->m_Cells.size(); ++i)
 	{
-		stringReference += this->m_Cells[i].GetValue() + "\n";
+		targetReference += this->m_Cells[i].GetValue() + "\n";
 	}
-	stringReference += "-----";
+	targetReference += "-----";
 }

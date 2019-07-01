@@ -17,7 +17,7 @@ public:
 	void AddCell(const std::string& val = "NULL");
 	void CoutTypeName()const;
 	void DeleteCell(const unsigned);
-	void ParseToString(std::string&)const;//transforms the given parameter to a string that represents the column, used in Table::ParseColumnsToString()
+	void ConvertToString(std::string&)const;//transforms the given parameter to a string that represents the column, used in Table::ParseColumnsToString()
 private:
 	std::vector<Cell> m_Cells;//row number matches cell index
 	int m_Number;
