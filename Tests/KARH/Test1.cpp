@@ -582,6 +582,26 @@ int main()
 	q38.AddOption("VLIW", -1);
 	exam.push_back(q38);
 
+	Question q40("Pri kesh s direktno adresirane s 4 linii i razmer na blok 8, na koq liniq popada adres 22?");
+	q40.AddOption("0", -1);
+	q40.AddOption("1", -1);
+	q40.AddOption("2", 1);
+	q40.AddOption("8", -1);
+	exam.push_back(q40);
+
+	Question q41("poso4ete na koy ot izbroenite rejimi na adresaciq se otnasq dadenata figura\n kod|adres na registyra|adres w pametta:");
+	q41.AddOption("adresaciq s izmestvane", -1);
+	q41.AddOption("vlojena adresaciq", -1);
+	q41.AddOption("indirektna adresaciq s registri", 1);
+	q41.AddOption("adresirane na registri", -1);
+	exam.push_back(q41);
+
+	Question q42("Poso4ete pri konveierna obrabotka na koq ot dadenite instrykcionni posledowatelnosti vyznikva hazart ot tipa write-after-write?");
+	q42.AddOption("ADD R3,R2,R1/nSUB R2,R3,1\nADD R3,R2,R5", 1);
+	q42.AddOption("ADD R3,R4,R5\nSUB R2,R2,1\nBEQ R2,R0,L1", -1);
+	q42.AddOption("ADD R3,R2,R1\nSUB R2,R3,1", -1);
+	exam.push_back(q42);
+
 	unsigned questionsCount = exam.size();
 	for (unsigned i = 0; i<questionsCount; ++i)
 		std::swap(exam[Randomize(exam.size())], exam[Randomize(exam.size())]);
