@@ -589,17 +589,17 @@ int main()
 	q40.AddOption("8", -1);
 	exam.push_back(q40);
 
-	Question q41("poso4ete na koy ot izbroenite rejimi na adresaciq se otnasq dadenata figura\n kod|adres na registyra|adres w pametta:");
+	Question q41("Poso4ete na koy ot izbroenite rejimi na adresaciq se otnasq dadenata figura\n kod | adres na registyra | adres v pametta:");
 	q41.AddOption("adresaciq s izmestvane", -1);
 	q41.AddOption("vlojena adresaciq", -1);
 	q41.AddOption("indirektna adresaciq s registri", 1);
 	q41.AddOption("adresirane na registri", -1);
 	exam.push_back(q41);
 
-	Question q42("Poso4ete pri konveierna obrabotka na koq ot dadenite instrykcionni posledowatelnosti vyznikva hazart ot tipa write-after-write?");
-	q42.AddOption("ADD R3,R2,R1/nSUB R2,R3,1\nADD R3,R2,R5", 1);
-	q42.AddOption("ADD R3,R4,R5\nSUB R2,R2,1\nBEQ R2,R0,L1", -1);
-	q42.AddOption("ADD R3,R2,R1\nSUB R2,R3,1", -1);
+	Question q42("Poso4ete pri konveierna obrabotka na koq ot dadenite instrykcionni posledovatelnosti vyznikva hazart ot tipa write-after-write?");
+	q42.AddOption("ADD R3,R2,R1\n SUB R2,R3,1\n ADD R3,R2,R5", 1);
+	q42.AddOption("ADD R3,R4,R5\n SUB R2,R2,1\n BEQ R2,R0,L1", -1);
+	q42.AddOption("ADD R3,R2,R1\n SUB R2,R3,1", -1);
 	exam.push_back(q42);
 
 	unsigned questionsCount = exam.size();
