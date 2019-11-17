@@ -21,3 +21,5 @@ To create a new question
 If you have any new materials feel free to make a pull request or send them to me in order to update the tests :)
 
 Good luck! 
+
+find.sh is a bash script that is intended to help linux users to quickly check for the correct answer if they want to do so for any reason
