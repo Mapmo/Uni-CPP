@@ -175,64 +175,125 @@ int main()
 	w12.AddOption("винаги са директни наследници на корена", 1);
 	exam.push_back(w12);
 	
-	Question w1("?");
-	w1.AddOption("", -1);
-	w1.AddOption("", -1);
-	w1.AddOption("", -1);
-	w1.AddOption("", -1);
-	exam.push_back(w1);
+	Question w13("Разгледайте <xsl:value-of> елемента. Ако стойността на неговия select атрибут е select='.', тогава ние избираме:");
+	w13.AddOption("текстовия контекст на всички наследници на елемента", -1);
+	w13.AddOption("текстовия контекст само на елемента", -1);
+	w13.AddOption("текстовия контекст на елемента и текстовия контекст на всички наследници на елемента", 1);
+	w13.AddOption("същия текстов контекст, както когато използваме text() функцията", -1);
+	exam.push_back(w13);
 	
-	Question w1("?");
-	w1.AddOption("", -1);
-	w1.AddOption("", -1);
-	w1.AddOption("", -1);
-	w1.AddOption("", -1);
-	exam.push_back(w1);
+	Question w14("Един XML документ може да има повече от едно DTD.");
+	w14.AddOption("вярно", 1);
+	w14.AddOption("невярно", -1);
+	exam.push_back(w14);
 	
-	Question w1("?");
-	w1.AddOption("", -1);
-	w1.AddOption("", -1);
-	w1.AddOption("", -1);
-	w1.AddOption("", -1);
-	exam.push_back(w1);
+	Question w15("В RDF, група от алтернативни стойности се задава чрез:");
+	w15.AddOption("<rdf:Switch>", -1);
+	w15.AddOption("<rdf:Alt>", 1);
+	w15.AddOption("<rdf:Opt>", -1);
+	w15.AddOption("<rdf:Choice>", -1);
+	w15.AddOption("<rdf:Case>", -1);
+	exam.push_back(w15);
 	
-	Question w1("?");
-	w1.AddOption("", -1);
-	w1.AddOption("", -1);
-	w1.AddOption("", -1);
-	w1.AddOption("", -1);
-	exam.push_back(w1);
+	Question w16("Квалифицирано XML име (наречено QName) е:");
+	w16.AddOption("всяко валидно XML име", -1);
+	w16.AddOption("всяко име на XML елемент", -1);
+	w16.AddOption("име от вида namespace_prefix:local_name", 1);
+	w16.AddOption("всяко XML име на пространство от имена", -1);
+	exam.push_back(w16);
 	
-	Question w1("?");
-	w1.AddOption("", -1);
-	w1.AddOption("", -1);
-	w1.AddOption("", -1);
-	w1.AddOption("", -1);
-	exam.push_back(w1);
+	Question w17("Описанието в RDF на групa, съдържащa само зададените в описанието членове, става чрез използване на:");
+	w17.AddOption("последователност", -1);
+	w17.AddOption("колекция", 1);
+	w17.AddOption("алтернативa", -1);
+	w17.AddOption("множество", -1);
+	w17.AddOption("bag", -1);
+	exam.push_back(w17);
 
-	Question w1("?");
-	w1.AddOption("", -1);
-	w1.AddOption("", -1);
-	w1.AddOption("", -1);
-	w1.AddOption("", -1);
-	exam.push_back(w1);
+	Question w18("Целта на валидацията на XML документ от XML парсера е да се провери дали XML документът е добре структуриран (well-formed).");
+	w18.AddOption("Вярно", -1);
+	w18.AddOption("Невярно", 1);
+	exam.push_back(w18);
 
-	Question w1("?");
-	w1.AddOption("", -1);
-	w1.AddOption("", -1);
-	w1.AddOption("", -1);
-	w1.AddOption("", -1);
-	exam.push_back(w1);
+	Question w19("В OWL, също както и в ООП, не може да съществуват два класа с общи екземпляри.");
+	w19.AddOption("Вярно", -1);
+	w19.AddOption("Невярно", 1);
+	exam.push_back(w19);
+
+	Question w20("Описанието\nex:adrian foaf:knows ex:gerd.\nex:adrian foaf:age "41"^^xs:int.\nпредставя RDF Triples в:");
+	w20.AddOption("RDFa формат.", -1);
+	w20.AddOption("N3 формат.", 1);
+	w20.AddOption("Turtle формат.", -1);
+	w20.AddOption("RDF/XML формат.", -1);
+	exam.push_back(w20);
+
+	Question w21("Могат ли екземплярите на класовете да бъдат част от онтологията, описваща тези класове?");
+	w21.AddOption("да", 1);
+	w21.AddOption("Не", -1);
+	exam.push_back(w21);
+
+	Question w22("XML Schema разрешава да се прави разлика между уникална стойност (unique) и ключ (key).");
+	w22.AddOption("вярно", 1);
+	w22.AddOption("невярно", -1);
+	exam.push_back(w22);
+
+	Question w23("В XLink, входящите дъги (inbound arcs) могат да имат:");
+	w23.AddOption("произволен краен брой участващи в тях ресурси", 1);
+	w23.AddOption("точно два участващи в тях ресурса", -1);
+	exam.push_back(w23);
+
+	Question w24("Осъществяването на еmbedding (а не inlining) на Style Sheet според CSS правилата е възможно посредством:");
+	w24.AddOption("елемента EMBED", -1);
+	w24.AddOption("атрибута STYLE", -1);
+	w24.AddOption("елемента STYLE", 1);
+	w24.AddOption("елемента LINK", -1);
+	exam.push_back(w24);
+
+	Question w25("Параметрично Entity:");
+	w25.AddOption("се дефинира в маркъп декларациите в DTD, но може да се използва в който и да е XML документ", -1);
+	w25.AddOption("се дефинира в маркъп декларациите в DTD и може да се използва само в DTD дефиниции", 1);
+	w25.AddOption("се дефинира в XML документа и може да се използва в който и да е XML документ", -1);
+	exam.push_back(w25);
+
+	Question w26("В RDFS, Property е подмножество на RDFS Resources и има за домейн (rdfs:domain):");
+	w26.AddOption("множество от отделни стойности на това Property", -1);
+	w26.AddOption("типa на стойностите на това Property", -1);
+	w26.AddOption("класa rdfs:Resource, на който принадлежат всички екземпляри на ресурса", -1);
+	w26.AddOption("класa, асоцииран с това Property", 1);
+	exam.push_back(w26);
+
+	Question w27("В CSS3, абсолютната (аbsolute) схема за позициониране:");
+	w27.AddOption("се характеризира със задаване на явно отместване (explicit offset) спрямо съдържащия блок", 1);
+	w27.AddOption("задава липса на движение на кутията при движение на документа за continuous media", -1);
+	w27.AddOption("предизвиква повторение на кутията на всяка страница при paged media", -1);
+	w27.AddOption("предефинира top и left позициите на кутията", -1);
+	exam.push_back(w27);
+
+	Question w28("XML пространствата от имена се дефинират чрез атрибути и могат да бъдат специфицирани в кой да е XML елемент.");
+	w28.AddOption("вярно", 1);
+	w28.AddOption("невярно", -1);
+	exam.push_back(w28);
+
+	Question w29("В XSchema, типът на всеки елемент на еквивалентен клас трябва да бъде:");
+	w29.AddOption("същият като типа на елемента-екземпляр, или негов дериват", 1);
+	w29.AddOption("различен от типа на елемента-екземпляр", -1);
+	w29.AddOption("същият като типа на елемента-екземпляр", -1);
+	w29.AddOption("дериват на типа на елемента-екземпляр", -1);
+	exam.push_back(w29);
+
+
+
 
 
 	/*
-	Question w1("");
-	w1.AddOption("", -1);
-	w1.AddOption("", -1);
-	w1.AddOption("", -1);
-	w1.AddOption("", -1);
-	exam.push_back(w1);
-	*/
+	Question w2("");
+	w2.AddOption("", -1);
+	w2.AddOption("", -1);
+	w2.AddOption("", -1);
+	w2.AddOption("", -1);
+	exam.push_back(w2);
+
+*/
 
 	unsigned questionsCount = exam.size();
 	for (unsigned i = 0; i < questionsCount; ++i)
