@@ -220,7 +220,7 @@ int main()
 	w19.AddOption("Невярно", 1);
 	exam.push_back(w19);
 
-	Question w20("Описанието\nex:adrian foaf:knows ex:gerd.\nex:adrian foaf:age "41"^^xs:int.\nпредставя RDF Triples в:");
+	Question w20("Описанието\nex:adrian foaf:knows ex:gerd.\nex:adrian foaf:age \"41\"^^xs:int.\nпредставя RDF Triples в:");
 	w20.AddOption("RDFa формат.", -1);
 	w20.AddOption("N3 формат.", 1);
 	w20.AddOption("Turtle формат.", -1);
@@ -281,19 +281,153 @@ int main()
 	w29.AddOption("дериват на типа на елемента-екземпляр", -1);
 	exam.push_back(w29);
 
+	Question w30("XSL се използва за:");
+	w30.AddOption("трансформиране на XML документ към друг текстов документ", 1);
+	w30.AddOption("трансформиране на XML документ към друг документ само в HTML формат", -1);
+	w30.AddOption("трансформиране на XML документ към друг документ само в XML или HTML формат", -1);
+	w30.AddOption("трансформиране на XML документ към друг документ само в XML формат", -1);
+	exam.push_back(w30);
+	
+	Question w31("XSL кодът, показан на фигурата, ще даде като резултат:\n<xsl:template match=\"name\">\n\txsl:element name=\"{.}\"> My own contents!\n\t</xsl:element>\n</xsl:template>");
+	w31.AddOption("изходните XML елементи ще бъдат с имена, еднакви със съдържанието на елементите от сорс дървото, и със съдържание \"My own contents!\"", 1);
+	w31.AddOption("същите елементи в изходния XML файл както в сорс XML файла, и с коментар \"My own contents!\" за всеки един елемент", -1);
+	w31.AddOption("същите елементи в изходния XML файл както в сорс XML файла, но с добавено в края съдържание \"My own contents!\"", -1);
+	exam.push_back(w31);
+	
+	Question w32("Resource Description Framework (RDF) представя информация за ресурси, които:");
+	w32.AddOption("могат да бъдат или да не бъдат достъпни в Уеб", 1);
+	w32.AddOption("не могат да бъдат достъпни в Уеб", -1);
+	w32.AddOption("трябва да бъдат достъпни в Уеб", -1);
+	exam.push_back(w32);
+	
+	Question w33("Binary entity може да се използва само като атрибут от тип ENTITY.");
+	w33.AddOption("вярно", 1);
+	w33.AddOption("невярно", -1);
+	exam.push_back(w33);
+	
+	Question w34("Уникална идентификация на пространство от имена се реализира с:");
+	w34.AddOption("URL", 1);
+	w34.AddOption("URN", -1);
+	w34.AddOption("URI (и URL, и URN)", -1);
+	exam.push_back(w34);
+	
+	Question w35("В SAX, приложните обекти, имащи достъп до XML сорса:");
+	w35.AddOption("трябва да бъдат регистрирани (от програмиста) за callback функциите на парсера", -1);
+	w35.AddOption("са регистрирани за callback функции или от програмиста, или от парсера", -1);
+	w35.AddOption("не трябва да бъдат регистрирани от програмиста за callback функции, тъй като те са listeners", 1);
+	exam.push_back(w35);
+	
+	Question w36("Annotation Property в OWL се използва за добавяне на метаданни:");
+	w36.AddOption("само към класове", -1);
+	w36.AddOption("към екземпляри и към свойства", -1);
+	w36.AddOption("само към екземпляри", -1); 
+	w36.AddOption("към класове и към свойства", -1);
+	w36.AddOption("към класове, екземпляри и свойства", 1);
+       	w36.AddOption("към класове и към екземпляри", -1);
+	w36.AddOption("само към свойства (properties)", -1);
+	exam.push_back(w36);
+	
+	Question w37("Всяко IDREF, декларирано в DTD, трябва да:");
+	w37.AddOption("избере дадено определено ID", 1);
+	w37.AddOption("избере кое да е ID", -1);
+	w37.AddOption("избере можество ID-та", -1);
+	exam.push_back(w37);
+	
+	Question w38("Кой от елементите ISBN по-долу не се описва от дефиницията <element name=\"ISBN\" type=\"cat:ISBNType\"/>, където ISBNType е:\n<datatype name=\"ISBNTYPE\" source=\"string\">\n\t<pattern value=\"\\d{5}-\\d{5}-\\d{5}/>\n</datatype>");
+	w38.AddOption("12345-54321-98765", -1);
+	w38.AddOption("63247-84365-12345", -1);
+	w38.AddOption("4-256-76435-4", -1);
+	w38.AddOption("6-32-47843-5", -1);
+	exam.push_back(w38);
+	
+	Question w39("В CSS3, фиксираната (fixed) схема за позициониране:");
+	w39.AddOption("се характеризира със задаване на явно отместване (explicit offset) спрямо съдържащия блок", -1);
+	w39.AddOption("се контролира от браузера с цел по-бързо показване на съдържанието", -1);
+	w39.AddOption("предизвиква повторение на кутията на всяка страница при paged media", 1);
+	w39.AddOption("предефинира top и left позициите на кутията", -1);
+	exam.push_back(w39);
+
+	Question w40("В CSS3, фиксираната (fixed) схема за позициониране:");
+	w40.AddOption("предизвиква повторение на кутията на всяка страница при paged media", 1);
+	w40.AddOption("се характеризира със задаване на явно отместване (explicit offset) спрямо съдържащия блок", -1);
+	w40.AddOption("предефинира top и left позициите на кутията", -1);
+	w40.AddOption("се контролира от браузера с цел по-бързо показване на съдържанието", -1);
+	exam.push_back(w40);
 
 
+	Question w41("creator, title, publisher, contributor, date и format са име на елементи, дефинирани от:");
+	w41.AddOption("RDFS", 1);
+	w41.AddOption("DC", -1);
+	w41.AddOption("FOAF", -1);
+	w41.AddOption("OWL", -1);
+	exam.push_back(w41);
 
 
-	/*
-	Question w2("");
-	w2.AddOption("", -1);
-	w2.AddOption("", -1);
-	w2.AddOption("", -1);
-	w2.AddOption("", -1);
-	exam.push_back(w2);
+	Question w42("При избиране на елемент, наречен MyElem и имащ атрибут Attr със стойност title, ние трябва да използваме:");
+	w42.AddOption("select=\"MyElem[@Attr='title']\"", 1);
+	w42.AddOption("select=\"MyElem{@Attr='title'}\"", -1);
+	w42.AddOption("select=\"MyElem(@Attr='title')\"", -1);
+	w42.AddOption("select=\"MyElem[Attr='title']\"", -1);
+	exam.push_back(w42);
 
-*/
+
+	Question w43("Какво не е възможно да бъде описано в DTD:");
+	w43.AddOption("къде типът на елементите може да се среща", -1);
+	w43.AddOption("какви имена могат да бъдат използувани за тип на елементите", -1);
+	w43.AddOption("йерархия на документа и грануларност", -1);
+	w43.AddOption("имена и типове на атрибутите на елементите", -1);
+	w43.AddOption("минимален и максимален брой срещания на елемент", 1);
+	exam.push_back(w43);
+
+
+	Question w44("XSL елементът Apply-Templates се използва вътре в един шаблон (template) за извикване на други шаблони. Той:");
+	w44.AddOption("активира нерекурсивно обработката на всички наследници на елемента, за който се отнася", -1);
+	w44.AddOption("активира рекурсивно обработката на всички наследници на елемента, за който се отнася", 1);
+	exam.push_back(w44);
+
+
+	Question w45("Целта на валидацията на XML документ от XML парсера е да се провери дали XML документът е добре структуриран (well-formed).");
+	w45.AddOption("вярно", -1);
+	w45.AddOption("невярно", 1);
+	exam.push_back(w45);
+
+
+	Question w46("rdf:Seq задава:");
+	w46.AddOption("група на подредени ресурси или литерали, с вероятно дублиране", 1);
+	w46.AddOption("група на неподредени ресурси или литерали, без дублиране", -1);
+	w46.AddOption("група на подредени ресурси или литерали, без дублиране", -1);
+	w46.AddOption("група на неподредени ресурси или литерали, с вероятно дублиране", -1);
+	w46.AddOption("група на алтернативни ресурси или литерали", -1);
+	exam.push_back(w46);
+
+
+	Question w47("В XSchema, локалните типове:");
+	w47.AddOption("винаги са директни наследници на корена", -1);
+	w47.AddOption("могат да бъдат директни наследници на корена", -1);
+	w47.AddOption("могат да бъдат или да не бъдат директни наследници на корена", -1);
+	w47.AddOption("не могат да бъдат директни наследници на корена", 1);
+	exam.push_back(w47);
+
+
+	Question w48("Кое е името на подразбиращото се (default) пространство от имена в декларацията по-долу:");
+	w48.AddOption("и pers, и html", -1);
+	w48.AddOption("html", -1);
+	w48.AddOption("pers", -1);
+	w48.AddOption("зависи от XML парсера", -1);
+	w48.AddOption("няма подразбиращото се (default) пространство от имена", 1);
+	exam.push_back(w48);
+
+
+	Question w49("DocumentType::Node Interface се използва за получаване на информация за документ, описан в DTD.");
+	w49.AddOption("DOM 1.0 разрешава редактиране на този възел", -1);
+	w49.AddOption("DOM 1.0 не разрешава редактиране на този възел", 1);
+	exam.push_back(w49);
+
+
+	Question w50("Могат ли екземплярите на класовете да бъдат част от онтологията, описваща тези класове?");
+	w50.AddOption("Да", 1);
+	w50.AddOption("Не", -1);
+	exam.push_back(w50);
 
 	unsigned questionsCount = exam.size();
 	for (unsigned i = 0; i < questionsCount; ++i)
