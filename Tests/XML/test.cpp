@@ -385,13 +385,6 @@ int main()
 	w44.AddOption("активира рекурсивно обработката на всички наследници на елемента, за който се отнася", 1);
 	exam.push_back(w44);
 
-
-	Question w45("Целта на валидацията на XML документ от XML парсера е да се провери дали XML документът е добре структуриран (well-formed).");
-	w45.AddOption("вярно", -1);
-	w45.AddOption("невярно", 1);
-	exam.push_back(w45);
-
-
 	Question w46("rdf:Seq задава:");
 	w46.AddOption("група на подредени ресурси или литерали, с вероятно дублиране", 1);
 	w46.AddOption("група на неподредени ресурси или литерали, без дублиране", -1);
@@ -429,6 +422,336 @@ int main()
 	w50.AddOption("Не", -1);
 	exam.push_back(w50);
 
+Question q00("Редът <!ATTLIST point honorific (Mr|Ms|Mrs|Rev|Dr) ... > е валиден DTD пример за:");
+        q00.AddOption("namegroup", 1);
+        q00.AddOption("CDATA", -1);
+        q00.AddOption("NMTOKENS", -1);
+        q00.AddOption("notation", -1);
+        exam.push_back(q00);
+
+Question q01("RDF Literals могат да бъдат зададени само като обект в RDF тройка.");
+        q01.AddOption("верно", 1);
+        q01.AddOption("неверно", -1);
+        exam.push_back(q01);
+
+Question q02("Параметрично Entity:");
+        q02.AddOption("се дефинира в маркъп декларациите в DTD и може да се използва само в DTD дефиниции", 1);
+        q02.AddOption("се дефинира в маркъп декларациите в DTD, но може да се използва в който и да е XML документ", -1);
+        q02.AddOption("се дефинира в XML документа и може да се използва в който и да е XML документ", -1);
+        exam.push_back(q02);
+
+Question q03("RDF Literals могат да бъдат зададени само като обект в RDF тройка.");
+        q03.AddOption("верно", 1);
+        q03.AddOption("неверно", -1);
+        exam.push_back(q03);
+
+Question q04("Разгледайте имената на XML празните елементи <emptyTag /> и <emptyTag/ >. Те са:");
+        q04.AddOption("и двата валидни", -1);
+        q04.AddOption("първият е валиден, вторият е невалиден", 1);
+        q04.AddOption("нито едно от по-горе посочените", -1);
+        q04.AddOption("и двата невалидни", -1);
+		q04.AddOption("първият е невалиден, вторият е валиден", -1);
+        exam.push_back(q04);
+
+Question q05("В XLink, входящите дъги (inbound arcs) могат да имат:");
+        q05.AddOption("точно два участващи в тях ресурса", 1);
+        q05.AddOption("произволен краен брой участващи в тях ресурси", -1);
+        exam.push_back(q05);
+
+Question q06("В OWL, също както и в ООП, не може да съществуват два класа с общи екземпляри.");
+        q06.AddOption("неверно", 1);
+        q06.AddOption("верно", -1);
+        exam.push_back(q06);
+
+Question q07("Resource Description Framework (RDF) представя информация за ресурси, които:");
+        q07.AddOption("трябва да бъдат достъпни в Уеб", -1);
+        q07.AddOption("не могат да бъдат достъпни в Уеб", -1);
+        q07.AddOption("могат да бъдат или да не бъдат достъпни в Уеб", 1);
+        exam.push_back(q07);
+
+Question q08("Даден CSS стил може да бъде inlined (а не embedded) в документ посредством:");
+        q08.AddOption("елемента INLINE", -1);
+        q08.AddOption("атрибута INLINE", -1);
+        q08.AddOption("елемента STYLE", -1);
+        q08.AddOption("атрибута STYLE", 1);
+        exam.push_back(q08);
+
+Question q09("Една XLink дъга (arc), която има локален стартов ресурс и отдалечен краен ресурс, се нарича:");
+        q09.AddOption("outbound", 1);
+        q09.AddOption("inbound", -1);
+        q09.AddOption("сочеща трети (third-party) ресурс", -1);
+        exam.push_back(q09);
+
+Question q10("Записът\n@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.\n@prefix contact: <http://www.w3.org/2000/10/swap/pim/contact#>.\n<http://www.w3.org/People/EM/contact#me>\nrdf:type contact:Person;\ncontact:fullName Eric Miller;\ncontact:mailbox <mailto:em@w3.org>;\ncontact:personalTitle \"Dr.\".\nпредставя по-долния RDF граф в:");
+        q10.AddOption("N3", -1);
+        q10.AddOption("RDFa", -1);
+        q10.AddOption("Turtle", 1);
+        q10.AddOption("RDF/XML", -1);
+        exam.push_back(q10);
+
+Question q11("MEDIA атрибутите като screen, aural, braille, tty, и т.н., са част от:");
+        q11.AddOption("само от CSS1 спецификацията", -1);
+        q11.AddOption("CSS1 и CSS2 спецификациите", -1);
+        q11.AddOption("CSS2 и CSS3 спецификациите", 1);
+        q11.AddOption("само от CSS3 спецификацията", -1);
+		q11.AddOption("само от CSS2 спецификацията", -1);
+        exam.push_back(q11);
+
+Question q12("Квалифицирано XML име (наречено QName) е:");
+        q12.AddOption("всяко име на XML елемент", -1);
+        q12.AddOption("всяко валидно XML име", -1);
+        q12.AddOption("всяко XML име на пространство от имена", -1);
+        q12.AddOption("име от вида namespace_prefix:local_name", 1);
+        exam.push_back(q12);
+
+Question q13("Изберете верното:");
+        q13.AddOption("Един URI не може да бъде нито URL, нито URN", -1);
+        q13.AddOption("Един URI може да бъде или URL, или URN", 1);
+        q13.AddOption("Един URI може да бъде URL и URN едновременно", -1);
+        q13.AddOption("Един URN може да бъде или URL, или URI", -1);
+		q13.AddOption("Един URL може да бъде или URI, или URN", -1);
+        exam.push_back(q13);
+
+Question q14("Могат ли екземплярите на класовете да бъдат част от онтологията, описваща тези класове?");
+        q14.AddOption("да", 1);
+        q14.AddOption("не", -1);
+        exam.push_back(q14);
+
+Question q15("В XML Schema, ние можем да построим производни (derived) types:");
+        q15.AddOption("само с restrictions", -1);
+        q15.AddOption("само с extensions", -1);
+        q15.AddOption("както с extensions, така и с restrictions", 1);
+        exam.push_back(q15);
+
+Question q16("Един XML документ може да има повече от едно DTD.");
+        q16.AddOption("верно", 1);
+        q16.AddOption("неверно", -1);
+        exam.push_back(q16);
+
+Question q17("Разгледайте P:first-letter { font-size: 200% } . Това е:");
+        q17.AddOption("CSS клас", -1);
+        q17.AddOption("псевдо-атрибут (pseudo-attribute)", -1);
+        q17.AddOption("нито едно от по-горе посочените", -1);
+        q17.AddOption("псевдо-елемент (pseudo-element)", 1);
+        exam.push_back(q17);
+
+Question q18("***Кой от елементите ISBN по-долу не се описва от дефиницията <element name=\"ISBN\"?*** type=\"cat:ISBNType\"/>, където ISBNType е:");
+        q18.AddOption("12345-54321-98765", -1);
+        q18.AddOption("4-256-76435-4", 1);
+        q18.AddOption("1-23-579321-3", -1);
+        q18.AddOption("6-32-47843-5", -1);
+		q18.AddOption("63247-84365-12345", -1);
+        exam.push_back(q18);
+
+Question q19("XSchema шаблонен фасет (pattern facet) е фасет за данни от тип:");
+        q19.AddOption("decimal", -1);
+        q19.AddOption("integer", -1);
+        q19.AddOption("string", 1);
+        q19.AddOption("binary", -1);
+        exam.push_back(q19);
+
+Question q20("Единственото изискване един XML документ да бъде валиден е този документ да е структуриран (формиран) съгласно правилата за XML синтаксиса.");
+        q20.AddOption("верно", 1);
+        q20.AddOption("неверно", -1);
+        exam.push_back(q20);
+
+Question q21("Регулярният израз [^0-9]x дефинира XSchema стрингови стойности, които представляват:");
+        q21.AddOption("x пъти повторение на който и да е цифров символ", -1);
+        q21.AddOption("x пъти повторение на който и да е не-цифров символ", -1);
+        q21.AddOption("символът ^, последван от произволна цифра следвана от символа x", -1);
+        q21.AddOption("който и да е не-цифров символ, следван от символа x", 1);
+        exam.push_back(q21);
+
+Question q22("creator, title, publisher, contributor, date и format са име на елементи, дефинирани от:");
+        q22.AddOption("RDFS", 1);
+        q22.AddOption("FOAF", -1);
+        q22.AddOption("OWL", -1);
+        q22.AddOption("DC", -1);
+        exam.push_back(q22);
+
+Question q23("Binary entity може да се използва само като атрибут от тип ENTITY.");
+        q23.AddOption("верно", 1);
+        q23.AddOption("неверно", -1);
+        exam.push_back(q23);
+
+Question q24("Annotation Property в OWL се използва за добавяне на метаданни:");
+        q24.AddOption("само към класове", -1);
+        q24.AddOption("към класове, екземпляри и свойства", 1);
+        q24.AddOption("само към свойства (properties)", -1);
+        q24.AddOption("към екземпляри и към свойства", -1);
+        q24.AddOption("само към екземпляри", -1);
+        q24.AddOption("към класове и свойства", -1);
+        q24.AddOption("към класове и екземпляри", -1);
+        exam.push_back(q24);
+
+Question q25("Описанието\nex:adrian foaf:knows ex:gerd.\nex:adrian foaf:age \"41\"^^xs:int.\nпредставя RDF Triples в:");
+        q25.AddOption("N3 формат", 1);
+        q25.AddOption("RDF/XML формат", -1);
+        q25.AddOption("RDFa формат", -1);
+        q25.AddOption("Turtle формат", -1);
+        exam.push_back(q25);
+
+Question q26("Уникална идентификация на пространство от имена се реализира с:");
+        q26.AddOption("URI (и URL, и URN)", -1);
+        q26.AddOption("URL", 1);
+        q26.AddOption("URN", -1);
+        exam.push_back(q26);
+
+Question q27("rdf:Seq задава:");
+        q27.AddOption("група на подредени ресурси или литерали, с вероятно дублиране", 1);
+        q27.AddOption("група на неподредени ресурси или литерали, без дублиране", -1);
+        q27.AddOption("група на неподредени ресурси или литерали, с вероятно дублиране", -1);
+        q27.AddOption("група на подредени ресурси или литерали, без дублиране", -1);
+		q27.AddOption("група на алтернативни ресурси или литерали", -1);
+        exam.push_back(q27);
+
+Question q28("В XSchema, типът на всеки елемент на еквивалентен клас трябва да бъде:");
+        q28.AddOption("различен от типа на елемента-екземпляр", -1);
+        q28.AddOption("дериват на типа на елемента-екземпляр", -1);
+        q28.AddOption("същият като типа на елемента-екземпляр", -1);
+        q28.AddOption("същият като типа на елемента-екземпляр, или негов дериват", 1);
+        exam.push_back(q28);
+
+Question q29("В XSchema, референцията (напр. ) може да реферира:");
+        q29.AddOption("само към глобални типове", 1);
+        q29.AddOption("нито към локални, нито към глобални типове", -1);
+        q29.AddOption("както към локални, така и към глобални типове", -1);
+        q29.AddOption("само към локални типове", -1);
+        exam.push_back(q29);
+
+Question q30("За постигане на по-малък, ефикасен и бърз код с използване на StAX, се препоръчва:");
+        q30.AddOption("StAX Events API", -1);
+        q30.AddOption("cursor API", 1);
+        q30.AddOption("iterator API", -1);
+        q30.AddOption("StAX Direct Mapping API", -1);
+        exam.push_back(q30);
+
+Question q31("DocumentType::Node Interface се използва за получаване на информация за документ, описан в DTD.");
+        q31.AddOption("DOM 1.0 не разрешава редактиране на този възел", 1);
+        q31.AddOption("DOM 1.0 разрешава редактиране на този възел", -1);
+        exam.push_back(q31);
+
+Question q33("Атрибутите на XML са чувствителни към регистъра.");
+        q33.AddOption("невярно", -1);
+        q33.AddOption("вярно", 1);
+        exam.push_back(q32);
+
+Question q34("Кое е името на подразбиращото се (default) пространство от имена в декларацията по-долу:");
+        q34.AddOption("html", 1);
+        q34.AddOption("pers", -1);
+        q34.AddOption("няма подразбиращото се (default) пространство от имена", -1);
+        q34.AddOption("зависи от XML парсера", -1);
+		q34.AddOption("и pers, и html", -1);
+        exam.push_back(q34);
+
+
+Question q35("При използването на XPath text() функцията, ние избираме:");
+        q35.AddOption("същият текстов контекст както когато използваме <xsl:value-of select='.'> елемента", -1);
+        q35.AddOption("текстовия контекст на елемента и текстовия контекст на всички наследници на елемента", -1);
+        q35.AddOption("текстовия контекст само на елемента", -1);
+        q35.AddOption("текстовия контекст на всички наследници на елемента", 1);
+        exam.push_back(q35);
+
+Question q36("Ако в XSchema дефинираме exact тип, то:");
+        q36.AddOption("той може да има дериватни типове, и те могат да бъдат използвани в XML документа вместо този exact тип", -1);
+        q36.AddOption("b. той може да има дериватни типове, но те не могат да бъдат използвани в XML документа вместо този exact тип", 1);
+        q36.AddOption("c. той може да има дериватни типове, но те могат да бъдат използвани в XML документа вместо този exact тип само при определени условия", -1);
+        q36.AddOption("той не може да има дериватни типове", -1);
+        exam.push_back(q36);
+
+Question q37("В SAX, приложните обекти, имащи достъп до XML сорса:");
+        q37.AddOption("са регистрирани за callback функции или от програмиста, или от парсера", 1);
+        q37.AddOption("трябва да бъдат регистрирани (от програмиста) за callback функциите на парсера", -1);
+        q37.AddOption("не трябва да бъдат регистрирани от програмиста за callback функции, тъй като те са listeners", -1);
+        exam.push_back(q37);
+
+Question q38("Ако няма специфицирано кодиране за един XML документ и документът не е нито в UTF-8, нито в UTF-16, тогава резултатът е:");
+        q38.AddOption("ERROR", 1);
+        q38.AddOption("UTF-8", -1);
+        q38.AddOption("ISO 8859-1", -1);
+        q38.AddOption("UTF-16", -1);
+        exam.push_back(q38);
+
+Question q39("Един XML документ може да има повече от едно вътрешно DTD.");
+        q39.AddOption("неверно", -1);
+        q39.AddOption("верно", 1);
+        exam.push_back(q39);
+
+Question q40("Какво не е възможно да бъде описано в DTD:");
+        q40.AddOption("минимален и максимален брой срещания на елемент", 1);
+        q40.AddOption("йерархия на документа и грануларност", -1);
+        q40.AddOption("какви имена могат да бъдат използувани за тип на елементите", -1);
+        q40.AddOption("къде типът на елементите може да се среща", -1);
+		q40.AddOption("имена и типове на атрибутите на елементите", -1);
+        exam.push_back(q40);
+
+Question q41("Кой от следните изрази е валиден пример за дефиниране на последователност (sequence) от елементи в DTD:");
+        q41.AddOption("(A, B, C)", 1);
+        q41.AddOption("(A ^ B ^ C)", -1);
+        q41.AddOption("(A and B and C", -1);
+        q41.AddOption("(A | B | C)", -1);
+        exam.push_back(q41);
+
+Question q42("XML Schema разрешава да се прави разлика между уникална стойност (unique) и ключ (key).");
+        q42.AddOption("неверно", -1);
+        q42.AddOption("верно", 1);
+        exam.push_back(q42);
+
+Question q43("Всяко IDREF, декларирано в DTD, трябва да:");
+        q43.AddOption("избере кое да е ID", -1);
+        q43.AddOption("избере дадено определено ID", 1);
+        q43.AddOption("избере можество ID-та", -1);
+        exam.push_back(q43);
+
+Question q44("В XSchema, глобалните типове:");
+        q44.AddOption("могат да бъдат или да не бъдат директни наследници на корена", -1);
+        q44.AddOption("винаги са директни наследници на корена", 1);
+        q44.AddOption("могат да не бъдат директни наследници на корена", -1);
+        q44.AddOption("не могат да бъдат директни наследници на корена", -1);
+        exam.push_back(q44);
+
+Question q45("XSL се използва за:");
+        q45.AddOption("трансформиране на XML документ към друг документ само в XML формат", -1);
+        q45.AddOption("трансформиране на XML документ към друг документ само в HTML формат", -1);
+        q45.AddOption("трансформиране на XML документ към друг текстов документ", 1);
+        q45.AddOption("трансформиране на XML документ към друг документ само в XML или HTML формат", -1);
+        exam.push_back(q45);
+
+Question q46("Осъществяването на еmbedding (а не inlining) на Style Sheet според CSS правилата е възможно посредством:");
+        q46.AddOption("елемента STYLE", 1);
+        q46.AddOption("атрибута STYLE", -1);
+        q46.AddOption("елемента EMBED", -1);
+        q46.AddOption("елемента LINK", -1);
+        exam.push_back(q46);
+
+Question q47("С един DOM Element обект:");
+        q47.AddOption("може да направите разлика между подразбираща се (default) стойност, определена в DTD, и стойността, дадена в XML файла", -1);
+        q47.AddOption("не може да направите разлика между подразбираща се (default) стойност, определена в DTD, и стойността, дадена в XML файла", 1);
+        exam.push_back(q47);
+
+Question q48("В RDFS, Property е подмножество на RDFS Resources и има за домейн (rdfs:domain):");
+        q48.AddOption("класa, асоцииран с това Property", 1);
+        q48.AddOption("множество от отделни стойности на това Property", -1);
+        q48.AddOption("типa на стойностите на това Property", -1);
+        q48.AddOption("класa rdfs:Resource, на който принадлежат всички екземпляри на ресурса ой от елементите ISBN по-долу не се описва от дефиницията <element name=\"ISBN\"", -1);
+        exam.push_back(q48);
+
+Question q49("В RDF, група от алтернативни стойности се задава чрез:");
+        q49.AddOption("<rdf:Case>", -1);
+        q49.AddOption("<rdf:Alt>", 1);
+        q49.AddOption("<rdf:Switch>", -1);
+        q49.AddOption("<rdf:Choice>", -1);
+        q49.AddOption("<rdf:Opt>", -1);
+        exam.push_back(q49);
+
+Question q50("що текстово Entity:");
+        q50.AddOption("Може да бъде използвано рекурсивно и може да се появи в съдържанието на елемент, но не и в стойност на атрибут", 1);
+        q50.AddOption("Не може да бъде използвано рекурсивно, но може да се появи в съдържанието на елемент и/или в стойност на атрибут", -1);
+        q50.AddOption("Може да бъде използвано рекурсивно и може да се появи в съдържанието на елемент и/или в стойност на атрибут", -1);
+        q50.AddOption("Може да бъде използвано рекурсивно, но не може да се появи в съдържанието на елемент и/или в стойност на атрибут", -1);
+        q50.AddOption("Не може да бъде използвано рекурсивно и не може да се появи в съдържанието на елемент и/или в стойност на атрибут", -1);
+        exam.push_back(q50);
+
 	unsigned questionsCount = exam.size();
 	for (unsigned i = 0; i < questionsCount; ++i)
 		std::swap(exam[i], exam[Randomize(exam.size())]);
@@ -451,19 +774,3 @@ int main()
 	std::cin >> useless;
 	return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
