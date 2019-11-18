@@ -402,6 +402,36 @@ int main()
 	w60.AddOption("елемент book - наследник на текущия елемент, който има елемент author с поделемент last равен на 'пробен изпит'", 1);
 	exam.push_back(w60);
 
+	Question w61("Всеки DOM възел (Node) може да има деца.");
+	w61.AddOption("вярно", 1);
+
+	Question w62("Методът getAttributes() на DOM интерфейса Node връща:");
+	w62.AddOption("NamedNodeMap", 1);
+
+	Question w63("DOMException връща HIERARCHY_REQUEST_ERR при опит за:");
+	w63.AddOption("вмъкване на възел на неподходящо място в йерархията на DOM дървото", 1);
+
+	Question w64("SAX служи както за четене на XML документи, така и за генериране на XML");
+	w64.AddOption("Невярно", 1);
+
+	Question w65("XMLReader в SAX 2.0 разширява стандартния Java Reader интерфейс");
+	w65.AddOption("Невярно", 1);
+
+	Question w66("Събитието processingInstruction възниква, когато SAX парсерът достигне до всяка една инструкция за обработка, включително и до XML декларацията.");
+	w66.AddOption("Невярно", 1);
+
+	Question w67("Изберете едно");
+	w67.AddOption("SAX използва push парсване, StAX - парсване от тип pull", 1);
+
+	Question w68("При парсване на XML документи посредством StAX, можем да се придвижваме само напред в XML документа.");
+	w68.AddOption("Истина", 1);
+
+	Question w69("В CSS3 абсолютна (absolute) схема за позициониране:");
+	w69.AddOption("се характеризира със задаване на явно отместване (explicit offset) спрямо съдържащия блок", 1);
+
+	Question w70("В CSS, задаването на елемент, чийто атрибут attr има стойност, съдържаща на произволно място в себе си стойността xpto, става чрез");
+	w70.AddOption("[attr~=xpto]", 1);
+
 	Question q00("Редът <!ATTLIST point honorific (Mr|Ms|Mrs|Rev|Dr) ... > е валиден DTD пример за:");
         q00.AddOption("namegroup", 1);
         q00.AddOption("CDATA", -1);
