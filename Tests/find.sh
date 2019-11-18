@@ -2,7 +2,7 @@
 
 function get()
 {
-	egrep "$1" "test.cpp" | egrep "[^-][[:digit:]]);" | head -1 | egrep -o "\".*\", ?[[:digit:].]*);$" | sed 's/,[^,]*$//'
+	egrep "$@" "test.cpp" | egrep "[^-][[:digit:]]);" | head -1 | egrep -o "\".*\", ?[[:digit:].]*);$" | sed 's/,[^,]*$//'
 }
 
 YELLOW='\033[1;33m'
