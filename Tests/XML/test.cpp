@@ -339,6 +339,69 @@ int main()
 	w47.AddOption("не могат да бъдат директни наследници на корена", 1);
 	exam.push_back(w47);
 
+	Question w48("Описанието\nex:adrian foaf:knows ex:gerd.\nex:adrian foafage \"41\"^^xs:int.\nпредставя RDF Triples в:");
+	w48.AddOption("RDF/XML формат.", -1);
+	w48.AddOption("N3 формат.", 1);
+	w48.AddOption("Turtle формат.", -1);
+	w48.AddOption("RDFa формат.", -1);
+	exam.push_back(w48);
+
+	Question w49("CDATA съдържанията са:");
+	w49.AddOption("или парсвани, или игнорирани от XML парсерите в зависимост от CDATA директивата", -1);
+	w49.AddOption("игнорирани от XML парсерите", 1);
+	w49.AddOption("парсвани от XML парсерите", -1);
+	exam.push_back(w49);
+	
+	Question w51("Кой от следните изрази е валиден пример за дефиниране на избор (choice) от елементи в DTD:");
+	w51.AddOption("(A ˇ B ˇ C)", -1);
+	w51.AddOption("(A | B | C)", 1);
+	w51.AddOption("(A or B or C)", -1);
+	w51.AddOption("(A, B, C)", -1);
+	exam.push_back(w51);
+
+	Question w52("XML пространствата от имена се използват за разграничаване:");
+	w52.AddOption("нито на XML елементи, нито на XML атрибути", -1);
+	w52.AddOption("и на XML елементи, и на XML атрибути", 1);
+	w52.AddOption("само на XML елементи", -1);
+	w52.AddOption("само на XML атрибути", -1);
+	exam.push_back(w52);
+
+	Question w53("Person, title, familyName, knows, age, Document и Organization са име на елементи, дефинирани от:");
+	w53.AddOption("OWL", -1);
+	w53.AddOption("FOAF", 1);
+	w53.AddOption("RDFS", -1);
+	exam.push_back(w53);
+
+	Question w54("Ако сме дефинирали XSL променлива като\n<xsl:variable name=\"price\">low</xsl:variable>\n, то тя може да се използва в XSL елемент като:");
+	w54.AddOption("<xsl:value-of select=\"{$price}\"/>", -1);
+	w54.AddOption("<xsl:value-of select=\"@price\"/>", -1);
+	w54.AddOption("<xsl:value-of select=\"$price\"/>", 1);
+	exam.push_back(w54);
+
+	Question w55("Разгледайте <xsl:value-of> елемента. Ако стойността на неговия select атрибут е select='.', тогава ние избираме:");
+	w55.AddOption("текстовия контекст на елемента и текстовия контекст на всички наследници на елемента", 1);
+	exam.push_back(w55);
+
+	Question w56("Изпълнението на XSLT (*XSTL*) декларациите\n<xsl:value-of select=\".\"и\n<xsl:value-of select=\"text()\"/>\nводи:");
+	w56.AddOption("до един и същ или до различни резултати в зависимост от типа на съдържанието на текущия елемент", 1);
+	exam.push_back(w56);
+
+	Question w57("В XSLT, (*XSTL*) взимането на решение кои елементи ще бъдат обработени се задава със следния XSLT елемент");
+	w57.AddOption("<xsl:apply-templates>", 1);
+	exam.push_back(w57);
+
+	Question w58("При приилагането на XSLT трансформацията (shrink) Bob Steve <name>");
+	w58.AddOption("със съдържанието на елементите в изходящото дърво", 1);
+	exam.push_back(w58);
+
+	Question w59("XPath изразът //book[@pages] връща");
+	w59.AddOption("всички book елементи, които имат атрибут pages", 1);
+	exam.push_back(w59);
+
+	Question w60("XPath изразът ./book[author/last=\"пробен изпит\" връща:");
+	w60.AddOption("елемент book - наследник на текущия елемент, който има елемент author с поделемент last равен на 'пробен изпит'", 1);
+	exam.push_back(w60);
+
 	Question q00("Редът <!ATTLIST point honorific (Mr|Ms|Mrs|Rev|Dr) ... > е валиден DTD пример за:");
         q00.AddOption("namegroup", 1);
         q00.AddOption("CDATA", -1);
