@@ -404,33 +404,43 @@ int main()
 
 	Question w61("Всеки DOM възел (Node) може да има деца.");
 	w61.AddOption("вярно", 1);
+	exam.push_back(w60);
 
 	Question w62("Методът getAttributes() на DOM интерфейса Node връща:");
 	w62.AddOption("NamedNodeMap", 1);
+	exam.push_back(w60);
 
 	Question w63("DOMException връща HIERARCHY_REQUEST_ERR при опит за:");
 	w63.AddOption("вмъкване на възел на неподходящо място в йерархията на DOM дървото", 1);
+	exam.push_back(w60);
 
 	Question w64("SAX служи както за четене на XML документи, така и за генериране на XML");
 	w64.AddOption("Невярно", 1);
+	exam.push_back(w60);
 
 	Question w65("XMLReader в SAX 2.0 разширява стандартния Java Reader интерфейс");
 	w65.AddOption("Невярно", 1);
+	exam.push_back(w60);
 
 	Question w66("Събитието processingInstruction възниква, когато SAX парсерът достигне до всяка една инструкция за обработка, включително и до XML декларацията.");
 	w66.AddOption("Невярно", 1);
+	exam.push_back(w60);
 
 	Question w67("Изберете едно");
 	w67.AddOption("SAX използва push парсване, StAX - парсване от тип pull", 1);
+	exam.push_back(w60);
 
 	Question w68("При парсване на XML документи посредством StAX, можем да се придвижваме само напред в XML документа.");
 	w68.AddOption("Истина", 1);
+	exam.push_back(w60);
 
 	Question w69("В CSS3 абсолютна (absolute) схема за позициониране:");
 	w69.AddOption("се характеризира със задаване на явно отместване (explicit offset) спрямо съдържащия блок", 1);
+	exam.push_back(w60);
 
 	Question w70("В CSS, задаването на елемент, чийто атрибут attr има стойност, съдържаща на произволно място в себе си стойността xpto, става чрез");
 	w70.AddOption("[attr~=xpto]", 1);
+	exam.push_back(w60);
 
 	Question q00("Редът <!ATTLIST point honorific (Mr|Ms|Mrs|Rev|Dr) ... > е валиден DTD пример за:");
         q00.AddOption("namegroup", 1);
@@ -621,14 +631,6 @@ int main()
         q48.AddOption("типa на стойностите на това Property", -1);
         q48.AddOption("класa rdfs:Resource, на който принадлежат всички екземпляри на ресурса ой от елементите ISBN по-долу не се описва от дефиницията <element name=\"ISBN\"", -1);
         exam.push_back(q48);
-
-	Question q50("що текстово Entity:");
-        q50.AddOption("Може да бъде използвано рекурсивно и може да се появи в съдържанието на елемент, но не и в стойност на атрибут", 1);
-        q50.AddOption("Не може да бъде използвано рекурсивно, но може да се появи в съдържанието на елемент и/или в стойност на атрибут", -1);
-        q50.AddOption("Може да бъде използвано рекурсивно и може да се появи в съдържанието на елемент и/или в стойност на атрибут", -1);
-        q50.AddOption("Може да бъде използвано рекурсивно, но не може да се появи в съдържанието на елемент и/или в стойност на атрибут", -1);
-        q50.AddOption("Не може да бъде използвано рекурсивно и не може да се появи в съдържанието на елемент и/или в стойност на атрибут", -1);
-        exam.push_back(q50);
 
 	unsigned questionsCount = exam.size();
 	for (unsigned i = 0; i < questionsCount; ++i)
