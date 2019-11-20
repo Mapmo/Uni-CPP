@@ -632,6 +632,13 @@ int main()
         q48.AddOption("класa rdfs:Resource, на който принадлежат всички екземпляри на ресурса ой от елементите ISBN по-долу не се описва от дефиницията <element name=\"ISBN\"", -1);
         exam.push_back(q48);
 
+	Question q49("Най-пбщо маркъп езиците включват:");
+	q49.AddOption("структурни (layout), функционални (action), семантични (meaning) и стилистични (appearance)", 1);
+	exam.push_back(q49);
+
+	Question q50("rdf:Bag задава");
+	q50.AddOption("група от неподредени ресурси или литерали, с вероятно дулбиране", 1);
+
 	unsigned questionsCount = exam.size();
 	for (unsigned i = 0; i < questionsCount; ++i)
 		std::swap(exam[i], exam[Randomize(exam.size())]);
