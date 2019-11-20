@@ -1,5 +1,5 @@
 	Question w0("XSL елементът Apply-Templates се използва вътре в един шаблон (template) заизвикване на други шаблони. Той:");
-	Question w2("DocumentType::Node Interface се използва за получаване на информация за документ,описан в DTD.?");
+	Question w2("DocumentType::Node Interface се използва за получаване на информация за документ, описан в DTD.?");
 	Question w3("Кое е името на подразбиращото се (default) пространство от имена в декларацията по-долу:?\n\n <?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<pers:person xmlns:perfs=\"http://sernaferna.com\"\n\t\txmlns:perfs=\"http://w3.org/1999\"?>");
 	Question w04("В XLink, изходящите връзки (outbound links) могат да имат:");
 	Question w05("Регулярният израз [1-9]?[0-9] дефинира XSchema стрингови стойности, които са:");
@@ -32,7 +32,6 @@
 	Question w41("creator, title, publisher, contributor, date и format са име на елементи, дефинирани от:");
 	Question w42("При избиране на елемент, наречен MyElem и имащ атрибут Attr със стойност title, ние трябва да използваме:");
 	Question w43("Какво не е възможно да бъде описано в DTD:");
-	Question w44("XSL елементът Apply-Templates се използва вътре в един шаблон (template) за извикване на други шаблони. Той:");
 	Question w47("В XSchema, локалните типове:");
 	Question w48("Описанието\nex:adrian foaf:knows ex:gerd.\nex:adrian foafage \"41\"^^xs:int.\nпредставя RDF Triples в:");
 	Question w49("CDATA съдържанията са:");
@@ -45,7 +44,7 @@
 	Question w57("В XSLT, (*XSTL*) взимането на решение кои елементи ще бъдат обработени се задава със следния XSLT елемент");
 	Question w58("При приилагането на XSLT трансформацията (shrink) Bob Steve <name>");
 	Question w59("XPath изразът //book[@pages] връща");
-	Question w60("XPath изразът ./book[author/last=\"пробен изпит\" връща:");
+	Question w60("XPath изразът ./book[author/last=\"пробен изпит\" връща: *last = *");
 	Question w61("Всеки DOM възел (Node) може да има деца.");
 	Question w62("Методът getAttributes() на DOM интерфейса Node връща:");
 	Question w63("DOMException връща HIERARCHY_REQUEST_ERR при опит за:");
@@ -121,7 +120,6 @@
 	w41.AddOption("RDFS", 1);
 	w42.AddOption("select=\"MyElem[@Attr='title']\"", 1);
 	w43.AddOption("минимален и максимален брой срещания на елемент", 1);
-	w44.AddOption("активира рекурсивно обработката на всички наследници на елемента, за който се отнася", 1);
 	w47.AddOption("не могат да бъдат директни наследници на корена", 1);
 	w48.AddOption("N3 формат.", 1);
 	w49.AddOption("игнорирани от XML парсерите", 1);
