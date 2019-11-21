@@ -391,7 +391,7 @@ int main()
 	exam.push_back(w60);
 
 	Question w61("Всеки DOM възел (Node) може да има деца.");
-	w61.AddOption("вярно", 1);
+	w61.AddOption("невярно", 1);
 	exam.push_back(w60);
 
 	Question w62("Методът getAttributes() на DOM интерфейса Node връща:");
