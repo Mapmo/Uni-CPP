@@ -378,7 +378,7 @@ int main()
 	w57.AddOption("<xsl:apply-templates>", 1);
 	exam.push_back(w57);
 
-	Question w58("При приилагането на XSLT трансформацията (shrink) Bob Steve <name>");
+	Question w58("При прилагането на XSLT трансформацията (shrink) Bob Steve <name>");
 	w58.AddOption("със съдържанието на елементите в изходящото дърво", 1);
 	exam.push_back(w58);
 

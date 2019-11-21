@@ -42,7 +42,7 @@
 	Question w55("Разгледайте <xsl:value-of> елемента. Ако стойността на неговия select атрибут е select='.', тогава ние избираме:");
 	Question w56("Изпълнението на XSLT (*XSTL*) декларациите\n<xsl:value-of select=\".\"и\n<xsl:value-of select=\"text()\"/>\nводи:");
 	Question w57("В XSLT, (*XSTL*) взимането на решение кои елементи ще бъдат обработени се задава със следния XSLT елемент");
-	Question w58("При приилагането на XSLT трансформацията (shrink) Bob Steve <name>");
+	Question w58("При прилагането на XSLT трансформацията (shrink) Bob Steve <name>");
 	Question w59("XPath изразът //book[@pages] връща");
 	Question w60("XPath изразът ./book[author/last=\"пробен изпит\" връща: *last = *");
 	Question w61("Всеки DOM възел (Node) може да има деца.");
