@@ -111,7 +111,39 @@ int main()
 	q2.AddOption("Nesposobnostta na sistemata ili komponenta da izvyrshi jelanata funkcionalnost v ramkite na specificiranite iziskvaniq na proizvoditelnost", 1);
 	q2.AddOption("Choveshko vyzdeystvie, koeto vodi do nekorekten rezultat", -1);
 	exam.push_back(q2);
-
+	
+	Question q3("Каква е връзката между понятията повреда, грешка и отказ?");
+	q3.AddOption("Повреда → Грешка → Отказ ", -1);
+	q3.AddOption("Грешка → Повреда → Отказ ", 1);
+	q3.AddOption("Отказ → Повреда → Грешка ", -1);
+	exam.push_back(q3);
+	
+	Question q4("При коя фаза от тестовия процес се избират метрики и модели?");
+	q4.AddOption("Тестово планиране", 1);
+	q4.AddOption("Изпълнение на тестове и наблюдения", -1);
+	q4.AddOption("Анализ и проследяване ", -1);
+	exam.push_back(q4);
+	
+	Question q6("?При коя фаза от тестовия процес се дефинират тестовите сценарии?");
+	q6.AddOption("Изпълнение на тестовете и наблюдение" , -1);
+	q6.AddOption("Тестово планиране и подготовка" , 1);
+	q6.AddOption("Анализ и проследяване" , -1);
+	exam.push_back(q6);
+	
+	Question q7("Коя от следните дейности НЕ се изпълнява при подготовка на тестовите сценарии??");
+	q7.AddOption("Конструиране на нови тестови сценарии", -1);
+	q7.AddOption("Автоматично генериране на тестови сценарии", -1);
+	q7.AddOption("Избор на тестови сценарии от съществуващи такива", -1);
+	q7.AddOption("Дефиниране на тестова цел", 1);
+	exam.push_back(q7);
+	
+	Question q8("Коя от следните дейности НЕ се извършва при функционалното тестване?");
+	q8.AddOption("Наблюдение на външното поведение на софтуерната система", -1);
+	q8.AddOption("Дебъгване на софтуерната система", 1);
+	q8.AddOption("Създаване на формални тестови модели", -1);
+	exam.push_back(q8);
+	
+	
 	/*
 	Question q0("?");
 	q0.AddOption("", -1);
