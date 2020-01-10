@@ -383,7 +383,7 @@ int main()
 	q50.AddOption("1,0,1,20,21,22", -1);
 	q50.AddOption("1,0,21,22", -1);
 	
-	Question q51("Как се избира "OFF" точка при затворена граница, когато се прилага стратегията \"weak N x 1\"?");
+	Question q51("Как се избира \"OFF\" точка при затворена граница, когато се прилага стратегията \"weak N x 1\"?");
 	q51.AddOption("Като OFF точка се избира външна точка, която е много близо до границата", 1);
 	q51.AddOption("Като OFF точка се избира вътрешна точка, която е много близо до границата", -1);
 	q51.AddOption("Като OFF точка се избира произволна точка", -1);
@@ -506,7 +506,7 @@ int main()
 	q73.AddOption("Да се намери оптималната конфигурация на хардуерните и софтуерните ресурси", -1);
 	q73.AddOption("Да се открие максимален брой потребители", -1);
 	
-	Question q74(""Кое от изброените НЕ е цел на тестването на производителност?);
+	Question q74("Кое от изброените НЕ е цел на тестването на производителност?");
 	q74.AddOption("Да се проследи времето за отговор на системата", -1);
 	q74.AddOption("Да се валидира дали системата покрива бизнес изискванията", -1);
 	q74.AddOption("Да се намери оптималната конфигурация на хардуерните и софтуерните ресурси", 0.5);
@@ -648,7 +648,7 @@ int main()
 	q98.AddOption("Дейности, с които се потвърждава, че софтуерното решение покрива нуждите, за които се създадено", -1);
 	q98.AddOption("Дейности/Тестове, които се изпълняват от независим тестов екип", -1);
 	
-	Question q99(""Планът за тестване се съгласува и допълва следния документ: );
+	Question q99("Планът за тестване се съгласува и допълва следния документ:");
 	q99.AddOption("Бизнес план", -1);
 	q99.AddOption("План на проекта", 1);
 	q99.AddOption("План за поддръжка", -1);
@@ -798,155 +798,48 @@ int main()
 	q125.AddOption("Се толерират повреди и локални откази, така че да не стават глобални откази", 1);
 	q125.AddOption("При подхода failure containment", -1);
 	
-	Question q126("");
-	q126.AddOption("", -1);
-	q126.AddOption("", -1);
-	q126.AddOption("", -1);
-	q126.AddOption("", -1);
+	Question q126("Какво предимство предоставя тестването с класове на еквивалентност?");
+	q126.AddOption("Възможност за използване на опита на крайните потребители при генериране на тестовите сценарии ", -1);
+	q126.AddOption("Редуциране на броя на тестовите сценарии", 1);
+	q126.AddOption("Възможност за тестване на сложни софтуерни системи ", -1);
 	
-	Question q127("");
-	q127.AddOption("", -1);
-	q127.AddOption("", -1);
-	q127.AddOption("", -1);
-	q127.AddOption("", -1);
+	Question q127("Кой от изброените въпроси се засяга основно в плана за качество на проект?");
+	q127.AddOption("Методология, прилагана в проекта", -1);
+	q127.AddOption("Критерии за начало и край на всеки етап от проекта", 1);
+	q127.AddOption("Оценка на риска", -1);
+	q127.AddOption("Графици за изпълнението на проекта", -1);
 	
-	Question q128("");
-	q128.AddOption("", -1);
-	q128.AddOption("", -1);
-	q128.AddOption("", -1);
-	q128.AddOption("", -1);
+	Question q128("Инспекциите са свързани повече с:");
+	q128.AddOption("Верификацията", 1);
+	q128.AddOption("Валидацията", -1);
 	
-	Question q129("");
-	q129.AddOption("", -1);
-	q129.AddOption("", -1);
-	q129.AddOption("", -1);
-	q129.AddOption("", -1);
+	Question q129("Кои от изброените са верни за компонентно-базираното разработване?");
+	q129.AddOption("При компонентното разработване трудно се управляват изискванията", 0.5);
+	q129.AddOption("Верификацията и валидацията са по-трудни и по-важни", 0.5);
+	q129.AddOption("Компонентното разрабоване е част от системното разработване", -1);
+	q129.AddOption("Изисква се повече усилие за разработването на системи", -1);
 	
-	Question q130("");
-	q130.AddOption("", -1);
-	q130.AddOption("", -1);
-	q130.AddOption("", -1);
-	q130.AddOption("", -1);
+	Question q130("Цена за откриване и отстраняване на грешка (несъответствие) е най-висока при:");
+	q130.AddOption("Изграждане на софтуерното решение – кодиране ", -1);
+	q130.AddOption("Преглед на спецификацията на решението ", -1);
+	q130.AddOption("Реална експлоатация на софтуерната система", 1);
 	
-	Question q131("");
-	q131.AddOption("", -1);
-	q131.AddOption("", -1);
-	q131.AddOption("", -1);
-	q131.AddOption("", -1);
+	Question q131("При кой от софтуерните процеси за разработване на софтуер интеграционното тестване НЕ заема особено важно място като дейност за осигуряване на качеството?");
+	q131.AddOption("Инкрементален и итеративен процес", 1);
+	q131.AddOption("Спираловиден процес", -1);
+	q131.AddOption("Гъвкави процеси", -1);
+	q131.AddOption("Процес на водопада", -1);
 	
-	Question q132("");
-	q132.AddOption("", -1);
-	q132.AddOption("", -1);
-	q132.AddOption("", -1);
-	q132.AddOption("", -1);
+	Question q132("Кое от твърденията е вярно:");
+	q132.AddOption("Тестването при гъвкавите методологии е отделна фаза в процеса на разработка и се извършва след като системата е завършена", -1);
+	q132.AddOption("Методологията за разработване на софтуер, базирано на тестове (TDD),  използва тестове от тип „черна кутия“ ", -1);
+	q132.AddOption("При екстремното програмиране (XP) тестването и имплементацията се извършват успоредно", -1);
 	
-	Question q133("");
-	q133.AddOption("", -1);
-	q133.AddOption("", -1);
-	q133.AddOption("", -1);
-	q133.AddOption("", -1);
-	
-	Question q134("");
-	q134.AddOption("", -1);
-	q134.AddOption("", -1);
-	q134.AddOption("", -1);
-	q134.AddOption("", -1);
-	
-	Question q135("");
-	q135.AddOption("", -1);
-	q135.AddOption("", -1);
-	q135.AddOption("", -1);
-	q135.AddOption("", -1);
-	
-	Question q136("");
-	q136.AddOption("", -1);
-	q136.AddOption("", -1);
-	q136.AddOption("", -1);
-	q136.AddOption("", -1);
-	
-	Question q137("");
-	q137.AddOption("", -1);
-	q137.AddOption("", -1);
-	q137.AddOption("", -1);
-	q137.AddOption("", -1);
-	
-	Question q138("");
-	q138.AddOption("", -1);
-	q138.AddOption("", -1);
-	q138.AddOption("", -1);
-	q138.AddOption("", -1);
-	
-	Question q139("");
-	q139.AddOption("", -1);
-	q139.AddOption("", -1);
-	q139.AddOption("", -1);
-	q139.AddOption("", -1);
-	
-	Question q140("");
-	q140.AddOption("", -1);
-	q140.AddOption("", -1);
-	q140.AddOption("", -1);
-	q140.AddOption("", -1);
-	
-	Question q141("");
-	q141.AddOption("", -1);
-	q141.AddOption("", -1);
-	q141.AddOption("", -1);
-	q141.AddOption("", -1);
-	
-	Question q142("");
-	q142.AddOption("", -1);
-	q142.AddOption("", -1);
-	q142.AddOption("", -1);
-	q142.AddOption("", -1);
-	
-	Question q143("");
-	q143.AddOption("", -1);
-	q143.AddOption("", -1);
-	q143.AddOption("", -1);
-	q143.AddOption("", -1);
-	
-	Question q144("");
-	q144.AddOption("", -1);
-	q144.AddOption("", -1);
-	q144.AddOption("", -1);
-	q144.AddOption("", -1);
-	
-	Question q145("");
-	q145.AddOption("", -1);
-	q145.AddOption("", -1);
-	q145.AddOption("", -1);
-	q145.AddOption("", -1);
-	
-	Question q146("");
-	q146.AddOption("", -1);
-	q146.AddOption("", -1);
-	q146.AddOption("", -1);
-	q146.AddOption("", -1);
-	
-	Question q147("");
-	q147.AddOption("", -1);
-	q147.AddOption("", -1);
-	q147.AddOption("", -1);
-	q147.AddOption("", -1);
-	
-	Question q148("");
-	q148.AddOption("", -1);
-	q148.AddOption("", -1);
-	q148.AddOption("", -1);
-	q148.AddOption("", -1);
-	
-	Question q149("");
-	q149.AddOption("", -1);
-	q149.AddOption("", -1);
-	q149.AddOption("", -1);
-	q149.AddOption("", -1);
-	
-	Question q150("");
-	q150.AddOption("", -1);
-	q150.AddOption("", -1);
-	q150.AddOption("", -1);
-	q150.AddOption("", -1);
+	Question q133("Кога се дефинират критериите за приемане на програмната система?");
+	q133.AddOption("По време на анализа на изизкванията", -1);
+	q133.AddOption("При създаването на тест плана", 1);
+	q133.AddOption("По време на проектирането на програмната система", -1);
+	q133.AddOption("По време не финалното системно тестване", -1);
 	
         exam.push_back(q9);
         exam.push_back(q10);
@@ -1073,23 +966,6 @@ int main()
         exam.push_back(q131);
         exam.push_back(q132);
         exam.push_back(q133);
-        exam.push_back(q134);
-        exam.push_back(q135);
-        exam.push_back(q136);
-        exam.push_back(q137);
-        exam.push_back(q138);
-        exam.push_back(q139);
-        exam.push_back(q140);
-        exam.push_back(q141);
-        exam.push_back(q142);
-        exam.push_back(q143);
-        exam.push_back(q144);
-        exam.push_back(q145);
-        exam.push_back(q146);
-        exam.push_back(q147);
-        exam.push_back(q148);
-        exam.push_back(q149);
-        exam.push_back(q150);	
 
 	unsigned questionsCount = exam.size();
 	for (unsigned i = 0; i < questionsCount; ++i)
