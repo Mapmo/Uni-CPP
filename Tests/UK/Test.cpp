@@ -84,7 +84,7 @@ int Question::AnswerQuestion()
 }
 int main()
 {
-	std::cout << "Test 1 po UK\nIzgotven ot Mapmo i Dakata\n";
+	std::cout << "Test 1 po UK\nIzgotven ot Mapmo\n";
 	std::cout << "Za da otgovorite na nqkoi vupros vavedete bukvata(bukvite) i kogato ste gotovi vavedete 's'\n";
 	std::cout << "Suobrazete se kak raboti std::cin\nAko jelaete simulaciq bez povtorni opiti natisnete r\nAko jelaete vuprosite, koito oburkate da se zapazvat natisnete proizvolen buton\n";
 	char useless;
