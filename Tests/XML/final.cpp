@@ -386,59 +386,57 @@ int main()
 	q54.AddOption("като XML документ, но само ако той е добре конструиран", -1);
 	q54.AddOption("като XML документ, но само ако той е добре конструиран и валиден спрямо схема или DTD", -1);
 	
-	Question q55("?");
-	q55.AddOption("", -1);
-	q55.AddOption("", -1);
-	q55.AddOption("", -1);
-	q55.AddOption("", -1);
+	Question q55("Ако свойството P e за субекта S, който участва в RDF тройката S P O, и имаме\nP rdfs:domain C,\nто следва, че:");
+	q55.AddOption("P rdf:type S", -1); //!!!!!!!!!!!!!NOT CONFIRMED
+	q55.AddOption("S rdf:type C", -1);
+	q55.AddOption("S rdf:type P", -1);
+	q55.AddOption("P rdf:type C", -1);
 	
-	Question q56("?");
-	q56.AddOption("", -1);
-	q56.AddOption("", -1);
-	q56.AddOption("", -1);
-	q56.AddOption("", -1);
+	Question q56("creator, title, publisher, contributor, date и format са име на елементи, дефинирани от:");
+	q56.AddOption("DC", 1);
+	q56.AddOption("FOAF", -1);
+	q56.AddOption("RDFS", -1);
+	q56.AddOption("OWL", -1);
 	
-	Question q57("?");
-	q57.AddOption("", -1);
-	q57.AddOption("", -1);
-	q57.AddOption("", -1);
-	q57.AddOption("", -1);
+	Question q57("В OWL, също както и в ООП, не може да съществуват два класа с общи екземпляри.");
+	q57.AddOption("неверно", -1);
+	q57.AddOption("верно", -1);
 	
-	Question q58("?");
-	q58.AddOption("", -1);
-	q58.AddOption("", -1);
-	q58.AddOption("", -1);
-	q58.AddOption("", -1);
+	Question q58("?Речник с документиран процес за актуализация се нарича:");
+	q58.AddOption("контролиран", -1);
+	q58.AddOption("менажиран", -1);
+	q58.AddOption("деклариран", -1);
+	q58.AddOption("управляван", -1);
 	
-	Question q59("?");
-	q59.AddOption("", -1);
-	q59.AddOption("", -1);
-	q59.AddOption("", -1);
-	q59.AddOption("", -1);
+	Question q59("Кой от отговорите по-долу не съдържа име на RDFS клас:");
+	q59.AddOption("rdfs:Datatype", -1);
+	q59.AddOption("rdfs:ContainerMembershipProperty", -1);
+	q59.AddOption("rdfs:Class", -1);
+	q59.AddOption("rdfs:Property", -1);
 	
-	Question q60("?");
-	q60.AddOption("", -1);
-	q60.AddOption("", -1);
-	q60.AddOption("", -1);
-	q60.AddOption("", -1);
+	Question q60("Описанието в RDF на групa, съдържащa само зададените в описанието членове, става чрез използване на:");
+	q60.AddOption(колекция"", 1);
+	q60.AddOption("множество", -1);
+	q60.AddOption("последователност", -1);
+	q60.AddOption("bag", -1);
 	
-	Question q61("?");
-	q61.AddOption("", -1);
-	q61.AddOption("", -1);
-	q61.AddOption("", -1);
-	q61.AddOption("", -1);
+	Question q61("rdf:Seq задава:");
+	q61.AddOption("група на подредени ресурси или литерали, без дублиране", -1);
+	q61.AddOption("група на подредени ресурси или литерали, с вероятно дублиране", 1);
+	q61.AddOption("група на неподредени ресурси или литерали, без дублиране", -1);
+	q61.AddOption("група на алтернативни ресурси или литерали", -1);
 	
-	Question q62("?");
-	q62.AddOption("", -1);
-	q62.AddOption("", -1);
-	q62.AddOption("", -1);
-	q62.AddOption("", -1);
+	Question q62("Person, title, familyName, knows, age, Document и Organization са име на елементи, дефинирани от:");
+	q62.AddOption("DC", -1);
+	q62.AddOption("FOAF", 1);
+	q62.AddOption("RDFS", -1);
+	q62.AddOption("OWL", -1);
 	
-	Question q63("?");
-	q63.AddOption("", -1);
-	q63.AddOption("", -1);
-	q63.AddOption("", -1);
-	q63.AddOption("", -1);
+	Question q63("В RDFS, Property е подмножество на RDFS Resources и има за обхват (rdfs:range):");
+	q63.AddOption("класa, асоцииран с това Property", -1);//100% wrong
+	q63.AddOption("типa на стойностите на това Property", -1);
+	q63.AddOption("класa rdfs:Resource, на който принадлежат всички екземпляри на ресурса", -1);
+	q63.AddOption("множество от отделни стойности на това Property", -1);
 	
 	Question q64("?");
 	q64.AddOption("", -1);
