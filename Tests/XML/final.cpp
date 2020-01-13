@@ -153,83 +153,76 @@ int main()
 	q11.AddOption("предизвиква повторение на кутията на всяка страница при paged media", -1);
 	q11.AddOption("задава липса на движение на кутията при движение на документа за continuous media", -1);
 	
-	Question q12("?");
-	q12.AddOption("", -1);
-	q12.AddOption("", -1);
-	q12.AddOption("", -1);
-	q12.AddOption("", -1);
+	Question q12("Разгледайте имената на XML празните елементи <emptyTag /> и <emptyTag/ >. Те са");
+	q12.AddOption("и двата невалидни", -1);
+	q12.AddOption("първият е невалиден, вторият е валиден", -1);
+	q12.AddOption("и двата валидни", -1);
+	q12.AddOption("първият е валиден, вторият е невалиден", 1);
 	
-	Question q13("?");
-	q13.AddOption("", -1);
-	q13.AddOption("", -1);
-	q13.AddOption("", -1);
-	q13.AddOption("", -1);
+	Question q13("xml:id e псевдо-атрибут, който задава условие за уникална стойност, като това:");
+	q13.AddOption("е необходимо да се декларира в XML схема.", -1);
+	q13.AddOption("е необходимо да се декларира в DTD или XML схема.", -1);
+	q13.AddOption("е необходимо да се декларира в DTD.", -1);
+	q13.AddOption("не е необходимо да се декларира в DTD или XML схема.", 1);
 	
-	Question q14("?");
-	q14.AddOption("", -1);
-	q14.AddOption("", -1);
-	q14.AddOption("", -1);
-	q14.AddOption("", -1);
+	Question q14("В XSchema, глобалните типове:");
+	q14.AddOption("могат да бъдат или да не бъдат директни наследници на корена", -1);
+	q14.AddOption("не могат да бъдат директни наследници на корена", -1);
+	q14.AddOption("винаги са директни наследници на корена", 1);
+	q14.AddOption(" могат да не бъдат директни наследници на корена", -1);
 	
-	Question q15("?");
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
+	Question q15("DocumentType::Node Interface се използва за получаване на информация за документ, описан в DTD.");
+	q15.AddOption("DOM 1.0 не разрешава редактиране на този възел", 1);
+	q15.AddOption("DOM 1.0 разрешава редактиране на този възел", -1);
 	
-	Question q16("?");
-	q16.AddOption("", -1);
-	q16.AddOption("", -1);
-	q16.AddOption("", -1);
-	q16.AddOption("", -1);
+	Question q16("Ако няма специфицирано кодиране за един XML документ и документът не е нито в UTF-8, нито в UTF-16, тогава резултатът е:");
+	q16.AddOption("UTF-8", -1);
+	q16.AddOption("UTF-16", -1);
+	q16.AddOption("ISO 8859-1", -1);
+	q16.AddOption("ERROR", 1);
 	
-	Question q17("?");
-	q17.AddOption("", -1);
-	q17.AddOption("", -1);
-	q17.AddOption("", -1);
-	q17.AddOption("", -1);
+	Question q17("XPath изразът //book[@pages] връща:");
+	q17.AddOption("всички book елементи, които имат атрибут pages", 1);
+	q17.AddOption("първият book елемент, който има атрибут pages", -1);
+	q17.AddOption("първият book елемент, който има непразен атрибут pages", -1);
+	q17.AddOption("всички book елементи, които имат непразен атрибут pages", -1);
 	
-	Question q18("?");
-	q18.AddOption("", -1);
-	q18.AddOption("", -1);
-	q18.AddOption("", -1);
-	q18.AddOption("", -1);
+	Question q18("XLink не може да дефинира фрагментни идентификатори за URI, сочещи към възли или части от тях в XML ресурси.");
+	q18.AddOption("верно", 1);
+	q18.AddOption("неверно", -1);
 	
-	Question q19("?");
-	q19.AddOption("", -1);
-	q19.AddOption("", -1);
-	q19.AddOption("", -1);
-	q19.AddOption("", -1);
+	Question q19("Една XLink дъга (arc), която има локален стартов ресурс и отдалечен краен ресурс, се нарича:");
+	q19.AddOption("сочеща трети (third-party) ресурс", -1);
+	q19.AddOption("outbound", 1);
+	q19.AddOption("inbound", -1);
 	
-	Question q20("?");
-	q20.AddOption("", -1);
-	q20.AddOption("", -1);
-	q20.AddOption("", -1);
-	q20.AddOption("", -1);
+	Question q20("Единственото изискване един XML документ да бъде валиден е този документ да е структуриран (формиран) съгласно правилата за XML синтаксиса.");
+	q20.AddOption("верно", -1);
+	q20.AddOption("неверно", 1);
 	
-	Question q21("?");
-	q21.AddOption("", -1);
-	q21.AddOption("", -1);
-	q21.AddOption("", -1);
-	q21.AddOption("", -1);
+	Question q21("Кой от отговорите по-долу не съдържа име на RDFS свойство:");
+	q21.AddOption("rdfs:comment", -1);
+	q21.AddOption("rdfs:range", -1);
+	q21.AddOption("rdfs:subClassOf", -1);
+	q21.AddOption("rdfs:subRange", 1);
 	
-	Question q22("?");
-	q22.AddOption("", -1);
-	q22.AddOption("", -1);
-	q22.AddOption("", -1);
-	q22.AddOption("", -1);
+	Question q22("rdf:Seq задава:");
+	q22.AddOption("група на неподредени ресурси или литерали, с вероятно дублиране", -1);
+	q22.AddOption("група на алтернативни ресурси или литерали", -1);
+	q22.AddOption("група на подредени ресурси или литерали, с вероятно дублиране", 1);
+	q22.AddOption("група на подредени ресурси или литерали, без дублиране", -1);
 	
-	Question q23("?");
-	q23.AddOption("", -1);
-	q23.AddOption("", -1);
-	q23.AddOption("", -1);
-	q23.AddOption("", -1);
+	Question q23("Записът\n@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>. @prefix contact: <http://www.w3.org/2000/10/swap/pim/contact#>.\n<http://www.w3.org/People/EM/contact#me> rdf:type contact:Person;\ncontact:fullName \"Eric Miller\"; contact:mailbox <mailto:em@w3.org>; contact:personalTitle \"Dr.\".\nпредставя по-долния RDF граф в:");
+	q23.AddOption("Turtle", 1);
+	q23.AddOption("RDFa", -1);
+	q23.AddOption("N3", -1);
+	q23.AddOption("RDF/XML", -1);
 	
-	Question q24("?");
-	q24.AddOption("", -1);
-	q24.AddOption("", -1);
-	q24.AddOption("", -1);
-	q24.AddOption("", -1);
+	Question q24("\"Формална, експлицитна спецификация на споделена концептуализация\" е дефиниция за:");
+	q24.AddOption("валиден XML документ, представящ антология в даден жанр", -1);
+	q24.AddOption("валиден RDF/XML документ", -1);
+	q24.AddOption("нещо друго, което не присъства в тези отговори", 1);
+	q24.AddOption("валиден XML документ", -1);
 	
 	Question q25("?");
 	q25.AddOption("", -1);
