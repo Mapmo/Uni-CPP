@@ -94,71 +94,64 @@ int main()
 	std::vector<Question> exam;
 	std::srand(unsigned(std::time(0)));
 
-	Question q1("?");
-	q1.AddOption("", -1);
-	q1.AddOption("", -1);
-	q1.AddOption("", -1);
-	q1.AddOption("", -1);
+	Question q1("При включването на документа "xpto.xml" с използване на <xi:include href="xpto.xml" parse="text"/>, документът "xpto.xml" ще бъде включен:");
+	q1.AddOption("като обикновен текст", 1);
+	q1.AddOption("като XML документ, но само ако той е добре конструиран", -1);
+	q1.AddOption("като XML документ, но само ако той е добре конструиран и валиден спрямо схема или DTD", -1);
+	q1.AddOption("винаги като XML документ", -1);
 	
-	Question q2("?");
-	q2.AddOption("", -1);
-	q2.AddOption("", -1);
-	q2.AddOption("", -1);
-	q2.AddOption("", -1);
+	Question q2("XML пространствата от имена се дефинират чрез атрибути и могат да бъдат специфицирани в кой да е XML елемент.?");
+	q2.AddOption("вeрно", 1);
+	q2.AddOption("невeрно", -1);
 	
-	Question q3("?");
-	q3.AddOption("", -1);
-	q3.AddOption("", -1);
-	q3.AddOption("", -1);
-	q3.AddOption("", -1);
+	Question q3("При използване на вътрешна и външна DTD дефиниция, вътрешната DTD може да предефинира:");
+	q3.AddOption("само ENTITY и ATTLIST на външната дефиниция", 1);
+	q3.AddOption("само ENTITY и NOTATION на външната дефиниция", -1);
+	q3.AddOption("само ENTITY, ATTLIST и NOTATION на външната дефиниция", -1);
+	q3.AddOption("всички дефиниции на външната DTD", -1);
 	
-	Question q4("?");
-	q4.AddOption("", -1);
-	q4.AddOption("", -1);
-	q4.AddOption("", -1);
-	q4.AddOption("", -1);
+	Question q4("В XSchema, референцията към тип може да реферира:");
+	q4.AddOption("нито към локални, нито към глобални типове", -1);
+	q4.AddOption("само към глобални типове", 1);
+	q4.AddOption("както към локални, така и към глобални типове", -1);
+	q4.AddOption("само към локални типове", -1);
 	
-	Question q5("?");
-	q5.AddOption("", -1);
-	q5.AddOption("", -1);
-	q5.AddOption("", -1);
-	q5.AddOption("", -1);
+	Question q5("В примера по-долу:\n<x xmlns:n1=\"http://www.hayde-de.org\" xmlns=\"http://www.hayde-de.org\" >\n<ok a=\"1\" b=\"2\" />\n<hmmm a=\"1\" n1:a=\"2\" /> </x>\");
+	q5.AddOption("Дефиницията на елемента <hmmm> е невалидна според спецификацията на пространствата от имена.", -1);
+	q5.AddOption("Дефиницията на елемента <hmmm> е валидна според спецификацията на пространствата от имена.", 1);
 	
-	Question q6("?");
-	q6.AddOption("", -1);
-	q6.AddOption("", -1);
-	q6.AddOption("", -1);
-	q6.AddOption("", -1);
+	Question q6("Приложения, които имат нужда от сложни структурни манипулации на много от XML елементите, трябва да използват:");
+	q6.AddOption("StAX API", -1);
+	q6.AddOption("SAX", -1);
+	q6.AddOption("CSS", -1);
+	q6.AddOption("DOM", 1);
 	
-	Question q7("?");
-	q7.AddOption("", -1);
-	q7.AddOption("", -1);
-	q7.AddOption("", -1);
-	q7.AddOption("", -1);
+	Question q7("При избиране на елемент, наречен MyElem и имащ атрибут Attr със стойност title, в XSLT ние трябва да използваме:");
+	q7.AddOption("select=\"MyElem(@Attr='title')\"", -1);
+	q7.AddOption("select=\"MyElem{@Attr='title'}\"", -1);
+	q7.AddOption("select=\"MyElem[@Attr='title']\"", 1);
+	q7.AddOption("select=\"MyElem[Attr='title']\"", -1);
 	
-	Question q8("?");
-	q8.AddOption("", -1);
-	q8.AddOption("", -1);
-	q8.AddOption("", -1);
-	q8.AddOption("", -1);
+	Question q8("Атрибутите, специфицирани в DTD посредством ключовата дума IMPLIED:");
+	q8.AddOption("могат да бъдат определени (специфицирани) в XML", -1);
+	q8.AddOption("имат стойност по подразбиране, ако не са определени (специфицирани) в XML", 1);
+	q8.AddOption("имат само една допустима стойност", -1);
+	q8.AddOption("трябва да бъдат определени (специфицирани) в XML", -1);
 	
-	Question q9("?");
-	q9.AddOption("", -1);
-	q9.AddOption("", -1);
-	q9.AddOption("", -1);
-	q9.AddOption("", -1);
+	Question q9("Binary entity може да се използва само като атрибут от тип ENTITY?");
+	q9.AddOption("неверно", -1);
+	q9.AddOption("верно", 1);
 	
-	Question q10("?");
-	q10.AddOption("", -1);
-	q10.AddOption("", -1);
-	q10.AddOption("", -1);
-	q10.AddOption("", -1);
+	Question q10("В XML Schema, ние можем да построим производни (derived) types:");
+	q10.AddOption("само с extensions", -1);
+	q10.AddOption("само с restrictions", -1);
+	q10.AddOption("както с extensions, така и с restrictions", 1);
 	
-	Question q11("?");
-	q11.AddOption("", -1);
-	q11.AddOption("", -1);
-	q11.AddOption("", -1);
-	q11.AddOption("", -1);
+	Question q11("В CSS3, абсолютната (аbsolute) схема за позициониране:");
+	q11.AddOption("предефинира top и left позициите на кутията", -1);
+	q11.AddOption("се характеризира със задаване на явно отместване (explicit offset) спрямо съдържащия блок", 1);
+	q11.AddOption("предизвиква повторение на кутията на всяка страница при paged media", -1);
+	q11.AddOption("задава липса на движение на кутията при движение на документа за continuous media", -1);
 	
 	Question q12("?");
 	q12.AddOption("", -1);
