@@ -224,101 +224,93 @@ int main()
 	q24.AddOption("нещо друго, което не присъства в тези отговори", 1);
 	q24.AddOption("валиден XML документ", -1);
 	
-	Question q25("?");
-	q25.AddOption("", -1);
-	q25.AddOption("", -1);
-	q25.AddOption("", -1);
-	q25.AddOption("", -1);
+	Question q25("Resource Description Framework (RDF) представя информация за ресурси, които:");
+	q25.AddOption("трябва да бъдат достъпни в Уеб", -1);
+	q25.AddOption("могат да бъдат или да не бъдат достъпни в Уеб", 1);
+	q25.AddOption("не могат да бъдат достъпни в Уеб", -1);
 	
-	Question q26("?");
-	q26.AddOption("", -1);
-	q26.AddOption("", -1);
-	q26.AddOption("", -1);
-	q26.AddOption("", -1);
+	Question q26("RDF Literals могат да бъдат зададени само като обект в RDF тройка.");
+	q26.AddOption("неверно", -1);
+	q26.AddOption("верно", 1);
 	
-	Question q27("?");
-	q27.AddOption("", -1);
-	q27.AddOption("", -1);
-	q27.AddOption("", -1);
-	q27.AddOption("", -1);
+	Question q27("Йерархичната подредба на понятия заедно с информация за допълнителни отношения като по-широко/по-тясно понятие, синоними, еквивалентност и др., задава:");
+	q27.AddOption("Таксономия", 1);
+	q27.AddOption("Списък от термини", -1);
+	q27.AddOption("Онтология", -1);
+	q27.AddOption("Тезаурус", 1);
 	
-	Question q28("?");
-	q28.AddOption("", -1);
-	q28.AddOption("", -1);
-	q28.AddOption("", -1);
-	q28.AddOption("", -1);
+	Question q28("На показаната фигура на RDF граф, T-shirt е:");
+	q28.AddOption("предикат", -1);
+	q28.AddOption("дериват", -1);
+	q28.AddOption("субект", 1);
 	
-	Question q29("?");
-	q29.AddOption("", -1);
-	q29.AddOption("", -1);
-	q29.AddOption("", -1);
-	q29.AddOption("", -1);
+	Question q29("Annotation Property в OWL се използва за добавяне на метаданни:");
+	q29.AddOption("към класове, екземпляри и свойства", 1);
+	q29.AddOption("към класове и към екземпляри", -1);
+	q29.AddOption("само към свойства (properties)", -1);
+	q29.AddOption("към екземпляри и към свойства", -1);
 	
-	Question q30("?");
-	q30.AddOption("", -1);
-	q30.AddOption("", -1);
-	q30.AddOption("", -1);
-	q30.AddOption("", -1);
+	Question q30("Кое от показаните на фигурата средства не е пряко свързано с изграждане на семантичния Уеб: Error 404 image not found");
+	q30.AddOption("Logical Support", -1);
+	q30.AddOption("Semantic Annotations", -1);
+	q30.AddOption("Tools", -1);
+	q30.AddOption("Collaboration synchronization", 1);
 	
-	Question q31("?");
-	q31.AddOption("", -1);
-	q31.AddOption("", -1);
-	q31.AddOption("", -1);
-	q31.AddOption("", -1);
+	Question q31("В OWL, също както и в ООП, не може да съществуват два класа с общи екземпляри.");
+	q31.AddOption("верно", -1);
+	q31.AddOption("неверно", 1);
 	
-	Question q32("?");
-	q32.AddOption("", -1);
-	q32.AddOption("", -1);
-	q32.AddOption("", -1);
-	q32.AddOption("", -1);
+	Question q32("RDF графът от фигурата задава:");
+	q32.AddOption("Лекцията е посетена от Джон, Мери, Крис и от никой друг.", -1);
+	q32.AddOption("Лекцията е посетена от Джон, Мери и Крис.", 1);
+	q32.AddOption("Лекцията е посетена от Джон, Мери или Крис.", -1);
+	q32.AddOption("Лекцията е посетена от Джон, Мери и Крис - в този ред.", -1);
 	
-	Question q33("?");
-	q33.AddOption("", -1);
-	q33.AddOption("", -1);
-	q33.AddOption("", -1);
-	q33.AddOption("", -1);
+	Question q33("Ако свойството P е дефинирано с обхват (range) C и ресурсът R е обект в тройка с предикат P, то следва, че:");
+	q33.AddOption("P rdf:type R", -1);
+	q33.AddOption("R rdf:type C", 1);
+	q33.AddOption("C rdf:type P", -1);
+	q33.AddOption("C rdf:type P", -1);
 	
-	Question q34("?");
-	q34.AddOption("", -1);
-	q34.AddOption("", -1);
-	q34.AddOption("", -1);
-	q34.AddOption("", -1);
+	Question q34("В RDF, група от алтернативни стойности се задава чрез:");
+	q34.AddOption("<rdf:Case>", -1);
+	q34.AddOption("<rdf:Alt>", 1);
+	q34.AddOption("<rdf:Opt>", -1);
+	q34.AddOption("<rdf:Switch>", -1);
 	
-	Question q35("?");
-	q35.AddOption("", -1);
-	q35.AddOption("", -1);
-	q35.AddOption("", -1);
-	q35.AddOption("", -1);
+	Question q35("В RDFS, Property е подмножество на RDFS Resources и има за домейн (rdfs:domain):");
+	q35.AddOption("класa, асоцииран с това Property", 1);
+	q35.AddOption("типa на стойностите на това Property", -1);
+	q35.AddOption("множество от отделни стойности на това Property", -1);
+	q35.AddOption("класa rdfs:Resource, на който принадлежат всички екземпляри на ресурса", -1);
 	
-	Question q36("?");
-	q36.AddOption("", -1);
-	q36.AddOption("", -1);
-	q36.AddOption("", -1);
-	q36.AddOption("", -1);
+	Question q36("Могат ли екземплярите на класовете да бъдат част от онтологията, описваща тези класове?");
+	q36.AddOption("не", -1);
+	q36.AddOption("да", 1);
 	
-	Question q37("?");
-	q37.AddOption("", -1);
-	q37.AddOption("", -1);
-	q37.AddOption("", -1);
-	q37.AddOption("", -1);
+	Question q37("Описанието\nex:adrian foaf:knows ex:gerd. ex:adrian foaf:age "41"^^xs:int.\nпредставя RDF Triples в:");
+	q37.AddOption("Turtle формат.", -1);
+	q37.AddOption("RDFa формат.", -1);
+	q37.AddOption("N3 формат.", 1);
+	q37.AddOption("RDF/XML формат.", -1);
 	
-	Question q38("?");
-	q38.AddOption("", -1);
-	q38.AddOption("", -1);
-	q38.AddOption("", -1);
-	q38.AddOption("", -1);
+	Question q38("Методът getAttributes() на DOM интерфейса Node връща:");
+	q38.AddOption("NamedNodeMap", 1);
+	q38.AddOption("Attr", -1);
+	q38.AddOption("Text", -1);
+	q38.AddOption("NodeList", -1);
 	
-	Question q39("?");
-	q39.AddOption("", -1);
-	q39.AddOption("", -1);
-	q39.AddOption("", -1);
-	q39.AddOption("", -1);
+	Question q39("Resource Description Framework (RDF) служи за описания, предназначени:");
+	q39.AddOption("за потребителско визуализиране на метаданни", -1);
+	q39.AddOption("нито за обработка от софтуерни приложения, нито за потребителско визуализиране на метаданни", -1);
+	q39.AddOption("за обработка от софтуерни приложения", 1);
+	q39.AddOption("както за обработка от софтуерни приложения, така и за потребителско визуализиране на метаданни", -1);
 	
-	Question q40("?");
-	q40.AddOption("", -1);
-	q40.AddOption("", -1);
-	q40.AddOption("", -1);
-	q40.AddOption("", -1);
+	Question q40("rdf:Bag задава:");
+	q40.AddOption("група от ресурси или литерали, които са алтернативи", -1);
+	q40.AddOption("група на неподредени ресурси или литерали, с вероятно дублиране", 1);
+	q40.AddOption("група на подредени ресурси или литерали, с вероятно дублиране", -1);
+	q40.AddOption("група на неподредени ресурси или литерали, без дублиране", -1);
 	
 	Question q41("?");
 	q41.AddOption("", -1);
