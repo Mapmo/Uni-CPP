@@ -374,7 +374,7 @@ int main()
 	q52.AddOption("URL", 1);
 	q52.AddOption("URI (и URL, и URN)", -1);
 	
-	Question q53("Ако сме дефинирали XSL променлива като\n <xsl:variable name="price">low</xsl:variable>\n, то тя може да се използва в XSL елемент като:");
+	Question q53("Ако сме дефинирали според стойността на атрибута "context"XSL променлива като\n <xsl:variable name="price">low</xsl:variable>\n, то тя може да се използва в XSL елемент като:");
 	q53.AddOption("<xsl:value-of select=\"@price\"/>", -1);
 	q53.AddOption("<xsl:value-of select=\"$price\"/>", 1);
 	q53.AddOption("<xsl:value-of select=\"{$price}\"/>", -1);
@@ -438,83 +438,76 @@ int main()
 	q63.AddOption("класa rdfs:Resource, на който принадлежат всички екземпляри на ресурса", -1);
 	q63.AddOption("множество от отделни стойности на това Property", -1);
 	
-	Question q64("?");
-	q64.AddOption("", -1);
-	q64.AddOption("", -1);
-	q64.AddOption("", -1);
-	q64.AddOption("", -1);
+	Question q64("Целта на валидацията на XML документ от XML парсера е да се провери дали XML документът е добре структуриран (well-formed).");
+	q64.AddOption("верно", -1);
+	q64.AddOption("неверно", 1);
 	
-	Question q65("?");
-	q65.AddOption("", -1);
-	q65.AddOption("", -1);
-	q65.AddOption("", -1);
-	q65.AddOption("", -1);
+	Question q65("За постигане на по-малък, ефикасен и бърз код с използване на StAX, се препоръчва:");
+	q65.AddOption("iterator API", -1);
+	q65.AddOption("StAX Direct Mapping API", -1);
+	q65.AddOption("StAX Events API", -1);
+	q65.AddOption("cursor API", 1);
 	
-	Question q66("?");
-	q66.AddOption("", -1);
-	q66.AddOption("", -1);
-	q66.AddOption("", -1);
-	q66.AddOption("", -1);
+	Question q66("Редът <!ATTLIST point honorific (Mr|Ms|Mrs|Rev|Dr) ... > е валиден DTD пример за:");
+	q66.AddOption("CDATA", -1);
+	q66.AddOption("notation", -1);
+	q66.AddOption("name group", 1);
+	q66.AddOption("NMTOKENS", -1);
 	
-	Question q67("?");
-	q67.AddOption("", -1);
-	q67.AddOption("", -1);
-	q67.AddOption("", -1);
-	q67.AddOption("", -1);
+	Question q67("В XML схема, уникалността на key и keyref елементите е:");
+	q67.AddOption("според стойността на атрибута "range"", -1);
+	q67.AddOption("винаги за целия документ", -1);
+	q67.AddOption("само за йерархията на съответните елементи в документа-екземпляр, за които са дефинирани key и keyref", 1);
+	q67.AddOption("според стойността на атрибута "context"", -1);
 	
-	Question q68("?");
-	q68.AddOption("", -1);
-	q68.AddOption("", -1);
-	q68.AddOption("", -1);
-	q68.AddOption("", -1);
+	Question q68("MEDIA атрибутите като screen, aural, braille, tty, и т.н., са част от:");
+	q68.AddOption("само от CSS1 спецификацията", -1);
+	q68.AddOption("CSS2 и CSS3 спецификациите", 1);
+	q68.AddOption("CSS1 и CSS2 спецификациите", -1);
+	q68.AddOption("само от CSS3 спецификацията", -1);
 	
-	Question q69("?");
-	q69.AddOption("", -1);
-	q69.AddOption("", -1);
-	q69.AddOption("", -1);
-	q69.AddOption("", -1);
+	Question q69("В XLink информацията за това как се преминава през двойка ресурси (напр. посока на преминаване и за поведение при преминаването), се нарича:");
+	q69.AddOption("траверс", -1);
+	q69.AddOption("ребро", -1);
+	q69.AddOption("дъга", 1);
+	q69.AddOption("ресурс", -1);
 	
-	Question q70("?");
-	q70.AddOption("", -1);
-	q70.AddOption("", -1);
-	q70.AddOption("", -1);
-	q70.AddOption("", -1);
+	Question q70("Чрез XPointer можем да реферираме към повече от един елемента в XML документ.");
+	q70.AddOption("неверно", -1);
+	q70.AddOption("верно", 1);
 	
-	Question q71("?");
-	q71.AddOption("", -1);
-	q71.AddOption("", -1);
-	q71.AddOption("", -1);
-	q71.AddOption("", -1);
+	Question q71("Ако в XSchema дефинираме exact тип, то");
+	q71.AddOption("той може да има дериватни типове, но те могат да бъдат използвани в XML документа вместо този exact тип само при определени условия", -1);
+	q71.AddOption("той може да има дериватни типове, но те не могат да бъдат използвани в XML документа вместо този exact тип", 1);
+	q71.AddOption("той може да има дериватни типове, и те могат да бъдат използвани в XML документа вместо този exact тип", -1);
+	q71.AddOption("той не може да има дериватни типове", -1);
 	
-	Question q72("?");
-	q72.AddOption("", -1);
-	q72.AddOption("", -1);
-	q72.AddOption("", -1);
-	q72.AddOption("", -1);
+	Question q72("С един DOM Element обект:");
+	q72.AddOption("може да направите разлика между подразбираща се (default) стойност, определена в DTD, и стойността, дадена в XML файла", -1);
+	q72.AddOption("не може да направите разлика между подразбираща се (default) стойност, определена в DTD, и стойността, дадена в XML файла", 1);
 	
-	Question q73("?");
-	q73.AddOption("", -1);
-	q73.AddOption("", -1);
-	q73.AddOption("", -1);
-	q73.AddOption("", -1);
+	Question q73("Общо текстово Entity:");
+	q73.AddOption("Може да бъде използвано рекурсивно и може да се появи в съдържанието на елемент и/или в стойност на атрибут", -1);
+	q73.AddOption("Не може да бъде използвано рекурсивно и не може да се появи в съдържанието на елемент и/или в стойност на атрибут", -1);
+	q73.AddOption("Може да бъде използвано рекурсивно, но не може да се появи в съдържанието на елемент и/или в стойност на атрибут", -1);
+	q73.AddOption("Не може да бъде използвано рекурсивно, но може да се появи в съдържанието на елемент и/или в стойност на атрибут", 1);
 	
-	Question q74("?");
-	q74.AddOption("", -1);
-	q74.AddOption("", -1);
-	q74.AddOption("", -1);
-	q74.AddOption("", -1);
+	Question q74("Какво не е възможно да бъде описано в DTD:");
+	q74.AddOption("какви имена могат да бъдат използувани за тип на елементите", -1);
+	q74.AddOption("къде типът на елементите може да се среща", -1);
+	q74.AddOption("минимален и максимален брой срещания на елемент", 1);
+	q74.AddOption("йерархия на документа и грануларност", -1);
 	
-	Question q75("?");
-	q75.AddOption("", -1);
-	q75.AddOption("", -1);
-	q75.AddOption("", -1);
-	q75.AddOption("", -1);
+	Question q75("XSL кодът, показан на фигурата, ще даде като резултат:");
+	q75.AddOption("същите елементи в изходния XML файл както в сорс XML файла, но с добавено в края съдържание "My own contents!"", -1);
+	q75.AddOption("същите елементи в изходния XML файл както в сорс XML файла, и с коментар "My own contents!" за всеки един елемент", -1);
+	q75.AddOption("изходните XML елементи ще бъдат с имена, еднакви със съдържанието на елементите от сорс дървото, и със съдържание My own contents!", 1);
 	
-	Question q76("?");
-	q76.AddOption("", -1);
-	q76.AddOption("", -1);
-	q76.AddOption("", -1);
-	q76.AddOption("", -1);
+	Question q76("Кое е името на подразбиращото се (default) пространство от имена в декларацията по-долу:");
+	q76.AddOption("няма подразбиращото се (default) пространство от имена", 1);
+	q76.AddOption("pers", -1);
+	q76.AddOption("html", -1);
+	q76.AddOption("и pers, и html", -1);
 	
 	Question q77("?");
 	q77.AddOption("", -1);
