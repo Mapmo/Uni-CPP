@@ -312,89 +312,79 @@ int main()
 	q40.AddOption("група на подредени ресурси или литерали, с вероятно дублиране", -1);
 	q40.AddOption("група на неподредени ресурси или литерали, без дублиране", -1);
 	
-	Question q41("?");
-	q41.AddOption("", -1);
-	q41.AddOption("", -1);
-	q41.AddOption("", -1);
-	q41.AddOption("", -1);
+	Question q41("За представяне на стойности в XML файлове, ние можем да използваме XML атрибути или XML елементи. Кой от следващите отговори не е аргумент за употреба на атрибути вместо на елементи?");
+	q41.AddOption("използваме атрибути за валидация на прост (simple) тип данни", -1);
+	q41.AddOption("използваме атрибут, когато той е свойство на елемента", 1);
+	q41.AddOption("използваме атрибути за валидация на сложна структура", -1);
+	q41.AddOption("използваме атрибут, когато информацията е присъщa за елемента, а не за под-елементите", -1);
 	
-	Question q42("?");
-	q42.AddOption("", -1);
-	q42.AddOption("", -1);
-	q42.AddOption("", -1);
-	q42.AddOption("", -1);
+	Question q42("XML Schema разрешава да се прави разлика между уникална стойност (unique) и ключ (key).");
+	q42.AddOption("верно", 1);
+	q42.AddOption("неверно", -1);
 	
-	Question q43("?");
-	q43.AddOption("", -1);
-	q43.AddOption("", -1);
-	q43.AddOption("", -1);
-	q43.AddOption("", -1);
+	Question q43("В XSchema, типът на всеки елемент на еквивалентен клас трябва да бъде:");
+	q43.AddOption("същият като типа на елемента-екземпляр, или негов дериват", 1);
+	q43.AddOption("същият като типа на елемента-екземпляр", -1);
+	q43.AddOption("дериват на типа на елемента-екземпляр", -1);
+	q43.AddOption("различен от типа на елемента-екземпляр", -1);
 	
-	Question q44("?");
-	q44.AddOption("", -1);
-	q44.AddOption("", -1);
-	q44.AddOption("", -1);
-	q44.AddOption("", -1);
+	Question q44("Кой от елементите ISBN по-долу не се описва от дефиницията <element name="ISBN" type="cat:ISBNType"/>, където ISBNType е:");
+	q44.AddOption("4-256-76435-4", -1);
+	q44.AddOption("1-23-579321-3", -1);
+	q44.AddOption("12345-54321-98765", -1);
+	q44.AddOption("6-32-47843-5", 1);
 	
-	Question q45("?");
-	q45.AddOption("", -1);
-	q45.AddOption("", -1);
-	q45.AddOption("", -1);
-	q45.AddOption("", -1);
+	Question q45("Кое от твърденията е истина:");
+	q45.AddOption("само DOM Element обектите имат атрибути", 1);
+	q45.AddOption("и DOM Element, и DOM Node обектите имат атрибути", -1);
+	q45.AddOption("само DOM Node обектите имат атрибути", -1);
 	
-	Question q46("?");
-	q46.AddOption("", -1);
-	q46.AddOption("", -1);
-	q46.AddOption("", -1);
-	q46.AddOption("", -1);
+	Question q46("SAX Element обектите:");
+	q46.AddOption("могат да разграничават атрибутите, дефинирани изрично, от тези специфицирани в DTD", 1);
+	q46.AddOption("не могат да разграничават атрибути, дефинирани изрично, от тези специфицирани в DTD", -1);
+	q46.AddOption("зависи от SAX парсера", -1);
 	
-	Question q47("?");
-	q47.AddOption("", -1);
-	q47.AddOption("", -1);
-	q47.AddOption("", -1);
-	q47.AddOption("", -1);
+	Question q47("В примера по-долу:\n<x xmlns:n1="http://www.hayde-de.org" xmlns="http://www.hayde-de.org" >\n<ok a="1" b="2" />\n<hmmm a="1" n1:a="2" /> </x>");
+	q47.AddOption("Дефиницията на елемента <hmmm> е невалидна според спецификацията на пространствата от имена.", -1);
+	q47.AddOption("Дефиницията на елемента <hmmm> е валидна според спецификацията на пространствата от имена.", 1);
 	
-	Question q48("?");
-	q48.AddOption("", -1);
-	q48.AddOption("", -1);
-	q48.AddOption("", -1);
-	q48.AddOption("", -1);
+	Question q48("Разгледайте имената на XML празните елементи <emptyTag /> и <emptyTag/ >. Те са:");
+	q48.AddOption("и двата валидни", -1);
+	q48.AddOption("и двата невалидни", -1);
+	q48.AddOption("нито едно от по-горе посочените", -1);
+	q48.AddOption("първият е валиден, вторият е невалиден", 1);
 	
-	Question q49("?");
-	q49.AddOption("", -1);
-	q49.AddOption("", -1);
-	q49.AddOption("", -1);
-	q49.AddOption("", -1);
+	Question q49("Всяко IDREF, декларирано в DTD, трябва да:");
+	q49.AddOption("избере можество ID-та", -1);
+	q49.AddOption("избере дадено определено ID", 1);
+	q49.AddOption("избере кое да е ID", -1);
 	
-	Question q50("?");
-	q50.AddOption("", -1);
-	q50.AddOption("", -1);
-	q50.AddOption("", -1);
-	q50.AddOption("", -1);
+	Question q50("При парсване на XML документи посредством StAX, можем да се придвижваме само напред в XML документа.");
+	q50.AddOption("Истина", 1);
+	q50.AddOption("Лъжа", -1);
 	
-	Question q51("?");
-	q51.AddOption("", -1);
-	q51.AddOption("", -1);
-	q51.AddOption("", -1);
-	q51.AddOption("", -1);
+	Question q51("Квалифицирано XML име (наречено QName) е:");
+	q51.AddOption("всяко валидно XML име", -1);
+	q51.AddOption("име от вида namespace_prefix:local_name", 1);
+	q51.AddOption("всяко XML име на пространство от имена", -1);
+	q51.AddOption("всяко име на XML елемент", -1);
 	
-	Question q52("?");
-	q52.AddOption("", -1);
-	q52.AddOption("", -1);
-	q52.AddOption("", -1);
-	q52.AddOption("", -1);
+	Question q52("Уникална идентификация на пространство от имена се реализира с:");
+	q52.AddOption("URN", -1);
+	q52.AddOption("URL", 1);
+	q52.AddOption("URI (и URL, и URN)", -1);
 	
-	Question q53("?");
-	q53.AddOption("", -1);
-	q53.AddOption("", -1);
-	q53.AddOption("", -1);
-	q53.AddOption("", -1);
+	Question q53("Ако сме дефинирали XSL променлива като\n <xsl:variable name="price">low</xsl:variable>\n, то тя може да се използва в XSL елемент като:");
+	q53.AddOption("<xsl:value-of select=\"@price\"/>", -1);
+	q53.AddOption("<xsl:value-of select=\"$price\"/>", 1);
+	q53.AddOption("<xsl:value-of select=\"{$price}\"/>", -1);
+	q53.AddOption("<xsl:value-of select=\"price\"/>", -1);
 	
-	Question q54("?");
-	q54.AddOption("", -1);
-	q54.AddOption("", -1);
-	q54.AddOption("", -1);
-	q54.AddOption("", -1);
+	Question q54("При включването на документа \"xpto.xml\" с използване на <xi:include href=\"xpto.xml\" parse=\"text\"/>, документът \"xpto.xml\" ще бъде включен:");
+	q54.AddOption("като обикновен текст", 1);
+	q54.AddOption("винаги като XML документ", -1);
+	q54.AddOption("като XML документ, но само ако той е добре конструиран", -1);
+	q54.AddOption("като XML документ, но само ако той е добре конструиран и валиден спрямо схема или DTD", -1);
 	
 	Question q55("?");
 	q55.AddOption("", -1);
