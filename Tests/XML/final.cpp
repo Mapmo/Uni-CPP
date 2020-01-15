@@ -402,8 +402,8 @@ int main()
 	q57.AddOption("неверно", -1);
 	q57.AddOption("верно", -1);
 	
-	Question q58("?Речник с документиран процес за актуализация се нарича:");
-	q58.AddOption("контролиран", -1);
+	Question q58("Речник с документиран процес за актуализация се нарича:");
+	q58.AddOption("контролиран", 1);
 	q58.AddOption("менажиран", -1);
 	q58.AddOption("деклариран", -1);
 	q58.AddOption("управляван", -1);
@@ -412,7 +412,7 @@ int main()
 	q59.AddOption("rdfs:Datatype", -1);
 	q59.AddOption("rdfs:ContainerMembershipProperty", -1);
 	q59.AddOption("rdfs:Class", -1);
-	q59.AddOption("rdfs:Property", -1);
+	q59.AddOption("rdfs:Property", 1);
 	
 	Question q60("Описанието в RDF на групa, съдържащa само зададените в описанието членове, става чрез използване на:");
 	q60.AddOption(колекция"", 1);
@@ -509,18 +509,16 @@ int main()
 	q76.AddOption("html", -1);
 	q76.AddOption("и pers, и html", -1);
 	
-	Question q77("?");
-	q77.AddOption("", -1);
-	q77.AddOption("", -1);
-	q77.AddOption("", -1);
-	q77.AddOption("", -1);
+	Question q77("Всеки два OWL класа принципно могат да се препокриват, т.е. да имат общи екземпляри.");
+	q77.AddOption("верно", 1);
+	q77.AddOption("неверно", -1);
 	
-	Question q78("?");
-	q78.AddOption("", -1);
-	q78.AddOption("", -1);
-	q78.AddOption("", -1);
-	q78.AddOption("", -1);
-	
+	Question q78("Описанието в RDF на групa, съдържащa само зададените в описанието членове, става чрез използване на:");
+	q78.AddOption("bag", -1);
+	q78.AddOption("алтернативa", -1);
+	q78.AddOption("множество", -1);
+	q78.AddOption("колекция", 1);
+/*	
 	Question q79("?");
 	q79.AddOption("", -1);
 	q79.AddOption("", -1);
@@ -952,7 +950,7 @@ int main()
 	q150.AddOption("", -1);
 	q150.AddOption("", -1);
         q150.AddOption("", -1);
-	
+*/	
         exam.push_back(q1);
         exam.push_back(q2);
         exam.push_back(q3);
@@ -1031,7 +1029,7 @@ int main()
         exam.push_back(q76);
         exam.push_back(q77);
         exam.push_back(q78);
-        exam.push_back(q79);
+/*        exam.push_back(q79);
         exam.push_back(q80);
         exam.push_back(q81);
         exam.push_back(q82);
@@ -1103,7 +1101,7 @@ int main()
         exam.push_back(q148);
         exam.push_back(q149);
         exam.push_back(q150);
-	
+*/	
 	unsigned questionsCount = exam.size();
 	for (unsigned i = 0; i < questionsCount; ++i)
 		std::swap(exam[Randomize(exam.size())], exam[Randomize(exam.size())]);
