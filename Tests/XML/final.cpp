@@ -90,11 +90,11 @@ int main()
 	char useless;
 	std::cin >> useless;
 	bool flag = (useless == 'r' ? 1 : 0);
-	system("CLS");
+	system("clear");
 	std::vector<Question> exam;
 	std::srand(unsigned(std::time(0)));
 
-	Question q1("При включването на документа "xpto.xml" с използване на <xi:include href="xpto.xml" parse="text"/>, документът "xpto.xml" ще бъде включен:");
+	Question q1("При включването на документа \"xpto.xml\" с използване на <xi:include href=\"xpto.xml\" parse=\"text\"/>, документът \"xpto.xml\" ще бъде включен:");
 	q1.AddOption("като обикновен текст", 1);
 	q1.AddOption("като XML документ, но само ако той е добре конструиран", -1);
 	q1.AddOption("като XML документ, но само ако той е добре конструиран и валиден спрямо схема или DTD", -1);
@@ -116,7 +116,7 @@ int main()
 	q4.AddOption("както към локални, така и към глобални типове", -1);
 	q4.AddOption("само към локални типове", -1);
 	
-	Question q5("В примера по-долу:\n<x xmlns:n1=\"http://www.hayde-de.org\" xmlns=\"http://www.hayde-de.org\" >\n<ok a=\"1\" b=\"2\" />\n<hmmm a=\"1\" n1:a=\"2\" /> </x>\");
+	Question q5("В примера по-долу:\n<x xmlns:n1=\"http://www.hayde-de.org\" xmlns=\"http://www.hayde-de.org\" >\n<ok a=\"1\" b=\"2\" />\n<hmmm a=\"1\" n1:a=\"2\" /> </x>");
 	q5.AddOption("Дефиницията на елемента <hmmm> е невалидна според спецификацията на пространствата от имена.", -1);
 	q5.AddOption("Дефиницията на елемента <hmmm> е валидна според спецификацията на пространствата от имена.", 1);
 	
@@ -288,7 +288,7 @@ int main()
 	q36.AddOption("не", -1);
 	q36.AddOption("да", 1);
 	
-	Question q37("Описанието\nex:adrian foaf:knows ex:gerd. ex:adrian foaf:age "41"^^xs:int.\nпредставя RDF Triples в:");
+	Question q37("Описанието\nex:adrian foaf:knows ex:gerd. ex:adrian foaf:age \"41\"^^xs:int.\nпредставя RDF Triples в:");
 	q37.AddOption("Turtle формат.", -1);
 	q37.AddOption("RDFa формат.", -1);
 	q37.AddOption("N3 формат.", 1);
@@ -328,7 +328,7 @@ int main()
 	q43.AddOption("дериват на типа на елемента-екземпляр", -1);
 	q43.AddOption("различен от типа на елемента-екземпляр", -1);
 	
-	Question q44("Кой от елементите ISBN по-долу не се описва от дефиницията <element name="ISBN" type="cat:ISBNType"/>, където ISBNType е:");
+	Question q44("Кой от елементите ISBN по-долу не се описва от дефиницията <element name=\"ISBN\" type=\"cat:ISBNType\"/>, където ISBNType е:");
 	q44.AddOption("4-256-76435-4", -1);
 	q44.AddOption("1-23-579321-3", -1);
 	q44.AddOption("12345-54321-98765", -1);
@@ -344,7 +344,7 @@ int main()
 	q46.AddOption("не могат да разграничават атрибути, дефинирани изрично, от тези специфицирани в DTD", -1);
 	q46.AddOption("зависи от SAX парсера", -1);
 	
-	Question q47("В примера по-долу:\n<x xmlns:n1="http://www.hayde-de.org" xmlns="http://www.hayde-de.org" >\n<ok a="1" b="2" />\n<hmmm a="1" n1:a="2" /> </x>");
+	Question q47("В примера по-долу:\n<x xmlns:n1=\"http://www.hayde-de.org\" xmlns=\"http://www.hayde-de.org\" >\n<ok a=\"1\" b=\"2\" />\n<hmmm a=\"1\" n1:a=\"2\" /> </x>");
 	q47.AddOption("Дефиницията на елемента <hmmm> е невалидна според спецификацията на пространствата от имена.", -1);
 	q47.AddOption("Дефиницията на елемента <hmmm> е валидна според спецификацията на пространствата от имена.", 1);
 	
@@ -374,7 +374,7 @@ int main()
 	q52.AddOption("URL", 1);
 	q52.AddOption("URI (и URL, и URN)", -1);
 	
-	Question q53("Ако сме дефинирали според стойността на атрибута "context"XSL променлива като\n <xsl:variable name="price">low</xsl:variable>\n, то тя може да се използва в XSL елемент като:");
+	Question q53("Ако сме дефинирали според стойността на атрибута \"context\"XSL променлива като\n <xsl:variable name=\"price\">low</xsl:variable>\n, то тя може да се използва в XSL елемент като:");
 	q53.AddOption("<xsl:value-of select=\"@price\"/>", -1);
 	q53.AddOption("<xsl:value-of select=\"$price\"/>", 1);
 	q53.AddOption("<xsl:value-of select=\"{$price}\"/>", -1);
@@ -415,7 +415,7 @@ int main()
 	q59.AddOption("rdfs:Property", 1);
 	
 	Question q60("Описанието в RDF на групa, съдържащa само зададените в описанието членове, става чрез използване на:");
-	q60.AddOption(колекция"", 1);
+	q60.AddOption("колекция", 1);
 	q60.AddOption("множество", -1);
 	q60.AddOption("последователност", -1);
 	q60.AddOption("bag", -1);
@@ -455,10 +455,10 @@ int main()
 	q66.AddOption("NMTOKENS", -1);
 	
 	Question q67("В XML схема, уникалността на key и keyref елементите е:");
-	q67.AddOption("според стойността на атрибута "range"", -1);
+	q67.AddOption("според стойността на атрибута \"range\"", -1);
 	q67.AddOption("винаги за целия документ", -1);
 	q67.AddOption("само за йерархията на съответните елементи в документа-екземпляр, за които са дефинирани key и keyref", 1);
-	q67.AddOption("според стойността на атрибута "context"", -1);
+	q67.AddOption("според стойността на атрибута \"context\"", -1);
 	
 	Question q68("MEDIA атрибутите като screen, aural, braille, tty, и т.н., са част от:");
 	q68.AddOption("само от CSS1 спецификацията", -1);
@@ -499,9 +499,9 @@ int main()
 	q74.AddOption("йерархия на документа и грануларност", -1);
 	
 	Question q75("XSL кодът, показан на фигурата, ще даде като резултат:");
-	q75.AddOption("същите елементи в изходния XML файл както в сорс XML файла, но с добавено в края съдържание "My own contents!"", -1);
-	q75.AddOption("същите елементи в изходния XML файл както в сорс XML файла, и с коментар "My own contents!" за всеки един елемент", -1);
-	q75.AddOption("изходните XML елементи ще бъдат с имена, еднакви със съдържанието на елементите от сорс дървото, и със съдържание My own contents!", 1);
+	q75.AddOption("същите елементи в изходния XML файл както в сорс XML файла, но с добавено в края съдържание \"My own contents!\"", -1);
+	q75.AddOption("същите елементи в изходния XML файл както в сорс XML файла, и с коментар \"My own contents!\" за всеки един елемент", -1);
+	q75.AddOption("изходните XML елементи ще бъдат с имена, еднакви със съдържанието на елементите от сорс дървото, и със съдържание \"My own contents!\"", 1);
 	
 	Question q76("Кое е името на подразбиращото се (default) пространство от имена в декларацията по-долу:");
 	q76.AddOption("няма подразбиращото се (default) пространство от имена", 1);
@@ -1111,14 +1111,14 @@ int main()
 		{
 			std::cout << "Sekciq sus sgresheni vuprosi\nnatisnete nqkoy buton\n";
 			std::cin >> useless;
-			system("CLS");
+			system("clear");
 		}
 		std::cout << 1 + i << '/' << exam.size() << '\n';
 		exam[i].AskQuestion();
 		if (exam[i].AnswerQuestion() != 1 && !flag)
 			exam.push_back(exam[i]);
 		std::cin >> useless;
-		system("CLS");
+		system("clear");
 	}
 	std::cout << "Congratulations for reaching the end!\nYour score is: " << counter << '/' << exam.size();
 	std::cin >> useless;
