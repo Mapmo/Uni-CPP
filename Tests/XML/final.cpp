@@ -399,9 +399,11 @@ int main()
 	q56.AddOption("RDFS", -1);
 	q56.AddOption("OWL", -1);
 	
+	/*
 	Question q57("В OWL, също както и в ООП, не може да съществуват два класа с общи екземпляри.");
 	q57.AddOption("неверно", -1);
 	q57.AddOption("верно", -1);
+	/*
 	
 	Question q58("Речник с документиран процес за актуализация се нарича:");
 	q58.AddOption("контролиран", 1);
@@ -1008,7 +1010,7 @@ int main()
         exam.push_back(q54);
         exam.push_back(q55);
         exam.push_back(q56);
-        exam.push_back(q57);
+        //exam.push_back(q57);
         exam.push_back(q58);
         exam.push_back(q59);
         exam.push_back(q60);
