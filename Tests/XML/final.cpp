@@ -269,7 +269,7 @@ int main()
 	Question q33("Ако свойството P е дефинирано с обхват (range) C и ресурсът R е обект в тройка с предикат P, то следва, че:");
 	q33.AddOption("P rdf:type R", -1);
 	q33.AddOption("R rdf:type C", 1);
-	q33.AddOption("C rdf:type P", -1);
+	q33.AddOption("R rdf:type P", -1);
 	q33.AddOption("C rdf:type P", -1);
 	
 	Question q34("В RDF, група от алтернативни стойности се задава чрез:");
