@@ -344,10 +344,11 @@ int main()
 	q46.AddOption("не могат да разграничават атрибути, дефинирани изрично, от тези специфицирани в DTD", -1);
 	q46.AddOption("зависи от SAX парсера", -1);
 	
-	Question q47("В примера по-долу:\n<x xmlns:n1=\"http://www.hayde-de.org\" xmlns=\"http://www.hayde-de.org\" >\n<ok a=\"1\" b=\"2\" />\n<hmmm a=\"1\" n1:a=\"2\" /> </x>");
+	/* Question q47("В примера по-долу:\n<x xmlns:n1=\"http://www.hayde-de.org\" xmlns=\"http://www.hayde-de.org\" >\n<ok a=\"1\" b=\"2\" />\n<hmmm a=\"1\" n1:a=\"2\" /> </x>");
 	q47.AddOption("Дефиницията на елемента <hmmm> е невалидна според спецификацията на пространствата от имена.", -1);
 	q47.AddOption("Дефиницията на елемента <hmmm> е валидна според спецификацията на пространствата от имена.", 1);
-	
+	*/
+
 	Question q48("Разгледайте имената на XML празните елементи <emptyTag /> и <emptyTag/ >. Те са:");
 	q48.AddOption("и двата валидни", -1);
 	q48.AddOption("и двата невалидни", -1);
@@ -388,7 +389,7 @@ int main()
 	
 	Question q55("Ако свойството P e за субекта S, който участва в RDF тройката S P O, и имаме\nP rdfs:domain C,\nто следва, че:");
 	q55.AddOption("P rdf:type S", -1); //!!!!!!!!!!!!!NOT CONFIRMED
-	q55.AddOption("S rdf:type C", -1);
+	q55.AddOption("S rdf:type C", 1);
 	q55.AddOption("S rdf:type P", -1);
 	q55.AddOption("P rdf:type C", -1);
 	
@@ -436,7 +437,7 @@ int main()
 	q63.AddOption("класa, асоцииран с това Property", -1);//100% wrong
 	q63.AddOption("типa на стойностите на това Property", -1);
 	q63.AddOption("класa rdfs:Resource, на който принадлежат всички екземпляри на ресурса", -1);
-	q63.AddOption("множество от отделни стойности на това Property", -1);
+	q63.AddOption("множество от отделни стойности на това Property", 1);
 	
 	Question q64("Целта на валидацията на XML документ от XML парсера е да се провери дали XML документът е добре структуриран (well-formed).");
 	q64.AddOption("верно", -1);
@@ -997,7 +998,7 @@ int main()
         exam.push_back(q44);
         exam.push_back(q45);
         exam.push_back(q46);
-        exam.push_back(q47);
+        //exam.push_back(q47);
         exam.push_back(q48);
         exam.push_back(q49);
         exam.push_back(q50);
