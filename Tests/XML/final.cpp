@@ -60,10 +60,21 @@ int Question::AnswerQuestion()
 	do
 	{
 		if (tmpToInt < 97)
+		{
 			tmpToInt -= 65;
+		
+		}
 		else
+		{
 			tmpToInt -= 97;
-		m_Score += m_Answers[tmpToInt].val;
+		}
+
+		if(tmpToInt < m_Answers.size()) //because people complained that the code is very fragile in terms of incorrect input
+		{
+			m_Score += m_Answers[tmpToInt].val;
+		
+		}
+		
 		std::cin >> tmp;
 		tmpToInt = tmp;
 	} while (tmp != 's' && tmp != 'S');
