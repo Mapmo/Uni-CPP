@@ -347,14 +347,14 @@ int main()
 	/* Question q47("В примера по-долу:\n<x xmlns:n1=\"http://www.hayde-de.org\" xmlns=\"http://www.hayde-de.org\" >\n<ok a=\"1\" b=\"2\" />\n<hmmm a=\"1\" n1:a=\"2\" /> </x>");
 	q47.AddOption("Дефиницията на елемента <hmmm> е невалидна според спецификацията на пространствата от имена.", -1);
 	q47.AddOption("Дефиницията на елемента <hmmm> е валидна според спецификацията на пространствата от имена.", 1);
-	*/
+	
 
 	Question q48("Разгледайте имената на XML празните елементи <emptyTag /> и <emptyTag/ >. Те са:");
 	q48.AddOption("и двата валидни", -1);
 	q48.AddOption("и двата невалидни", -1);
 	q48.AddOption("нито едно от по-горе посочените", -1);
 	q48.AddOption("първият е валиден, вторият е невалиден", 1);
-	
+	/*
 	Question q49("Всяко IDREF, декларирано в DTD, трябва да:");
 	q49.AddOption("избере можество ID-та", -1);
 	q49.AddOption("избере дадено определено ID", 1);
@@ -1001,7 +1001,7 @@ int main()
         exam.push_back(q45);
         exam.push_back(q46);
         //exam.push_back(q47);
-        exam.push_back(q48);
+        //exam.push_back(q48);
         exam.push_back(q49);
         exam.push_back(q50);
         exam.push_back(q51);
