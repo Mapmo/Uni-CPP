@@ -348,13 +348,12 @@ int main()
 	q47.AddOption("Дефиницията на елемента <hmmm> е невалидна според спецификацията на пространствата от имена.", -1);
 	q47.AddOption("Дефиницията на елемента <hmmm> е валидна според спецификацията на пространствата от имена.", 1);
 	
-
 	Question q48("Разгледайте имената на XML празните елементи <emptyTag /> и <emptyTag/ >. Те са:");
 	q48.AddOption("и двата валидни", -1);
 	q48.AddOption("и двата невалидни", -1);
 	q48.AddOption("нито едно от по-горе посочените", -1);
 	q48.AddOption("първият е валиден, вторият е невалиден", 1);
-	/*
+	*/
 	Question q49("Всяко IDREF, декларирано в DTD, трябва да:");
 	q49.AddOption("избере можество ID-та", -1);
 	q49.AddOption("избере дадено определено ID", 1);
@@ -515,13 +514,13 @@ int main()
 	Question q77("Всеки два OWL класа принципно могат да се препокриват, т.е. да имат общи екземпляри.");
 	q77.AddOption("верно", 1);
 	q77.AddOption("неверно", -1);
-	
-	Question q78("Описанието в RDF на групa, съдържащa само зададените в описанието членове, става чрез използване на:");
-	q78.AddOption("bag", -1);
-	q78.AddOption("алтернативa", -1);
-	q78.AddOption("множество", -1);
-	q78.AddOption("колекция", 1);
 /*	
+	Question q78("");
+	q78.AddOption("", -1);
+	q78.AddOption("", -1);
+	q78.AddOption("", -1);
+	q78.AddOption("", 1);
+
 	Question q79("?");
 	q79.AddOption("", -1);
 	q79.AddOption("", -1);
@@ -1031,8 +1030,8 @@ int main()
         exam.push_back(q75);
         exam.push_back(q76);
         exam.push_back(q77);
-        exam.push_back(q78);
-/*        exam.push_back(q79);
+/*      exam.push_back(q78);
+      	exam.push_back(q79);
         exam.push_back(q80);
         exam.push_back(q81);
         exam.push_back(q82);
