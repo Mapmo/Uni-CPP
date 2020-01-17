@@ -103,7 +103,7 @@ int main()
 	char useless;
 	std::cin >> useless;
 	bool flag = (useless == 'r' ? 1 : 0);
-	system("CLS");
+	system("clear");
 	std::vector<Question> exam;
 	std::srand(unsigned(std::time(0)));
 
@@ -989,14 +989,14 @@ int main()
 		{
 			std::cout << "Sekciq sus sgresheni vuprosi\nnatisnete nqkoy buton\n";
 			std::cin >> useless;
-			system("CLS");
+			system("clear");
 		}
 		std::cout << 1 + i << '/' << exam.size() << '\n';
 		exam[i].AskQuestion();
 		if (exam[i].AnswerQuestion() != 1 && !flag)
 			exam.push_back(exam[i]);
 		std::cin >> useless;
-		system("CLS");
+		system("clear");
 	}
 	std::cout << "Congratulations for reaching the end!\nYour score is: " << counter << '/' << exam.size();
 	std::cin >> useless;
