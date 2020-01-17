@@ -57,16 +57,29 @@ int Question::AnswerQuestion()
 	unsigned tmpToInt;
 	std::cin >> tmp;
 	tmpToInt = tmp;
+	
 	do
-	{
-		if (tmpToInt < 97)
-			tmpToInt -= 65;
-		else
-			tmpToInt -= 97;
-		m_Score += m_Answers[tmpToInt].val;
-		std::cin >> tmp;
-		tmpToInt = tmp;
-	} while (tmp != 's' && tmp != 'S');
+        {
+                if (tmpToInt < 97)
+                {
+                        tmpToInt -= 65;
+
+                }
+                else
+                {
+                        tmpToInt -= 97;
+                }
+
+                if(tmpToInt < m_Answers.size()) //because people complained that the code is very fragile in terms of incorrect input
+                {
+                        m_Score += m_Answers[tmpToInt].val;
+
+                }
+
+                std::cin >> tmp;
+                tmpToInt = tmp;
+        } while (tmp != 's' && tmp != 'S');
+
 	std::cout << "Rezultat: " << m_Score << "\nVeren otgovor(i): ";
 	for (unsigned i = 0; i < m_Answers.size(); ++i)
 	{
