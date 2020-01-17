@@ -169,7 +169,7 @@ int main()
 	q14.AddOption("могат да бъдат или да не бъдат директни наследници на корена", -1);
 	q14.AddOption("не могат да бъдат директни наследници на корена", -1);
 	q14.AddOption("винаги са директни наследници на корена", 1);
-	q14.AddOption(" могат да не бъдат директни наследници на корена", -1);
+	q14.AddOption("могат да не бъдат директни наследници на корена", -1);
 	
 	Question q15("DocumentType::Node Interface се използва за получаване на информация за документ, описан в DTD.");
 	q15.AddOption("DOM 1.0 не разрешава редактиране на този възел", 1);
@@ -423,12 +423,12 @@ int main()
 	q60.AddOption("последователност", -1);
 	q60.AddOption("bag", -1);
 	
-	Question q61("rdf:Seq задава:");
+/*	Question q61("rdf:Seq задава:");
 	q61.AddOption("група на подредени ресурси или литерали, без дублиране", -1);
 	q61.AddOption("група на подредени ресурси или литерали, с вероятно дублиране", 1);
 	q61.AddOption("група на неподредени ресурси или литерали, без дублиране", -1);
 	q61.AddOption("група на алтернативни ресурси или литерали", -1);
-	
+*/	
 	Question q62("Person, title, familyName, knows, age, Document и Organization са име на елементи, дефинирани от:");
 	q62.AddOption("DC", -1);
 	q62.AddOption("FOAF", 1);
@@ -1014,7 +1014,7 @@ int main()
         exam.push_back(q58);
         exam.push_back(q59);
         exam.push_back(q60);
-        exam.push_back(q61);
+        //exam.push_back(q61);
         exam.push_back(q62);
         exam.push_back(q63);
         exam.push_back(q64);
