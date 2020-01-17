@@ -380,12 +380,12 @@ int main()
 	q53.AddOption("<xsl:value-of select=\"{$price}\"/>", -1);
 	q53.AddOption("<xsl:value-of select=\"price\"/>", -1);
 	
-	Question q54("При включването на документа \"xpto.xml\" с използване на <xi:include href=\"xpto.xml\" parse=\"text\"/>, документът \"xpto.xml\" ще бъде включен:");
+/*	Question q54("При включването на документа \"xpto.xml\" с използване на <xi:include href=\"xpto.xml\" parse=\"text\"/>, документът \"xpto.xml\" ще бъде включен:");
 	q54.AddOption("като обикновен текст", 1);
 	q54.AddOption("винаги като XML документ", -1);
 	q54.AddOption("като XML документ, но само ако той е добре конструиран", -1);
 	q54.AddOption("като XML документ, но само ако той е добре конструиран и валиден спрямо схема или DTD", -1);
-	
+*/	
 	Question q55("Ако свойството P e за субекта S, който участва в RDF тройката S P O, и имаме\nP rdfs:domain C,\nто следва, че:");
 	q55.AddOption("P rdf:type S", -1); //!!!!!!!!!!!!!NOT CONFIRMED
 	q55.AddOption("S rdf:type C", 1);
@@ -1006,7 +1006,7 @@ int main()
         exam.push_back(q51);
         exam.push_back(q52);
         exam.push_back(q53);
-        exam.push_back(q54);
+        //exam.push_back(q54);
         exam.push_back(q55);
         exam.push_back(q56);
         //exam.push_back(q57);
