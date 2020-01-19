@@ -669,113 +669,105 @@ int main()
 	q102.AddOption("<birth>28.04.1990, Gabrovo</bir th>", -1);
 	q102.AddOption("Всичките останали отговори съдържат елемент с грешен XML синтаксис. ", -1);
 	
-	Question q103("?");
-	q103.AddOption("", -1);
-	q103.AddOption("", -1);
-	q103.AddOption("", -1);
-	q103.AddOption("", -1);
+	Question q103("В XSchema, за глобалните типове:");
+	q103.AddOption("minOccurs и maxOccurs може да се дефинират само за глобални типове, които се реферират", 1);
+	q103.AddOption("minOccurs и maxOccurs не може да се дефинират", -1);
+	q103.AddOption("minOccurs и maxOccurs може да се дефинират винаги", -1);
+	q103.AddOption("minOccurs и maxOccurs може да се дефинират само за глобални типове, които не се реферират", -1);
 	
-	Question q104("?");
-	q104.AddOption("", -1);
-	q104.AddOption("", -1);
-	q104.AddOption("", -1);
-	q104.AddOption("", -1);
+	Question q104("SAX служи както за четене на XML документи, така и за генериране на XML");
+	q104.AddOption("Истина", -1);
+	q104.AddOption("Лъжа", 1); //само четене
 	
-	Question q105("?");
-	q105.AddOption("", -1);
-	q105.AddOption("", -1);
-	q105.AddOption("", -1);
-	q105.AddOption("", -1);
+	Question q105("Задаването на мрежа от хора чрез FOAF твърдения става посредством релацията:");
+	q105.AddOption("foaf:linkedTo", 1);
+	q105.AddOption("foaf:relatedTo", -1);
+	q105.AddOption("нито една от изброените", -1);
+	q105.AddOption("Foaf:follows", -1);
+	q105.AddOption("Foaf:knows", 1);
 	
-	Question q106("?");
-	q106.AddOption("", -1);
-	q106.AddOption("", -1);
-	q106.AddOption("", -1);
-	q106.AddOption("", -1);
+	Question q106("\"other\" и  \"none\" са възможни стойности за XLink атрибутите:");
+	q106.AddOption("arcrole и role", -1);
+	q106.AddOption("actuate и show", 1);
+	q106.AddOption("actuate и arcrole", -1);
+	q106.AddOption("show и role", -1);
+	q106.AddOption("show и arcrole", -1);
 	
-	Question q107("?");
-	q107.AddOption("", -1);
-	q107.AddOption("", -1);
-	q107.AddOption("", -1);
-	q107.AddOption("", -1);
+	Question q107("B CSS, задаването на елемент, чийто атрибут attr завършва с дадена стойност xpto, става чрез:");
+	q107.AddOption("[attr$=xpto]", -1);
+	q107.AddOption("[attr|=xpto]", -1);
+	q107.AddOption("[attr=xpto]", -1);
+	q107.AddOption("[attr~=xpto]", 1);
 	
-	Question q108("?");
-	q108.AddOption("", -1);
-	q108.AddOption("", -1);
-	q108.AddOption("", -1);
-	q108.AddOption("", -1);
+	Question q108("Описание (конкретизация) на твърдение с използване на RDF речника се извършва чрез:");
+	q108.AddOption("типа rdf:Consideration и свойствата rdf:subject, rdf:predicate и rdf:object", -1);
+	q108.AddOption("типа rdf:Reification и свойствата rdf:subject, rdf:predicate и rdf:object", -1);
+	q108.AddOption("използване на други средства", -1);
+	q108.AddOption("типа rdf:Statement и свойствата rdf:subject, rdf:predicate и rdf:object", 1);
 	
-	Question q109("?");
-	q109.AddOption("", -1);
-	q109.AddOption("", -1);
-	q109.AddOption("", -1);
-	q109.AddOption("", -1);
+	Question q109("Свойството rdfs:isDefinedBy е специален (под)тип на:");
+	q109.AddOption("rdfs:is", -1);
+	q109.AddOption("rdfs:seeAlso", 1);
+	q109.AddOption("rdfs:isCreatedBy", -1);
+	q109.AddOption("rdfs:isDescribedBy", -1);
 	
-	Question q110("?");
-	q110.AddOption("", -1);
-	q110.AddOption("", -1);
-	q110.AddOption("", -1);
-	q110.AddOption("", -1);
+	Question q110("При автоматичното разпознаване на анотации, отношението броя на правилно разпознатите анотации към броя на всички съществуващи правилни анотации се нарича:");
+	q110.AddOption("пълнотата  на връщане (recall)", -1);
+	q110.AddOption("устойчивост (стабилност)", -1);
+	q110.AddOption("достоверност на резултата (reliability)", -1);
+	q110.AddOption("точност (precision) ", 1);
 	
-	Question q111("?");
-	q111.AddOption("", -1);
-	q111.AddOption("", -1);
-	q111.AddOption("", -1);
-	q111.AddOption("", -1);
+	Question q111("Дефинирането на референция (Reference) към ключ (Key) в XSD може да има полета, които са:");
+	q111.AddOption("само елементи", -1);
+	q111.AddOption("само атрибути", -1);
+	q111.AddOption("както атрибути, така и елементи, като всеки един атрибут (или елемент) трябва да съответства на атрибут (или на елемент) в ключа", -1);
+	q111.AddOption("както атрибути, така и елементи, като всички полета трябва да съответстват на типа и на позицията на тези в ключа", 1);
 	
-	Question q112("?");
-	q112.AddOption("", -1);
-	q112.AddOption("", -1);
-	q112.AddOption("", -1);
-	q112.AddOption("", -1);
+	Question q112("RDF поддържа описания на групи, съдържащи само определени членове, посредством:");
+	q112.AddOption("RDF вектори", -1);
+	q112.AddOption("RDF колекции", 1);
+	q112.AddOption("RDF масиви", -1);
+	q112.AddOption("RDF enumeration", -1);
 	
-	Question q113("?");
-	q113.AddOption("", -1);
-	q113.AddOption("", -1);
-	q113.AddOption("", -1);
-	q113.AddOption("", -1);
+	Question q113("В RDF, класовете могат да бъдат екземпляри на други класове.");
+	q113.AddOption("Неверно", -1);
+	q113.AddOption("Верно", 1);
 	
-	Question q114("?");
-	q114.AddOption("", -1);
-	q114.AddOption("", -1);
-	q114.AddOption("", -1);
-	q114.AddOption("", -1);
+	Question q114("В XML Schema дефиницията за елементно съдържание ... order=\"all\" ...  е еквивалентна на ANY в DTD.");
+	q114.AddOption("Верно", -1);
+	q114.AddOption("Неверно", 1);
 	
-	Question q115("?");
-	q115.AddOption("", -1);
-	q115.AddOption("", -1);
-	q115.AddOption("", -1);
-	q115.AddOption("", -1);
+	Question q115("RDF твърдението\ndbpedia:Mount_Etna rdf:type my-pref:Mountain, my-pref:Volcano\nе допустимо и валидно.");
+	q115.AddOption("Верно", 1);
+	q115.AddOption("Неверно", -1);
 	
-	Question q116("?");
-	q116.AddOption("", -1);
-	q116.AddOption("", -1);
-	q116.AddOption("", -1);
-	q116.AddOption("", -1);
+	Question q116("В RDF твърдението\nS rdf:type O");
+	q116.AddOption("S задава клас (категория), а О задава екземпляр на този клас", -1);
+	q116.AddOption("О задава клас (категория), а S задава екземпляр на този клас", 1);
+	q116.AddOption("S и О задават класове на екземпляри", -1);
+	q116.AddOption("S и О задават екземпляри на класове", -1);
 	
-	Question q117("?");
-	q117.AddOption("", -1);
-	q117.AddOption("", -1);
-	q117.AddOption("", -1);
-	q117.AddOption("", -1);
+	Question q117("Множественото наследяване (multiple inheritance) не е допустимо в RDFS.");
+	q117.AddOption("Неверно", 1);
+	q117.AddOption("Верно", -1);
 	
-	Question q118("?");
-	q118.AddOption("", -1);
-	q118.AddOption("", -1);
-	q118.AddOption("", -1);
-	q118.AddOption("", -1);
+	Question q118("В какъв формат е следният запис:");
+	q118.AddOption("друг формат, различен от останалите", -1);
+	q118.AddOption("RDF/XML", -1);
+	q118.AddOption("N3", -1);
+	q118.AddOption("N-Triples", -1);
 	
-	Question q119("?");
-	q119.AddOption("", -1);
-	q119.AddOption("", -1);
-	q119.AddOption("", -1);
-	q119.AddOption("", -1);
+	Question q119("Описанието (конкретизацията) на RDF твърдение чрез използване на RDF речника се нарича:");
+	q119.AddOption("reification", 1);
+	q119.AddOption("сoncretization", -1);
+	q119.AddOption("оbjectification", -1);
+	q119.AddOption("consideration", -1);
 	
-	Question q120("?");
-	q120.AddOption("", -1);
-	q120.AddOption("", -1);
-	q120.AddOption("", -1);
-	q120.AddOption("", -1);
+	Question q120("Ако имаме дефинирани две еднакви CSS свойства с различни стойности за един и същи елемент, то ще се приложи последно дефинираното свойство:");
+	q120.AddOption("винаги", -1);
+	q120.AddOption("винаги, освен когато правилото за прилагане на едно от свойствата взима под внимание кой е предходният елемент", -1);
+	q120.AddOption("винаги, освен когато едно от свойствата е по-специфично или правилото за прилагането му взима под внимание кой е предходният елемент", -1);
+	q120.AddOption("винаги, освен когато едно от свойствата е по-специфично", 1);
 	
 	Question q121("?");
 	q121.AddOption("", -1);
