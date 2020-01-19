@@ -260,6 +260,8 @@ int main()
 	q29.AddOption("към класове и към екземпляри", -1);
 	q29.AddOption("само към свойства (properties)", -1);
 	q29.AddOption("към екземпляри и към свойства", -1);
+	q29.AddOption("само към класовеи", -1);	
+	q29.AddOption("само към свойства (properties)", -1);
 	
 	Question q30("Кое от показаните на фигурата средства не е пряко свързано с изграждане на семантичния Уеб: Error 404 image not found");
 	q30.AddOption("Logical Support", -1);
@@ -409,11 +411,10 @@ int main()
 	q56.AddOption("RDFS", -1);
 	q56.AddOption("OWL", -1);
 	
-	/*
-	Question q57("В OWL, също както и в ООП, не може да съществуват два класа с общи екземпляри.");
-	q57.AddOption("неверно", -1);
-	q57.AddOption("верно", -1);
-	*/
+	Question q57("В XLink, изходящите връзки (outbound links) могат да имат:");
+	q57.AddOption("произволен краен брой участващи в тях ресурси", 1);
+	q57.AddOption("точно два участващи в тях ресурса", -1);
+	q57.AddOption("не по-малко от два участващи ресурса", -1);
 	
 	Question q58("Речник с документиран процес за актуализация се нарича:");
 	q58.AddOption("контролиран", 1);
@@ -433,12 +434,12 @@ int main()
 	q60.AddOption("последователност", -1);
 	q60.AddOption("bag", -1);
 	
-/*	Question q61("rdf:Seq задава:");
-	q61.AddOption("група на подредени ресурси или литерали, без дублиране", -1);
-	q61.AddOption("група на подредени ресурси или литерали, с вероятно дублиране", 1);
-	q61.AddOption("група на неподредени ресурси или литерали, без дублиране", -1);
-	q61.AddOption("група на алтернативни ресурси или литерали", -1);
-*/	
+	Question q61("Регулярният израз [1-9]?[0-9] дефинира XSchema стрингови стойности, които са:");
+	q61.AddOption("от 1 до 99", -1);
+	q61.AddOption("от 1 до 90", -1);
+	q61.AddOption("от 0 до 99", 1);
+	q61.AddOption("от 1 до 9", -1);
+
 	Question q62("Person, title, familyName, knows, age, Document и Organization са име на елементи, дефинирани от:");
 	q62.AddOption("DC", -1);
 	q62.AddOption("FOAF", 1);
@@ -526,114 +527,105 @@ int main()
 	Question q77("Всеки два OWL класа принципно могат да се препокриват, т.е. да имат общи екземпляри.");
 	q77.AddOption("верно", 1);
 	q77.AddOption("неверно", -1);
-/*	
-	Question q78("");
-	q78.AddOption("", -1);
-	q78.AddOption("", -1);
-	q78.AddOption("", -1);
-	q78.AddOption("", 1);
+	
+	Question q78("CDATA съдържанията са:");
+	q78.AddOption("или парсвани, или игнорирани от XML парсерите в зависимост от CDATA директивата", -1);
+	q78.AddOption("игнорирани от XML парсерите", 1);
+	q78.AddOption("парсвани от XML парсерите", -1);
 
-	Question q79("?");
-	q79.AddOption("", -1);
-	q79.AddOption("", -1);
-	q79.AddOption("", -1);
-	q79.AddOption("", -1);
+	Question q79("Даден CSS стил може да бъде inlined (а не embedded) в документ посредством:");
+	q79.AddOption("елемента INLINE", -1);
+	q79.AddOption("атрибута INLINE", -1);
+	q79.AddOption("атрибута STYLE", 1);
+	q79.AddOption("елемента STYLE", -1);
 	
-	Question q80("?");
-	q80.AddOption("", -1);
-	q80.AddOption("", -1);
-	q80.AddOption("", -1);
-	q80.AddOption("", -1);
+	Question q80("Параметрично Entity:");
+	q80.AddOption("се дефинира в XML документа и може да се използва в който и да е XML документ", -1);
+	q80.AddOption("се дефинира в маркъп декларациите в DTD, но може да се използва в който и да е XML документ", -1);
+	q80.AddOption("се дефинира в маркъп декларациите в DTD и може да се използва само в DTD дефиниции", 1);
 	
-	Question q81("?");
-	q81.AddOption("", -1);
-	q81.AddOption("", -1);
-	q81.AddOption("", -1);
-	q81.AddOption("", -1);
+	Question q81("Кой от следните изрази е валиден пример за дефиниране на избор (choice) от елементи в DTD:");
+	q81.AddOption("(A ˇ B ˇ C)", -1);
+	q81.AddOption("(A | B | C)", 1);
+	q81.AddOption("(A or B or C)", -1);
+	q81.AddOption("(A, B, C)", -1);
 	
-	Question q82("?");
-	q82.AddOption("", -1);
-	q82.AddOption("", -1);
-	q82.AddOption("", -1);
-	q82.AddOption("", -1);
+	Question q82("XML пространствата от имена се използват за разграничаване:");
+	q82.AddOption("нито на XML елементи, нито на XML атрибути", -1);
+	q82.AddOption("и на XML елементи, и на XML атрибути", 1);
+	q82.AddOption("само на XML елементи", -1);
+	q82.AddOption("само на XML атрибути", -1);
 	
-	Question q83("?");
-	q83.AddOption("", -1);
-	q83.AddOption("", -1);
-	q83.AddOption("", -1);
-	q83.AddOption("", -1);
+	Question q83("Регулярният израз [^0-9]x дефинира XSchema стрингови стойности, които представляват:");
+	q83.AddOption("който и да е не-цифров символ, следван от символа x", 1);
+	q83.AddOption("символът ^, последван от произволна цифра следвана от символа x", -1);
+	q83.AddOption("x пъти повторение на който и да е цифров символ", -1);
+	q83.AddOption("x пъти повторение на който и да е не-цифров символ", -1);
 	
-	Question q84("?");
-	q84.AddOption("", -1);
-	q84.AddOption("", -1);
-	q84.AddOption("", -1);
-	q84.AddOption("", -1);
+	Question q84("Осъществяването на еmbedding (а не inlining) на Style Sheet според CSS правилата е възможно посредством:");
+	q84.AddOption("елемента EMBED", -1);
+	q84.AddOption("елемента STYLE", 1);
+	q84.AddOption("елемента LINK", -1);
+	q84.AddOption("атрибута STYLE", -1);
 	
-	Question q85("?");
-	q85.AddOption("", -1);
-	q85.AddOption("", -1);
-	q85.AddOption("", -1);
-	q85.AddOption("", -1);
+	Question q85("Всеки DOM възел (Node) може да има деца");
+	q85.AddOption("Верно", -1);
+	q85.AddOption("Неверно", 1);
+	q85.AddOption("зависи от децата", -1);
 	
-	Question q86("?");
-	q86.AddOption("", -1);
-	q86.AddOption("", -1);
-	q86.AddOption("", -1);
-	q86.AddOption("", -1);
+	Question q86("Кой от следните изрази е валиден пример за дефиниране на последователност (sequence) от елементи в DTD:");
+	q86.AddOption("(A and B and C)", -1);
+	q86.AddOption("(A ^ B ^ C)", -1);
+	q86.AddOption("(A, B, C)", 1);
+	q86.AddOption("(A | B | C)", -1);
 	
-	Question q87("?");
-	q87.AddOption("", -1);
-	q87.AddOption("", -1);
-	q87.AddOption("", -1);
-	q87.AddOption("", -1);
+	Question q87("Един XML документ може да има повече от едно вътрешно DTD.");
+	q87.AddOption("Неверно", 1);
+	q87.AddOption("Верно", -1);
 	
-	Question q88("?");
-	q88.AddOption("", -1);
-	q88.AddOption("", -1);
-	q88.AddOption("", -1);
-	q88.AddOption("", -1);
+	Question q88("Един XML документ може да има повече от едно DTD");
+	q88.AddOption("Верно", -1);
+	q88.AddOption("Неверно", -1);
 	
-	Question q89("?");
-	q89.AddOption("", -1);
-	q89.AddOption("", -1);
-	q89.AddOption("", -1);
-	q89.AddOption("", -1);
+	Question q89("Разгледайте <xsl:value-of> елемента. Ако стойността на неговия select атрибут е select='.', тогава ние избираме:");
+	q89.AddOption("текстовия контекст само на елемента", -1);
+	q89.AddOption("същия текстов контекст, както когато използваме text() функцията", -1);
+	q89.AddOption("текстовия контекст на елемента и текстовия контекст на всички наследници на елемента", 1);
+	q89.AddOption("текстовия контекст на всички наследници на елемента", -1);
 	
-	Question q90("?");
-	q90.AddOption("", -1);
-	q90.AddOption("", -1);
-	q90.AddOption("", -1);
-	q90.AddOption("", -1);
+	Question q90("XSchema шаблонен фасет (pattern facet) е фасет за данни от тип:");
+	q90.AddOption("String", 1);
+	q90.AddOption("Integer", -1);
+	q90.AddOption("Binary", -1);
+	q90.AddOption("Decimal", -1);
 	
-	Question q91("?");
-	q91.AddOption("", -1);
-	q91.AddOption("", -1);
-	q91.AddOption("", -1);
-	q91.AddOption("", -1);
+	Question q91("В SAX, приложните обекти, имащи достъп до XML сорса:");
+	q91.AddOption("са регистрирани за callback функции или от програмиста, или от парсера", -1);
+	q91.AddOption("не трябва да бъдат регистрирани от програмиста за callback функции, тъй като те са listeners", -1);
+	q91.AddOption("трябва да бъдат регистрирани (от програмиста) за callback функциите на парсера", 1);
 	
-	Question q92("?");
-	q92.AddOption("", -1);
-	q92.AddOption("", -1);
-	q92.AddOption("", -1);
-	q92.AddOption("", -1);
+	Question q92("Изберете верното:");
+	q92.AddOption("Един URI не може да бъде нито URL, нито URN", -1);
+	q92.AddOption("Един URL може да бъде или URI, или URN", -1);
+	q92.AddOption("Един URI може да бъде URL и URN едновременно", -1);
+	q92.AddOption("Един URN може да бъде или URL, или URI", -1);
+	q92.AddOption("Един URI може да бъде или URL, или URN", 1);
 	
-	Question q93("?");
-	q93.AddOption("", -1);
-	q93.AddOption("", -1);
-	q93.AddOption("", -1);
-	q93.AddOption("", -1);
+	Question q93("Атрибутите на XML са чувствителни към регистъра.");
+	q93.AddOption("Невeрно", -1);
+	q93.AddOption("Верно", 1);
 	
-	Question q94("?");
-	q94.AddOption("", -1);
-	q94.AddOption("", -1);
-	q94.AddOption("", -1);
-	q94.AddOption("", -1);
+	Question q94("XSL се използва за:");
+	q94.AddOption("трансформиране на XML документ към друг текстов документ", 1);
+	q94.AddOption("трансформиране на XML документ към друг документ само в HTML формат", -1);
+	q94.AddOption("трансформиране на XML документ към друг документ само в XML или HTML формат", -1);
+	q94.AddOption("трансформиране на XML документ към друг документ само в XML формат", -1);
 	
-	Question q95("?");
-	q95.AddOption("", -1);
-	q95.AddOption("", -1);
-	q95.AddOption("", -1);
-	q95.AddOption("", -1);
+	Question q95("Разгледайте P:first-letter { font-size: 200% } . Това е:");
+	q95.AddOption("CSS клас", -1);
+	q95.AddOption("псевдо-атрибут (pseudo-attribute)", -1);
+	q95.AddOption("нито едно от по-горе посочените", -1);
+	q95.AddOption("псевдо-елемент (pseudo-element)", 1);
 	
 	Question q96("?");
 	q96.AddOption("", -1);
@@ -1021,11 +1013,11 @@ int main()
         exam.push_back(q54);
         exam.push_back(q55);
         exam.push_back(q56);
-        //exam.push_back(q57);
+        exam.push_back(q57);
         exam.push_back(q58);
         exam.push_back(q59);
         exam.push_back(q60);
-        //exam.push_back(q61);
+        exam.push_back(q61);
         exam.push_back(q62);
         exam.push_back(q63);
         exam.push_back(q64);
@@ -1042,7 +1034,7 @@ int main()
         exam.push_back(q75);
         exam.push_back(q76);
         exam.push_back(q77);
-/*      exam.push_back(q78);
+	exam.push_back(q78);
       	exam.push_back(q79);
         exam.push_back(q80);
         exam.push_back(q81);
@@ -1115,7 +1107,7 @@ int main()
         exam.push_back(q148);
         exam.push_back(q149);
         exam.push_back(q150);
-*/	
+	
 	unsigned questionsCount = exam.size();
 	for (unsigned i = 0; i < questionsCount; ++i)
 		std::swap(exam[Randomize(exam.size())], exam[Randomize(exam.size())]);
