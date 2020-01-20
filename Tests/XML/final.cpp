@@ -729,7 +729,7 @@ int main()
 	q111.AddOption("само атрибути", -1);
 	q111.AddOption("както атрибути, така и елементи, като всеки един атрибут (или елемент) трябва да съответства на атрибут (или на елемент) в ключа", -1);
 	q111.AddOption("както атрибути, така и елементи, като всички полета трябва да съответстват на типа и на позицията на тези в ключа", 1);
-	q111.AddOption("нито атрибути, нито елементи, -1);	
+	q111.AddOption("нито атрибути, нито елементи", -1);	
 	
 	Question q112("RDF поддържа описания на групи, съдържащи само определени членове, посредством:");
 	q112.AddOption("RDF вектори", -1);
@@ -938,29 +938,155 @@ int main()
 	q146.AddOption("както субект, така и обект", -1);
 	q146.AddOption("както предикат, така и субект или обект", -1);	
 
-	Question q147("?");
-	q147.AddOption("", -1);
-	q147.AddOption("", -1);
-	q147.AddOption("", -1);
-	q147.AddOption("", -1);
+	Question q147("Кое не е цел на RDFа:");
+	q147.AddOption("увеличаване на визуални данни в Уеб страниците в указания за машинно четене", -1);
+	q147.AddOption("подобряване на достъпността на Уеб страниците", -1);
+	q147.AddOption("намаляване на разликата между интерпретацията на Уеб страницата от потребителя и програмистите", -1);
+	q147.AddOption("разширяване на XHTML атрибутите", 1);
+	q147.AddOption("вграждане на обогатени метаданни в Уеб документите", -1);
 	
-	Question q148("?");
-	q148.AddOption("", -1);
-	q148.AddOption("", -1);
-	q148.AddOption("", -1);
-	q148.AddOption("", -1);
+	Question q148("Всички членове на подклас OWL са членова на супер-класовете от този клас:");
+	q148.AddOption("Вярно", -1);
+	q148.AddOption("Невярно", 1);
 	
-	Question q149("?");
-	q149.AddOption("", -1);
-	q149.AddOption("", -1);
-	q149.AddOption("", -1);
-	q149.AddOption("", -1);
+	Question q149("Атрибутът xml:base задава:");
+	q149.AddOption("база на относителни URI връзки към външни за документа ресурси", 1);
+	q149.AddOption("база за задаване на други мета-атрибути", -1);
+	q149.AddOption("базов URI за дефиниране на пространство от имена", -1);
+	q149.AddOption("база за сливане на XML документи", -1);
 	
-	Question q150("?");
-	q150.AddOption("", -1);
-	q150.AddOption("", -1);
-	q150.AddOption("", -1);
-        q150.AddOption("", -1);
+	Question q150("XML Reader в SAX 2.0 разширява стандартния Java Reader интерфейс:");
+	q150.AddOption("Вярно", -1);
+	q150.AddOption("Невярно", 1);
+
+	Question q151("Изберете едно:");
+	q151.AddOption("Както SAX, така и StAX използват pull парсване", -1);
+	q151.AddOption("SAX използва push парсване, а StAX - парсване от тип pull", 1);
+	q151.AddOption("Както SAX, така и StAX използват push парсване", -1);
+	q151.AddOption("SAX използва pull парсване, а StAX - парсване от тип push", -1);
+
+	Question q152("Как можем да потиснем запазването на допълнителни (следващи един след друг) празни интервали в съдържанието на текстови елемент?");
+	q152.AddOption("посредством псевдо-атрибута xml:lang", -1);
+	q152.AddOption("посредством псевдо-атрибута xml:interval", -1);
+	q152.AddOption("посредством псевдо-атрибута xml:blank", -1);
+	q152.AddOption("посредством използване на друг псевдо-атрибут, различен от изброените в останалите отговори на въпроса", 1);
+	q152.AddOption("посредством псевдо-атрибута xml:empty_space", -1);
+	q152.AddOption("запазването на допълнителни (следващи един след друг) празни интервали в съдържанието на текстови елемент не може да се потиска", -1);
+
+	Question q153("В RDF, класовете могат да бъдат екземпляри на други класове.");
+	q153.AddOption("Вярно", 1);
+	q153.AddOption("Невярно", -1);
+
+	Question q154("Според XML синтаксиса, за всеки непразен XML елемент, за отварящия му таг (маркер) трябва да има:");
+	q154.AddOption("Един или повече затварящи тагове", -1);
+	q154.AddOption("Един затварящ или незатварящ таг", -1);
+	q154.AddOption("Точно един затварящ таг", 1);
+	q154.AddOption("Повече от един затварящи тагове", -1);
+/*
+	Question q15("");
+	q15.AddOption("", -1);
+	q15.AddOption("", -1);
+	q15.AddOption("", -1);
+	q15.AddOption("", -1);
+	q15.AddOption("", -1);
+	q15.AddOption("", -1);
+
+	Question q15("");
+	q15.AddOption("", -1);
+	q15.AddOption("", -1);
+	q15.AddOption("", -1);
+	q15.AddOption("", -1);
+	q15.AddOption("", -1);
+	q15.AddOption("", -1);
+
+	Question q15("");
+	q15.AddOption("", -1);
+	q15.AddOption("", -1);
+	q15.AddOption("", -1);
+	q15.AddOption("", -1);
+	q15.AddOption("", -1);
+	q15.AddOption("", -1);
+
+	Question q15("");
+	q15.AddOption("", -1);
+	q15.AddOption("", -1);
+	q15.AddOption("", -1);
+	q15.AddOption("", -1);
+	q15.AddOption("", -1);
+	q15.AddOption("", -1);
+
+	Question q15("");
+	q15.AddOption("", -1);
+	q15.AddOption("", -1);
+	q15.AddOption("", -1);
+	q15.AddOption("", -1);
+	q15.AddOption("", -1);
+	q15.AddOption("", -1);
+
+	Question q15("");
+	q15.AddOption("", -1);
+	q15.AddOption("", -1);
+	q15.AddOption("", -1);
+	q15.AddOption("", -1);
+	q15.AddOption("", -1);
+	q15.AddOption("", -1);
+
+	Question q15("");
+	q15.AddOption("", -1);
+	q15.AddOption("", -1);
+	q15.AddOption("", -1);
+	q15.AddOption("", -1);
+	q15.AddOption("", -1);
+	q15.AddOption("", -1);
+
+	Question q15("");
+	q15.AddOption("", -1);
+	q15.AddOption("", -1);
+	q15.AddOption("", -1);
+	q15.AddOption("", -1);
+	q15.AddOption("", -1);
+	q15.AddOption("", -1);
+
+	Question q15("");
+	q15.AddOption("", -1);
+	q15.AddOption("", -1);
+	q15.AddOption("", -1);
+	q15.AddOption("", -1);
+	q15.AddOption("", -1);
+	q15.AddOption("", -1);
+
+	Question q15("");
+	q15.AddOption("", -1);
+	q15.AddOption("", -1);
+	q15.AddOption("", -1);
+	q15.AddOption("", -1);
+	q15.AddOption("", -1);
+	q15.AddOption("", -1);
+
+	Question q15("");
+	q15.AddOption("", -1);
+	q15.AddOption("", -1);
+	q15.AddOption("", -1);
+	q15.AddOption("", -1);
+	q15.AddOption("", -1);
+	q15.AddOption("", -1);
+
+	Question q15("");
+	q15.AddOption("", -1);
+	q15.AddOption("", -1);
+	q15.AddOption("", -1);
+	q15.AddOption("", -1);
+	q15.AddOption("", -1);
+	q15.AddOption("", -1);
+
+	Question q15("");
+	q15.AddOption("", -1);
+	q15.AddOption("", -1);
+	q15.AddOption("", -1);
+	q15.AddOption("", -1);
+	q15.AddOption("", -1);
+	q15.AddOption("", -1);
+
 */	
         exam.push_back(q1);
         exam.push_back(q2);
@@ -1106,13 +1232,17 @@ int main()
         exam.push_back(q142);
         exam.push_back(q143);
         exam.push_back(q144);
- /*       exam.push_back(q145);
+	exam.push_back(q145);
         exam.push_back(q146);
         exam.push_back(q147);
         exam.push_back(q148);
         exam.push_back(q149);
         exam.push_back(q150);
-*/	
+        exam.push_back(q151);
+        exam.push_back(q152);
+        exam.push_back(q153);
+        exam.push_back(q154);
+
 	unsigned questionsCount = exam.size();
 	for (unsigned i = 0; i < questionsCount; ++i)
 		std::swap(exam[Randomize(exam.size())], exam[Randomize(exam.size())]);
