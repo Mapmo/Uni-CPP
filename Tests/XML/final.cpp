@@ -699,10 +699,10 @@ int main()
 	q106.AddOption("show и arcrole", -1);
 	
 	Question q107("B CSS, задаването на елемент, чийто атрибут attr завършва с дадена стойност xpto, става чрез:");
-	q107.AddOption("[attr$=xpto]", -1);
+	q107.AddOption("[attr$=xpto]", 1);
 	q107.AddOption("[attr|=xpto]", -1);
 	q107.AddOption("[attr=xpto]", -1);
-	q107.AddOption("[attr~=xpto]", 1);
+	q107.AddOption("[attr~=xpto]", -1);
 	
 	Question q108("Описание (конкретизация) на твърдение с използване на RDF речника се извършва чрез:");
 	q108.AddOption("типа rdf:Consideration и свойствата rdf:subject, rdf:predicate и rdf:object", -1);
