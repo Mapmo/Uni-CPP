@@ -136,6 +136,7 @@ int main()
 	q6.AddOption("SAX", -1);
 	q6.AddOption("CSS", -1);
 	q6.AddOption("DOM", 1);
+	q6.AddOption("XSLT", -1);
 	
 	Question q7("При избиране на елемент, наречен MyElem и имащ атрибут Attr със стойност title, в XSLT ние трябва да използваме:");
 	q7.AddOption("select=\"MyElem(@Attr='title')\"", -1);
@@ -216,7 +217,10 @@ int main()
 	q21.AddOption("rdfs:range", -1);
 	q21.AddOption("rdfs:subClassOf", -1);
 	q21.AddOption("rdfs:subRange", 1);
-	
+	q21.AddOption("rdfs:isDefinedBy", -1);
+	q21.AddOption("rdfs:subPropertyOf", -1);
+	q21.AddOption("rdfs:member", -1);	
+
 	Question q22("rdf:Seq задава:");
 	q22.AddOption("група на неподредени ресурси или литерали, с вероятно дублиране", -1);
 	q22.AddOption("група на алтернативни ресурси или литерали", -1);
@@ -268,7 +272,9 @@ int main()
 	q30.AddOption("Semantic Annotations", -1);
 	q30.AddOption("Tools", -1);
 	q30.AddOption("Collaboration synchronization", 1);
-	
+	q30.AddOption("Ontologies", -1);
+	q30.AddOption("Applications / Services", -1);	
+
 	Question q31("В OWL, също както и в ООП, не може да съществуват два класа с общи екземпляри.");
 	q31.AddOption("верно", -1);
 	q31.AddOption("неверно", 1);
@@ -650,12 +656,12 @@ int main()
 	q99.AddOption("парсвани от XML парсерите", -1);
 	q99.AddOption("или парсвани, или игнорирани от XML парсерите в зависимост от CDATA директивата", -1);
 	
-/*	Question q100("При използването на XPath text() функцията, ние избираме:");
-	q100.AddOption("същият текстов контекст както когато използваме <xsl:value-of select=’.’>  елемента", -1);
-	q100.AddOption("текстовия контекст на елемента и текстовия контекст на всички наследници на елемента", -1);
-	q100.AddOption("текстовия контекст само на елемента", 1);
-	q100.AddOption("текстовия контекст на всички наследници на елемента", -1);
-*/	
+	Question q100("creator е:");
+	q100.AddOption("елемент-деквалификатор от DC Metadata", -1);
+	q100.AddOption("един от основните 15 елемента от DC Metadata", 1);
+	q100.AddOption("елемент, който не принадлежи на DC Metadata", -1);
+	q100.AddOption("елемент-квалификатор от DC Metadata", -1);
+	
 	Question q101("Ако даден атрибут на XML елемент има само локално име (т.е. името му не е QName), то:");
 	q101.AddOption("Той не се отнася към каквото и да било пространство от имена за документа, в който е дефиниран.", -1);
 	q101.AddOption("Той се отнася към пространството от имена по подразбиране (default namespace).", -1);
@@ -704,6 +710,7 @@ int main()
 	q108.AddOption("типа rdf:Reification и свойствата rdf:subject, rdf:predicate и rdf:object", -1);
 	q108.AddOption("използване на други средства", -1);
 	q108.AddOption("типа rdf:Statement и свойствата rdf:subject, rdf:predicate и rdf:object", 1);
+	q108.AddOption("типа rdf:Concretisation и свойствата rdf:subject, rdf:predicate и rdf:object", -1);
 	
 	Question q109("Свойството rdfs:isDefinedBy е специален (под)тип на:");
 	q109.AddOption("rdfs:is", -1);
@@ -722,6 +729,7 @@ int main()
 	q111.AddOption("само атрибути", -1);
 	q111.AddOption("както атрибути, така и елементи, като всеки един атрибут (или елемент) трябва да съответства на атрибут (или на елемент) в ключа", -1);
 	q111.AddOption("както атрибути, така и елементи, като всички полета трябва да съответстват на типа и на позицията на тези в ключа", 1);
+	q111.AddOption("нито атрибути, нито елементи, -1);	
 	
 	Question q112("RDF поддържа описания на групи, съдържащи само определени членове, посредством:");
 	q112.AddOption("RDF вектори", -1);
@@ -755,7 +763,7 @@ int main()
 	q118.AddOption("друг формат, различен от останалите", -1);
 	q118.AddOption("RDF/XML", -1);
 	q118.AddOption("N3", -1);
-	q118.AddOption("N-Triples", -1);
+	q118.AddOption("N-Triples", 1);
 	
 	Question q119("Описанието (конкретизацията) на RDF твърдение чрез използване на RDF речника се нарича:");
 	q119.AddOption("reification", 1);
@@ -776,7 +784,7 @@ int main()
 	q121.AddOption("могат да имат атрибути, но не и под-елементи", -1);
 	
 	Question q122("В RDFS един ресурс може да е екземпляр на няколко класа.");
-	q122.AddOption("Вeрно", -1);
+	q122.AddOption("Вeрно", 1);
 	q122.AddOption("Невeрно", -1);
 	
 	Question q123("За разлика от SAX при използване на StAX можем да се движим както напред така и назад в XML документа");
@@ -788,10 +796,10 @@ int main()
 	q124.AddOption("UnorderedNodeSet", -1);
 	q124.AddOption("NodeAttr", -1);
 	q124.AddOption("NodeList", -1);
-	q124.AddOption("NamedNodeMap", -1);
+	q124.AddOption("NamedNodeMap", 1);
 
 	Question q125("Използването на пространства от имена в XPointer изрази е:");
-	q125.AddOption("Разрешено", -1);
+	q125.AddOption("Разрешено", 1);
 	q125.AddOption("Забранено", -1);
 	
 	Question q126("Кои два от изброените по-долу атрибути НЕ МОГАТ да участват в елемент от XLink тип arc:\nИзберете едно или повече");
@@ -805,15 +813,15 @@ int main()
 	q126.AddOption("type", -1);
 	
 	Question q127("Методите за работа с атрибути на DOM Element интерфейса: (****no answer)");
-	q127.AddOption("Разграничават стойността на атрибут дефинирана изрично в XML документа, от стойността по подразбиране, зададена в DTD, само ако Node:setAttrDistinction(Boolean param) е извикан предварително с параметър param със стойност True", -1);
-	q127.AddOption("не могат да разграничават стойността на атрибут, дефиниран изрично в XML документа, от стойността по подразбиране, зададена в DTD", -1);
+	q127.AddOption("разграничават стойността на атрибут дефинирана изрично в XML документа, от стойността по подразбиране, зададена в DTD, само ако Node:setAttrDistinction(Boolean param) е извикан предварително с параметър param със стойност True", -1);
+	q127.AddOption("не могат да разграничават стойността на атрибут, дефиниран изрично в XML документа, от стойността по подразбиране, зададена в DTD", 1);
 	q127.AddOption("могат да разграничават стойността на атрибут, дефинирана изрично в XML документа, от стойността по подразбиране, зададена в DTD", -1);
 	q127.AddOption("зависи от настройките на DOM парсера", -1);
 	
-	Question q128("(***no answer) При прилагане на XSLT трансформацията (има Steve & Bob)");
+	Question q128("(При прилагане на XSLT трансформацията (има Steve & Bob)");
 	q128.AddOption("c името \"name\"", -1);
 	q128.AddOption("с имената на елементите в изходящото дърво", -1);
-	q128.AddOption("със съдържанието на елементите в изходящото дърво", -1);
+	q128.AddOption("със съдържанието на елементите в изходящото дърво", 1);
 	q128.AddOption("със съдържанието на атрибутите в изходящото дърво", -1);
 	q128.AddOption("с имената на атрибутите в изходящото дърво", -1);
 	
@@ -835,12 +843,16 @@ int main()
 	q131.AddOption("Само rdf:Bag", -1);
 	q131.AddOption("rdf:Bag и rdf:Seq", 1);
 	q131.AddOption("rdf:Bag и rdf:Alt", -1);
-	
+	q131.AddOption("Само rdf:Seq", -1);	
+	q131.AddOption("Само rdf:Alt", -1);
+
 	Question q132("RDF реификация се задава чрез:");
 	q132.AddOption("Типа rdf:Reification и свойствата rdf:about, rdf:property и rdf:object", -1);
 	q132.AddOption("Типа rdf:Statement и свойствата rdf:subject, rdf:predicate и rdf:object", 1);
 	q132.AddOption("Типа rdf:Description и свойствата rdf:subject, rdf:predicate и rdf:object", -1);
 	q132.AddOption("Типа rdf:Reification и свойствата rdf:subject, rdf:predicate и rdf:object", -1);
+	q132.AddOption("Типа rdf:Statement и свойствата rdf:about, rdf:property и rdf:object", -1);
+	q132.AddOption("Типа rdf:Description и свойствата rdf:about, rdf:property и rdf:object", -1);
 	
 	Question q133("Кои от изброените по-долу качества НЕ СА ПРИСЪЩИ на спецификация на онтология:\nИзберете едно или повече:");
 	q133.AddOption("споделена", -1);
@@ -855,9 +867,9 @@ int main()
 	q134.AddOption("[attr^=xpto]", -1);
 	q134.AddOption("[attr~=xpto]", 1);
 	
-	Question q135("NO ANSWER**?В DOM, възли-деца могат да имат единствено възлите от тип:");
+	Question q135("В DOM, възли-деца могат да имат единствено възлите от тип:");
 	q135.AddOption("Root, Parent, и Ancestor", -1);
-	q135.AddOption("Document, DocumentFragment и Element", -1);
+	q135.AddOption("Document, DocumentFragment и Element", 1);
 	q135.AddOption("CharacterData, Text и Comment", -1);
 	q135.AddOption("Notation, Entity, EntityReference", -1);
 	
@@ -869,7 +881,7 @@ int main()
 	
 	Question q137("RDF литералите могат да се явяват както като субект, така и като обект в RDF тройка");
 	q137.AddOption("Вярно", -1);
-	q137.AddOption("Невярно", -1);
+	q137.AddOption("Невярно", 1);
 	
 	Question q138("OWL клас, за който са описани както задължителните, така и достатъчните свойства за членство в класа, се нарича:");
 	q138.AddOption("disjoint клас", -1);
@@ -878,7 +890,7 @@ int main()
 	q138.AddOption("дефиниран клас", 1);
 	
 	Question q139("В OWL, един екземпляр може да бъде:");
-	q139.AddOption("член на множество класове", -1);
+	q139.AddOption("член на множество класове", 1);
 	q139.AddOption("единствено член на само един клас", -1);
 	
 	Question q140("DOMException  връща HIERARCHY_REQUEST_ERR при опит за:");
@@ -892,35 +904,40 @@ int main()
 	q141.AddOption("имплементиране на EventHandler или разширяване на BaseHandler", -1);
 	q141.AddOption("имплементиране на HandlerBase или разширяване на DocumentHandler", -1);
 	q141.AddOption("имплементиране на DocumentHandler или разширяване на HandlerBase", -1);
-	
+	q141.AddOption("имплементиране на DefaultHandler или разширяване на ContentHandler", -1);	
+
 	Question q142("Кой от следните типове не се среща в описанието на разширена връзка в XLink:");
 	q142.AddOption("title", -1);
 	q142.AddOption("locator", -1);
 	q142.AddOption("arc", -1);
-	q142.AddOption("edge", -1);
+	q142.AddOption("edge", 1);
+	q142.AddOption("resource", -1);
 	
-	Question q143("********8В RDF един екземпляр може да има няколко типа (т.e. да участва като субект в няколко релации rdf:type)");
+	Question q143("В RDF един екземпляр може да има няколко типа (т.e. да участва като субект в няколко релации rdf:type)");
 	q143.AddOption("Неверно", -1);
-	q143.AddOption("Верно", -1);
+	q143.AddOption("Верно", 1);
 	
-	Question q144("********В XML схема, уникалността на key и keyref елементите е:");
-	q144.AddOption("винаги за целия документ", -1);
-	q144.AddOption("само за йерархията на съответните елементи в документа-екземпляр, за които са дефинирани key и keyref", -1);
-	q144.AddOption("според стойността на атрибута \"context\"", -1);
-	q144.AddOption("според стойността на атрибута \"range\"", -1);
-/*	
-	Question q145("?");
-	q145.AddOption("", -1);
-	q145.AddOption("", -1);
-	q145.AddOption("", -1);
-	q145.AddOption("", -1);
+	Question q144("Създаване на специфична метаинформация и схема за употреба с цел предоставяне на възможност за нови методи за достъп до информация се нарича:");
+	q144.AddOption("Семантично анотиране", 1);
+	q144.AddOption("Семантично разглеждане", -1);
+	q144.AddOption("Семантично препоръчване", -1);
+	q144.AddOption("Автоматично предсказване на потребителски код", -1);
+	q144.AddOption("Семантично визуализиране", -1);
+
+	Question q145("В XSLT, вземането на решение кои елементи ще бъдат обработени се задава със следния XSLT елемент?");
+	q145.AddOption("<xsl:process-templates>", -1);
+	q145.AddOption("<xsl:value-of>", -1);
+	q145.AddOption("<xsl:template>", -1);
+	q145.AddOption("<xsl:for-each>", -1);
+	q145.AddOption("<xsl:apply-templates>", 1);
 	
-	Question q146("?");
-	q146.AddOption("", -1);
-	q146.AddOption("", -1);
-	q146.AddOption("", -1);
-	q146.AddOption("", -1);
-	
+	Question q146("Литералите в RDF тройките могат да бъдат:");
+	q146.AddOption("както субект, така и предикат", -1);
+	q146.AddOption("всеки от останалите отговори е грешен", 1);
+	q146.AddOption("както предикат, така и обект", -1);
+	q146.AddOption("както субект, така и обект", -1);
+	q146.AddOption("както предикат, така и субект или обект", -1);	
+
 	Question q147("?");
 	q147.AddOption("", -1);
 	q147.AddOption("", -1);
