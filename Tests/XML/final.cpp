@@ -699,10 +699,10 @@ int main()
 	q106.AddOption("show и arcrole", -1);
 	
 	Question q107("B CSS, задаването на елемент, чийто атрибут attr завършва с дадена стойност xpto, става чрез:");
-	q107.AddOption("[attr$=xpto]", -1);
+	q107.AddOption("[attr$=xpto]", 1);
 	q107.AddOption("[attr|=xpto]", -1);
 	q107.AddOption("[attr=xpto]", -1);
-	q107.AddOption("[attr~=xpto]", 1);
+	q107.AddOption("[attr~=xpto]", -1);
 	
 	Question q108("Описание (конкретизация) на твърдение с използване на RDF речника се извършва чрез:");
 	q108.AddOption("типа rdf:Consideration и свойствата rdf:subject, rdf:predicate и rdf:object", -1);
@@ -981,113 +981,70 @@ int main()
 	q154.AddOption("Един затварящ или незатварящ таг", -1);
 	q154.AddOption("Точно един затварящ таг", 1);
 	q154.AddOption("Повече от един затварящи тагове", -1);
-/*
-	Question q15("");
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
 
-	Question q15("");
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
+	Question q155("DTD валидацията ограничава елементите и атрибутите, които могат да участват в документа, само по техните локални имена, ако в DTD дефиницията на елемента или атрибута той е участвал с локано име вместо с QName.");
+	q155.AddOption("верно", 1);
+	q155.AddOption("неверно", -1);
 
-	Question q15("");
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
+	Question q156("Най-общо маркъп езиците включват:");
+	q156.AddOption("структурни (layout), функционални (action), семантични (meaning) но не и стилистични (appearance) описания", -1);
+	q156.AddOption("Стилистични (appearance), структурни (layout), семантични (meaning) но не и функционални (action) описания", -1);
+	q156.AddOption("Стлистични (appearance), структурни (layout), функционални (action) но не и семантични (meaning)  описания", -1);
+	q156.AddOption("Структурни (layout), функционални (action), семантични (meaning) и стилистични (appearance) описания", -1);
 
-	Question q15("");
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
+	Question q157("Свойството rdfs:member е супер-свойство от всички cвойства, които са екземпляри на:");
+	q157.AddOption("rdfs:ContainerProperty", -1);
+	q157.AddOption("rdfs:MemberOfProperty", -1);
+	q157.AddOption("rdfs:ContainerMembershipProperty", 1);
+	q157.AddOption("rdfs:MembershipProperty", -1);
+	q157.AddOption("rdfs:MemberProperty", -1);
 
-	Question q15("");
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
+	Question q158("Символите <,> и ‘ са валидни PCDATA символи");
+	q158.AddOption("неверно", 1);
+	q158.AddOption("верно", -1);
 
-	Question q15("");
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
+	Question q159("XML документите могат да съдържат само един елемент-корен");
+	q159.AddOption("неврно", -1);
+	q159.AddOption("верно", 1);
 
-	Question q15("");
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
+	Question q160("Изпълнението на XSLT декларациите  <xsl:value-of select=”.”/> и <xsl:value-of select=”text()”/> води:");
+	q160.AddOption("Винаги до различни резултати", -1);
+	q160.AddOption("До един и същ или до различни резултати в зависимост от типа на съдържанието на текущия елемент", 1);
+	q160.AddOption("Винаги до един и същ резултат", -1);
 
-	Question q15("");
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
+	Question q161("XPath изразът ./book[author/last=”пробен изпит”] връща:");
+	q161.AddOption("Всички book елементи, които имат елемент author с атрибут last равен на “пробен изпит”", -1);
+	q161.AddOption("Елемент last със стойност “пробен изпит”, който има баща елемент author с поделемент book - наследник на текущия елемент", -1);
+	q161.AddOption("Всички book елементи, които имат елемент author с поделемент last равен на “пробен изпит”", -1);
+	q161.AddOption("Всички last елементи със стойност “пробен изпит”, които имат за баща елемент author с поделемент book", -1);
+	q161.AddOption("Елемент book - наследник на текущия елемент, който има елемент author с поделемент last равен на “пробен изпит”", 1);
 
-	Question q15("");
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
+	Question q162("Изберете верния отговор:");
+	q162.AddOption("Всеки добре конструиран XML документ е валиден, но обратното не е задължително вярно. ", -1);
+	q162.AddOption("Всеки валиден XML документ е добре конструиран, както и обратното - всеки добре конструиран XML документ е валиден.", -1);
+	q162.AddOption("Всички останали твърдения са неверни.", -1);
+	q162.AddOption("Всеки валиден XML документ е добре конструиран, но обратното не е задължително вярно.", 1);
 
-	Question q15("");
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
+	Question q163("XML йерархията  <a> <b> <c> </b> </c> </a> е:");
+	q163.AddOption("Коректна или некоректна в зависимост от DTD/XSchema валидацията", -1);
+	q163.AddOption("Нито един от останалите отговори не е верен", -1);
+	q163.AddOption("Некоректна", 1);
+	q163.AddOption("Коректна", -1);
 
-	Question q15("");
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
+	Question q164("Следният XML документ е добре конструиран (well-formed):");
+	q164.AddOption("Истина", 1);
+	q164.AddOption("Неистина", -1);
 
-	Question q15("");
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
+	Question q165("Събитието processingInstruction възниква, когато SAX парсерът достигне до всяка една инструкция за обработка, включително и до XML декларацията");
+	q165.AddOption("Вярно", -1);
+	q165.AddOption("Невярно", 1);
 
-	Question q15("");
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
-
-*/	
-        exam.push_back(q1);
+	Question q166("Отдалечените XLink ресурси винаги представляват външни за документа ресурси.");
+	q166.AddOption("Верно", -1);
+	q166.AddOption("Неверно", 1);
+        
+	
+	exam.push_back(q1);
         exam.push_back(q2);
         exam.push_back(q3);
         exam.push_back(q4);
@@ -1241,6 +1198,18 @@ int main()
         exam.push_back(q152);
         exam.push_back(q153);
         exam.push_back(q154);
+        exam.push_back(q155);
+        exam.push_back(q156);
+        exam.push_back(q157);
+        exam.push_back(q158);
+        exam.push_back(q159);
+        exam.push_back(q160);
+        exam.push_back(q161);
+        exam.push_back(q162);
+        exam.push_back(q163);
+        exam.push_back(q164);
+	exam.push_back(q165);
+        exam.push_back(q166);
 
 	unsigned questionsCount = exam.size();
 	for (unsigned i = 0; i < questionsCount; ++i)
