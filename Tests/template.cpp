@@ -85,12 +85,12 @@ int Question::AnswerQuestion()
 int main()
 {
 	std::cout << "Test 1 po UK\nIzgotven ot Mapmo i Dakata\n";
-	std::cout << "Za da otgovorite na nqkoi vupros vavedete bukvata(bukvite) i kogato ste gotovi vavedete 's'\n";
-	std::cout << "Suobrazete se kak raboti std::cin\nAko jelaete simulaciq bez povtorni opiti natisnete r\nAko jelaete vuprosite, koito oburkate da se zapazvat natisnete proizvolen buton\n";
+	std::cout << "За да отговорите на някой въпрос въведете буквата(буквите), и когато сте готовои въведете s'\n";
+	std::cout << "Syobrazete se kak raboti std::cin\nAко желаете симулация без повторни опити натиснете r\nАко желаете въпросите, които объркате да се записват натиснете произволен бутон\n";
 	char useless;
 	std::cin >> useless;
 	bool flag = (useless == 'r' ? 1 : 0);
-	system("CLS");
+	system("clear");
 	std::vector<Question> exam;
 	std::srand(unsigned(std::time(0)));
 
@@ -1152,16 +1152,16 @@ int main()
 	{
 		if (i == questionsCount)
 		{
-			std::cout << "Sekciq sus sgresheni vuprosi\nnatisnete nqkoy buton\n";
+			std::cout << "Секция със сгрешени въпроси\nнатиснете някой бутон\n";
 			std::cin >> useless;
-			system("CLS");
+			system("clear");
 		}
 		std::cout << 1 + i << '/' << exam.size() << '\n';
 		exam[i].AskQuestion();
 		if (exam[i].AnswerQuestion() != 1 && !flag)
 			exam.push_back(exam[i]);
 		std::cin >> useless;
-		system("CLS");
+		system("clear");
 	}
 	std::cout << "Congratulations for reaching the end!\nYour score is: " << counter << '/' << exam.size();
 	std::cin >> useless;
