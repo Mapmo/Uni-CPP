@@ -247,18 +247,18 @@ int main()
 	q28.AddOption("Federation", 0.5);
 	q28.AddOption("MFA", -1);
 	q28.AddOption("Root user ", -1);
-	/*
-	Question q29("?");
-	q29.AddOption("", -1);
-	q29.AddOption("", -1);
-	q29.AddOption("", -1);
-	q29.AddOption("", -1);
 	
-	Question q30("?");
-	q30.AddOption("", -1);
-	q30.AddOption("", -1);
-	q30.AddOption("", -1);
-	q30.AddOption("", -1);
+	Question q29("Which of the following actions can be authorized by IAM? (Choose 2 answers)");
+	q29.AddOption("Querying an Oracle database", -1);
+	q29.AddOption("Adding a message to an Amazon Simple Queue Service (Amazon SQS) queue", 0.5);
+	q29.AddOption("Launching an Amazon Linux EC2 instance", 0.5);
+	q29.AddOption("Installing ASP.NET on a Windows Server", -1);
+	
+	Question q30("Which of the following are IAM security features? (Choose 2 answers)");
+	q30.AddOption("Consolidated Billing", -1);
+	q30.AddOption("MFA", 0.5);
+	q30.AddOption("Amazon DynamoDB global secondary indexes", -1);
+	q30.AddOption("Password policies", 0.5);
 	
 	Question q31("?");
 	q31.AddOption("", -1);
