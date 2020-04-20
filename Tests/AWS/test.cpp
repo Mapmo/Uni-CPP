@@ -201,54 +201,53 @@ int main()
 	q20.AddOption("EC2 Meta Data", -1);
 	q20.AddOption("EC2 User Data", -1);
 	
-	Question q21("?");
-	q21.AddOption("", -1);
-	q21.AddOption("", -1);
-	q21.AddOption("", -1);
-	q21.AddOption("", -1);
+	Question q21("All of these are IAM components except...");
+	q21.AddOption("Policies", -1);
+	q21.AddOption("Roles", -1);
+	q21.AddOption("Organizations", 1);
+	q21.AddOption("Users", -1);
+	q21.AddOption("Groups", -1);
 	
-	Question q22("?");
-	q22.AddOption("", -1);
-	q22.AddOption("", -1);
-	q22.AddOption("", -1);
-	q22.AddOption("", -1);
+	Question q22("Ap-northeast-1a is a…");
+	q22.AddOption("Region", -1);
+	q22.AddOption("Availability Zone", 1);
 	
-	Question q23("?");
-	q23.AddOption("", -1);
-	q23.AddOption("", -1);
-	q23.AddOption("", -1);
-	q23.AddOption("", -1);
+	Question q23("When a security group is created, what is the default behavior??");
+	q23.AddOption("Deny all traffic inbound and deny all traffic outbound", -1);
+	q23.AddOption("Allow all traffic inbound and allow all traffic outbound", -1);
+	q23.AddOption("Deny all traffic inbound and allow all traffic outbound", 1);
+	q23.AddOption("Allow all traffic inbound and deny all traffic outbound ", -1);
 	
-	Question q24("?");
-	q24.AddOption("", -1);
-	q24.AddOption("", -1);
-	q24.AddOption("", -1);
-	q24.AddOption("", -1);
+	Question q24("Which of the following are found in an IAM policy? (Choose 2 answers)");
+	q24.AddOption("Access Key", -1);
+	q24.AddOption("Password", -1);
+	q24.AddOption("Effect", 0.5);
+	q24.AddOption("Action", 0.5);
 	
-	Question q25("?");
-	q25.AddOption("", -1);
-	q25.AddOption("", -1);
-	q25.AddOption("", -1);
-	q25.AddOption("", -1);
+	Question q25("Which of the following are benefits of using Amazon EC2 roles? (Choose 2 answers)?");
+	q25.AddOption("Integration with Active Directory is automatic.", -1);
+	q25.AddOption("Key rotation is not necessary.", 0.5);
+	q25.AddOption("Credentials do not need to be stored on the Amazon EC2 instance.", 0.5);
+	q25.AddOption("No policies are required.", -1);
 	
-	Question q26("?");
-	q26.AddOption("", -1);
-	q26.AddOption("", -1);
-	q26.AddOption("", -1);
-	q26.AddOption("", -1);
+	Question q26("What is the format of an IAM policy?");
+	q26.AddOption("XML", -1);
+	q26.AddOption("JSON", -1);
+	q26.AddOption("Tab-delimited text", -1);
+	q26.AddOption("Key/value pairs", -1);
 	
-	Question q27("?");
-	q27.AddOption("", -1);
-	q27.AddOption("", -1);
-	q27.AddOption("", -1);
-	q27.AddOption("", -1);
+	Question q27("Which of the following methods will allow an application using an AWS SDK to be authenticated as a principal to access AWS Cloud services? (Choose 2 answers)");
+	q27.AddOption("Make all the API calls over an SSL connection", -1);
+	q27.AddOption("Create an IAM user and store the user name and password for the user in the application’s configuration.", 0.5);
+	q27.AddOption("Create an IAM user and store both parts of the access key for the user in the application’s configuration.", -1);
+	q27.AddOption("Run the application on an Amazon EC2 instance with an assigned IAM role.", 0.5);
 	
-	Question q28("?");
-	q28.AddOption("", -1);
-	q28.AddOption("", -1);
-	q28.AddOption("", -1);
-	q28.AddOption("", -1);
-	
+	Question q28("Which of the following are based on temporary security tokens? (Choose 2 answers)");
+	q28.AddOption("Amazon EC2 roles ", 0.5);
+	q28.AddOption("Federation", 0.5);
+	q28.AddOption("MFA", -1);
+	q28.AddOption("Root user ", -1);
+	/*
 	Question q29("?");
 	q29.AddOption("", -1);
 	q29.AddOption("", -1);
