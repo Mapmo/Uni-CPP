@@ -154,66 +154,52 @@ int main()
 	q10.AddOption("Public Cloud", -1);
 	q10.AddOption("Personal Cloud", -1);
 	q10.AddOption("Private Cloud", -1);
-/*	
-	Question q11("?");
-	q11.AddOption("", -1);
-	q11.AddOption("", -1);
-	q11.AddOption("", -1);
-	q11.AddOption("", -1);
+
+	Question q11("You are getting a network timeout when trying to SSH into your EC2 instance?");
+	q11.AddOption("your security groups are misconfigured", -1);
+	q11.AddOption("the linux instance is misconfigured ", -1);
+	q11.AddOption("your key is missing permissions", 1);
 	
-	Question q12("?");
-	q12.AddOption("", -1);
-	q12.AddOption("", -1);
-	q12.AddOption("", -1);
-	q12.AddOption("", -1);
+	Question q12("Availability Zones are?");
+	q12.AddOption("IN ISOLATED DATA CENTERS ", 1);
+	q12.AddOption(" ALL TOGETHER IN ONE DATA CENTER", -1);
 	
-	Question q13("?");
-	q13.AddOption("", -1);
-	q13.AddOption("", -1);
-	q13.AddOption("", -1);
-	q13.AddOption("", -1);
+	Question q13("You are getting a permission error exception when trying to SSH into your Linux Instance");
+	q13.AddOption("The security group is misconfigured", -1);
+	q13.AddOption("The Linux instance is misconfigured", -1);
+	q13.AddOption("The key is missing permissions chmod 0400", 1);
 	
-	Question q14("?");
-	q14.AddOption("", -1);
-	q14.AddOption("", -1);
-	q14.AddOption("", -1);
-	q14.AddOption("", -1);
+	Question q14("Security groups can reference all of the following except:");
+	q14.AddOption("IP address", -1);
+	q14.AddOption("CIDR block", -1);
+	q14.AddOption("Security Group", 1);
+	q14.AddOption("DNS name", -1);
 	
-	Question q15("?");
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
-	q15.AddOption("", -1);
+	Question q15("You should share your IAM credentials with colleagues if they quickly need access to help you?");
+	q15.AddOption("NO", 1);
+	q15.AddOption("YES", -1);
 	
-	Question q16("?");
-	q16.AddOption("", -1);
-	q16.AddOption("", -1);
-	q16.AddOption("", -1);
-	q16.AddOption("", -1);
+	Question q16("An IAM user can belong to multiple groups?");
+	q16.AddOption("TRUE", -1);
+	q16.AddOption("FALSE", -1);
 	
-	Question q17("?");
-	q17.AddOption("", -1);
-	q17.AddOption("", -1);
-	q17.AddOption("", -1);
-	q17.AddOption("", -1);
+	Question q17("IAM Users are defined on a per-region basis?");
+	q17.AddOption("TRUE", -1);
+	q17.AddOption("FALSE", 1);
 	
-	Question q18("?");
-	q18.AddOption("", -1);
-	q18.AddOption("", -1);
-	q18.AddOption("", -1);
-	q18.AddOption("", -1);
+	Question q18("You are getting started with AWS and your manager wants things to remain simple yet secure. He wants management of engineers to be easy, and not re-invent the wheel every time someone joins your company. What will you do?");
+	q18.AddOption("Create multiple IAM users and assign each user their own policy", -1);
+	q18.AddOption("Create multiple IAM users and groups and assign policies to groups. New users will be added to groups", 1);
+	q18.AddOption("Create one IAM user and everyone will share the credentials", -1);
 	
-	Question q19("?");
-	q19.AddOption("", -1);
-	q19.AddOption("", -1);
-	q19.AddOption("", -1);
-	q19.AddOption("", -1);
+	Question q19("You pay for an EC2 instance compute component?");
+	q19.AddOption(" if it's \"running\" and \"stopped\" state ", -1);
+	q19.AddOption(" Only when it's in \"running\" state", 1);
 	
-	Question q20("?");
-	q20.AddOption("", -1);
-	q20.AddOption("", -1);
-	q20.AddOption("", -1);
-	q20.AddOption("", -1);
+	Question q20("You want to provide startup instructions to your EC2 instances, you should be using?");
+	q20.AddOption("EC2 Startup Data", -1);
+	q20.AddOption("EC2 Meta Data", -1);
+	q20.AddOption("EC2 User Data", -1);
 	
 	Question q21("?");
 	q21.AddOption("", -1);
