@@ -287,23 +287,20 @@ int main()
 	q35.AddOption("Install the application using EC2 User Data", -1);
 	q35.AddOption("Use the EC2 Cluster Placement Group", -1);
 	
-	Question q36("?");
-	q36.AddOption("", -1);
-	q36.AddOption("", -1);
-	q36.AddOption("", -1);
-	q36.AddOption("", -1);
+	Question q36("You are launching an EC2 instance in us-east-1 using this Python script snippet:(we will see SDK in a later section, for now just look at the code reference ImageId) ec2.create_instances(ImageId='ami-b23a5e7', MinCount=1, MaxCount=1) It works well, so you decide to deploy your script in us-west-1 as well. There, the script does not work and fails with \"ami not found\" error. What's the problem?");
+	q36.AddOption("The AMI needs to first be shared to another region. The same ID can then be used.", 1);
+	q36.AddOption("AMI is region locked and the same ID cannot be used across regions", -1);
 	
-	Question q37("?");
-	q37.AddOption("", -1);
-	q37.AddOption("", -1);
-	q37.AddOption("", -1);
-	q37.AddOption("", -1);
+	Question q37("You plan on running an open-source MongoDB database year-round on EC2. Which instance launch mode should you choose?");
+	q37.AddOption("Reserved Instance ", 1);
+	q37.AddOption("On-Demand", -1);
+	q37.AddOption("Spot Instance", -1);
 	
-	Question q38("?");
-	q38.AddOption("", -1);
-	q38.AddOption("", -1);
-	q38.AddOption("", -1);
-	q38.AddOption("", -1);
+	Question q38("You would like to deploy a database technology and the vendor license bills you based on the physical cores and underlying network socket visibility. Which EC2 launch modes allows you to get visibility into them?");
+	q38.AddOption("Dedicated Host", 1);
+	q38.AddOption("Spot Instance", -1);
+	q38.AddOption("On-Demand", -1);
+	q38.AddOption("Reserved Instance", -1);
 	
 	Question q39("?");
 	q39.AddOption("", -1);
