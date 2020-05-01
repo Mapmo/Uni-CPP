@@ -260,35 +260,32 @@ int main()
 	q30.AddOption("Amazon DynamoDB global secondary indexes", -1);
 	q30.AddOption("Password policies", 0.5);
 	
-	Question q31("?");
-	q31.AddOption("", -1);
-	q31.AddOption("", -1);
-	q31.AddOption("", -1);
-	q31.AddOption("", -1);
+	Question q31("You built and published an AMI in the ap-southeast-2 region, and your colleague in us-east-1 region cannot see it?");
+	q31.AddOption("An AMI created for a region can only be seen in that region ", 1);
+	q31.AddOption("You need to share the AMI with them explicitly", -1);
+	q31.AddOption("Their AMI permissions are wrong", -1);
 	
-	Question q32("?");
-	q32.AddOption("", -1);
-	q32.AddOption("", -1);
-	q32.AddOption("", -1);
-	q32.AddOption("", -1);
+	Question q32("You would like to make sure your EC2 instances have the highest performance while talking to each other as you're performing big data analysis. Which placement group should you choose?");
+	q32.AddOption("Cluster ", 1);
+	q32.AddOption("Spread", -1);
 	
-	Question q33("?");
-	q33.AddOption("", -1);
-	q33.AddOption("", -1);
-	q33.AddOption("", -1);
-	q33.AddOption("", -1);
+	Question q33("You are running a critical workload of three hours per week, on Monday. As a solutions architect, which EC2 Instance Launch Type should you choose to maximize the cost savings while ensuring the application stability?");
+	q33.AddOption("Spot Instances", -1);
+	q33.AddOption("Scheduled Reserved Instances", -1);
+	q33.AddOption("On-Demand Instances", -1);
+	q33.AddOption("Reserved Instances", 1);
 	
-	Question q34("?");
-	q34.AddOption("", -1);
-	q34.AddOption("", -1);
-	q34.AddOption("", -1);
-	q34.AddOption("", -1);
+	Question q34("You would like to deploy a database technology and the vendor license bills you based on the physical cores and underlying network socket visibility. Which EC2 launch modes allows you to get visibility into them?");
+	q34.AddOption("Reserved Instance", -1);
+	q34.AddOption("Dedicated Host", 1);
+	q34.AddOption("Spot Instance", -1);
+	q34.AddOption("On-Demand", -1);
 	
-	Question q35("?");
-	q35.AddOption("", -1);
-	q35.AddOption("", -1);
-	q35.AddOption("", -1);
-	q35.AddOption("", -1);
+	Question q35("You are launching an application on EC2 and the whole process of installing the application takes about 30 minutes. You would like to minimize the total time for your instance to boot up and be operational to serve traffic. What do you recommend?");
+	q35.AddOption("Provision an R4.xlarge instance type ", -1);
+	q35.AddOption("Create an AMI after installing the application and launch from the AMI ", 1);
+	q35.AddOption("Install the application using EC2 User Data", -1);
+	q35.AddOption("Use the EC2 Cluster Placement Group", -1);
 	
 	Question q36("?");
 	q36.AddOption("", -1);
