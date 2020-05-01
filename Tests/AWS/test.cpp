@@ -302,66 +302,63 @@ int main()
 	q38.AddOption("On-Demand", -1);
 	q38.AddOption("Reserved Instance", -1);
 	
-	Question q39("?");
-	q39.AddOption("", -1);
-	q39.AddOption("", -1);
-	q39.AddOption("", -1);
-	q39.AddOption("", -1);
+	Question q39("You would like to provide internet access to your instances in private subnets with IPv4, while making sure this solution requires a least amount of administration and scales seamlessly. What should you use?");
+	q39.AddOption("NAT Instances with Source/Destination Check flag off", -1);
+	q39.AddOption("NAT Gateway", 1);
+	q39.AddOption("Egress Only Internet Gateway", -1);
 	
-	Question q40("?");
-	q40.AddOption("", -1);
-	q40.AddOption("", -1);
-	q40.AddOption("", -1);
-	q40.AddOption("", -1);
+	Question q40("Your company has created a REST API that it will sell to hundreds of customers as a SaaS. Your customers are on AWS and are using their own VPC. You would like to allow your customers to access your SaaS without going through the public internet while ensuring your infrastructure is not left exposed to network attacks. What do you recommend?");
+	q40.AddOption("Create a VPC peering connection", -1);
+	q40.AddOption("Create a ClassicLink", -1);
+	q40.AddOption("Create a PrivateLink", -1);
+	q40.AddOption("Create a VPC Endpoint", -1);
 	
-	Question q41("?");
-	q41.AddOption("", -1);
-	q41.AddOption("", -1);
-	q41.AddOption("", -1);
-	q41.AddOption("", -1);
+	Question q41("You have set-up a direct connect between your Corporate Data Center and your VPC A. You need to access VPC B in another region from your Corporate Data Center as well. What should you do?");
+	q41.AddOption("Setup a NAT Gateway ", -1);
+	q41.AddOption("Enable VPC Peering", -1);
+	q41.AddOption("Use a Direct Connect", -1);
+	q41.AddOption("Use a Direct Connect Gateway", 1);
 	
-	Question q42("?");
-	q42.AddOption("", -1);
-	q42.AddOption("", -1);
-	q42.AddOption("", -1);
-	q42.AddOption("", -1);
+	Question q42("You plan on creating a subnet and want it to have at least capacity for 28 EC2 instances. What's the minimum size you need to have for your subnet?");
+	q42.AddOption("/25", -1);
+	q42.AddOption("/26", 1);
+	q42.AddOption("/27", -1);
+	q42.AddOption("/28", -1);
 	
-	Question q43("?");
-	q43.AddOption("", -1);
-	q43.AddOption("", -1);
-	q43.AddOption("", -1);
-	q43.AddOption("", -1);
+	Question q43("Which are the only two services that have a Gateway Endpoint instead of an Interface Endpoint as a VPC endpoint?");
+	q43.AddOption("Amazon S3 &amp; DynamoDB", 1);
+	q43.AddOption("Amazon S3 &amp; Amazon SQS", -1);
+	q43.AddOption("Amazon SQS &amp; DynamoDB", -1);
 	
-	Question q44("?");
-	q44.AddOption("", -1);
-	q44.AddOption("", -1);
-	q44.AddOption("", -1);
-	q44.AddOption("", -1);
+	Question q44("VPC Peering has been enabled between VPC A and VPC B, and the route tables have been updated for VPC A. Still, you instances cannot communicate. What is the likely issue?");
+	q44.AddOption("Check the route tables in VPC B", 1);
+	q44.AddOption("Check the NACL", -1);
+	q44.AddOption("Check the instance security group", -1);
+	q44.AddOption("Check if DNS Resolutions is enabled", -1);
 	
-	Question q45("?");
-	q45.AddOption("", -1);
-	q45.AddOption("", -1);
-	q45.AddOption("", -1);
-	q45.AddOption("", -1);
+	Question q45("You have setup an internet gateway in your VPC, but your EC2 instances still don't have access to the internet. What is NOT a possible issue?");
+	q45.AddOption("The security group does not allow network in", 1);
+	q45.AddOption("The NACL does not allow network traffic out ", -1);
+	q45.AddOption("Route Tables are missing entries", -1);
 	
-	Question q46("?");
-	q46.AddOption("", -1);
-	q46.AddOption("", -1);
-	q46.AddOption("", -1);
-	q46.AddOption("", -1);
+	Question q46("Your company has several on-premise sites across the USA. These sites are currently linked using a private connection, but your private connection provider has been recently quite unstable, making your IT architecture partially offline. You would like to create a backup connection that will use the public internet to link your on-premise sites, that you can failover in case of issues with your provider. What do you recommend?");
+	q46.AddOption("Site-to-Site VPN", -1);
+	q46.AddOption("Direct Connect", -1);
+	q46.AddOption("VPN CloudHub", 1);
+	q46.AddOption("PrivateLink", -1);
 	
-	Question q47("?");
-	q47.AddOption("", -1);
-	q47.AddOption("", -1);
-	q47.AddOption("", -1);
-	q47.AddOption("", -1);
+	Question q47("You have a corporate network of size 10.0.0.0/8 and a satellite office of size 192.168.0.0/16. Which CIDR is acceptable for your AWS VPC if you plan on connecting your networks later on?");
+	q47.AddOption("192.168.4.0/18", -1);
+	q47.AddOption("172.16.0.0/16", 1);
+	q47.AddOption("10.0.16.0/16", -1);
+	q47.AddOption("172.16.0.0/12", -1);
 	
-	Question q48("?");
-	q48.AddOption("", -1);
-	q48.AddOption("", -1);
-	q48.AddOption("", -1);
-	q48.AddOption("", -1);
-	
+	Question q48("What does this CIDR correspond to? 10.0.4.0/28?");
+	q48.AddOption("10.0.4.0 to 10.0.4.28", -1);
+	q48.AddOption("10.0.4.0 to 10.0.4.15", 1);
+	q48.AddOption("10.0.0.0 to 10.0.16.0", -1);
+	q48.AddOption("10.0.4.0 to 10.0.32.0", -1);
+/*	
 	Question q49("?");
 	q49.AddOption("", -1);
 	q49.AddOption("", -1);
@@ -1022,6 +1019,7 @@ int main()
         exam.push_back(q46);
         exam.push_back(q47);
         exam.push_back(q48);
+	/*
         exam.push_back(q49);
         exam.push_back(q50);
         exam.push_back(q51);
@@ -1124,7 +1122,7 @@ int main()
         exam.push_back(q148);
         exam.push_back(q149);
         exam.push_back(q150);
-	
+*/	
 	unsigned questionsCount = exam.size();
 	for (unsigned i = 0; i < questionsCount; ++i)
 		std::swap(exam[Randomize(exam.size())], exam[Randomize(exam.size())]);
