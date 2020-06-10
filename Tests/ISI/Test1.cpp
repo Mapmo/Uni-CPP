@@ -390,6 +390,69 @@ int main()
 	r17.AddOption("Predpochitaniq na choveshkite resursi", 1);
 	exam.push_back(r17);
 
+	Question n1("Obshto rabotata na proekta e ocenena na 100ch/dni i e razppredelena po zadachite po dizajn, kodirane i testvane. Kakyv podhod za ocenka na zadachite e reali?");
+	n1.AddOption("Horizontalen", -1);
+	n1.AddOption("Vertikalen", -1);
+	n1.AddOption("Otdolu nagore Bottom up)", -1);
+	n1.AddOption("Otgore nadolu Top down)", 1);
+	exam.push_back(n1);
+	
+	Question n2("Primer za proekt ne e");
+	n2.AddOption("Izgrajdaneto na softueren ofis", -1);
+	n2.AddOption("Razrabotka na softuer za bankirane", -1);
+	n2.AddOption("Syzdavaneto na nova softuerna tehnologiq", -1);
+	n2.AddOption("Upravlenie na softueren ofis", 1);
+	exam.push_back(n2);
+	
+	Question n3("Osnowna vhodna informaciq za ocenka i planirane na resursite na edin proekt e");
+	n3.AddOption("Budeshtiqt obhvat na softuerniq produkt", -1);
+	n3.AddOption("Vremeto za razrabotka", -1);
+	n3.AddOption("Tehnologiqta", -1);
+	n3.AddOption("WBS", 1);
+	exam.push_back(n3);
+	
+	Question n4("Rezultata ot proekta e");
+	n4.AddOption("Nova tehnologiq", -1);
+	n4.AddOption("Inovativen produkt", -1);
+	n4.AddOption("Vsichko izbroeno po-gore", -1);
+	n4.AddOption("Polza ili pechalba", 1);
+	exam.push_back(n4);
+	
+	Question n5("Metrikata za ocenka na goleminata na produkta");
+	n5.AddOption("Razhodite za trud na chovek/den", -1);
+	n5.AddOption("Proizvoditelnostta na linii kod na den", -1);
+	n5.AddOption("Goleminata na razrabotkata v dni", -1);
+	n5.AddOption("Broq na podprogramite v softuera", 1);
+	exam.push_back(n5);
+	
+	Question n6("Koeficient IRR e motod za");
+	n6.AddOption("Koeficient prihodi - razhodi", -1);
+	n6.AddOption("Godishna norma na vyzvrashtaemost", -1);
+	n6.AddOption("Mesechna norma na vyzvrashtaemost", -1);
+	n6.AddOption("Vytreshna norma na vyzvrashtaemost", 1);
+	exam.push_back(n6);
+	
+	Question n7("Koy finansov model e baziran na koncepciqta, che stajnostta na parite sega e po-golqma ot tqhnata stojnost v bydeshte");
+	n7.AddOption("IRR", -1);
+	n7.AddOption("CBA", -1);
+	n7.AddOption("EVA", -1);
+	n7.AddOption("PV", 1);
+	exam.push_back(n7);
+	
+	Question n8("Izpolzvaneto na WBS za ocenka na softuerni resheniq");
+	n8.AddOption("vodi do netochna ocenka pri razrabotkata na softuer", -1);
+	n8.AddOption("s dobra praktika  pri modelite za ocenka na softuer", 1);
+	n8.AddOption("e trudno postijimo za ocenka w realna sreda", -1);
+	n8.AddOption("mnogo skupo reshenie za cenka", -1);
+	exam.push_back(n8);
+	
+	Question n9("Koy parametur ot razhodniq model na sofftuera ne trqbwa da se podobri spored softuernata ikonomika");
+	n9.AddOption("ekipyt za razrabotka/prilojenie (Team)", -1);
+	n9.AddOption("Tehnicheskite sredstva (Tools)", -1);
+	n9.AddOption("Kompleksnost (Complexity)", -1);
+	n9.AddOption("Metodyt na ocenka", 1);
+	exam.push_back(n9);
+	
 	unsigned questionsCount = exam.size();
 	for (unsigned i = 0; i < questionsCount; ++i)
 		std::swap(exam[Randomize(exam.size())], exam[Randomize(exam.size())]);
