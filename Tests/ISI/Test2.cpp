@@ -417,7 +417,42 @@ int main()
 	r3.AddOption("Zavisi ot proekta", -1);
 	r3.AddOption("Kolkoto po-malko e tolkova poveche raste produktivnostta s razmera na proekta", 1);
 	r3.AddOption("Kolkoto po-golqmo e tolkova poveche raste produktivnostta s razmera na proekta", -1);
-
+	
+	Question r4("Kakva e slojnostta na izhodnata yslyga pri 2-3 FTRs i 1-5 DETs");
+	r4.AddOption("sredna (A)", -1);
+	r4.AddOption("visoka (H)", -1);
+	r4.AddOption("niska (L)", 1);
+	r4.AddOption("neznachitelna (N)", -1);
+	exam.push_back(r4);
+	
+	Question r5("Kakva e difiniciqta na metoda na funkcionalnite tochki(FPA)");
+	r5.AddOption("izmerva vutreshnata slojnost i arhitekturnite aspekti", -1);
+	r5.AddOption("toj e merna edinica za funkcionalnost", 1);
+	r5.AddOption("ne izmerva rezultata ot razrabotkata na komputyrnite sistemi", -1);
+	r5.AddOption("rezultata e predstaven v terminite na strukturniq analiz", -1);
+	exam.push_back(r5);
+	
+	Question r6("Koe ne e vid fynkcionalni tochki (FP)");
+	r6.AddOption("FP za prilojeniq (application)", -1);
+	r6.AddOption("FP za razrabotka (development)", -1);
+	r6.AddOption("FP za dorabotka (enhancement)", -1);
+	r6.AddOption("FP za podddryjka (support)", 1);
+	exam.push_back(r6);
+	
+	Question r7("Koga e ydachno da se izpolzva modela na ranniq dizayn v COCOMO II");
+	r7.AddOption("kogato e opredelena arhitekturata", -1);
+	r7.AddOption("kogato razmera na proekta e izvesten", -1);
+	r7.AddOption("kogato e izvestna platfornata na prilojenieto", -1);
+	r7.AddOption("kogato e neopredelena metodologiqta na proekta i ne sa qsni vuzmojnostite na ekipa", 1);
+	exam.push_back(r7);
+	
+	Question r8("Kakva e definiciqta na Vutreshnite logicheski faylove (ILF) v analiza na funkcionalnite tochki (FPA)");
+	r8.AddOption("Grupa ot logicheski svurzani danni, identificirani ot potrebitelite i se upravlqvat izvun prilojenieto", -1);
+	r8.AddOption("Grupa ot logicheski svurzani danni, identificirani ot potrebitelite i se ypravlqvat v prilojenieto", 1);
+	r8.AddOption("Grupa ot logicheski svurzani danni, identificirani ot razrabotchicite i se upravlqvat ot administraciqta na prilovenieto", -1);
+	r8.AddOption("Grupa ot logicheski svurzani danni, identificirani ot razrabotchicite i se uppravlqvat v ", -1);
+	exam.push_back(r8);
+	
 	/*
 	Question r("");
 	r.AddOption("", -1);
