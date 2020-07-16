@@ -303,6 +303,143 @@ int main()
 	q14.AddOption("Izgotvqne na biznes plan na proekta", 0.25);
 	exam.push_back(q14);
 
+	Question b1("Koi ot slednite sa primer za dobre formuliran scenarii za kachestvoto");
+	b1.AddOption("Sistemata za avtomatichna blokirovka trqbwa da prekysne zahranvaneto kym manipulatora\n naj-mnogo za 20ms sled registriraneto na temperatura, po-golqma ot 50 gradusa", 0.5);
+	b1.AddOption("Avtimatichnata wtara trqbwa da spe dwivenieto si ne po-kysno ot 0.3 sek sled otkriwane na prepqdstwie", 0.5);
+	b1.AddOption("Pri otvarqne na file, antivirusnata programa trqbva da go proveri vyzmozhno nai-byrzo.", -1);
+	b1.AddOption("Sistemata trqbva da e sigurna", -1);
+	exam.push_back(b1);
+	
+	Question b2("Sofuernata arhitektura ne e\nIzberete edno");
+	b2.AddOption("Model na strukturata za upravlenie na softuernata kompaniq", 1);
+	b2.AddOption("Abstrakciq, koqto skriva detailite po realizaciqta na programite", -1);
+	b2.AddOption("Dokument, koito mozhe da podobri organizatsiqta na rabota v softuernata kompaniq", -1);
+	b2.AddOption("Syvkupnost ot predstavqne na sistemata ot razlichni gledni tochki", -1);
+	exam.push_back(b2);
+		
+	Question b3("Koe ot slednite tvyrdeniq ne e vqrno po otnoshenie na NeFunkcionalnite iziskvaniq (NFI)?\nIzberete edno:");
+	b3.AddOption("NFI sa chesto protivorechivi i se nalaga da se pravqt kompromisi mezhdu tqh.", -1);
+	b3.AddOption("NFI si vliqqt s iziskvaniqta po funkcionalnostta na sistemata.", -1);
+	b3.AddOption("NFI trqbva da se balansirat sprqmo interesite na zainteresovanite lica.", -1);
+	b3.AddOption("NFI ne sa opredelqshti za dekompoziciqta na sistemata na moduli.", 1);
+	exam.push_back(b3);
+
+	Question b4("Koi ot slednite mozhe da harakterizirat proizvoditelnost na sistemata?\nIzberete edno ili poveche:");
+	b4.AddOption("Vreme za izpylnenie", 0.5);
+	b4.AddOption("Veroqtnost za otkaz", -1);
+	b4.AddOption("Sredno vreme za vyzstanovqvane", -1);
+	b4.AddOption("Latentnost", 0.5);
+	exam.push_back(b4);
+
+	Question b5("Izboryt na strukturi, koito shte bydat vkliucheni v dokumentaciqta na softuernata arhitektura zavisi ot:\nIzberete edno ili poveche:");
+	b5.AddOption("Prilozhnata oblast, kydeto shte se vnedrqva softuernata sistema", 0.5);
+	b5.AddOption("Nefunkcionalnite iziskvaniq (kachestvenite harakteristiki)", -1);
+	b5.AddOption("Broqt na zainteresovanite litsa", -1);
+	b5.AddOption("Konkretnite zainteresovani litsa, koito shte chetat dokumentaciqta", 0.5);
+	exam.push_back(b5);
+
+	Question b6("Kakvo predstavlqvat arhitekturnite driveri ot gledna tochka na procesa na proektirane?");
+	b6.AddOption("Nai-vazhnite tehnologii, koito shte bydat izpolzvani.", -1);
+	b6.AddOption("Vryzka mezhdu arhitekturata na sistemata i neinata realizaciq.", -1);
+	b6.AddOption("Sredstvo za ulesnqvane na proektiraneto na softuernata arhitektura.", 1);
+	exam.push_back(b6);
+
+	Question b7("Spored teoriqta v strukturata na konkurentnoto izpylnenie sa komponenti i nishki (logical threads) sinhronizacionniteni\nkomunikacionni vryzki mezhdu tqh. Za kakvo mozhe da se izpolzva tazi struktura?");
+	b7.AddOption("Za opredelqne na harduernite iziskvaniq na sistemata", -1);
+	b7.AddOption("Za razpredelqne na rabotata po implementaciqta na sistemata mezhdu razlichnite ekipi", -1);
+	b7.AddOption("Za otsenqvane na nefunkcionalnite harakteristiki na sistemata", -1);
+	b7.AddOption("Za analiz na vzaimodeistvieto mezhdu procesite i predotvratqvane na blokirovki (deadlocks)", 1);
+	exam.push_back(b7);
+
+	Question b8("Softuerniqt arhitekt raboti nezavisimo ot ostanalite zainteresovani lica");
+	b8.AddOption("True", -1);
+	b8.AddOption("False", 1);
+	exam.push_back(b8);
+
+	Question b9("Pod izpitaemost (testability) w softuernata sistema se razbira:");
+	b9.AddOption("Vremeto, za koeto sistemata reagira na vyznikvashtite sybitiq", -1);
+	b9.AddOption("Vyzmozhnost na sistemata da osiguri rabota bez otkaz", -1);
+	b9.AddOption("Lekota pri otkrivane na greshki v softuera", 1);
+	b9.AddOption("Mqrka za sebestoinostta na promenite v sistemata", -1);
+	exam.push_back(b9);
+
+	Question b10("Arhitekturniqt rechnik i obosnovkata na arhitekturnite resheniq sa nerazdelna chast ot dokumentatsiqta na softuernata arhitektura.");
+	b10.AddOption("da", 1);
+	b10.AddOption("ne", -1);
+	exam.push_back(b10);
+
+	Question b11("Pod sigurnost (security) v softuernite sistemi se razbira:");
+	b11.AddOption("Vyzmozhnost na sistemata da osiguri rabota bez otkaz", -1);
+	b11.AddOption("Mqrka za sposobnostta na sistemata da ustoqva na opiti za nerazreshena upotreba bez tova da prechi na registriranite potrebiteli", 1);
+	b11.AddOption("Mqrka za sebestoinostta na promenite v sistemata", -1);
+	b11.AddOption("Uverenost v uspeshnoto izpylnenie na proekta", -1);
+	exam.push_back(b11);
+
+	Question b12("Izlishykyt (redundancy) kato taktika za postigane na izmenqemost predstavlqva:");
+	b12.AddOption("Osigurqvane na dopylnitelni resursi s cel uspeshen zavyrshek na proekta.", -1);
+	b12.AddOption("Osigurqvane na dopylnitelni kopiq na otdelni moduli na sistemata.", -1);
+	b12.AddOption("Nqma takava taktika za postigane na izmenqemost.", 1);
+	exam.push_back(b12);
+
+	Question b13("Kontrolnite tochki (checkpoint) kato taktika za postigane na gotovnost (availability)\npredstavlqvat celenasocheno izprashtane na signal mezhdu dva modula s cel ediniqt da se uveri, che drugiqt e aktiven.");
+	b13.AddOption("True", -1);
+	b13.AddOption("False", 1);
+	exam.push_back(b13);
+
+	Question b14("Chrez izpolzvaneto na obvivki (posrednik/mediator/wrapper) pri proektirane na softuerna arhitektura ne se podobrqva izmenqemostta na sistemata,\nno ima vyzmozhnost za povishavane na sigurnostta.");
+	b14.AddOption("True", -1);//ghub
+	b14.AddOption("False", 1);//ili tova ot docs
+	exam.push_back(b14);
+
+	Question b15("Koi ot slednite metodi mozhe da se prilozhat za povishavane na proizvoditelnostta na sistemata?\nIzberete edin ili poveche");
+	b15.AddOption("Podobrqvane na algoritmite", 0.34);
+	b15.AddOption("Vyvezhdane na obvivni moduli", -1);//spored docss e greshno
+	b15.AddOption("Promqna na perioda (pri sinhronni sistemi)", -1);
+	b15.AddOption("Vyvezhdane na opashka s kraen razmer", 0.33);
+	b15.AddOption("Uvelichavane na broq na modulite v sistemata", -1);
+	b15.AddOption("Vkliuchvane na dopylnitelni resursi", 0.33);
+	exam.push_back(b15);
+
+	Question b16("Osnovnoto predimstvo pri t.nar. otlagane na svyrzvaneto (finalnata integratsiq na sistemata se pravi pri potrebitelq) e:");
+	b16.AddOption("povishava se izmenqemostta na sistemata.", -1);//ili tova ot docs
+	b16.AddOption("povishava se sigurnostta na sistemata.", -1);
+	b16.AddOption("ulesnqva se rabotata na krainite potrebiteli.", -1);
+	b16.AddOption("namalqva se tsenata na razrabotka.", 1);//ghub
+	exam.push_back(b16);
+
+	Question b17("Nai-podhodqshtiqt podhod za proektirane na softuerna arhitektura e\nda se zapochne ot iziskvaniqta kym kachestvoto na sistemata (nefunkcionalnite iziskvaniq).");
+	b17.AddOption("False", -1);
+	b17.AddOption("True", 1);
+	exam.push_back(b17);
+
+	Question b18("S kakvo zapochva realizatsiqta na softuernata sistema?\n(2 verni otgovora)");
+	b18.AddOption("Osnovnite komponenti, koito realizirat protokolite na vzaimodeistvie (middleware).", 0.5);
+	b18.AddOption("Sys specifichnite nai-chesto izpolzvani metodi za obrabotka na informaciqta.", 0.5);
+	b18.AddOption("Realizirat se pyrvo interfeisite na komponentite.", -1);
+	exam.push_back(b18);
+
+	Question b19("Analizyt na softuerni arhitekturi e proces, pri koito:");
+	b19.AddOption("se proverqva dali proektiranata veche arhitektura udovletvorqva postavenite iziskvaniq.", 1);
+	b19.AddOption("se ocenqva proizvoditelnostta na sistemata.", -1);
+	b19.AddOption("se opredelqt nai-vazhnite iziskvaniq kym arhitekturata.", -1);
+	exam.push_back(b19);
+
+	Question b20("Analizyt na softuerni arhitekturi vkliuchva razlichni fazi, sreshti i razgovori mezhdu zainteresovanite lica i ocenqvasht ekip.");
+	b20.AddOption("True", 1);
+	b20.AddOption("False", -1);
+	exam.push_back(b20);
+
+	Question b21("Koe ot slednite ne e vqrno:");
+	b21.AddOption("V ATAM vzimat uchastie vsichki zainteresovani lica.", -1);
+	b21.AddOption("ATAM ocenqva dokolko kodyt na sistemata otgovarq na arhitekturata.", 1);
+	b21.AddOption("Razkriva do kakva stepen arhitekturata udovletvorqva kachestvenite iziskvaniq.", -1);
+	b21.AddOption("Ne dava ocenka na biznes polzata ot sistemata.", -1);
+	exam.push_back(b21);
+
+	Question b23("Proektiraneto na softuernata arhitektura zapochva sled analiza na softuernite iziskvaniq.");
+	b23.AddOption("True", 1);
+	b23.AddOption("False", -1);
+	exam.push_back(b23);
 	/*
 	Question r1("\nIzberete edno");
 	r1.AddOption("", -1);
